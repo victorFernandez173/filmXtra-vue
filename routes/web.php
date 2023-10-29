@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 //TODO corregir si se puede tema del titulo más pequeño de los poster (length < 50, ver comentario en componente poster); estilos de login
+//TODO empezar a revisar todo lo aplicado por ahora, detallitos etc
 //TODO hover:[&>li]: APLICARRRRRRRR esa regla a estilos que se repiten y son hijos de otro elemento
 
 // TODO en la pagina de usuario se debería esconder el bloque de contraseña para cuentas o'auth
