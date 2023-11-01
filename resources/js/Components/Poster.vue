@@ -8,7 +8,7 @@ const props = defineProps(['obra', 'titulo', 'info']);
 <template>
     <div>
         <!-- Sección de títulos -->
-        <Link :href="route([props.info ? 'obra':'fichaValoraciones'], encodeURIComponent(obra['titulo']))" class="w-full flex justify-center flex-wrap text-center py-4 group relative font-oswald cursor-pointer">
+        <Link :href="route([props.info ? '/':'/'], encodeURIComponent(obra['titulo']))" class="w-full flex justify-center flex-wrap text-center py-4 group relative font-oswald cursor-pointer">
             <div class="w-full px-3">
                 <p :class="titulo" class="group-hover:invisible truncate text-flamingo font-bold text-lg">{{ obra['titulo'] }}</p>
             </div>

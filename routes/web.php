@@ -16,22 +16,6 @@ use App\Http\Controllers\BienvenidaController;
 
 Route::get('/', [BienvenidaController::class, 'bienvenida'])->name('/');
 
-Route::post('/', [BienvenidaController::class, 'buscarTitulo'])->name('/buscado');
-
-Route::get('obra/{titulo}', [ObtenerObraController::class, 'fichaPelicula'])->name('obra');
-
-Route::get('top', [TopObrasController::class, 'cargarDatos'])->name('top');
-
-Route::get('valoraciones', [TopValoracionesController::class, 'cargarDatos'])->name('valoraciones');
-
-Route::get('valoraciones/{titulo}', [FichaValoracionController::class, 'obtenerFichaValoracion'])->name('fichaValoraciones');
-
-Route::post('/like', [LikeController::class, 'darLike'])->name('darLike')->middleware('auth', 'verified');
-
-Route::post('evaluar', [EvaluacionController::class, 'evaluar'])->name('evaluar')->middleware('auth', 'verified');
-
-Route::post('criticar', [CriticaController::class, 'criticar'])->name('criticar')->middleware('auth', 'verified');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -40,9 +24,12 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-//TODO corregir si se puede tema del titulo más pequeño de los poster (length < 50, ver comentario en componente poster); estilos de login
-//TODO empezar a revisar todo lo aplicado por ahora, detallitos etc
-//TODO hover:[&>li]: APLICARRRRRRRR esa regla a estilos que se repiten y son hijos de otro elemento
+// TODO limpiar al máximo y dejar bienvenida y login y mail validation y dejar y comprobar que la nueva estructura de componentes (footer navbar es correcta)
+// TODO corregir si se puede tema del titulo más pequeño de los poster (length < 50, ver comentario en componente poster); estilos de login
+// TODO empezar a revisar todo lo aplicado por ahora, detallitos etc
+// TODO hover:[&>li]: APLICARRRRRRRR esa regla a estilos que se repiten y son hijos de otro elemento
+
+// TODO REPRODUCIR funcionalidades filmXtraVic
 
 // TODO en la pagina de usuario se debería esconder el bloque de contraseña para cuentas o'auth
 // TODO al modificar la ruta de una obra, solo añadiendo caracteres en el trozo del titulo, se intenta acceder a esa obra pero claro, NO EXISTE y da un error de array[0] nulo porque claro no hay obra ESTUDIAR

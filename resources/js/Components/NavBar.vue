@@ -26,7 +26,7 @@ const form = useForm({
                         <svg class="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                         <span class="sr-only">Icono buscar</span>
                     </div>
-                    <form @submit.prevent="form.post( route('/buscado'),
+                    <form @submit.prevent="form.post( route('/'),
                     {
                     preserveScroll: true,
                     })">
@@ -50,10 +50,10 @@ const form = useForm({
                     </div>
                     <ul v-if="!$page.props.auth.user" class="py-2" aria-labelledby="user-menu-button">
                         <li>
-                            <Link :href="route('login')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-flamingo hover:text-white">Loguearse</Link>
+                            <Link :href="route('/')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-flamingo hover:text-white">Loguearse</Link>
                         </li>
                         <li>
-                            <Link :href="route('register')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-flamingo hover:text-white">Registrarse</Link>
+                            <Link :href="route('/')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-flamingo hover:text-white">Registrarse</Link>
                         </li>
                     </ul>
                     <ul v-else class="py-2" aria-labelledby="user-menu-button">
@@ -64,10 +64,10 @@ const form = useForm({
                             <Link href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-flamingo hover:text-white">Mis favoritas</Link>
                         </li>
                         <li>
-                            <Link :href="route('profile.edit')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-flamingo hover:text-white">Ajustes</Link>
+                            <Link :href="route('/')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-flamingo hover:text-white">Ajustes</Link>
                         </li>
                         <li>
-                            <Link :href="route('logout')" method="post" as="button" class="block px-4 py-2 hover:bg-flamingo hover:text-white"  >Cerrar sesión</Link>
+                            <Link :href="route('/')" method="post" as="button" class="block px-4 py-2 hover:bg-flamingo hover:text-white"  >Cerrar sesión</Link>
                         </li>
                     </ul>
                 </div>
@@ -83,13 +83,13 @@ const form = useForm({
                         <Link :href="route('/')" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">Inicio</Link>
                     </li>
                     <li>
-                        <Link :href="route('top')" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">Top FilmXtra</Link>
+                        <Link :href="route('/')" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">Top FilmXtra</Link>
                     </li>
                     <li>
-                        <Link :href="route('valoraciones')" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 ">Top Valoraciones</Link>
+                        <Link :href="route('/')" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 ">Top Valoraciones</Link>
                     </li>
                     <li>
-                        <Link :href="route('profile.edit')" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">Cuenta</Link>
+                        <Link :href="route('/')" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">Cuenta</Link>
                     </li>
                 </ul>
             </div>
