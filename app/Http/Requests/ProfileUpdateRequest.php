@@ -9,15 +9,28 @@ use Illuminate\Validation\Rule;
 class ProfileUpdateRequest extends FormRequest
 {
     /**
-     * Get the validation rules that apply to the request.
+     * Obtiene las reglas de validación que se aplican a la petición de actualización de perfil.
      *
      * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'name' => ['required', 'string', 'max:25'],
+            'email' => [ 'required', 'email', 'max:60', Rule::unique(User::class)->ignore($this->user()->id)],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Nombre requerido',
+            'name.max' => 'Máximo 25 caracteres',
+            'name.string' => 'Inserte texto para el nombre',
+            'email.max' => 'Máximo 60 caracteres',
+            'email.required' => 'Inserte email',
+            'email.email' => 'Inserte un email válido',
+            'email.unique' => 'Ya existe este email'
         ];
     }
 }

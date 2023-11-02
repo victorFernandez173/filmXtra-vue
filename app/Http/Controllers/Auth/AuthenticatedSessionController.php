@@ -11,14 +11,18 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
+use Redirect;
 
 class AuthenticatedSessionController extends Controller
 {
     /**
-     * Display the login view.
+     * Renderiza la vista de logueo
      */
     public function create(): Response
     {
+        //Establece como la url objetivo, la url de origen
+        Redirect::setIntendedUrl(url()->previous());
+
         return Inertia::render('Auth/Login', [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
@@ -26,7 +30,7 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
-     * Handle an incoming authentication request.
+     * Maneja solicitud de autenticación
      */
     public function store(LoginRequest $request): RedirectResponse
     {
@@ -34,11 +38,12 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Redirige a la url objetivo también incluye valor default
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**
-     * Destroy an authenticated session.
+     * Destruye sesión autenticada.
      */
     public function destroy(Request $request): RedirectResponse
     {
@@ -48,6 +53,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        // Redirige a la url objetivo
+        return redirect(url()->previous());
     }
 }

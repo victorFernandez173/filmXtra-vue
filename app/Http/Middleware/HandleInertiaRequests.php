@@ -16,7 +16,7 @@ class HandleInertiaRequests extends Middleware
     protected $rootView = 'app';
 
     /**
-     * Determine the current asset version.
+     * Determina la version actual de asset
      */
     public function version(Request $request): string|null
     {
@@ -24,7 +24,7 @@ class HandleInertiaRequests extends Middleware
     }
 
     /**
-     * Define the props that are shared by default.
+     * Define los props que se pasan por defecto
      *
      * @return array<string, mixed>
      */

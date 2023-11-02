@@ -17,20 +17,20 @@ use Inertia\Response;
 class NewPasswordController extends Controller
 {
     /**
-     * Display the password reset view.
+     * Muesra la vista de reseteo de password
      */
     public function create(Request $request): Response
     {
         return Inertia::render('Auth/ResetPassword', [
-            'email' => $request->email,
+            'email' => $request['email'],
             'token' => $request->route('token'),
         ]);
     }
 
     /**
-     * Handle an incoming new password request.
+     * Maneja la petición de nuevo password.
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function store(Request $request): RedirectResponse
     {
@@ -38,16 +38,24 @@ class NewPasswordController extends Controller
             'token' => 'required',
             'email' => 'required|email',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ],
+        [
+            'token.required' => 'No tiene token, imposible proceder',
+            'email.required' => 'Inserte email',
+            'email.email' => 'Formato de email incorrecto',
+            'password.required' => 'Inserte password',
+            'password.confirmed' => 'Confirmacion de password fallida',
+            'password.min' => 'Al menos 8 caracteres para su password'
         ]);
 
-        // Here we will attempt to reset the user's password. If it is successful we
-        // will update the password on an actual user model and persist it to the
-        // database. Otherwise we will parse the error and return the response.
+        // Para resetear el password del usario. Si hay éxito, se modificará
+        // el password de un usuario de forma persistente también en la bbdd.
+        // Sino, se devolverá el error.
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function ($user) use ($request) {
                 $user->forceFill([
-                    'password' => Hash::make($request->password),
+                    'password' => Hash::make($request['password']),
                     'remember_token' => Str::random(60),
                 ])->save();
 
@@ -55,9 +63,9 @@ class NewPasswordController extends Controller
             }
         );
 
-        // If the password was successfully reset, we will redirect the user back to
-        // the application's home authenticated view. If there is an error we can
-        // redirect them back to where they came from with their error message.
+        // Si el password ha sido reseteado con éxito, redirigimos
+        // a la pagina de de bienvenida. Si ha habido errores
+        // se rediriga a donde estuvieran antes.
         if ($status == Password::PASSWORD_RESET) {
             return redirect()->route('login')->with('status', __($status));
         }

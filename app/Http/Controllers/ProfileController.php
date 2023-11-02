@@ -14,7 +14,7 @@ use Inertia\Response;
 class ProfileController extends Controller
 {
     /**
-     * Display the user's profile form.
+     * Muestra el formulario de perfil del usuario.
      */
     public function edit(Request $request): Response
     {
@@ -25,7 +25,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Update the user's profile information.
+     * Actualiza la información de perfil del usuario.
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
@@ -41,13 +41,18 @@ class ProfileController extends Controller
     }
 
     /**
-     * Delete the user's account.
+     * Borra la cuenta del usuario
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validate([
-            'password' => ['required', 'current_password'],
-        ]);
+        $request->validate(
+            [
+                'password' => ['required', 'current_password'],
+            ],
+            [
+                'password.required' => 'Por favor, el password',
+                'password.current_password' => 'Revise el password introducido'
+            ]);
 
         $user = $request->user();
 

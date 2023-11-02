@@ -14,7 +14,7 @@ use Inertia\Response;
 class ConfirmablePasswordController extends Controller
 {
     /**
-     * Show the confirm password view.
+     * Muestra la vista de confirmación de password.
      */
     public function show(): Response
     {
@@ -22,13 +22,13 @@ class ConfirmablePasswordController extends Controller
     }
 
     /**
-     * Confirm the user's password.
+     * Confirmar el password del usuario.
      */
     public function store(Request $request): RedirectResponse
     {
         if (! Auth::guard('web')->validate([
             'email' => $request->user()->email,
-            'password' => $request->password,
+            'password' => $request['password'],
         ])) {
             throw ValidationException::withMessages([
                 'password' => __('auth.password'),
