@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use DB;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Exception;
 
 class BienvenidaController extends Controller
 {
     /**
-     * Genera un array con 16 ids al azar
+     * Genera un array con 24 ids al azar
+     * que serán las películas cargadas en Index
      * @throws Exception
      */
     public function obtenerObrasAleatorias(){
@@ -27,11 +27,11 @@ class BienvenidaController extends Controller
     }
 
     /**
-     * Devuelve la vista de bienvenida con esos 16 id
+     * Devuelve la vista de bienvenida con esas películas
      * @throws Exception
      */
     public function bienvenida(){
-        return Inertia::render('Welcome', [
+        return Inertia::render('Index', [
             'obras' => DB::table('obras')
                 ->select('obras.titulo', 'p.ruta', 'p.alt')
                 ->join('posters AS p', 'obras.id', '=', 'p.obra_id')

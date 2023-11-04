@@ -7,7 +7,6 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 
 const appName = import.meta.env.VITE_APP_NAME || 'filmXtra';
-/*const appName = window.document.getEledddddntsByTagName('title')[0]?.innerText || 'filmXtra';*/
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
