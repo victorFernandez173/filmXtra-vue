@@ -1,3 +1,11 @@
+<script setup>
+
+// Props:
+// 'cita': cita de php artisan inspire;
+// 'cita2': cita de api Quotable;
+const props = defineProps(['cita', 'cita2']);
+</script>
+
 <template>
     <!-- Seccion Principal Carrusel -->
     <div id="default-carousel" class="relative w-full" data-carousel="slide">
@@ -5,7 +13,7 @@
         <div class="fotos relative h-56 overflow-hidden md:h-96">
             <!-- Primera foto -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="/images/carrusel1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                <img src="/images/carrusel1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-49" alt="...">
             </div>
             <!-- Segunda foto -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
@@ -21,7 +29,15 @@
             </div>
             <!-- Quinta foto -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="/images/carrusel5.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                <div class="absolute w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-flamingo flex flex-col justify-center items-center">
+                    <h1 class="font-oswald font-semibold text-2xl mb-2">Inspírate</h1>
+                    <div class="w-9/12 h-1/4 bg-white flex justify-center items-center">
+                        <p v-html="cita" class="text-gray-800"></p>
+                    </div>
+                    <div class="w-9/12 h-1/4 bg-white flex justify-center items-center">
+                        <p id="idCita2" class="text-gray-800">{{ cita2}}</p>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Botones inferiores para desplazarte en el carrusel -->

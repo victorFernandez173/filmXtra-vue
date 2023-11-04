@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\BienvenidaController;
+use App\Http\Controllers\IndexController;
 
 
 /*
@@ -14,7 +14,7 @@ use App\Http\Controllers\BienvenidaController;
 */
 
 
-Route::get('/', [BienvenidaController::class, 'bienvenida'])->name('/');
+Route::get('/', [IndexController::class, 'index'])->name('/');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -25,10 +25,9 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // TODO limpiar al máximo y dejar bienvenida y login y mail validation y dejar y comprobar que la nueva estructura de componentes (footer navbar es correcta)
-// TODO corregir si se puede tema del titulo más pequeño de los poster (length < 50, ver comentario en componente poster); estilos de login
-// TODO empezar a revisar todo lo aplicado por ahora, detallitos etc
+// TODO estilos de login, registro, etc...
 // TODO hover:[&>li]: APLICARRRRRRRR esa regla a estilos que se repiten y son hijos de otro elemento
-// TODO registrar mi propio comando , implementar de alguna manera el de inspire (en el carrusel con una api de frases)?!
+// TODO registrar mi propio comando
 
 // TODO REPRODUCIR funcionalidades filmXtraVic
 
