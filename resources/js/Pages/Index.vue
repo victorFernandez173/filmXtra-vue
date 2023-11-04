@@ -26,7 +26,7 @@ defineProps(['obras', 'numResultados']);
 <template>
     <Head>
         <title>Inicio</title>
-        <meta name="description" content="Página de bienvenida">
+        <meta name="description" content="Página de bienvenida de filmXtra">
     </Head>
 
     <!--  Carrusel   -->
@@ -35,11 +35,7 @@ defineProps(['obras', 'numResultados']);
     <!-- Seccion Principal de contenido -->
     <div
         class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-4 m-auto my-8">
-        <div v-if="$page.props.numResultados > 0" class="col-span-full  text-center my-3">
-            <h4 class="text-lg">Resultados:</h4>
-        </div>
         <!-- Posters -->
-        <Poster v-for="obra in obras" :obra="obra" :titulo="`text-lg hover:text-sm sm:text-xl sm:hover:text-xl`"
-                :info="true"/>
+        <Poster v-for="obra in obras" :obra="obra" :info="true"/>
     </div>
 </template>

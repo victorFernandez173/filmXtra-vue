@@ -1,5 +1,4 @@
 <script setup>
-import {Link} from "@inertiajs/vue3";
 import {onMounted} from "vue";
 import {initFlowbite} from "flowbite";
 import NavBar from "@/Components/NavBar.vue";
@@ -16,7 +15,7 @@ onMounted(() => {
     <NavBar/>
 
     <slot>
-        <!-- AQUÍ VA EL CONTENIDO QUE SE EL PASA AL LAYOUT    -->
+        <!-- Contenido del layout -->
     </slot>
 
     <!-- Pie de pagina -->
