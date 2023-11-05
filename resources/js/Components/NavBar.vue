@@ -78,18 +78,19 @@ const form = useForm({
             </div>
             <!-- Links -->
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 text-center" id="mobile-menu-2">
-                <ul class="hover:[&>li>a]:text-flamingo flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
+                <ul class="hover:[&>li>a]:text-flamingo flex flex-col font-medium p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white [&>li>a]:block [&>li>a]:py-2 [&>li>a]:pl-3 [&>li>a]:pr-4 [&>li>a]:text-gray-900 md:hover:[&>li>a]:bg-transparent md:[&>li>a]:p-0">
+                    <!-- md:hover:[&>li>Link]:bg-transparent md:[&>li>Link]:p-0                    -->
                     <li>
-                        <Link :href="route('/')" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">Inicio</Link>
+                        <Link :href="route('/')" >Inicio</Link>
                     </li>
                     <li>
-                        <Link :href="route('/')" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">Top FilmXtra</Link>
+                        <Link :href="route('/')" >Top FilmXtra</Link>
                     </li>
                     <li>
-                        <Link :href="route('/')" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 ">Top Valoraciones</Link>
+                        <Link :href="route('/')" >Top Valoraciones</Link>
                     </li>
                     <li>
-                        <Link :href="route('/')" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">Cuenta</Link>
+                        <Link :href="route('/')" >Cuenta</Link>
                     </li>
                 </ul>
             </div>
