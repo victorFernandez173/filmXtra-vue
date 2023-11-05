@@ -147,4 +147,12 @@ class Obra extends Model
     {
         return $this->belongsToMany(Actor::class);
     }
+
+    /**
+     * Obtener las citas.
+     */
+    public function citas(): HasMany
+    {
+        return $this->hasMany(Cita::class);
+    }
 }
