@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\APIsTrait;
+use App\Traits\CitasTrait;
 use DB;
 use Illuminate\Foundation\Inspiring;
 use Inertia\Inertia;
@@ -9,6 +11,8 @@ use Exception;
 
 class IndexController extends Controller
 {
+    use CitasTrait, APIsTrait;
+
     /**
      * Genera un array con 24 ids al azar
      * que serán las películas cargadas en Index
@@ -39,7 +43,9 @@ class IndexController extends Controller
                 ->whereIn('obras.id', $this->obtenerObrasAleatorias())
                 ->get(),
             'cita' => Inspiring::quote(),
-            'cita2' => ApisController::cita2()
+            'cita2' => $this->citaQuotable(),
+            'cita3' => $this->citaPelicula(),
+            'cita4' => $this->citaSobreCine(),
         ]);
     }
 }

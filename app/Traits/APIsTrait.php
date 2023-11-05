@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Traits;
 
 use Http;
 
-class ApisController extends Controller
+trait APIsTrait
 {
     /**
      * Por medio de una consulta a la API Quotable
      * Obtenemos una cita y la devovemos para usarla
      * @return string
      */
-    static function cita2() {
+    public function citaQuotable(): string
+    {
         // Consultamos la api
         $respuesta = json_decode(Http::get('https://api.quotable.io/quotes/random')->body(), true);
 

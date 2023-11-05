@@ -3,12 +3,12 @@
 // Props:
 // 'cita': cita de php artisan inspire;
 // 'cita2': cita de api Quotable;
-const props = defineProps(['cita', 'cita2']);
+const props = defineProps(['cita', 'cita2', 'cita3', 'cita4']);
 </script>
 
 <template>
     <!-- Seccion Principal Carrusel -->
-    <div id="default-carousel" class="relative w-full" data-carousel-interval="5000" data-carousel="slide">
+    <div id="default-carousel" class="relative w-full" data-carousel-interval="7000" data-carousel="slide">
         <!-- Diapositivas del carrusel -->
         <div class="fotos relative h-56 overflow-hidden md:h-96">
             <!-- Primera -->
@@ -23,7 +23,7 @@ const props = defineProps(['cita', 'cita2']);
                     class="absolute w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-flamingo flex flex-col justify-center items-center text-base lg:text-xl">
                     <div class="px-[40px] py-[10px] w-[100%] h-7/12 lg:py-[20px] lg:w-9/12 lg:h-4/12 bg-white flex flex-col justify-center items-center">
                         <h1 class="font-oswald font-semibold mb-2 text-lg lg:text-2xl">Inspírate</h1>
-                        <p v-html="cita" class="text-gray-800"></p>
+                        <p class="text-gray-800">{{cita3}}</p>
                     </div>
                 </div>
             </div>
@@ -39,15 +39,41 @@ const props = defineProps(['cita', 'cita2']);
                     class="absolute w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-flamingo flex flex-col justify-center items-center text-base lg:text-xl">
                     <div class="px-[40px] py-[10px] w-[100%] h-7/12 lg:py-[20px] lg:w-9/12 lg:h-4/12 bg-white flex flex-col justify-center items-center">
                         <h1 class="font-oswald font-semibold mb-2 text-lg lg:text-2xl">Inspírate</h1>
-                        <p class="text-gray-800">{{cita2}}</p>
+                        <p class="text-gray-800">{{cita4}}</p>
                     </div>
                 </div>
             </div>
             <!-- Quinta -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="/images/carrusel3.jpg"
+                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                     alt="quinta diapositiva">
+            </div>
+            <!-- Sexta -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <div
+                    class="absolute w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-flamingo flex flex-col justify-center items-center text-base lg:text-xl">
+                    <div class="px-[40px] py-[10px] w-[100%] h-7/12 lg:py-[20px] lg:w-9/12 lg:h-4/12 bg-white flex flex-col justify-center items-center">
+                        <h1 class="font-oswald font-semibold mb-2 text-lg lg:text-2xl">Inspírate</h1>
+                        <p v-html="cita" class="text-gray-800"></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Septima -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
                 <img src="/images/carrusel4.jpg"
                      class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                      alt="quinta diapositiva">
+            </div>
+            <!-- Octava -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <div
+                    class="absolute w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-flamingo flex flex-col justify-center items-center text-base lg:text-xl">
+                    <div class="px-[40px] py-[10px] w-[100%] h-7/12 lg:py-[20px] lg:w-9/12 lg:h-4/12 bg-white flex flex-col justify-center items-center">
+                        <h1 class="font-oswald font-semibold mb-2 text-lg lg:text-2xl">Inspírate</h1>
+                        <p class="text-gray-800">{{cita2}}</p>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Botones inferiores para desplazarte en el carrusel -->
@@ -62,6 +88,12 @@ const props = defineProps(['cita', 'cita2']);
                     data-carousel-slide-to="3"></button>
             <button type="button" class="w-3 h-3 rounded-full bg-gray-800/30" aria-current="false" aria-label="Slide 5"
                     data-carousel-slide-to="4"></button>
+            <button type="button" class="w-3 h-3 rounded-full bg-gray-800/30" aria-current="false" aria-label="Slide 6"
+                    data-carousel-slide-to="5"></button>
+            <button type="button" class="w-3 h-3 rounded-full bg-gray-800/30" aria-current="false" aria-label="Slide 7"
+                    data-carousel-slide-to="6"></button>
+            <button type="button" class="w-3 h-3 rounded-full bg-gray-800/30" aria-current="false" aria-label="Slide 8"
+                    data-carousel-slide-to="7"></button>
         </div>
         <!-- Flechas laterales para desplazarte en el carrusel -->
         <button type="button"

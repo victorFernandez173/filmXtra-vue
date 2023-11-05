@@ -19,7 +19,7 @@ onMounted(() => {
     initCarousels();
 })
 
-defineProps(['obras', 'numResultados', 'cita', 'cita2']);
+defineProps(['obras', 'numResultados', 'cita', 'cita2', 'cita3', 'cita4']);
 
 </script>
 
@@ -30,7 +30,7 @@ defineProps(['obras', 'numResultados', 'cita', 'cita2']);
     </Head>
 
     <!--  Carrusel   -->
-    <Carrusel :cita="cita" :cita2="cita2" />
+    <Carrusel :cita="cita" :cita2="cita2" :cita3="cita3" :cita4="cita4" />
 
     <!-- Seccion Principal de contenido -->
     <div
