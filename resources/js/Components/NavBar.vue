@@ -48,26 +48,26 @@ const form = useForm({
                         <span v-if="$page.props.auth.user" class="block text-sm  text-gray-500 truncate">{{ $page.props.auth.user.email }}</span>
                         <span v-else class="block text-sm  text-gray-500 truncate">Logueate</span>
                     </div>
-                    <ul v-if="!$page.props.auth.user" class="py-2" aria-labelledby="user-menu-button">
+                    <ul v-if="!$page.props.auth.user" class="py-2 [&>li>a]:block [&>li>a]:px-4 [&>li>a]:py-2 [&>li>a]:text-sm [&>li>a]:text-gray-700 hover:[&>li>a]:bg-flamingo hover:[&>li>a]:text-white" aria-labelledby="user-menu-button">
                         <li>
-                            <Link :href="route('/')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-flamingo hover:text-white">Loguearse</Link>
+                            <Link :href="route('/')">Loguearse</Link>
                         </li>
                         <li>
-                            <Link :href="route('/')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-flamingo hover:text-white">Registrarse</Link>
+                            <Link :href="route('/')">Registrarse</Link>
                         </li>
                     </ul>
-                    <ul v-else class="py-2" aria-labelledby="user-menu-button">
+                    <ul v-else class="py-2 [&>li>a]:block [&>li>a]:px-4 [&>li>a]:py-2 [&>li>a]:text-sm [&>li>a]:text-gray-700 hover:[&>li>a]:bg-flamingo hover:[&>li>a]:text-white" aria-labelledby="user-menu-button">
                         <li>
-                            <Link href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-flamingo hover:text-white">Mis valoraciones</Link>
+                            <Link href="#">Mis valoraciones</Link>
                         </li>
                         <li>
-                            <Link href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-flamingo hover:text-white">Mis favoritas</Link>
+                            <Link href="#">Mis favoritas</Link>
                         </li>
                         <li>
-                            <Link :href="route('/')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-flamingo hover:text-white">Ajustes</Link>
+                            <Link :href="route('/')">Ajustes</Link>
                         </li>
                         <li>
-                            <Link :href="route('/')" method="post" as="button" class="block px-4 py-2 hover:bg-flamingo hover:text-white"  >Cerrar sesión</Link>
+                            <Link :href="route('/')" method="post" as="button">Cerrar sesión</Link>
                         </li>
                     </ul>
                 </div>
