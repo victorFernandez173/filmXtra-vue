@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // TODO estilos de login, registro, validacion, verificacion etc...
+// TODO busqueda navbar reactivar
 // TODO aplicar o limpiar componentes no usados???
 
 // TODO REPRODUCIR funcionalidades filmXtraVic

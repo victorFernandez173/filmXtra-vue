@@ -50,10 +50,10 @@ const form = useForm({
                     </div>
                     <ul v-if="!$page.props.auth.user" class="py-2 [&>li>a]:block [&>li>a]:px-4 [&>li>a]:py-2 [&>li>a]:text-sm [&>li>a]:text-gray-700 hover:[&>li>a]:bg-flamingo hover:[&>li>a]:text-white" aria-labelledby="user-menu-button">
                         <li>
-                            <Link :href="route('/')">Loguearse</Link>
+                            <Link :href="route('login')">Loguearse</Link>
                         </li>
                         <li>
-                            <Link :href="route('/')">Registrarse</Link>
+                            <Link :href="route('register')">Registrarse</Link>
                         </li>
                     </ul>
                     <ul v-else class="py-2 [&>li>a]:block [&>li>a]:px-4 [&>li>a]:py-2 [&>li>a]:text-sm [&>li>a]:text-gray-700 hover:[&>li>a]:bg-flamingo hover:[&>li>a]:text-white" aria-labelledby="user-menu-button">
@@ -67,7 +67,7 @@ const form = useForm({
                             <Link :href="route('/')">Ajustes</Link>
                         </li>
                         <li>
-                            <Link :href="route('/')" method="post" as="button">Cerrar sesión</Link>
+                            <Link class="block px-4 py-2 text-sm text-gray-700 hover:bg-flamingo hover:text-white w-full text-left" :href="route('logout')" method="post" as="button">Cerrar sesión</Link>
                         </li>
                     </ul>
                 </div>
