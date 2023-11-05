@@ -25,8 +25,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // TODO estilos de login, registro, validacion, verificacion etc...
-// TODO hover:[&>li]: APLICARRRRRRRR esa regla a estilos que se repiten y son hijos de otro elemento
-// TODO registrar mi propio comando
+// TODO aplicar o limpiar componentes no usados???
 
 // TODO REPRODUCIR funcionalidades filmXtraVic
 
