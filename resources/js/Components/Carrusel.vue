@@ -21,7 +21,7 @@ const props = defineProps(['cita', 'cita2']);
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
                 <div
                     class="absolute w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-flamingo flex flex-col justify-center items-center text-base lg:text-xl">
-                    <div class="px-[40px] py-[10px] w-[100%] h-7/12 lg:w-9/12 lg:h-1/4 bg-white flex flex-col justify-center items-center">
+                    <div class="px-[40px] py-[10px] w-[100%] h-7/12 lg:py-[20px] lg:w-9/12 lg:h-4/12 bg-white flex flex-col justify-center items-center">
                         <h1 class="font-oswald font-semibold mb-2 text-lg lg:text-2xl">Inspírate</h1>
                         <p v-html="cita" class="text-gray-800"></p>
                     </div>
@@ -37,8 +37,8 @@ const props = defineProps(['cita', 'cita2']);
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
                 <div
                     class="absolute w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-flamingo flex flex-col justify-center items-center text-base lg:text-xl">
-                    <div class="px-[40px] py-[10px] w-[100%] h-7/12 lg:w-9/12 lg:h-1/4 bg-white flex flex-col justify-center items-center">
-                        <h1 class="font-oswald font-semibold mb-2 text-xl lg:text-3xl">Inspírate</h1>
+                    <div class="px-[40px] py-[10px] w-[100%] h-7/12 lg:py-[20px] lg:w-9/12 lg:h-4/12 bg-white flex flex-col justify-center items-center">
+                        <h1 class="font-oswald font-semibold mb-2 text-lg lg:text-2xl">Inspírate</h1>
                         <p class="text-gray-800">{{cita2}}</p>
                     </div>
                 </div>
