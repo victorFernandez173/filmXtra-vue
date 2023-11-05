@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// TODO limpiar al máximo y dejar bienvenida y login y mail validation y dejar y comprobar que la nueva estructura de componentes (footer navbar es correcta)
+// TODO limpiar al máximo y dejar bienvenida y login y mail validation
 // TODO estilos de login, registro, etc...
 // TODO hover:[&>li]: APLICARRRRRRRR esa regla a estilos que se repiten y son hijos de otro elemento
 // TODO registrar mi propio comando
