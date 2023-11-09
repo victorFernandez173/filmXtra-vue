@@ -34,12 +34,12 @@ const submit = () => {
         <meta name="description" content="Página de login">
     </Head>
     <section class="h-[100vh] bg-cover bg-[url('/images/posters-fondo.png')]">
-        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div class="flex flex-col items-center justify-center pb-16 h-screen lg:py-0">
             <!--      Logo filmXtra      -->
             <Link :href="route('/')">
                 <img class="w-60 mr-2" src="/images/logo-blanco.png" alt="Logo FlimXtra">
             </Link>
-            <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+            <div class="w-full bg-white shadow md:mt-0 sm:max-w-md xl:p-0">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-xl font-bold text-gray-900 md:text-2xl">
                         Inicia sesión con tu cuenta
@@ -88,7 +88,7 @@ const submit = () => {
                                 :href="route('password.request')"
                                 class="text-sm text-gray-800 hover:text-flamingo rounded-md focus:outline-none active:text-gray-800"
                             >
-                                ¿Has olvidado tu contraseña?
+                                ¿Contraseña olvidada?
                             </Link>
                         </div>
                         <!--botón principal-->
