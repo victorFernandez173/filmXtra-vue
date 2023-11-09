@@ -107,7 +107,7 @@ const submit = () => {
                                 Inicia con Google
                             </a>
                         </div>
-                        <p class="text-sm font-light text-gray-500">
+                        <p class="text-sm font-light text-gray-700">
                             ¿Aún no tienes cuenta? <Link :href="route('register')" class="font-medium text-primary-600 hover:text-flamingo">¡Regístrate aquí!</Link>
                         </p>
                     </form>
