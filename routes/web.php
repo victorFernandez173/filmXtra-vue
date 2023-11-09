@@ -24,7 +24,10 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// TODO estilos de login, registro, validacion, verificacion y su style(filmXtra-blade) etc...RESPONSIVIDAD
+// TODO la validacion de ResetPassword::store no funciona!!!! REVISAR
+// TODO mensaje confirmacion validacion email al retornar a home y también el de cambio de password al retornar a LOGIN o a donde lo retornamos????
+// TODO validación de email reglas DNS
+// TODO revisar titlesk
 // TODO busqueda navbar reactivar
 // TODO aplicar o limpiar componentes no usados???
 // TODO redirección tras logueo: si duranto un logueo te vas a otra pagina como la de uno de los logueos de git o google y luego te logueas en el otro, al loguearse y redirigir no te devuelve a index si por ej partiste en un origen de index en filmXtra sino a la otra pagina de logueo de git o google que visitaste previamente, no se si podre reproducirlo

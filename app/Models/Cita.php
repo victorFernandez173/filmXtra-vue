@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Cita extends Model
 {
+    public $table = 'citas';
     public $timestamps = false;
 
     /**
@@ -36,7 +37,8 @@ class Cita extends Model
     ];
 
     /**
-     * Obtener la obra.
+     * Obtener la obra
+     * @return BelongsTo
      */
     public function obra(): BelongsTo
     {

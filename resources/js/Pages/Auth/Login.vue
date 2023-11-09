@@ -5,6 +5,8 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import {Head, Link, useForm} from '@inertiajs/vue3';
+import AuthLayout from "@/Layouts/AuthLayout.vue";
+import AppLogoIndex from "@/Components/AppLogoIndex.vue";
 
 defineProps({
     canResetPassword: {
@@ -33,12 +35,11 @@ const submit = () => {
         <title>Login</title>
         <meta name="description" content="Página de login">
     </Head>
-    <section class="h-[100vh] bg-cover bg-[url('/images/posters-fondo.png')]">
+    <auth-layout>
         <div class="flex flex-col items-center justify-center pb-16 h-screen lg:py-0">
-            <!--      Logo filmXtra      -->
-            <Link :href="route('/')">
-                <img class="w-60 mr-2" src="/images/logo-blanco.png" alt="Logo FlimXtra">
-            </Link>
+            <!--logo filmXtra-->
+            <app-logo-index />
+            <!--bloque principal-->
             <div class="w-full bg-white shadow md:mt-0 sm:max-w-md xl:p-0">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-xl font-bold text-gray-900 md:text-2xl">
@@ -114,5 +115,5 @@ const submit = () => {
                 </div>
             </div>
         </div>
-    </section>
+    </auth-layout>
 </template>
