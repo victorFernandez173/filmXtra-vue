@@ -4,18 +4,15 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import {Head, Link, useForm} from '@inertiajs/vue3';
+import {Head, Link, useForm, usePage} from '@inertiajs/vue3';
 import AuthLayout from "@/Layouts/AuthLayout.vue";
 import AppLogoIndex from "@/Components/AppLogoIndex.vue";
+import {computed, onMounted} from "vue";
+import Swal from "sweetalert2";
 
-defineProps({
-    canResetPassword: {
-        type: Boolean,
-    },
-    status: {
-        type: String,
-    },
-});
+const props = defineProps(['canResetPassword', 'status', 'gifNumero']);
+const page = usePage();
+const confirmacionPasswordModificado = computed(() => page.props.status);
 
 const form = useForm({
     email: '',
@@ -28,6 +25,22 @@ const submit = () => {
         onFinish: () => form.reset('password'),
     });
 };
+
+onMounted(() => {
+    /*Si hay flash de password reset, lanzamos SWAL*/
+    if (confirmacionPasswordModificado.value) {
+        Swal.fire({
+            title: 'Bravo!!',
+            text: confirmacionPasswordModificado.value,
+            imageUrl: '../gif/' + usePage().props.gifNumero + '.gif',
+            imageWidth: 400,
+            imageAlt: 'gif de cine',
+            showConfirmButton: false,
+            position: 'center',
+            timer: 4500
+        });
+    }
+});
 </script>
 
 <template>

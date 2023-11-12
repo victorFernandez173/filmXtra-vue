@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
+use App\Traits\GifsTrait;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,8 @@ use Redirect;
 
 class AuthenticatedSessionController extends Controller
 {
+    use GifsTrait;
+
     /**
      * Renderiza la vista de logueo
      */
@@ -26,6 +29,8 @@ class AuthenticatedSessionController extends Controller
         return Inertia::render('Auth/Login', [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
+            //Numero de gif en caso de que se haya mensaje de reset password
+            'gifNum' => $this->obtenerUnNumDeGif(),
         ]);
     }
 
