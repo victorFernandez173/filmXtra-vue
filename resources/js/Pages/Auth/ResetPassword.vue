@@ -68,7 +68,7 @@ const submit = () => {
                     </div>
                     <p class="text-sm font-light text-gray-500">
                         ¿Ya tienes cuenta?
-                        <Link :href="route('login')" class="font-medium text-primary-600 hover:underline">¡Inicia sesión aquí!</Link>
+                        <Link :href="route('login')" class="font-medium text-primary-600 hover:underline focus:outline-none focus:border-[2px] focus:border-flamingo border-[2px] border-white rounded-md">¡Inicia sesión aquí!</Link>
                     </p>
                 </form>
             </div>

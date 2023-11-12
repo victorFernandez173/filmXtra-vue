@@ -24,7 +24,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// TODO FOCUS AL SELECCIONAR PRIMARYBUTTON tabulando
 // TODO mensaje confirmación restablecimiento contraseña
 // TODO mensaje confirmacion validacion email al retornar a home y también el de cambio de password al retornar a LOGIN o a donde lo retornamos????
 // TODO revisar titles
