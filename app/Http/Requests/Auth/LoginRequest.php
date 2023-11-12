@@ -28,21 +28,8 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email:rfc,dns'],
             'password' => ['required', 'string'],
-        ];
-    }
-
-    /**
-     * Mensajes de error
-     * @return string[]
-     */
-    public function messages(): array
-    {
-        return [
-            'email.email' => 'Formato de email inválido',
-            'password.required' => 'Introduzca contraseña',
-            'password.string' => 'Formato de contraseña inválido',
         ];
     }
 

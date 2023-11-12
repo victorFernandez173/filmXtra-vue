@@ -36,16 +36,8 @@ class NewPasswordController extends Controller
     {
         $request->validate([
             'token' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email:rfc,dns',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ],
-        [
-            'token.required' => 'No tiene token, imposible proceder',
-            'email.required' => 'Inserte email',
-            'email.email' => 'Formato de email incorrecto',
-            'password.required' => 'Inserte password',
-            'password.confirmed' => 'Confirmacion de password fallida',
-            'password.min' => 'Al menos 8 caracteres para su password'
         ]);
 
         // Para resetear el password del usario. Si hay éxito, se modificará
