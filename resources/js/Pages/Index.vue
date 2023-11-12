@@ -9,17 +9,34 @@ export default {
 
 <!--script estándar-->
 <script setup>
-import {Head} from "@inertiajs/vue3";
+import {Head, usePage} from "@inertiajs/vue3";
 import Carrusel from "../Components/Carrusel.vue";
 import Poster from "../Components/Poster.vue";
-import {onMounted} from "vue";
+import {computed, onMounted} from "vue";
 import {initCarousels} from "flowbite";
+import Swal from "sweetalert2";
+
+const props = defineProps(['obras', 'verificacionExitosa', 'gifNumero', 'cita', 'cita2', 'cita3', 'cita4']);
+const page = usePage();
+const confirmacionVerificacionMail = computed(() => page.props.verificacionExitosa);
 
 onMounted(() => {
+    /*Iniciamos el carrusel*/
     initCarousels();
+    /*Si hay flash de password reset, lanzamos SWAL*/
+    if (confirmacionVerificacionMail.value === true) {
+        Swal.fire({
+            title: 'Enhorabuena!!',
+            text: 'Tu email ha sido validado exitosamente',
+            imageUrl: '../gif/' + usePage().props.gifNumero + '.gif',
+            imageWidth: 400,
+            imageAlt: 'gif de cine',
+            showConfirmButton: false,
+            position: 'center',
+            timer: 4500
+        });
+    }
 })
-
-defineProps(['obras', 'numResultados', 'cita', 'cita2', 'cita3', 'cita4']);
 
 </script>
 

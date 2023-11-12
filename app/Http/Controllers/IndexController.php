@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Traits\APIsTrait;
 use App\Traits\CitasTrait;
+use App\Traits\GifsTrait;
 use DB;
 use Illuminate\Foundation\Inspiring;
 use Inertia\Inertia;
@@ -11,7 +12,7 @@ use Exception;
 
 class IndexController extends Controller
 {
-    use CitasTrait, APIsTrait;
+    use CitasTrait, APIsTrait, GifsTrait;
 
     /**
      * Genera un array con 24 ids al azar
@@ -42,6 +43,9 @@ class IndexController extends Controller
                 ->join('posters AS p', 'obras.id', '=', 'p.obra_id')
                 ->whereIn('obras.id', $this->obtenerObrasAleatorias())
                 ->get(),
+            'verificacionExitosa' => session('verificacionExitosa'),
+            'gifNumero' => $this->obtenerUnNumDeGif(),
+            /*Citas*/
             'cita' => Inspiring::quote(),
             'cita2' => $this->citaQuotable(),
             'cita3' => $this->citaPelicula(),
