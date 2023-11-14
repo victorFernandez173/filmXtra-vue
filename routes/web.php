@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+// TODO transformar traits en clases normales?????
 // TODO revisar RAND de citas y obras
 // TODO revisar titles
 // TODO evento VERIFIED
