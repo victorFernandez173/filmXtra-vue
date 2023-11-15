@@ -23,6 +23,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+// TODO revisar SERVICE CONTAINER docs
+// TODO validaciones notacion OBJETOS en lugar de arrays
 // TODO transformar traits en clases normales?????
 // TODO revisar RAND de citas y obras
 // TODO revisar titles
