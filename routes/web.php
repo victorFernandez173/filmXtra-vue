@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+// TODO cargar recursos de forma estatica con assets()
 // TODO revisar SERVICE CONTAINER docs
 // TODO validaciones notacion OBJETOS en lugar de arrays
 // TODO transformar traits en clases normales?????
