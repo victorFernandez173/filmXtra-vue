@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Logueo con {{$user->social_type}}</title>
+    <title>Logueo {{$user->social_type}}</title>
 </head>
 <body>
 <h1>Hola: {{$user->name}}</h1>

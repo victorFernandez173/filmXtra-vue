@@ -23,12 +23,10 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-// TODO cargar recursos de forma estatica con assets()
 // TODO revisar SERVICE CONTAINER docs
 // TODO validaciones notacion OBJETOS en lugar de arrays
 // TODO transformar traits en clases normales?????
 // TODO revisar RAND de citas y obras
-// TODO revisar titles
 // TODO evento VERIFIED
 // TODO compactar citas en INDEX???
 // TODO busqueda navbar reactivar
@@ -37,6 +35,7 @@ require __DIR__.'/auth.php';
 
 // TODO REPRODUCIR funcionalidades filmXtraVic
 
+// TODO paginas de error todas, documentacion
 // TODO en la pagina de usuario se debería esconder el bloque de contraseña para cuentas o'auth
 // TODO al modificar la ruta de una obra, solo añadiendo caracteres en el trozo del titulo, se intenta acceder a esa obra pero claro, NO EXISTE y da un error de array[0] nulo porque claro no hay obra ESTUDIAR
 // TODO codigo ficha valoraciones, solucionar

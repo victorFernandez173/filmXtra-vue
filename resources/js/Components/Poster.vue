@@ -22,7 +22,7 @@ const props = defineProps(['obra']);
             </div>
 
             <!-- Sección de imagen -->
-            <img :src="'../posters/' + [obra['ruta'] ? obra['ruta'] : obra['poster']['ruta']]"
+            <img :src="'/posters/' + [obra['ruta'] ? obra['ruta'] : obra['poster']['ruta']]"
                  :alt="obra['alt']" class="w-4/5 border-[10px] border-white group-hover:border-flamingo">
 
             <!-- Sección de nota y numero de valoraciones -->

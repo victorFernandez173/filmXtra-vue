@@ -22,7 +22,7 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
 
 <template>
     <Head>
-        <title>Verificación de email</title>
+        <title>Verificar email</title>
         <meta name="description" content="Página de verificación de email">
     </Head>
     <auth-layout>
