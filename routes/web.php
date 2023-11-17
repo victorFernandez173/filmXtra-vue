@@ -23,8 +23,9 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+// TODO gifs trait, quitar las 2 imaganes que sobran para que sea más coherente
 // TODO validaciones notacion OBJETOS en lugar de arrays
-// TODO transformar traits en clases normales???? IoC????
+// TODO citasYapiTraits unir en una clase e instanciar en el service container para testear el IoC????
 // TODO revisar RAND de citas y obras
 // TODO evento VERIFIED
 // TODO compactar citas en INDEX??? Mejorar estilos recuadro blanco
