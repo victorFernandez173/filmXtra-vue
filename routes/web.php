@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+// TODO logo navbar +pequeño tam. movil, incluso icon,
 // TODO validaciones notacion OBJETOS en lugar de arrays
 // TODO citasYapiTraits unir en una clase e instanciar en el service container para testear el IoC????
 // TODO revisar RAND de citas y obras
