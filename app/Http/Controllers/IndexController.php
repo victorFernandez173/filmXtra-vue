@@ -47,6 +47,7 @@ class IndexController extends Controller
             'gifNumero' => $this->obtenerUnNumDeGif(),
             /*Citas*/
             'cita' => Inspiring::quote(),
+            // TODO da problemas por el curl
             'cita2' => $this->citaQuotable(),
             'cita3' => $this->citaPelicula(),
             'cita4' => $this->citaSobreCine(),
