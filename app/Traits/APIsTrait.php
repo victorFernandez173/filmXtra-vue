@@ -19,7 +19,7 @@ trait APIsTrait
     {
         try {
             // Consultamos la api
-            $respuesta = json_decode(Http::get('https://api.quotable.io/quotes/rasndom')->body(), true);
+            $respuesta = json_decode(Http::get('https://api.quotable.io/quotes/random')->body(), true);
 
             // Creamos y retornamos la cita
             return '"' . $respuesta[0]['content'] . '" - ' . $respuesta[0]['author'];
