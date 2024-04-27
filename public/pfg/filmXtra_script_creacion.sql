@@ -1,10 +1,7 @@
-DROP
-DATABASE IF EXISTS filmxtra;
-CREATE
-DATABASE filmxtra;
+DROP DATABASE IF EXISTS filmxtra;
+CREATE DATABASE filmxtra;
 
-USE
-filmxtra;
+USE filmxtra;
 
 CREATE TABLE `actors`
 (
@@ -27,21 +24,6 @@ CREATE TABLE `generos`
     `modificado` timestamp                               NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
     UNIQUE KEY `generos_genero_unique` (`genero`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-CREATE TABLE `obras`
-(
-    `id`              bigint unsigned NOT NULL AUTO_INCREMENT,
-    `titulo`          varchar(200) COLLATE utf8mb4_unicode_ci  NOT NULL,
-    `titulo_original` varchar(200) COLLATE utf8mb4_unicode_ci  NOT NULL,
-    `pais`            varchar(60) COLLATE utf8mb4_unicode_ci   NOT NULL,
-    `duracion`        decimal(3, 0) unsigned NOT NULL,
-    `sinopsis`        varchar(2500) COLLATE utf8mb4_unicode_ci NOT NULL,
-    `fecha` year NOT NULL,
-    `productora`      varchar(255) COLLATE utf8mb4_unicode_ci  NOT NULL,
-    `creada`          timestamp                                NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `modificada`      timestamp                                NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 create table obras
@@ -212,7 +194,7 @@ CREATE TABLE evaluaciones
     id         BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     obra_id    BIGINT UNSIGNED NOT NULL,
     user_id    BIGINT UNSIGNED NOT NULL,
-    evaluacion DECIMAL(3, 1) UNSIGNED NOT NULL,
+    evaluacion DECIMAL(3, 1) NOT NULL,
     creada     TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
     modificada TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
     CONSTRAINT evaluaciones_obra_id_user_id_unique UNIQUE (obra_id, user_id),
