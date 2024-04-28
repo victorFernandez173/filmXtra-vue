@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use JetBrains\PhpStorm\NoReturn;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -27,4 +28,10 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    // PARA DEBUGUEO CON MENSAJES DE ERROR NO CLAROS
+    //    #[NoReturn] public function report(Throwable $e): void
+    //    {
+    //        dd($e);
+    //    }
 }
