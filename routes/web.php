@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+// TODO consultas eloquent puro
 // TODO modo oscuro
 // TODO revisar componentes
 // TODO index, posters aleatorios? siempre alien al principio???
