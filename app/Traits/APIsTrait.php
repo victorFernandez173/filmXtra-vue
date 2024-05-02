@@ -12,7 +12,7 @@ trait APIsTrait
 
     /**
      * Por medio de una consulta a la API Quotable
-     *  Obtenemos una cita y la devovemos para usarla
+     * Obtenemos una cita y la devovemos para usarla
      * @return string
      */
     public function citaQuotable(): string
