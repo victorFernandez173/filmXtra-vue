@@ -23,8 +23,8 @@ use Illuminate\Validation\Rules\Enum;
  */
 class Genero extends Model
 {
-    const CREATED_AT = 'creado';
-    const UPDATED_AT = 'modificado';
+    const string CREATED_AT = 'creado';
+    const string UPDATED_AT = 'modificado';
 
     /**
      * Castings

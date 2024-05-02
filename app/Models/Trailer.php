@@ -31,8 +31,8 @@ class Trailer extends Model
      */
     public $incrementing = false;
 
-    const CREATED_AT = 'creado';
-    const UPDATED_AT = 'modificado';
+    const string CREATED_AT = 'creado';
+    const string UPDATED_AT = 'modificado';
 
     /**
      * Atributos asignables.

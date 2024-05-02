@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * Class Secuela
  *
+ * @property int $id
  * @property int $saga_id
  * @property int $obra_id
  * @property int $orden
@@ -27,7 +28,7 @@ class Secuela extends Model
      *
      * @var integer
      */
-    protected $primaryKey = 'obra_id';
+    protected $primaryKey = 'id';
 
     /**
      * Indica si hay auto-increment.
@@ -36,8 +37,8 @@ class Secuela extends Model
      */
     public $incrementing = false;
 
-    const CREATED_AT = 'creada';
-    const UPDATED_AT = 'modificada';
+    const string CREATED_AT = 'creada';
+    const string UPDATED_AT = 'modificada';
 
     /**
      * Castings

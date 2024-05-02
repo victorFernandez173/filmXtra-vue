@@ -25,8 +25,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Profesional extends Model
 {
-    const CREATED_AT = 'creada';
-    const UPDATED_AT = 'modificada';
+    const string CREATED_AT = 'creada';
+    const string UPDATED_AT = 'modificada';
 
     /**
      * Castings

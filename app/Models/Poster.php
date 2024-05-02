@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * Class Poster
  *
+ * @property int $id
  * @property int $obra_id
  * @property string $ruta
  * @property string $alt
@@ -26,7 +27,7 @@ class Poster extends Model
      *
      * @var integer
      */
-    protected $primaryKey = 'obra_id';
+    protected $primaryKey = 'id';
 
     /**
      * Indica si hay auto_increment.
@@ -35,8 +36,8 @@ class Poster extends Model
      */
     public $incrementing = false;
 
-    const CREATED_AT = 'creado';
-    const UPDATED_AT = 'modificado';
+    const string CREATED_AT = 'creado';
+    const string UPDATED_AT = 'modificado';
 
     /**
      * Castings
