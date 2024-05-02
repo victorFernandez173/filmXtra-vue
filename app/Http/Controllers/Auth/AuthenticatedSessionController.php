@@ -29,7 +29,7 @@ class AuthenticatedSessionController extends Controller
         return Inertia::render('Auth/Login', [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
-            //Numero de gif en caso de que se haya mensaje de reset password
+            //Numero de gif en caso de que haya mensaje de reset password
             'gifNum' => $this->obtenerUnNumDeGif(),
         ]);
     }

@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // TODO modo oscuro
+// TODO revisar componentes
 // TODO index, posters aleatorios? siempre alien al principio???
 // TODO implementar columnas personalizadas para login y register
 // TODO logo navbar +pequeño tam. movil, incluso icon,
