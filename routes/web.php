@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+// TODO revisar paso por paso funcionamiento de los CONTROLLERS
 // TODO revisar vistas y eliminar elementos innecesarios, ej: condicionales en componente poster
 // TODO controlar con excepción la posibilidad de que falle el random de citas??? test???
 // TODO modo oscuro

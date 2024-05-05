@@ -56,8 +56,8 @@ class NewPasswordController extends Controller
         );
 
         // Si el password ha sido reseteado con éxito, redirigimos
-        // a la pagina de de bienvenida. Si ha habido errores
-        // se rediriga a donde estuvieran antes.
+        // a la pagina de bienvenida. Si ha habido errores
+        // se redirige a donde estuvieran antes.
         if ($status == Password::PASSWORD_RESET) {
             return redirect()->route('login')->with('status', __($status));
         }
