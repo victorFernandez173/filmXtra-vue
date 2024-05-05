@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // TODO revisar vistas y eliminar elementos innecesarios, ej: condicionales en componente poster
+// TODO controlar con excepción la posibilidad de que falle el random de citas???
 // TODO modo oscuro
 // TODO revisar componentes
 // TODO index, posters aleatorios? siempre alien al principio???
