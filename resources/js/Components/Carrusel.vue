@@ -3,6 +3,7 @@
 // Props:
 // 'cita': cita de php artisan inspire;
 // 'cita2': cita de api Quotable;
+// resto: citas de bbdd propia: de peliculas & cine en general
 const props = defineProps(['cita', 'cita2', 'cita3', 'cita4']);
 </script>
 
