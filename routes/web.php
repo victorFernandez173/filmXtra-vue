@@ -28,7 +28,7 @@ require __DIR__.'/auth.php';
 // TODO usar Navlink/RESPONSIVENAVLINK en Navbar y otros components if possible
 // TODO lang english?? como aplicar mediante funcionalidad lang
 // TODO revisar vistas y eliminar elementos innecesarios, ej: condicionales en componente poster
-// TODO controlar con excepción la posibilidad de que falle el random de citas??? con un test???
+// TODO controlar con excepción la posibilidad de que falle el random de citas??? con un test??? hay screenshot con el error
 // TODO modo oscuro
 // TODO revisar componentes
 // TODO index, posters aleatorios? siempre alien al principio???
