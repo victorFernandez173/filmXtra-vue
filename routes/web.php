@@ -29,7 +29,7 @@ require __DIR__.'/auth.php';
 // TODO modo oscuro
 // TODO revisar componentes
 // TODO index, posters aleatorios? siempre alien al principio???
-// TODO implementar columnas personalizadas para login y register
+// TODO implementar columnas tablas personalizadas para login y register, tb email personalizado? etc
 // TODO logo navbar +pequeño tam. movil, incluso icon,
 // TODO validaciones notacion OBJETOS en lugar de arrays
 // TODO citasYapiTraits unir en una clase e instanciar en el service container para testear el IoC????
