@@ -12,7 +12,7 @@ trait GifsTrait
      */
     public function obtenerUnNumDeGif(): int
     {
-        $numDeGifs = count(glob(public_path('/gif/') . '*'));
+        $numDeGifs = count(glob(public_path('/gif/').'*'));
         return rand(1, $numDeGifs);
     }
 }

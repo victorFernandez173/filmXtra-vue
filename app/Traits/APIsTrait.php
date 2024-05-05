@@ -22,7 +22,7 @@ trait APIsTrait
             $respuesta = json_decode(Http::get('https://api.quotable.io/quotes/random')->body(), true);
 
             // Creamos y retornamos la cita
-            return '"' . $respuesta[0]['content'] . '" - ' . $respuesta[0]['author'];
+            return '"'.$respuesta[0]['content'].'" - '.$respuesta[0]['author'];
         } catch(Throwable $e) {
             Log::error($e->getMessage().': '.$e->getTraceAsString());
 
