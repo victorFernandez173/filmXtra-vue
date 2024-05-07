@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// TODO revisar componentes Uno a uno, REVISADOS:
+// TODO revisar componentes Uno a uno, REVISADOS: AppLogoIndex,
 // TODO usar Navlink/RESPONSIVENAVLINK en Navbar y otros components if possible
 // TODO revisar Pages y Layouts, REVISADOS:
 // TODO revisar paso por paso funcionamiento de los CONTROLLERS y REQUESTS, REVISADOS:
