@@ -26,9 +26,9 @@ require __DIR__.'/auth.php';
 
 // TODO revisar componentes Uno a uno, REVISADOS:
 // TODO usar Navlink/RESPONSIVENAVLINK en Navbar y otros components if possible
-
-// TODO revisar Pages y Layouts
+// TODO revisar Pages y Layouts, REVISADOS:
 // TODO revisar paso por paso funcionamiento de los CONTROLLERS y REQUESTS, REVISADOS:
+// TODO revisar resto ficheros, REVISADOS:
 // TODO lang english?? como aplicar mediante funcionalidad lang
 // TODO controlar/revisar la posibilidad de que falle el random de citas??? con un test??? hay screenshot con el error
 // TODO modo oscuro
