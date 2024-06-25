@@ -16,7 +16,7 @@ import {computed, onMounted} from "vue";
 import {initCarousels} from "flowbite";
 import Swal from "sweetalert2";
 
-const props = defineProps(['obras', 'verificacionExitosa', 'gifNumero', 'cita', 'cita2', 'cita3', 'cita4']);
+const props = defineProps(['obras', 'verificacionExitosa', 'gifNumero', 'citaInspiring', 'citaQuotable', 'citaPelicula', 'citaCine']);
 const page = usePage();
 const confirmacionVerificacionMail = computed(() => page.props.verificacionExitosa);
 
@@ -47,7 +47,7 @@ onMounted(() => {
     </Head>
 
     <!--  Carrusel   -->
-    <Carrusel :cita="cita" :cita2="cita2" :cita3="cita3" :cita4="cita4" />
+    <Carrusel :citaInspiring="citaInspiring" :citaQuotable="citaQuotable" :citaPelicula="citaPelicula" :citaCine="citaCine" />
 
     <!-- Seccion Principal de contenido -->
     <div
