@@ -30,7 +30,6 @@ require __DIR__.'/auth.php';
 // TODO revisar paso por paso funcionamiento de los CONTROLLERS y REQUESTS, REVISADOS:
 // TODO revisar resto ficheros, REVISADOS:
 // TODO lang english?? como aplicar mediante funcionalidad lang
-// TODO controlar/revisar la posibilidad de que falle el random de citas??? con un test??? hay screenshot con el error
 // TODO modo oscuro
 // TODO index, posters aleatorios? siempre alien al principio???
 // TODO implementar columnas tablas personalizadas para login y register, tb email personalizado? etc
