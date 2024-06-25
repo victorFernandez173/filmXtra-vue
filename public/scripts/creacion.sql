@@ -265,7 +265,6 @@ create table users
     email             varchar(73)                            not null,
     email_verified_at timestamp                              null,
     password          varchar(253)                           null,
-    remember_token    varchar(100)                           null,
     social_id         varchar(255)                           null,
     social_type       varchar(255) default 'filmXtra'        not null,
     created_at        timestamp    default CURRENT_TIMESTAMP not null,

@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('email', 73);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 253)->nullable();
-            $table->rememberToken();
             $table->string('social_id')->unique()->nullable();
             $table->string('social_type')->default('filmXtra');
             $table->timestamp('created_at')->useCurrent();

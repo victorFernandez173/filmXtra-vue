@@ -26,7 +26,6 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string|null $social_id
  * @property string|null $social_type
  * @property int|null $number
- * @property string|null $remember_token
  * @property Carbon $created_at
  * @property Carbon $updated_at
  *
@@ -65,7 +64,6 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
