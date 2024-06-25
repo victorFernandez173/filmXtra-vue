@@ -1,5 +1,4 @@
 <script setup>
-import Checkbox from '@/Components/Checkbox.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
@@ -87,16 +86,7 @@ onMounted(() => {
                             <InputError class="mt-2" :message="form.errors.password"/>
                         </div>
                         <!-- bloque recuérdame y contraseña olvidada -->
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-start">
-
-                                <div class="ml-0 text-sm">
-                                    <label class="flex items-center">
-                                        <Checkbox name="remember" v-model="form.remember"/>
-                                        <span class="ml-2 text-sm text-gray-800 hover:text-flamingo active:text-gray-800">Recuérdame{{form.remember}}</span>
-                                    </label>
-                                </div>
-                            </div>
+                        <div class="flex items-center justify-end">
                             <Link
                                 v-if="canResetPassword"
                                 :href="route('password.request')"
