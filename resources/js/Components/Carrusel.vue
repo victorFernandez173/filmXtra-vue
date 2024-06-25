@@ -16,7 +16,7 @@ const props = defineProps(['citaInspiring', 'citaQuotable', 'citaPelicula', 'cit
                 <div class="absolute w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-flamingo flex flex-col justify-center items-center text-base lg:text-xl">
                     <div class="px-[40px] py-[10px] w-[100%] h-4/6 lg:py-[20px] lg:w-9/12 lg:h-3/6 bg-white flex flex-col justify-center items-center">
                         <h1 class="font-oswald font-semibold mb-2 text-lg lg:text-2xl">En el cine</h1>
-                        <p>{{citaPelicula}}</p>
+                        <p class="text-ellipsis overflow-hidden">{{citaPelicula}}</p>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@ const props = defineProps(['citaInspiring', 'citaQuotable', 'citaPelicula', 'cit
                 <div class="absolute w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-flamingo flex flex-col justify-center items-center text-base lg:text-xl">
                     <div class="px-[40px] py-[10px] w-[100%] h-4/6 lg:py-[20px] lg:w-9/12 lg:h-6/6 bg-white flex flex-col justify-center items-center">
                         <h1 class="font-oswald font-semibold mb-2 text-lg lg:text-2xl">Sobre el cine</h1>
-                        <p>{{citaCine}}</p>
+                        <p class="text-ellipsis overflow-hidden">{{citaCine}}</p>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@ const props = defineProps(['citaInspiring', 'citaQuotable', 'citaPelicula', 'cit
                 <div class="absolute w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-flamingo flex flex-col justify-center items-center text-base lg:text-xl">
                     <div class="px-[40px] py-[10px] w-[100%] h-4/6 lg:py-[20px] lg:w-9/12 lg:h-3/6 bg-white flex flex-col justify-center items-center">
                         <h1 class="font-oswald font-semibold mb-2 text-lg lg:text-2xl">Inspírate</h1>
-                        <p v-html="citaInspiring"></p>
+                        <p class="text-ellipsis overflow-hidden" v-html="citaInspiring"></p>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@ const props = defineProps(['citaInspiring', 'citaQuotable', 'citaPelicula', 'cit
                 <div class="absolute w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-flamingo flex flex-col justify-center items-center text-base lg:text-xl">
                     <div class="px-[40px] py-[10px] w-[100%] h-4/6 lg:py-[20px] lg:w-9/12 lg:h-3/6 bg-white flex flex-col justify-center items-center">
                         <h1 class="font-oswald font-semibold mb-2 text-lg lg:text-2xl">Inspírate</h1>
-                        <p>{{citaQuotable}}</p>
+                        <p class="text-ellipsis overflow-hidden">{{citaQuotable}}</p>
                     </div>
                 </div>
             </div>
