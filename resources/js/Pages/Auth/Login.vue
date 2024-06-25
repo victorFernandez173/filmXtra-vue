@@ -92,8 +92,8 @@ onMounted(() => {
 
                                 <div class="ml-0 text-sm">
                                     <label class="flex items-center">
-                                        <Checkbox name="remember" v-model:checked="form.remember"/>
-                                        <span class="ml-2 text-sm text-gray-800 hover:text-flamingo active:text-gray-800">Recuérdame</span>
+                                        <Checkbox name="remember" v-model="form.remember"/>
+                                        <span class="ml-2 text-sm text-gray-800 hover:text-flamingo active:text-gray-800">Recuérdame{{form.remember}}</span>
                                     </label>
                                 </div>
                             </div>
