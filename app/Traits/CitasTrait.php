@@ -23,6 +23,6 @@ trait CitasTrait
     public function citaSobreCine(): string
     {
         $citasPeliculas = Cita::where('tipo', 'SobreCine')->get();
-        return $citasPeliculas[rand(1, count($citasPeliculas))]['cita'];
+        return $citasPeliculas[rand(0, count($citasPeliculas)-1)]['cita'];
     }
 }
