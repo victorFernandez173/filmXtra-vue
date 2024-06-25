@@ -19,12 +19,13 @@ class IndexController extends Controller
      * que serán las películas cargadas en Index
      * @throws Exception
      */
-    public function obtenerObrasAleatorias(){
+    public function obtenerObrasAleatorias()
+    {
         $numPeliculas = Obra::count();
         $peliculasId = [];
-        for($i = 0; $i < 24; $i++){
+        for ($i = 0; $i < 24; $i++) {
             $aleatorio = rand(1, $numPeliculas);
-            while(in_array($aleatorio, $peliculasId)){
+            while (in_array($aleatorio, $peliculasId)) {
                 $aleatorio = rand(1, $numPeliculas);
             }
             $peliculasId[] = $aleatorio;
@@ -36,19 +37,20 @@ class IndexController extends Controller
      * Devuelve la vista de bienvenida con esas películas
      * @throws Exception
      */
-    public function index(){
+    public function index()
+    {
         return Inertia::render('Index', [
-            'obras' => Obra::select(['id', 'titulo'])
+            'obras'               => Obra::select(['id', 'titulo'])
                 ->with('poster:id,obra_id,ruta,alt')
                 ->whereIn('id', $this->obtenerObrasAleatorias())
                 ->get(),
             'verificacionExitosa' => session('verificacionExitosa'),
-            'gifNumero' => $this->obtenerUnNumDeGif(),
+            'gifNumero'           => $this->obtenerUnNumDeGif(),
             /*Citas*/
-            'citaInspiring' => Inspiring::quote(),
-            'citaQuotable' => $this->citaQuotable(),
-            'citaPelicula' => $this->citaPelicula(),
-            'citaCine' => $this->citaSobreCine(),
+            'citaInspiring'       => Inspiring::quote(),
+            'citaQuotable'        => $this->citaQuotable(),
+            'citaPelicula'        => $this->citaPelicula(),
+            'citaCine'            => $this->citaSobreCine(),
         ]);
     }
 }
