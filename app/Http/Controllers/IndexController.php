@@ -45,10 +45,10 @@ class IndexController extends Controller
             'verificacionExitosa' => session('verificacionExitosa'),
             'gifNumero' => $this->obtenerUnNumDeGif(),
             /*Citas*/
-            'cita' => Inspiring::quote(),
-            'cita2' => $this->citaQuotable(),
-            'cita3' => $this->citaPelicula(),
-            'cita4' => $this->citaSobreCine(),
+            'citaInspiring' => Inspiring::quote(),
+            'citaQuotable' => $this->citaQuotable(),
+            'citaPelicula' => $this->citaPelicula(),
+            'citaCine' => $this->citaSobreCine(),
         ]);
     }
 }
