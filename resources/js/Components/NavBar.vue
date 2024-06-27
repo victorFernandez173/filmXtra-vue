@@ -12,7 +12,7 @@ const form = useForm({
         <!-- Div con el contenido del nav -->
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <!-- Logo de la pagina -->
-            <Link :href="route('/')" class="flex items-center">
+            <Link :href="route('home')" class="flex items-center">
                 <img src="/images/logo.png" class="h-14" alt="Logo FilmXtra" />
             </Link>
             <!-- Bloque de búsqueda  -->
@@ -26,7 +26,7 @@ const form = useForm({
                         <svg class="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                         <span class="sr-only">Icono buscar</span>
                     </div>
-                    <form @submit.prevent="form.get( route('/'),
+                    <form @submit.prevent="form.get( route('home'),
                     {
                     preserveScroll: true,
                     })">
@@ -64,7 +64,7 @@ const form = useForm({
                             <Link href="#">Mis favoritas</Link>
                         </li>
                         <li>
-                            <Link :href="route('/')">Ajustes</Link>
+                            <Link :href="route('home')">Ajustes</Link>
                         </li>
                         <li>
                             <Link class="block px-4 py-2 text-sm text-gray-700 hover:bg-flamingo hover:text-white w-full text-left" :href="route('logout')" method="post" as="button">Cerrar sesión</Link>
@@ -81,16 +81,16 @@ const form = useForm({
                 <ul class="hover:[&>li>a]:text-flamingo flex flex-col font-medium p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white [&>li>a]:block [&>li>a]:py-2 [&>li>a]:pl-3 [&>li>a]:pr-4 [&>li>a]:text-gray-900 md:hover:[&>li>a]:bg-transparent md:[&>li>a]:p-0">
                     <!-- md:hover:[&>li>Link]:bg-transparent md:[&>li>Link]:p-0                    -->
                     <li>
-                        <Link :href="route('/')" >Inicio</Link>
+                        <Link :href="route('home')" >Inicio</Link>
                     </li>
                     <li>
-                        <Link :href="route('/')" >Top FilmXtra</Link>
+                        <Link :href="route('home')" >Top FilmXtra</Link>
                     </li>
                     <li>
-                        <Link :href="route('/')" >Top Valoraciones</Link>
+                        <Link :href="route('home')" >Top Valoraciones</Link>
                     </li>
                     <li>
-                        <Link :href="route('/')" >Cuenta</Link>
+                        <Link :href="route('home')" >Cuenta</Link>
                     </li>
                 </ul>
             </div>

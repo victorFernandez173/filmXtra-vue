@@ -14,7 +14,7 @@ use App\Http\Controllers\IndexController;
 */
 
 
-Route::get('/', [IndexController::class, 'index'])->name('/');
+Route::get('/', [IndexController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

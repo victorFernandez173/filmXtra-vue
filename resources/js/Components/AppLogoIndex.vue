@@ -4,7 +4,7 @@ import {Link} from "@inertiajs/vue3";
 
 <template>
     <!--      Logo filmXtra      -->
-    <Link :href="route('/')">
+    <Link :href="route('home')">
         <img class="w-60 mr-2" src="/images/logo-blanco.png" alt="Logo FlimXtra">
     </Link>
 </template>
