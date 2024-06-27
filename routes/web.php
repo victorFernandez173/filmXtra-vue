@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-// TODO revisar Pages y Layouts, REVISADOS:
+// TODO revisar Pages, REVISADOS: Layouts
 
 
 // TODO revisar paso por paso funcionamiento de los CONTROLLERS y REQUESTS, REVISADOS:

@@ -23,7 +23,7 @@ const confirmacionVerificacionMail = computed(() => page.props.verificacionExito
 onMounted(() => {
     /*Iniciamos el carrusel*/
     initCarousels();
-    /*Si hay flash de password reset, lanzamos SWAL*/
+    /*Si hay flash de email verificado, lanzamos SWAL*/
     if (confirmacionVerificacionMail.value === true) {
         Swal.fire({
             title: 'Enhorabuena!!',
