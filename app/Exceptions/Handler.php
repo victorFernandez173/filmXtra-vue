@@ -33,8 +33,8 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     *
      * Renderizado de páginas de error
+     *
      * @param $request
      * @param Throwable $e
      * @return JsonResponse|Response|RedirectResponse
