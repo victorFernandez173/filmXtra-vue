@@ -24,11 +24,9 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// TODO revisar componentes Uno a uno, REVISADOS: AppLogoIndex, Carrusel, Checkbox, DangerButton, Dropdown, DropdownLink, Footer, InputError, InputLabel, Modal, NavBar, NavLink, NotaMedia, NumValoraciones, Poster, PrimaryButton, , SecondaryButton, TextInput
-
-
-
 // TODO usar Navlink/RESPONSIVENAVLINK en Navbar y otros components if possible
+
+
 // TODO revisar Pages y Layouts, REVISADOS:
 // TODO revisar paso por paso funcionamiento de los CONTROLLERS y REQUESTS, REVISADOS:
 // TODO revisar resto ficheros, REVISADOS:
