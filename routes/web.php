@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// TODO revisar componentes Uno a uno, REVISADOS: AppLogoIndex, Carrusel, Checkbox, DangerButton, Dropdown, DropdownLink,
+// TODO revisar componentes Uno a uno, REVISADOS: AppLogoIndex, Carrusel, Checkbox, DangerButton, Dropdown, DropdownLink, Footer, InputError, InputLabel, Modal, NavBar, NavLink
 
 
 
