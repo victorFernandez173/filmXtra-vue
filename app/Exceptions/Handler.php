@@ -45,7 +45,7 @@ class Handler extends ExceptionHandler
         $response = parent::render($request, $e);
         $status = $response->status();
 
-        if (app()->environment(['local', 'testing'])) {
+        if (!app()->environment(['local', 'testing'])) {
             return match ($status) {
                 404 => Inertia::render('Errors/404')->toResponse($request)->setStatusCode($status),
                 500, 503 => Inertia::render('Errors/XXX')->toResponse($request)->setStatusCode($status),
