@@ -1,5 +1,6 @@
 <script setup>
 import {Link, useForm} from "@inertiajs/vue3";
+import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 
 // Para el formulario de busqueda
 const form = useForm({
@@ -81,16 +82,16 @@ const form = useForm({
                 <ul class="hover:[&>li>a]:text-flamingo flex flex-col font-medium p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white [&>li>a]:block [&>li>a]:py-2 [&>li>a]:pl-3 [&>li>a]:pr-4 [&>li>a]:text-gray-900 md:hover:[&>li>a]:bg-transparent md:[&>li>a]:p-0">
                     <!-- md:hover:[&>li>Link]:bg-transparent md:[&>li>Link]:p-0                    -->
                     <li>
-                        <Link :href="route('home')" >Inicio</Link>
+                        <ResponsiveNavLink :href="route('home')" >Inicio</ResponsiveNavLink>
                     </li>
                     <li>
-                        <Link :href="route('home')" >Top FilmXtra</Link>
+                        <ResponsiveNavLink :href="route('home')" >Top FilmXtra</ResponsiveNavLink>
                     </li>
                     <li>
-                        <Link :href="route('home')" >Top Valoraciones</Link>
+                        <ResponsiveNavLink :href="route('home')" >Top Valoraciones</ResponsiveNavLink>
                     </li>
                     <li>
-                        <Link :href="route('home')" >Cuenta</Link>
+                        <ResponsiveNavLink :href="route('home')" >Cuenta</ResponsiveNavLink>
                     </li>
                 </ul>
             </div>
