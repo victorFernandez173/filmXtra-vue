@@ -3,7 +3,10 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use JetBrains\PhpStorm\NoReturn;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Inertia\Inertia;
+use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -28,6 +31,32 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    /**
+     *
+     * Renderizado de páginas de error
+     * @param $request
+     * @param Throwable $e
+     * @return JsonResponse|Response|RedirectResponse
+     * @throws Throwable
+     */
+    public function render($request, Throwable $e): JsonResponse|Response|RedirectResponse
+    {
+        $response = parent::render($request, $e);
+        $status = $response->status();
+
+        if (app()->environment(['local', 'testing'])) {
+            return match ($status) {
+                404 => Inertia::render('Errors/404')->toResponse($request)->setStatusCode($status),
+                500, 503 => Inertia::render('Errors/XXX')->toResponse($request)->setStatusCode($status),
+                default => $response
+            };
+
+        }
+
+        return $response;
+    }
+
 
     // PARA DEBUGUEO CON MENSAJES DE ERROR NO CLAROS
     //    #[NoReturn] public function report(Throwable $e): void
