@@ -26,7 +26,6 @@ require __DIR__.'/auth.php';
 
 
 // TODO revisar Pages, REVISADOS: Layouts
-// TODO paginas de error todas, 404 centrar y resto XXX.vue
 
 // TODO revisar paso por paso funcionamiento de los CONTROLLERS y REQUESTS, REVISADOS:
 // TODO revisar resto ficheros, REVISADOS:
