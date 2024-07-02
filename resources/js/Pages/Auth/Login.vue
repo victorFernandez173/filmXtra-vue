@@ -111,7 +111,7 @@ onMounted(() => {
                                 Inicia con Google
                             </a>
                         </div>
-                        <p class="text-sm font-light text-gray-700">
+                        <p class="text-right text-sm font-light text-gray-700">
                             ¿Aún no tienes cuenta? <Link :href="route('register')" class="font-medium text-primary-600 hover:text-flamingo focus:outline-none focus:border-[2px] focus:border-flamingo border-[2px] border-white rounded-md">¡Regístrate aquí!</Link>
                         </p>
                     </form>
