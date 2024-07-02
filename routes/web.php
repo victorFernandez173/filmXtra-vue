@@ -25,8 +25,6 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-// TODO revisar Pages, REVISADOS: Layouts
-
 // TODO revisar paso por paso funcionamiento de los CONTROLLERS y REQUESTS, REVISADOS:
 // TODO revisar resto ficheros, REVISADOS:
 // TODO lang english?? como aplicar mediante funcionalidad lang
