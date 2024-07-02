@@ -43,20 +43,17 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $e): JsonResponse|Response|RedirectResponse
     {
         $response = parent::render($request, $e);
-        $status = $response->status();
+        $status = $response->getStatusCode();
 
         if (!app()->environment(['local', 'testing'])) {
             return match ($status) {
                 404 => Inertia::render('Errors/404')->toResponse($request)->setStatusCode($status),
-                500, 503 => Inertia::render('Errors/XXX')->toResponse($request)->setStatusCode($status),
-                default => $response
+                default => Inertia::render('Errors/XXX')->toResponse($request)->setStatusCode($status)
             };
-
         }
 
         return $response;
     }
-
 
     // PARA DEBUGUEO CON MENSAJES DE ERROR NO CLAROS
     //    #[NoReturn] public function report(Throwable $e): void
