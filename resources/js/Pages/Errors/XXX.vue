@@ -18,12 +18,13 @@ const message = computed(() => {
         <title>Error {{ status }}</title>
         <meta name="description" content="Página de error">
     </Head>
-    <ErrorLayout>
-        <div class="flex flex-col justify-center items-center bg-neutral-50/75 rounded p-20 h-[50vh] w-[50vw]">
-            <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">ERROR {{ status }}</h1>
-            <p class="my-10 text-2xl leading-7 text-gray-800">{{ message }}</p>
-            <Link :href="route('home')" class="hover:text-flamingo hover:bg-black bg-flamingo rounded-md px-3.5 py-2.5 mb-10 text-sm font-semibold text-white">Ir a inicio &rarr;</Link>
-            <img src="/images/logo.png" class="w-60" alt="Logo FilmXtra">
+    <error-layout>
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">ERROR {{ status }}</h1>
+        <p class="my-10 text-2xl leading-7 text-gray-800">{{ message }}</p>
+        <img src="/error/error-gif.gif" class="m-auto mt-7 w-80" alt="Gif error cine">
+        <div class="flex items-center justify-center gap-x-6">
+            <Link :href="route('home')" class="hover:text-flamingo hover:bg-black bg-flamingo rounded-md px-3.5 py-2.5 text-sm font-semibold text-white">Ir a inicio &rarr;</Link>
         </div>
-    </ErrorLayout>
+        <img src="/images/logo.png" class="w-60 mt-10" alt="Logo FilmXtra">
+    </error-layout>
 </template>
