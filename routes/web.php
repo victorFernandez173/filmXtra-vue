@@ -26,7 +26,6 @@ require __DIR__.'/auth.php';
 
 
 // TODO revisar paso por paso funcionamiento de los CONTROLLERS y REQUESTS, REVISADOS:
-// TODO revisar resto ficheros, REVISADOS:
 // TODO index, posters aleatorios? siempre alien al principio???
 // TODO implementar columnas tablas personalizadas para login y register, tb email personalizado? etc
 // TODO en la pagina de usuario se debería esconder el bloque de contraseña para cuentas o'auth

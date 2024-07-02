@@ -65,7 +65,7 @@ const form = useForm({
                             <Link href="#">Mis favoritas</Link>
                         </li>
                         <li>
-                            <Link :href="route('home')">Ajustes</Link>
+                            <Link :href="route('profile.edit')">Ajustes</Link>
                         </li>
                         <li>
                             <Link class="block px-4 py-2 text-sm text-gray-700 hover:bg-flamingo hover:text-white w-full text-left" :href="route('logout')" method="post" as="button">Cerrar sesión</Link>
@@ -91,7 +91,7 @@ const form = useForm({
                         <ResponsiveNavLink :href="route('home')" >Top Valoraciones</ResponsiveNavLink>
                     </li>
                     <li>
-                        <ResponsiveNavLink :href="route('home')" >Cuenta</ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('profile.edit')" >Cuenta</ResponsiveNavLink>
                     </li>
                 </ul>
             </div>
