@@ -48,7 +48,7 @@ class Handler extends ExceptionHandler
         if (!app()->environment(['local', 'testing'])) {
             return match ($status) {
                 404 => Inertia::render('Errors/404')->toResponse($request)->setStatusCode($status),
-                default => Inertia::render('Errors/XXX')->toResponse($request)->setStatusCode($status)
+                default => Inertia::render('Errors/XXX', ['status' => $status])->toResponse($request)->setStatusCode($status)
             };
         }
 
