@@ -26,7 +26,6 @@ require __DIR__.'/auth.php';
 
 
 // TODO revisar paso por paso funcionamiento de los CONTROLLERS y REQUESTS, REVISADOS:
-// TODO randoms de gifs,index, posters aleatorios? siempre alien al principio???
 // TODO implementar columnas tablas personalizadas para login y register, tb email personalizado? etc
 // TODO españolizar columnas/datos de user como created_at etc....
 

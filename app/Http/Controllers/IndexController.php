@@ -24,9 +24,9 @@ class IndexController extends Controller
         $numPeliculas = Obra::count();
         $peliculasId = [];
         for ($i = 0; $i < 24; $i++) {
-            $aleatorio = rand(1, $numPeliculas);
+            $aleatorio = random_int(1, $numPeliculas);
             while (in_array($aleatorio, $peliculasId)) {
-                $aleatorio = rand(1, $numPeliculas);
+                $aleatorio = random_int(1, $numPeliculas);
             }
             $peliculasId[] = $aleatorio;
         }
@@ -43,7 +43,7 @@ class IndexController extends Controller
             'obras'               => Obra::select(['id', 'titulo'])
                 ->with('poster:id,obra_id,ruta,alt')
                 ->whereIn('id', $this->obtenerObrasAleatorias())
-                ->get(),
+                ->get()->shuffle(),
             'verificacionExitosa' => session('verificacionExitosa'),
             'gifNumero'           => $this->obtenerUnNumDeGif(),
             /*Citas*/
