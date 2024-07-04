@@ -96,9 +96,11 @@ onMounted(() => {
                             </Link>
                         </div>
                         <!--botón principal-->
-                        <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                            Inicia sesión
-                        </PrimaryButton>
+                        <div class="text-center">
+                            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                Inicia sesión
+                            </PrimaryButton>
+                        </div>
                         <div class="flex justify-around">
                             <!--Iniciar sesion Github-->
                             <a :href="route('auth.github')" type="button" class="text-white bg-gray-800 hover:bg-flamingo hover:text-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-800/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
