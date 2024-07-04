@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -24,7 +26,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $social_id
- * @property string|null $social_type
+ * @property int $login_tipo_id
  * @property int|null $number
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -32,12 +34,13 @@ use Laravel\Sanctum\HasApiTokens;
  * @property Collection|Critica[] $criticas
  * @property Collection|Evaluacion[] $evaluaciones
  * @property Collection|Like[] $likes
+ * @property Model|LoginTipo $loginTipo
  *
  * @package App\Models
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, Notifiable;
 
     /**
      * Atributos asignables.
@@ -53,7 +56,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'email_verified_at',
         'social_id',
-        'social_type',
+        'login_tipo_id',
         'number'
     ];
 
@@ -72,8 +75,9 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<string, string>
      */
     protected $casts = [
-        'age' => 'datetime',
+        'age'               => 'datetime',
         'email_verified_at' => 'datetime',
+        'login_tipo_id'     => 'integer'
     ];
 
     /**
@@ -98,5 +102,13 @@ class User extends Authenticatable implements MustVerifyEmail
     public function likes(): BelongsToMany
     {
         return $this->belongsToMany(Critica::class, 'likes', 'user_id', 'critica_id', 'id');
+    }
+
+    /**
+     * Obtiene tipo de login.
+     */
+    public function loginTipo(): BelongsTo
+    {
+        return $this->belongsTo(LoginTipo::class);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Mail\SocialiteLoginMail;
+use App\Models\LoginTipo;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
@@ -34,9 +35,9 @@ class GoogleAuthController extends Controller
                 'social_id' => $googleUser->id,
             ],
             [
-                'name' => $googleUser->name,
-                'email' => $googleUser->email,
-                'social_type' => 'Google',
+                'name'              => $googleUser->name,
+                'email'             => $googleUser->email,
+                'login_tipo_id'     => LoginTipo::GOOGLE_TIPO,
                 'email_verified_at' => Date::now()
             ]
         );

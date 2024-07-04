@@ -266,11 +266,11 @@ create table users
     email_verified_at timestamp                              null,
     password          varchar(253)                           null,
     social_id         varchar(255)                           null,
-    social_type       varchar(255) default 'filmXtra'        not null,
+    login_tipo_id     tinyint default 1        not null,
     created_at        timestamp    default CURRENT_TIMESTAMP not null,
     updated_at        timestamp    default CURRENT_TIMESTAMP not null,
-    constraint users_email_social_type_unique
-        unique (email, social_type),
+    constraint users_email_login_tipo_unique
+        unique (email, login_tipo_id),
     constraint users_social_id_unique
         unique (social_id)
 )
@@ -330,6 +330,16 @@ create table likes
     constraint likes_user_id_foreign
         foreign key (user_id) references users (id)
             on delete cascade
+)
+    collate = utf8mb4_unicode_ci;
+
+create table login_tipos
+(
+    id         bigint unsigned auto_increment
+        primary key,
+    nombre     varchar(120)                        not null,
+    creado     timestamp default CURRENT_TIMESTAMP not null,
+    modificado timestamp default CURRENT_TIMESTAMP not null
 )
     collate = utf8mb4_unicode_ci;
 

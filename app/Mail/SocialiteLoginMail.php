@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\LoginTipo;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Attachment;
@@ -14,12 +15,14 @@ class SocialiteLoginMail extends Mailable
 {
     use Queueable, SerializesModels;
     public User $user;
+    public LoginTipo $loginTipo;
     /**
      * Create a new message instance.
      */
     public function __construct($user)
     {
         $this->user = $user;
+        $this->loginTipo = LoginTipo::where('id', $user->login_tipo_id)->first();
     }
 
     /**
@@ -28,7 +31,7 @@ class SocialiteLoginMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Login en filmXtra con ' . $this->user->social_type);
+            subject: 'Login en filmXtra con ' . $this->loginTipo->nombre);
     }
 
     /**

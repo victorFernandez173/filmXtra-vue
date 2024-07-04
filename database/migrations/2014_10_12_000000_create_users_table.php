@@ -21,11 +21,11 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 253)->nullable();
             $table->string('social_id')->unique()->nullable();
-            $table->string('social_type')->default('filmXtra');
+            $table->string('login_tipo_id')->default(\App\Models\LoginTipo::FILMXTRA_TIPO);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
 
-            $table->unique(['email', 'social_type']);
+            $table->unique(['email', 'login_tipo_id']);
 
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';

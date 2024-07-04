@@ -101,9 +101,11 @@ const submit = () => {
                             />
                         </div>
 
-                        <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                            Crear cuenta
-                        </PrimaryButton>
+                        <div class="text-center">
+                            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                Crear cuenta
+                            </PrimaryButton>
+                        </div>
                         <p class="text-right text-sm font-light text-gray-500">
                             ¿Ya tienes cuenta? <Link :href="route('login')" class="font-medium text-gray-600 hover:text-flamingo focus:outline-none focus:border-[2px] focus:border-flamingo border-[2px] border-white rounded-md">¡Inicia sesión aquí!</Link>
                         </p>

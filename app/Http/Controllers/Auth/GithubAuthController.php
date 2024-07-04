@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Mail\SocialiteLoginMail;
+use App\Models\LoginTipo;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
@@ -34,9 +35,9 @@ class GithubAuthController extends Controller
                 'social_id' => $gitUser->id,
             ],
             [
-                'name' => $gitUser->name,
-                'email' => $gitUser->email,
-                'social_type' => 'Github',
+                'name'              => $gitUser->name,
+                'email'             => $gitUser->email,
+                'login_tipo_id'     => LoginTipo::GIT_TIPO,
                 'email_verified_at' => Date::now()
             ]
         );
