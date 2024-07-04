@@ -1,11 +1,16 @@
+<script>
+import LayoutPrincipal from "../../Layouts/LayoutPrincipal.vue";
+
+export default {
+    layout: LayoutPrincipal,
+}
+</script>
 <script setup>
+import AuthLayout from "@/Layouts/AuthLayout.vue";
 import DeleteUserForm from './Partials/DeleteUserForm.vue';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
-import { Head } from '@inertiajs/vue3';
-import AuthLayout from "@/Layouts/AuthLayout.vue";
-import NavBar from "@/Components/NavBar.vue";
-import Footer from "@/Components/Footer.vue";
+import {Head} from '@inertiajs/vue3';
 
 defineProps({
     mustVerifyEmail: {
@@ -24,34 +29,27 @@ defineProps({
         <meta name="description" content="Página de cuenta de usuario">
     </Head>
 
-    <nav-bar/>
-
     <auth-layout>
-        <div class="py-12">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">Profile</h2>
+        <div class="py-12 flex flex-col items-center">
+
+            <div class="mb-2 p-4 max-w-fit bg-white shadow rounded-lg">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">Perfil</h2>
             </div>
 
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <update-profile-information-form
-                        :must-verify-email="mustVerifyEmail"
-                        :status="status"
-                        class="max-w-xl"
-                    />
-                </div>
+            <div class="w-full lg:w-fit grid grid-cols-1 lg:grid-cols-2 my-2 p-4 sm:p-8 bg-white shadow lg:rounded-lg text-center justify-items-center">
+                <update-profile-information-form
+                    :must-verify-email="mustVerifyEmail"
+                    :status="status"
+                    class="my-4 mx-16 w-4/5 sm:w-3/5 lg:w-4/5"
+                />
 
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <update-password-form class="max-w-xl" />
-                </div>
+                <update-password-form class="mt-24 lg:mt-4 mx-16 w-4/5  sm:w-3/5 lg:w-4/5" />
+            </div>
 
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <delete-user-form class="max-w-xl" />
-                </div>
+            <div class="w-full lg:w-fit my-4 p-4 sm:p-8 bg-white shadow lg:rounded-lg text-center">
+                    <delete-user-form class="m-4" />
             </div>
         </div>
     </auth-layout>
-
-<!--    <footer/>-->
 
 </template>

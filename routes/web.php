@@ -25,8 +25,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-// TODO profile styling, navbar, footer & link to home
-// TODO centrar botones
+// TODO centrar botones ej.:en login
 // TODO revisar paso por paso funcionamiento de los CONTROLLERS y REQUESTS, REVISADOS:
 // TODO index, posters aleatorios? siempre alien al principio???
 // TODO implementar columnas tablas personalizadas para login y register, tb email personalizado? etc
