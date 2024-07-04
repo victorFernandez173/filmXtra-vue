@@ -26,12 +26,10 @@ require __DIR__.'/auth.php';
 
 
 // TODO revisar paso por paso funcionamiento de los CONTROLLERS y REQUESTS, REVISADOS:
-// TODO index, posters aleatorios? siempre alien al principio???
+// TODO randoms de gifs,index, posters aleatorios? siempre alien al principio???
 // TODO implementar columnas tablas personalizadas para login y register, tb email personalizado? etc
-// TODO en la pagina de usuario se debería esconder el bloque de contraseña para cuentas o'auth (tabla dedicada a login_tipo)
 // TODO españolizar columnas/datos de user como created_at etc....
 
-// TODO randoms de gifs o posters en index??????????
 
 // TODO lang english?? como aplicar mediante funcionalidad lang
 // TODO modo oscuro
