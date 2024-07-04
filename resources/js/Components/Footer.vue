@@ -27,7 +27,7 @@ import {Link} from "@inertiajs/vue3";
                             <Link :href="route('home')">Top Valoraciones</Link>
                         </li>
                         <li>
-                            <Link :href="route('home')">Cuenta</Link>
+                            <Link :href="route('profile.edit')">Cuenta</Link>
                         </li>
                     </ul>
                 </div>
