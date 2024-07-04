@@ -27,16 +27,6 @@ class Genero extends Model
     const string UPDATED_AT = 'modificado';
 
     /**
-     * Castings
-     *
-     * @var string[]
-     */
-    protected $casts = [
-        'creado' => 'datetime',
-        'modificado' => 'datetime'
-    ];
-
-    /**
      * Atributos asignables
      *
      * @var array<int, string>

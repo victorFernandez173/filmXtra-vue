@@ -35,8 +35,6 @@ class Director extends Model
     protected $casts = [
         'edad' => 'datetime',
         'defuncion' => 'datetime',
-        'creado' => 'datetime',
-        'modificado' => 'datetime'
     ];
 
     /**

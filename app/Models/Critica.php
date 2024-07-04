@@ -37,8 +37,6 @@ class Critica extends Model
     protected $casts = [
         'obra_id' => 'int',
         'user_id' => 'int',
-        'creada' => 'datetime',
-        'modificada' => 'datetime'
     ];
 
     /**
