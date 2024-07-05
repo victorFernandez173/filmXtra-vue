@@ -26,7 +26,6 @@ require __DIR__.'/auth.php';
 
 
 // TODO españolizar columnas/datos de user como created_at etc....
-// TODO validaciones notacion OBJETOS en lugar de arrays
 // TODO logo navbar +pequeño tam. movil, incluso icon,
 // TODO compactar citas en INDEX??? Mejorar estilos recuadro blanco
 // TODO redirección tras logueo: si duranto un logueo te vas a otra pagina como la de uno de los logueos de git o google y luego te logueas en el otro, al loguearse y redirigir no te devuelve a index si por ej partiste en un origen de index en filmXtra sino a la otra pagina de logueo de git o google que visitaste previamente, no se si podre reproducirlo,CONFIRMADO QUE OCURRE ESO
