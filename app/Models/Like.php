@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $critica_id
  *
  * @property Critica $critica
- * @property User $user
+ * @property Usuario $user
  *
  * @package App\Models
  */
@@ -52,7 +52,7 @@ class Like extends Model
      * @var int[]
      */
     protected $fillable = [
-        'user_id',
+        'usuario_id',
         'critica_id',
     ];
 
@@ -62,7 +62,7 @@ class Like extends Model
      * @var string[]
      */
 	protected $casts = [
-		'user_id' => 'int',
+		'usuario_id' => 'int',
 		'critica_id' => 'int'
 	];
 
@@ -83,6 +83,6 @@ class Like extends Model
      */
 	public function user(): BelongsTo
 	{
-		return $this->belongsTo(User::class);
+		return $this->belongsTo(Usuario::class);
 	}
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Mail\SocialiteLoginMail;
 use App\Models\LoginTipo;
-use App\Models\User;
+use App\Models\Usuario;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Laravel\Socialite\Facades\Socialite;
@@ -30,7 +30,7 @@ class GoogleAuthController extends Controller
     public function handleCallback()
     {
         $googleUser = Socialite::driver('google')->user();
-        $user = User::updateOrCreate(
+        $user = Usuario::updateOrCreate(
             [
                 'social_id' => $googleUser->id,
             ],

@@ -13,7 +13,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
- * Class User
+ * Class Usuario
  *
  * @property int $id
  * @property string $usuario
@@ -37,7 +37,7 @@ use Laravel\Sanctum\HasApiTokens;
  *
  * @package App\Models
  */
-class User extends Authenticatable implements MustVerifyEmail
+class Usuario extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, Notifiable;
 
@@ -101,7 +101,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function likes(): BelongsToMany
     {
-        return $this->belongsToMany(Critica::class, 'likes', 'user_id', 'critica_id', 'id');
+        return $this->belongsToMany(Critica::class, 'likes', 'usuario_id', 'critica_id', 'id');
     }
 
     /**

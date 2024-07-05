@@ -15,12 +15,12 @@ return new class extends Migration
         Schema::create('criticas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('obra_id')->constrained()->onDelete('CASCADE');
-            $table->foreignId('user_id')->constrained()->onDelete('CASCADE');
+            $table->foreignId('usuario_id')->constrained()->onDelete('CASCADE');
             $table->string('critica', 5000)->nullable(false);
             $table->timestamp(Critica::CREATED_AT)->useCurrent();
             $table->timestamp(Critica::UPDATED_AT)->useCurrent();
 
-            $table->unique(['obra_id', 'user_id']);
+            $table->unique(['obra_id', 'usuario_id']);
 
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';

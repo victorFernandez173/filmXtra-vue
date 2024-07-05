@@ -254,7 +254,7 @@ create table trailers
 )
     collate = utf8mb4_unicode_ci;
 
-create table users
+create table usuarios
 (
     id                     bigint unsigned auto_increment
         primary key,
@@ -271,9 +271,9 @@ create table users
     login_tipo_id          tinyint   default 1                 not null,
     creado                 timestamp default CURRENT_TIMESTAMP not null,
     modificado             timestamp default CURRENT_TIMESTAMP not null,
-    constraint users_email_login_tipo_unique
+    constraint usuarios_email_login_tipo_unique
         unique (email, login_tipo_id),
-    constraint users_social_id_unique
+    constraint usuarios_social_id_unique
         unique (social_id)
 )
     collate = utf8mb4_unicode_ci;
@@ -293,7 +293,7 @@ create table criticas
         foreign key (obra_id) references obras (id)
             on delete cascade,
     constraint criticas_user_id_foreign
-        foreign key (user_id) references users (id)
+        foreign key (user_id) references usuarios (id)
             on delete cascade
 )
     collate = utf8mb4_unicode_ci;
@@ -313,7 +313,7 @@ create table evaluaciones
         foreign key (obra_id) references obras (id)
             on delete cascade,
     constraint evaluaciones_user_id_foreign
-        foreign key (user_id) references users (id)
+        foreign key (user_id) references usuarios (id)
             on delete cascade,
     constraint evaluacion
         check (`evaluacion` > 0)
@@ -322,15 +322,15 @@ create table evaluaciones
 
 create table likes
 (
-    user_id    bigint unsigned not null,
+    usuario_id    bigint unsigned not null,
     critica_id bigint unsigned not null,
     constraint likes_user_id_critica_id_unique
-        unique (user_id, critica_id),
+        unique (usuario_id, critica_id),
     constraint likes_critica_id_foreign
         foreign key (critica_id) references criticas (id)
             on delete cascade,
     constraint likes_user_id_foreign
-        foreign key (user_id) references users (id)
+        foreign key (usuario_id) references usuarios (id)
             on delete cascade
 )
     collate = utf8mb4_unicode_ci;

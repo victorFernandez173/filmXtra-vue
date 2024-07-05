@@ -9,12 +9,12 @@ use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use App\Models\User;
+use App\Models\Usuario;
 
 class SocialiteLoginMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public User $user;
+    public Usuario $user;
     public LoginTipo $loginTipo;
     /**
      * Create a new message instance.

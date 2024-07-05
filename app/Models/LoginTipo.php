@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property Carbon $creado
  * @property Carbon $modificado
  *
- * @property Collection|User[] $users
+ * @property Collection|Usuario[] $usuarios
  *
  * @package App\Models
  */
@@ -40,8 +40,8 @@ class LoginTipo extends Model
     /**
      * Obtener usuarios con este tipo.
      */
-    public function users(): HasMany
+    public function usuarios(): HasMany
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(Usuario::class);
     }
 }

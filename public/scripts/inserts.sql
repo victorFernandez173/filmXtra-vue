@@ -465,7 +465,7 @@ VALUES ('2002', 'Cannes', 34),
 
 
 /*Contraseñas estandar: Usuario+1987+% (Ej.:Guzman->'Guzman1987%'; la segunda de Pedro sería 'Pedro1987%2')*/
-INSERT INTO users (usuario, nombre, password, email_verificado_fecha, email, pais)
+INSERT INTO usuarios (usuario, nombre, password, email_verificado_fecha, email, pais)
 VALUES ('Luisa', 'Fernandina', '$2y$10$vitoXlANr1Zv2VWO8AgtmuxKxuA5GpjWhoxl7mZmVhh5wNwXvjfl2', '2004-05-19',
         'luisa@gmail.com', 'Colombia'),
        ('Lidia', 'Roca', '$2y$10$BwUzdtXUwthVBlbEJM9JF.TbVik86EBtcOhZjanmrxeDCP0U8KyKO', '1987-12-30', 'lB687@yahoo.es',
@@ -1680,7 +1680,7 @@ VALUES (2, 1, 'El Padrino'),
 
 
 
-INSERT INTO evaluaciones (evaluacion, obra_id, user_id)
+INSERT INTO evaluaciones (evaluacion, obra_id, usuario_id)
 VALUES (3, 1, 1),
        (4.2, 1, 2),
        (4.3, 1, 3),
@@ -2117,7 +2117,7 @@ VALUES (3, 1, 1),
 
 
 
-INSERT INTO criticas (obra_id, user_id, critica)
+INSERT INTO criticas (obra_id, usuario_id, critica)
 VALUES (1, 7,
         'Con Morgan Freeman qué puede salir mal?, para no ser muy de mi estilo estubo bastante bien, la recomiendo que la vean :D.'),
        (1, 10, 'Obra maestra entre obras maestras, debes verla, YA!'),

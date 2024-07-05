@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Mail\SocialiteLoginMail;
 use App\Models\LoginTipo;
-use App\Models\User;
+use App\Models\Usuario;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Laravel\Socialite\Facades\Socialite;
@@ -30,7 +30,7 @@ class GithubAuthController extends Controller
     public function handleCallback(): RedirectResponse
     {
         $gitUser = Socialite::driver('github')->user();
-        $user = User::firstOrCreate(
+        $user = Usuario::firstOrCreate(
             [
                 'social_id' => $gitUser->id,
             ],
