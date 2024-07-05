@@ -25,7 +25,6 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-// TODO implementar columnas tablas personalizadas para login y register, tb email personalizado? etc
 // TODO españolizar columnas/datos de user como created_at etc....
 // TODO validaciones notacion OBJETOS en lugar de arrays
 // TODO logo navbar +pequeño tam. movil, incluso icon,
