@@ -45,7 +45,7 @@ const userLoginTipo = usePage().props.auth.user.login_tipo_id;
                     class="my-4 mx-16 w-4/5 sm:w-3/5 lg:w-4/5"
                 />
 
-                <update-password-form v-if="userLoginTipo === 1" class="mt-24 lg:mt-4 mx-16 w-4/5  sm:w-3/5 lg:w-4/5" />
+                <update-password-form v-if="userLoginTipo === 1" class="m-4 mt-24 lg:mt-4 mx-16 w-4/5  sm:w-3/5 lg:w-4/5" />
             </div>
 
             <div class="w-full lg:w-fit my-4 p-4 sm:p-8 bg-white shadow lg:rounded-lg text-center">
