@@ -5,8 +5,6 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -18,23 +16,24 @@ use Laravel\Sanctum\HasApiTokens;
  * Class User
  *
  * @property int $id
- * @property string $name
+ * @property string $usuario
+ * @property string $nombre
+ * @property string $apellidos
  * @property string|null $username
- * @property Carbon|null $age
- * @property string|null $country
+ * @property Carbon|null $nacimiento
+ * @property string|null $pais
  * @property string $email
- * @property Carbon|null $email_verified_at
+ * @property Carbon|null $email_verificado_fecha
  * @property string $password
  * @property string|null $social_id
  * @property int $login_tipo_id
- * @property int|null $number
- * @property Carbon $created_at
- * @property Carbon $updated_at
+ * @property Carbon $creado
+ * @property Carbon $modificado
  *
  * @property Collection|Critica[] $criticas
  * @property Collection|Evaluacion[] $evaluaciones
  * @property Collection|Like[] $likes
- * @property Model|LoginTipo $loginTipo
+ * @property LoginTipo $loginTipo
  *
  * @package App\Models
  */
@@ -42,22 +41,23 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, Notifiable;
 
+    const string CREATED_AT = 'creado';
+    const string UPDATED_AT = 'modificado';
+
     /**
      * Atributos asignables.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'username',
+        'usuario',
+        'nombre',
+        'apellidos',
         'age',
-        'country',
+        'pais',
         'email',
-        'password',
-        'email_verified_at',
         'social_id',
         'login_tipo_id',
-        'number'
     ];
 
     /**
@@ -75,9 +75,9 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<string, string>
      */
     protected $casts = [
-        'age'               => 'datetime',
-        'email_verified_at' => 'datetime',
-        'login_tipo_id'     => 'integer'
+        'nacimiento'             => 'datetime',
+        'email_verificado_fecha' => 'datetime',
+        'login_tipo_id'          => 'integer'
     ];
 
     /**
@@ -110,5 +110,32 @@ class User extends Authenticatable implements MustVerifyEmail
     public function loginTipo(): BelongsTo
     {
         return $this->belongsTo(LoginTipo::class);
+    }
+
+    public function hasVerifiedEmail(): bool
+    {
+        return ! is_null($this->email_verificado_fecha);
+    }
+
+    /**
+     * Marca email usuario como verificado.
+     *
+     * @return bool
+     */
+    public function markEmailAsVerified(): bool
+    {
+        return $this->forceFill([
+            'email_verificado_fecha' => $this->freshTimestamp(),
+        ])->save();
+    }
+
+    /**
+     * Obtiene el email que debe ser verificado.
+     *
+     * @return string
+     */
+    public function getEmailForVerification(): string
+    {
+        return $this->email;
     }
 }

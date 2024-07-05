@@ -464,8 +464,8 @@ VALUES ('2002', 'Cannes', 34),
        ('1954', 'Globos de Oro', 77);
 
 
-/*Contraseñas estandar: Nombre+1987+% (Ej.:Guzman->'Guzman1987%'; la segunda de Pedro sería 'Pedro1987%2')*/
-INSERT INTO users (name, username, password, email_verified_at, email, country)
+/*Contraseñas estandar: Usuario+1987+% (Ej.:Guzman->'Guzman1987%'; la segunda de Pedro sería 'Pedro1987%2')*/
+INSERT INTO users (usuario, nombre, password, email_verificado_fecha, email, pais)
 VALUES ('Luisa', 'Fernandina', '$2y$10$vitoXlANr1Zv2VWO8AgtmuxKxuA5GpjWhoxl7mZmVhh5wNwXvjfl2', '2004-05-19',
         'luisa@gmail.com', 'Colombia'),
        ('Lidia', 'Roca', '$2y$10$BwUzdtXUwthVBlbEJM9JF.TbVik86EBtcOhZjanmrxeDCP0U8KyKO', '1987-12-30', 'lB687@yahoo.es',

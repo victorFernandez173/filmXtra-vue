@@ -256,19 +256,21 @@ create table trailers
 
 create table users
 (
-    id                bigint unsigned auto_increment
+    id                     bigint unsigned auto_increment
         primary key,
-    name              varchar(53)                            not null,
-    username          varchar(33)                            null,
-    age               date                                   null,
-    country           varchar(73)                            null,
-    email             varchar(73)                            not null,
-    email_verified_at timestamp                              null,
-    password          varchar(253)                           null,
-    social_id         varchar(255)                           null,
-    login_tipo_id     tinyint default 1        not null,
-    created_at        timestamp    default CURRENT_TIMESTAMP not null,
-    updated_at        timestamp    default CURRENT_TIMESTAMP not null,
+    usuario                varchar(53)                         not null,
+    nombre                 varchar(53)                         not null,
+    apellidos              varchar(106)                        not null,
+    username               varchar(33)                         null,
+    age                    date                                null,
+    pais                   varchar(73)                         null,
+    email                  varchar(73)                         not null,
+    email_verificado_fecha timestamp                           null,
+    password               varchar(253)                        null,
+    social_id              varchar(255)                        null,
+    login_tipo_id          tinyint   default 1                 not null,
+    creado                 timestamp default CURRENT_TIMESTAMP not null,
+    modificado             timestamp default CURRENT_TIMESTAMP not null,
     constraint users_email_login_tipo_unique
         unique (email, login_tipo_id),
     constraint users_social_id_unique

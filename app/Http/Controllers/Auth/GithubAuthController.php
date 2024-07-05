@@ -35,10 +35,10 @@ class GithubAuthController extends Controller
                 'social_id' => $gitUser->id,
             ],
             [
-                'name'              => $gitUser->name,
-                'email'             => $gitUser->email,
-                'login_tipo_id'     => LoginTipo::GIT_TIPO,
-                'email_verified_at' => Date::now()
+                'usuario'                => $gitUser->name,
+                'email'                  => $gitUser->email,
+                'login_tipo_id'          => LoginTipo::GIT_TIPO,
+                'email_verificado_fecha' => Date::now()
             ]
         );
         // Siempre se envía mail, podría configurarse para envíar solo cuando no exista el usuario(social_id)

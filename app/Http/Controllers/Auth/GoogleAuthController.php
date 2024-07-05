@@ -35,10 +35,10 @@ class GoogleAuthController extends Controller
                 'social_id' => $googleUser->id,
             ],
             [
-                'name'              => $googleUser->name,
-                'email'             => $googleUser->email,
-                'login_tipo_id'     => LoginTipo::GOOGLE_TIPO,
-                'email_verified_at' => Date::now()
+                'usuario'                => $googleUser->name,
+                'email'                  => $googleUser->email,
+                'login_tipo_id'          => LoginTipo::GOOGLE_TIPO,
+                'email_verificado_fecha' => Date::now()
             ]
         );
         // Siempre se envía mail, podría configurarse para envíar solo cuando no exista el usuario(social_id)
