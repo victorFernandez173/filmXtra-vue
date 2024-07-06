@@ -29,7 +29,7 @@ require __DIR__.'/auth.php';
 // TODO logo navbar +pequeño tam. movil, incluso icon,
 // TODO redirección tras logueo: si duranto un logueo te vas a otra pagina como la de uno de los logueos de git o google y luego te logueas en el otro, al loguearse y redirigir no te devuelve a index si por ej partiste en un origen de index en filmXtra sino a la otra pagina de logueo de git o google que visitaste previamente, no se si podre reproducirlo,CONFIRMADO QUE OCURRE ESO
 // TODO eventserviceprovider event envio mail registros puede ser util?
-// TODO event en RegisteredUserController, implementar para algo, event REGISTERED, VERIFIED...
+// TODO event REGISTERED implementar, VERIFIED revisar funcionamiento...
 
 
 // TODO lang english?? como aplicar mediante funcionalidad lang
