@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
+use Random\RandomException;
 use Redirect;
 
 class AuthenticatedSessionController extends Controller
@@ -20,6 +21,7 @@ class AuthenticatedSessionController extends Controller
 
     /**
      * Renderiza la vista de logueo
+     * @throws RandomException
      */
     public function create(): Response
     {
@@ -30,7 +32,7 @@ class AuthenticatedSessionController extends Controller
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
             //Numero de gif en caso de que haya mensaje de reset password
-            'gifNum' => $this->obtenerUnNumDeGif(),
+            'gifNumero' => $this->obtenerUnNumDeGif(),
         ]);
     }
 
