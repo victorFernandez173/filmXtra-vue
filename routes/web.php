@@ -25,7 +25,6 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-// TODO tabla personal_access_tokens WHAT FOR????
 // TODO comprobar funcionamiento reseteo pass
 // TODO event(new PasswordReset($user));??????
 // TODO profile renombrar label de inputs y input name no funciona
