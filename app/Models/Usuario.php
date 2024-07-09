@@ -39,7 +39,7 @@ use Laravel\Sanctum\HasApiTokens;
  */
 class Usuario extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, Notifiable;
+    use Notifiable;
 
     const string CREATED_AT = 'creado';
     const string UPDATED_AT = 'modificado';
