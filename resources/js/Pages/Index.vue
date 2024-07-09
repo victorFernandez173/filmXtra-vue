@@ -24,7 +24,7 @@ onMounted(() => {
     /*Iniciamos el carrusel*/
     initCarousels();
     /*Si hay flash de email verificado, lanzamos SWAL*/
-    if (confirmacionVerificacionMail.value === true) {
+    if (confirmacionVerificacionMail.value) {
         Swal.fire({
             title: 'Enhorabuena!!',
             text: 'Tu email ha sido validado exitosamente',
