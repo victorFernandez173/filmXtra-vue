@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+use App\Mail\VerificacionMail;
+use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -21,6 +23,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Correo de validación personalizado sustituye email por defecto de validación
+        VerifyEmail::toMailUsing(function ($notifiable, $url) {
+            return new VerificacionMail($notifiable, $url);
+        });
     }
 }
