@@ -6,7 +6,7 @@ use App\Notifications\VerificacionEmailExitosaNotification;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class VerificacionEmailExitosaListener implements ShouldQueue
+class VerificacionEmailExitosaEscuchador implements ShouldQueue
 {
 
     /**

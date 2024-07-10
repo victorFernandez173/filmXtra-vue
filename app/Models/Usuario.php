@@ -58,6 +58,7 @@ class Usuario extends Authenticatable implements MustVerifyEmail
         'email',
         'social_id',
         'login_tipo_id',
+        'password'
     ];
 
     /**
@@ -77,7 +78,7 @@ class Usuario extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'nacimiento'             => 'datetime',
         'email_verificado_fecha' => 'datetime',
-        'login_tipo_id'          => 'integer'
+        'login_tipo_id'          => 'integer',
     ];
 
     /**
@@ -114,7 +115,7 @@ class Usuario extends Authenticatable implements MustVerifyEmail
 
     public function hasVerifiedEmail(): bool
     {
-        return ! is_null($this->email_verificado_fecha);
+        return !is_null($this->email_verificado_fecha);
     }
 
     /**
