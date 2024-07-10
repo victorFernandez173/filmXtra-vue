@@ -24,8 +24,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// TODO event VERIFIED implementar...
-// TODO event(new PasswordReset($user));??????
+// TODO event(new PasswordReset($user));?????? cuando inicias el reseteo ya se te envía un email? adaptar ese? pero si reseteas la contraseña desde la pagina de cuenta ese email no se envía, por lo tanto tiene sentido usar el EVENTO PASSWORDRESET...estudiar
 // TODO register form, y si el user ya existe que pasa?????
 
 // TODO logo navbar +pequeño tam. movil, incluso icon,
