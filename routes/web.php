@@ -25,7 +25,6 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-// TODO redirección tras logueo: si duranto un logueo te vas a otra pagina como la de uno de los logueos de git o google y luego te logueas en el otro, al loguearse y redirigir no te devuelve a index si por ej partiste en un origen de index en filmXtra sino a la otra pagina de logueo de git o google que visitaste previamente, no se si podre reproducirlo,CONFIRMADO QUE OCURRE ESO
 // TODO citasYapiTraits unir en una clase e instanciar en el service container para testear el IoC????o mejorar de alguna manera
 // TODO 'route model binding' para las rutas de obra
 // TODO rutas agrupadas por bloques
