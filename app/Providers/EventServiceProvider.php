@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
-use App\Listeners\VerificacionEmailExitosaListener;
+use App\Listeners\ReseteoPasswordExitosoEscuchador;
+use App\Listeners\VerificacionEmailExitosaEscuchador;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -16,11 +18,14 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        Registered::class => [
+        Registered::class    => [
             SendEmailVerificationNotification::class,
         ],
-        Verified::class => [
-            VerificacionEmailExitosaListener::class
+        Verified::class      => [
+            VerificacionEmailExitosaEscuchador::class
+        ],
+        PasswordReset::class => [
+            ReseteoPasswordExitosoEscuchador::class
         ]
     ];
 
