@@ -57,9 +57,11 @@ const submit = () => {
                             <!--Para el mensaje de confirmación de envío-->
                             <InputError v-if="status" class="mt-2" :message="'Email enviado satisfactoriamente'"/>
                         </div>
-                        <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                            Enviar email
-                        </PrimaryButton>
+                        <div class="text-center">
+                            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                Enviar email
+                            </PrimaryButton>
+                        </div>
                     </form>
                 </div>
             </div>
