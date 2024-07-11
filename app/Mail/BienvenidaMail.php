@@ -45,7 +45,6 @@ class BienvenidaMail extends Mailable
             with: [
                 'usuario' => $this->notifiable,
                 'logo'    => public_path('images/logo.png'),
-                'logo2'    => public_path('images/logo-blanco.png')
             ]
         );
     }
