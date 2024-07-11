@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Usuario;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -48,8 +49,6 @@ class NewPasswordController extends Controller
                 $user->forceFill([
                     'password' => Hash::make($request['password']),
                 ])->save();
-
-                event(new PasswordReset($user));
             }
         );
 
@@ -57,6 +56,11 @@ class NewPasswordController extends Controller
         // a la pagina de login. Si ha habido errores
         // se redirige a donde estuvieran antes.
         if ($status == Password::PASSWORD_RESET) {
+
+            // Evento para enviar un email de confirmación de reseteo de password
+            $usuario = Usuario::where('email', $request['email'])->first();
+            event(new PasswordReset($usuario));
+
             return redirect()->route('login')->with('status', __($status));
         }
 
