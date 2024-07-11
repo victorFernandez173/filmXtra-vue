@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Mail\SocialiteLoginMail;
 use App\Models\LoginTipo;
 use App\Models\Usuario;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\RedirectResponse;
 use Mail;
+use Redirect;
 
 class GithubAuthController extends Controller
 {
@@ -20,6 +22,9 @@ class GithubAuthController extends Controller
      */
     public function redirectToProvider()
     {
+        //Establece como la url objetivo, la url de origen
+        Redirect::setIntendedUrl(url()->previous());
+
         return Socialite::driver('github')->redirect();
     }
 
@@ -44,6 +49,6 @@ class GithubAuthController extends Controller
         // Siempre se envía mail, podría configurarse para envíar solo cuando no exista el usuario(social_id)
         Mail::to($user->email)->send(new SocialiteLoginMail($user));
         Auth::login($user);
-        return redirect()->intended();
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 }

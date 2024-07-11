@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Date;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\RedirectResponse;
 use Mail;
+use Redirect;
 
 class GoogleAuthController extends Controller
 {
@@ -20,6 +21,9 @@ class GoogleAuthController extends Controller
      */
     public function redirectToProvider()
     {
+        //Establece como la url objetivo, la url de origen
+        Redirect::setIntendedUrl(url()->previous());
+
         return Socialite::driver('google')->with(["prompt" => "select_account"])->redirect();
     }
 
