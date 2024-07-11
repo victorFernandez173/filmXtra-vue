@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\ReseteoPasswordNotificacion;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
@@ -10,7 +11,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 /**
  * Class Usuario
@@ -53,7 +53,7 @@ class Usuario extends Authenticatable implements MustVerifyEmail
         'usuario',
         'nombre',
         'apellidos',
-        'age',
+        'nacimiento',
         'pais',
         'email',
         'social_id',
@@ -138,5 +138,16 @@ class Usuario extends Authenticatable implements MustVerifyEmail
     public function getEmailForVerification(): string
     {
         return $this->email;
+    }
+
+    /**
+     * Overriding de la notificación de reseteo de password.
+     * @param string $token
+     */
+    public function sendPasswordResetNotification($token): void
+    {
+        $url = route('password.reset', $token);
+
+        $this->notify(new ReseteoPasswordNotificacion($url));
     }
 }
