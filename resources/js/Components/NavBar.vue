@@ -14,7 +14,7 @@ const form = useForm({
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <!-- Logo de la pagina -->
             <Link :href="route('home')" class="flex items-center">
-                <img src="/images/logo.png" class="h-14" alt="Logo FilmXtra" />
+                <img src="/images/logo.png" class="h-10 sm:h-14" alt="Logo FilmXtra" />
             </Link>
             <!-- Bloque de búsqueda  -->
             <div class="flex justify-end md:order-2">

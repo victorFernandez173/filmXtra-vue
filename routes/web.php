@@ -25,7 +25,6 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-// TODO logo navbar +pequeño tam. movil, incluso icon,
 // TODO rutas agrupadas por bloques
 // TODO busqueda navbar reactivar;;;buscador mejorar: paginación, mensajes con los resultados...
 // TODO 'route model binding' para las rutas de obra

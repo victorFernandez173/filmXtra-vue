@@ -4,7 +4,7 @@ const props = defineProps(['citaInspiring', 'citaQuotable', 'citaPelicula', 'cit
 
 <template>
     <!-- Seccion Principal Carrusel -->
-    <div id="default-carousel" class="relative w-full" data-carousel-interval="7000" data-carousel="slide">
+    <div id="default-carousel" class="relative w-full bg-flamingo" data-carousel-interval="7000" data-carousel="slide">
         <!-- Diapositivas del carrusel -->
         <div class="fotos relative h-56 overflow-hidden md:h-96 [&>div>div>div>p]:text-gray-800 [&>div>div>div>p]:text-center">
             <!-- Primera -->
