@@ -39,7 +39,6 @@ Route::middleware('guest')->group(function () {
 });
 
 
-
 // Rutas para usuarios
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
