@@ -113,7 +113,7 @@ create table citas
         primary key,
     obra_id bigint unsigned null,
     cita    varchar(500)    not null,
-    tipo    varchar(50)     not null,
+    tipo    tinyint         not null,
     constraint citas_obra_id_foreign
         foreign key (obra_id) references obras (id)
 )

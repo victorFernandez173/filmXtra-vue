@@ -14,7 +14,7 @@ trait CitasTrait
      */
     public function citaPelicula(): string
     {
-        $citasPeliculas = Cita::where('tipo', 'Pelicula')->get();
+        $citasPeliculas = Cita::where('tipo', Cita::PELICULA)->get();
         return $citasPeliculas[random_int(0, count($citasPeliculas)-1)]['cita'];
     }
 
@@ -25,7 +25,7 @@ trait CitasTrait
      */
     public function citaSobreCine(): string
     {
-        $citasPeliculas = Cita::where('tipo', 'SobreCine')->get();
+        $citasPeliculas = Cita::where('tipo', Cita::SOBRECINE)->get();
         return $citasPeliculas[random_int(0, count($citasPeliculas)-1)]['cita'];
     }
 }
