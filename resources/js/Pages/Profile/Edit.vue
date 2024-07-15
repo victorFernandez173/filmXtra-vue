@@ -22,6 +22,7 @@ defineProps({
 });
 
 const userLoginTipo = usePage().props.auth.user.login_tipo_id;
+const verificado = usePage().props.auth.user.email_verificado_fecha;
 </script>
 
 <template>
@@ -38,14 +39,14 @@ const userLoginTipo = usePage().props.auth.user.login_tipo_id;
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">Perfil</h2>
             </div>
 
-            <div :class="userLoginTipo === 1 ? 'lg:grid-cols-2' : 'lg:grid-cols-1'" class="w-full lg:w-fit grid grid-cols-1 my-2 p-4 sm:p-8 bg-white shadow lg:rounded-lg text-center justify-items-center">
+            <div :class="userLoginTipo === 1 && verificado ? 'lg:grid-cols-2' : 'lg:grid-cols-1'" class="w-full lg:w-fit grid grid-cols-1 my-2 p-4 sm:p-8 bg-white shadow lg:rounded-lg text-center justify-items-center">
                 <update-profile-information-form
                     :must-verify-email="mustVerifyEmail"
                     :status="status"
                     class="my-4 mx-16 w-4/5 sm:w-3/5 lg:w-4/5"
                 />
 
-                <update-password-form v-if="userLoginTipo === 1" class="m-4 mt-24 lg:mt-4 mx-16 w-4/5  sm:w-3/5 lg:w-4/5" />
+                <update-password-form v-if="userLoginTipo === 1 && verificado" class="m-4 mt-24 lg:mt-4 mx-16 w-4/5  sm:w-3/5 lg:w-4/5" />
             </div>
 
             <div class="w-full lg:w-fit my-4 p-4 sm:p-8 bg-white shadow lg:rounded-lg text-center">
