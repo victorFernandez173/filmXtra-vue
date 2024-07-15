@@ -64,17 +64,20 @@ Route::middleware('auth')->group(function () {
 });
 
 
-// Rutas google
-Route::get('/auth/google', [GoogleAuthController::class, 'redirectToProvider'])
-    ->name('auth.google');
+//Rutas o'auth
+Route::name('auth.')->prefix('auth')->group(function () {
+    // Rutas google
+    Route::get('/google', [GoogleAuthController::class, 'redirectToProvider'])
+        ->name('google');
 
-Route::get('/auth/google/callback', [GoogleAuthController::class, 'handleCallback'])
-    ->name('auth.google.callback');
-
-
+    Route::get('/google/callback', [GoogleAuthController::class, 'handleCallback'])
+        ->name('google.callback');
 // Rutas github
-Route::get('/auth/github', [GithubAuthController::class, 'redirectToProvider'])
-    ->name('auth.github');
+    Route::get('/github', [GithubAuthController::class, 'redirectToProvider'])
+        ->name('github');
 
-Route::get('/auth/github/callback', [GithubAuthController::class, 'handleCallback'])
-    ->name('auth.github.callback');
+    Route::get('/github/callback', [GithubAuthController::class, 'handleCallback'])
+        ->name('github.callback');
+});
+
+

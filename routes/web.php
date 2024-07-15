@@ -30,6 +30,8 @@ require __DIR__.'/auth.php';
 // TODO 'route model binding' para las rutas de obra
 // TODO REPRODUCIR funcionalidades filmXtraVic
 // TODO al modificar la ruta de una obra, solo añadiendo caracteres en el trozo del titulo, se intenta acceder a esa obra pero claro, NO EXISTE y da un error de array[0] nulo porque claro no hay obra ESTUDIAR
+// TODO borrado de cuenta para o'auth
+// TODO plantillas emails o'auth
 
 
 // TODO notificaciones de algún tipo?? likes? criticas? estudiar (bootcamp ojear codigo)
