@@ -46,7 +46,7 @@ class GithubAuthController extends Controller
                 'email_verificado_fecha' => Date::now()
             ]
         );
-        // Siempre se envía mail, podría configurarse para envíar solo cuando no exista el usuario(social_id)
+
         Mail::to($user->email)->send(new SocialiteLoginMail($user));
         Auth::login($user);
         return redirect()->intended(RouteServiceProvider::HOME);

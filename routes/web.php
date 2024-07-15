@@ -25,7 +25,6 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-// TODO plantillas emails o'auth
 // TODO flash message para borrado de cuenta
 // TODO evento para borrado de cuenta con email
 
