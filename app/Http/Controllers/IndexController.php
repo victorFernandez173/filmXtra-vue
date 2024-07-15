@@ -40,17 +40,18 @@ class IndexController extends Controller
     public function index()
     {
         return Inertia::render('Index', [
-            'obras'               => Obra::select(['id', 'titulo'])
+            'obras'                => Obra::select(['id', 'titulo'])
                 ->with('poster:id,obra_id,ruta,alt')
                 ->whereIn('id', $this->obtenerObrasAleatorias())
                 ->get()->shuffle(),
-            'verificacionExitosa' => session('verificacionExitosa'),
-            'gifNumero'           => $this->obtenerUnNumDeGif(),
+            'verificacionExitosa'  => session('verificacionExitosa'),
+            'borradoCuentaExitoso' => session('borradoCuentaExitoso'),
+            'gifNumero'            => $this->obtenerUnNumDeGif(),
             /*Citas*/
-            'citaInspiring'       => Inspiring::quote(),
-            'citaQuotable'        => $this->citaQuotable(),
-            'citaPelicula'        => $this->citaPelicula(),
-            'citaCine'            => $this->citaSobreCine(),
+            'citaInspiring'        => Inspiring::quote(),
+            'citaQuotable'         => $this->citaQuotable(),
+            'citaPelicula'         => $this->citaPelicula(),
+            'citaCine'             => $this->citaSobreCine(),
         ]);
     }
 }

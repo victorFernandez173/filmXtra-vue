@@ -19,6 +19,7 @@ import Swal from "sweetalert2";
 const props = defineProps(['obras', 'verificacionExitosa', 'gifNumero', 'citaInspiring', 'citaQuotable', 'citaPelicula', 'citaCine']);
 const page = usePage();
 const confirmacionVerificacionMail = computed(() => page.props.verificacionExitosa);
+const borradoCuentaExitoso = computed(() => page.props.borradoCuentaExitoso);
 
 onMounted(() => {
     /*Iniciamos el carrusel*/
@@ -28,6 +29,19 @@ onMounted(() => {
         Swal.fire({
             title: 'Enhorabuena!!',
             text: 'Tu email ha sido validado exitosamente',
+            imageUrl: '../gif/' + usePage().props.gifNumero + '.gif',
+            imageWidth: 400,
+            imageAlt: 'gif de cine',
+            showConfirmButton: false,
+            position: 'center',
+            timer: 4500
+        });
+    }
+    /*Si hay flash de cuenta borrada, lanzamos SWAL*/
+    if (borradoCuentaExitoso.value) {
+        Swal.fire({
+            title: 'Adios!!',
+            text: 'Tu cuenta ha sido borrada. Lamentamos que te vayas.',
             imageUrl: '../gif/' + usePage().props.gifNumero + '.gif',
             imageWidth: 400,
             imageAlt: 'gif de cine',
