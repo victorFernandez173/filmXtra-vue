@@ -72,7 +72,8 @@ Route::name('auth.')->prefix('auth')->group(function () {
 
     Route::get('/google/callback', [GoogleAuthController::class, 'handleCallback'])
         ->name('google.callback');
-// Rutas github
+
+    // Rutas github
     Route::get('/github', [GithubAuthController::class, 'redirectToProvider'])
         ->name('github');
 
