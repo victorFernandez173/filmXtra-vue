@@ -5,7 +5,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import Modal from '@/Components/Modal.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { useForm } from '@inertiajs/vue3';
+import {useForm, usePage} from '@inertiajs/vue3';
 import { nextTick, ref } from 'vue';
 
 const confirmingUserDeletion = ref(false);
@@ -18,7 +18,9 @@ const form = useForm({
 const confirmUserDeletion = () => {
     confirmingUserDeletion.value = true;
 
-    nextTick(() => passwordInput.value.focus());
+    if(socialId === 1){
+        nextTick(() => passwordInput.value.focus());
+    }
 };
 
 const deleteUser = () => {
@@ -35,6 +37,9 @@ const closeModal = () => {
 
     form.reset();
 };
+
+// Para saber el tipo de cuenta y así determinar el tipo de borrado (cuentas o'auth no requerirán contraseña)
+let socialId = usePage().props.auth.user.login_tipo_id;
 </script>
 
 <template>
@@ -60,9 +65,10 @@ const closeModal = () => {
                 </p>
 
                 <div class="mt-6">
-                    <InputLabel for="password" value="Password" class="sr-only" />
+                    <InputLabel v-if="socialId === 1" for="password" value="Password" class="sr-only" />
 
                     <TextInput
+                        v-if="socialId === 1"
                         id="password"
                         ref="passwordInput"
                         v-model="form.password"
@@ -72,7 +78,7 @@ const closeModal = () => {
                         @keyup.enter="deleteUser"
                     />
 
-                    <InputError :message="form.errors.password" class="mt-2" />
+                    <InputError v-if="socialId === 1" :message="form.errors.password" class="mt-2" />
                 </div>
 
                 <div class="mt-6 flex justify-end">

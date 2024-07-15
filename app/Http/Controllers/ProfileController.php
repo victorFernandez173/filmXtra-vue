@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\LoginTipo;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -45,16 +46,19 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validate(
-            [
-                'password' => ['required', 'current_password'],
-            ],
-            [
-                'password.required'         => 'Por favor, el password',
-                'password.current_password' => 'Revise el password introducido'
-            ]);
-
         $user = $request->user();
+
+        if($user->login_tipo_id == LoginTipo::FILMXTRA_TIPO){
+            $request->validate(
+                [
+                    'password' => ['required', 'current_password'],
+                ],
+                [
+                    'password.required'         => 'Por favor, el password',
+                    'password.current_password' => 'Revise el password introducido'
+                ]
+            );
+        }
 
         Auth::logout();
 
