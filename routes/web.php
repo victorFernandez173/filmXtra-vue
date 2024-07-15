@@ -25,7 +25,6 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-// TODO flash message para borrado de cuenta
 // TODO evento para borrado de cuenta con email
 
 // TODO busqueda navbar reactivar;;;buscador mejorar: paginación, mensajes con los resultados...
