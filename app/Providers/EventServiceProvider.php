@@ -29,7 +29,7 @@ class EventServiceProvider extends ServiceProvider
         PasswordReset::class => [
             ReseteoPasswordExitosoEscuchador::class
         ],
-        BajaUsuario::class => [
+        BajaUsuario::class   => [
             BajaUsuarioEscuchador::class
         ]
     ];

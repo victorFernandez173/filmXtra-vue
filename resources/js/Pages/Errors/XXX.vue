@@ -23,7 +23,7 @@ const message = computed(() => {
         <p class="my-10 text-2xl leading-7 text-gray-800">{{ message }}</p>
         <img src="/error/error-gif.gif" class="m-auto mt-7 w-80" alt="Gif error cine">
         <div class="flex items-center justify-center gap-x-6">
-            <Link :href="route('home')" class="hover:text-flamingo hover:bg-black bg-flamingo rounded-md px-3.5 py-2.5 text-sm font-semibold text-white">Ir a inicio &rarr;</Link>
+            <Link :href="route('/')" class="hover:text-flamingo hover:bg-black bg-flamingo rounded-md px-3.5 py-2.5 text-sm font-semibold text-white">Ir a inicio &rarr;</Link>
         </div>
         <img src="/images/logo.png" class="w-60 mt-10" alt="Logo FilmXtra">
     </error-layout>

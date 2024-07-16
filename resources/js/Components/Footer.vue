@@ -9,7 +9,7 @@ import {Link} from "@inertiajs/vue3";
                 class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 justify-items-center px-2 text-center">
                 <div
                     class="w-full flex items-start col-span-1 sm:col-span-2 md:items-center md:col-span-1 justify-center">
-                    <Link :href="route('home')" class="flex justify-center">
+                    <Link :href="route('/')" class="flex justify-center">
                         <img class="w-7/12 sm:w-7/12 md:w-9/12 lg:10/12" src="/images/logo-blanco.png"
                              alt="Logo FilmXtra"/>
                     </Link>
@@ -18,13 +18,13 @@ import {Link} from "@inertiajs/vue3";
                     <h2 class="mb-6 text-sm font-semibold text-white uppercase">Enlaces</h2>
                     <ul class="text-gray-500 font-medium hover:[&>li]:text-flamingo hover:[&>li]:no-underline [&>li]:mb-4">
                         <li>
-                            <Link :href="route('home')">Inicio</Link>
+                            <Link :href="route('/')">Inicio</Link>
                         </li>
                         <li>
-                            <Link :href="route('home')">Top FilmXtra</Link>
+                            <Link :href="route('/')">Top FilmXtra</Link>
                         </li>
                         <li>
-                            <Link :href="route('home')">Top Valoraciones</Link>
+                            <Link :href="route('/')">Top Valoraciones</Link>
                         </li>
                         <li>
                             <Link :href="route('profile.edit')">Cuenta</Link>
@@ -35,7 +35,7 @@ import {Link} from "@inertiajs/vue3";
                     <h2 class="mb-6 text-sm font-semibold text-white uppercase">Contacto</h2>
                     <ul class="text-gray-500 font-medium hover:[&>li]:text-flamingo">
                         <li class="mb-4">
-                            <Link class="" :href="route('home')">filmxtra173@gmail.com</Link>
+                            <Link class="" :href="route('/')">filmxtra173@gmail.com</Link>
                         </li>
                         <li>
                             <p class="px-12 sm:px-0">Explora un mundo de emociones y sorpresas en FilmXtra,
@@ -48,7 +48,7 @@ import {Link} from "@inertiajs/vue3";
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8"/>
             <div class="text-center sm:flex sm:items-center sm:justify-between">
-            <span class="text-sm text-gray-500 sm:text-center">© 2023 <Link class="hover:text-flamingo" :href="route('home')">filmXtra<span>™</span></Link>. Todos los derechos reservados.
+            <span class="text-sm text-gray-500 sm:text-center">© 2023 <Link class="hover:text-flamingo" :href="route('/')">filmXtra<span>™</span></Link>. Todos los derechos reservados.
             </span>
                 <div class="hover:[&>a]:text-flamingo flex justify-center mt-4 space-x-6 sm:margin-auto sm:mt-0 [&>a]:text-gray-500 [&>a>svg]:w-5 [&>a>svg]:h-5">
                     <a href="https://www.facebook.com/" target="_blank">

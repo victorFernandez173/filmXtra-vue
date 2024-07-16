@@ -91,13 +91,13 @@
                 <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
                     <tr style="padding-bottom: 30px;">
                         <td align="left" valign="middle" style="padding-top: 40px;  padding-bottom: 40px; padding-left: 40px;">
-                            <a href="{{route('home')}}" target="_blank">
+                            <a href="{{route('/')}}" target="_blank">
                                 <img src="{{$message->embed($logo)}}" width="110px" alt="logo filmxtra"
                                      style="display: block; float: left;"/>
                             </a>
                         </td>
                         <td align="right" valign="middle" style="padding-top: 40px; padding-bottom: 40px; padding-right: 40px;">
-                            <a href="{{route('home')}}" target="_blank">
+                            <a href="{{route('/')}}" target="_blank">
                                 <img src="{{$message->embed($logo)}}" width="110px" alt="logo filmxtra"
                                      style="display: block; float: right;"/>
                             </a>
@@ -121,7 +121,7 @@
                         <td style="padding: 30px 40px 40px 40px;">
                             <p style="color: #2a4467; font-weight: 300;">
                                 Saludos,
-                                <a href="{{route('home')}}" target="_blank" style="text-decoration: none; color: #1d9cd8; font-weight: 700;">Filmxtra</a>
+                                <a href="{{route('/')}}" target="_blank" style="text-decoration: none; color: #1d9cd8; font-weight: 700;">Filmxtra</a>
                                 <br/><br/>
                             </p>
                         </td>
@@ -136,7 +136,7 @@
                     <tr>
                         <td style="padding-top: 25px;">
                             <p style="text-align: center; font-size: 14px; font-weight: 500; color: white; margin-bottom: 15px">
-                                <a href="{{route('home')}}" target="_blank" style="text-decoration: none; color: #000000; font-weight: 700;">www.filmxtra.es</a>
+                                <a href="{{route('/')}}" target="_blank" style="text-decoration: none; color: #000000; font-weight: 700;">www.filmxtra.es</a>
                                 <br>
                                 <br>
                                 Copyright (c) 2023 Filmxtra.
