@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\BajaUsuario;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\LoginTipo;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -62,7 +63,8 @@ class ProfileController extends Controller
 
         Auth::logout();
 
-        $user->delete();
+        // Si el borrado es efectivo, se despacha el evento
+        BajaUsuario::dispatchIf($user->delete(), $user);
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();

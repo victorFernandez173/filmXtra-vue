@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\BajaUsuario;
+use App\Listeners\BajaUsuarioEscuchador;
 use App\Listeners\ReseteoPasswordExitosoEscuchador;
 use App\Listeners\VerificacionEmailExitosaEscuchador;
 use Illuminate\Auth\Events\PasswordReset;
@@ -26,6 +28,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         PasswordReset::class => [
             ReseteoPasswordExitosoEscuchador::class
+        ],
+        BajaUsuario::class => [
+            BajaUsuarioEscuchador::class
         ]
     ];
 

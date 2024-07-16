@@ -25,7 +25,8 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-// TODO evento para borrado de cuenta con email
+// TODO revisar redirección tras validación email
+// TODO swal con google y github???
 
 // TODO busqueda navbar reactivar;;;buscador mejorar: paginación, mensajes con los resultados...
 // TODO 'route model binding' para las rutas de obra
