@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
+// TODO revisar funcionalidad completa FICHA PELICULA
+
 // TODO busqueda navbar reactivar;;;buscador mejorar: paginación, mensajes con los resultados...
 // TODO 'route model binding' para las rutas de obra
 // TODO REPRODUCIR funcionalidades filmXtraVic
