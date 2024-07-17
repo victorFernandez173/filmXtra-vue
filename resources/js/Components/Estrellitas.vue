@@ -70,7 +70,7 @@ defineProps(['mediaEvaluaciones','obra', 'mostrarVotos'])
             </svg>
             <!-- Valoraciones -->
             <p v-if="mostrarVotos" class="text-black text-xs lg:text-base"> &nbsp;&nbsp; {{ mediaEvaluaciones }}/10
-                ({{ obra[0]['evaluaciones'].length }} votos)</p>
+                ({{ obra.evaluaciones.length }} votos)</p>
         </div>
     </div>
 </template>
