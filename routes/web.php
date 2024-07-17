@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ObtenerObraController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\IndexController;
 
@@ -15,6 +16,8 @@ use App\Http\Controllers\IndexController;
 
 
 Route::get('/', [IndexController::class, 'index'])->name('/');
+
+Route::get('/obra/{id}', [ObtenerObraController::class, 'fichaPelicula'])->name('obra');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
