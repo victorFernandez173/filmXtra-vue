@@ -33,8 +33,8 @@ Route::middleware('auth')
 
 require __DIR__ . '/auth.php';
 
-// TODO revisar bloque rutas 27-35 y crear bloque para criticas controller???
 // TODO revisar funcionalidad completa FICHA PELICULA
+// TODO corregir responsividad posters SAGA
 
 // TODO alguna manera de modificar el id en /obra por el titulo en la url???
 // TODO busqueda navbar reactivar;;;buscador mejorar: paginación, mensajes con los resultados...

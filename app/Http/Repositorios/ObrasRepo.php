@@ -93,7 +93,7 @@ class ObrasRepo extends Controller
             // Obtenemos su orden en la saga
             $orden = $obra->secuela->orden;
             // Obtenemos las que haya: secuela, precuela y spin-offs según 'orden'
-            $relacionadas = Secuela::select('obra_id')
+            $secuelaPrecuela = Secuela::select('obra_id')
                 ->where('saga', $obra->secuela->saga)
                 ->whereIn('orden', [0, $orden + 1, $orden - 1])
                 ->orderBy('orden', 'desc')
@@ -101,7 +101,7 @@ class ObrasRepo extends Controller
 
             // Retornamos info de esas obras
             return Obra::with('poster', 'secuela:obra_id,orden')
-                ->find($relacionadas);
+                ->find($secuelaPrecuela);
         }
         return null;
     }
