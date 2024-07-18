@@ -20,6 +20,7 @@ class PaginacionController extends Controller
     {
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);
+
         return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page,
             // Parametro: (array $options) clave para que la paginación cargue los datos de la siguiente pagina cogiendo el parametro 'page' de la url
             ['path' => Paginator::resolveCurrentPath()]
