@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CriticasController;
 use App\Http\Controllers\ObtenerObraController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\IndexController;
@@ -15,21 +16,27 @@ use App\Http\Controllers\IndexController;
 */
 
 
-Route::get('/', [IndexController::class, 'index'])->name('/');
+Route::get('/', [IndexController::class, 'index'])
+    ->name('/');
 
-Route::get('/obra/{id}', [ObtenerObraController::class, 'fichaPelicula'])->name('obra');
+Route::get('/obra/{id}', [ObtenerObraController::class, 'fichaPelicula'])
+    ->name('obra');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+Route::post('/like', [CriticasController::class, 'darLike'])->name('darLike')->middleware('auth', 'verified');
 
-require __DIR__.'/auth.php';
+Route::middleware('auth')
+    ->group(function () {
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    });
 
+require __DIR__ . '/auth.php';
 
+// TODO revisar bloque rutas 27-35 y crear bloque para criticas controller???
 // TODO revisar funcionalidad completa FICHA PELICULA
 
+// TODO alguna manera de modificar el id en /obra por el titulo en la url???
 // TODO busqueda navbar reactivar;;;buscador mejorar: paginación, mensajes con los resultados...
 // TODO 'route model binding' para las rutas de obra
 // TODO REPRODUCIR funcionalidades filmXtraVic
