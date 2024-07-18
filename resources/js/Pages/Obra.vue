@@ -15,7 +15,7 @@ import Swal from "sweetalert2";
 import Estrellitas from "../Components/Estrellitas.vue";
 import Trailers from "../Components/Trailers.vue";
 
-const props = defineProps(['obra', 'mediaEvaluaciones', 'criticas', 'saga', 'secuelaPrecuela', 'nGifs']);
+const props = defineProps(['obra', 'generos', 'mediaEvaluaciones', 'criticas', 'saga', 'secuelaPrecuela', 'nGifs']);
 
 // Funcion para ordenar array por clave interna
 // Necesaria para devolver las secuelas de la saga ordenadas por columna/propiedad interna 'orden' si hubiera varias
@@ -45,7 +45,7 @@ function alertaDarLike() {
     });
 }
 
-//Se le pasa listado de actores/directores y va generando un string que contiene con asíndeton con comas
+//Se le pasa listado de actores/directores y va generando un string que contiene la enumeracion
 function procesarEnumeracion(listado) {
     let enumeracionConComas = ' ';
     for (let i = 0; i < listado.length; i++) {
@@ -70,19 +70,6 @@ function procesarNombre(nombre) {
     // Despues el apellido
     nombreProcesado += ' ' + nombre.substring(0, nombre.indexOf(','));
     return nombreProcesado;
-}
-
-// Obtenemos y procesamos los géneros para añadirles comas y puntos como una enumeración correcta.
-// Se le pasa el array con los generos y se procesa con un for añadiendo dichos generos a un array.
-//Se transforman a un string, uniendolos con comas.
-//Se devuelve el string con un punto final.
-function procesarGeneros(generos) {
-    const generosProcesados = [];
-    for (let i = 0; i < generos.length; i++) {
-        generosProcesados.push(generos[i].genero);
-    }
-    let generosString = generosProcesados.join(', ');
-    return generosString.substring(0, generosString.length) + '.';
 }
 
 // Coloreado de los likes
@@ -148,7 +135,7 @@ function procesarGustadas($usuario, $gustadas) {
                             </li>
                             <li v-if="obra.generos" class="list-disc ml-5"><span
                                 class="font-semibold underline text-lg">Género</span>: <span> {{
-                                    procesarGeneros(props.obra.generos)
+                                    props.generos
                                 }} </span></li>
                             <li class="list-disc ml-5"><span class="font-semibold underline text-lg">Sinopsis</span>:
                                 {{ obra.sinopsis }}
