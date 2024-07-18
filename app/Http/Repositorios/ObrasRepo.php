@@ -22,10 +22,19 @@ class ObrasRepo extends Controller
      */
     static function obtenerDatosFichaObra(int $idObra): Obra|Builder|Model|_IH_Obra_QB
     {
-        return Obra::with(['poster', 'secuela:obra_id,orden,saga', 'criticas', 'directors:nombre,edad,defuncion,pais', 'festivals:obra_id,nombre,edicion', 'profesionals.medio:id,nombre,web', 'evaluaciones:obra_id,usuario_id,evaluacion', 'actors:nombre,nombre_real,edad,defuncion,pais', 'generos:genero', 'trailer'])
+        return Obra::with([
+            'poster',
+            'secuela:obra_id,orden,saga',
+            'criticas',
+            'directors:nombre,edad,defuncion,pais',
+            'festivals:obra_id,nombre,edicion',
+            'profesionals.medio:id,nombre,web',
+            'evaluaciones:obra_id,usuario_id,evaluacion',
+            'actors:nombre,nombre_real,edad,defuncion,pais',
+            'generos:genero',
+            'trailer'])
             ->where('id', $idObra)
             ->first();
-
     }
 
     /**
@@ -84,7 +93,7 @@ class ObrasRepo extends Controller
             // Obtenemos su orden en la saga
             $orden = $obra->secuela->orden;
             // Obtenemos las que haya: secuela, precuela y spin-offs según 'orden'
-            $secuelaPrecuela = Secuela::select('obra_id')
+            $relacionadas = Secuela::select('obra_id')
                 ->where('saga', $obra->secuela->saga)
                 ->whereIn('orden', [0, $orden + 1, $orden - 1])
                 ->orderBy('orden', 'desc')
@@ -92,7 +101,7 @@ class ObrasRepo extends Controller
 
             // Retornamos info de esas obras
             return Obra::with('poster', 'secuela:obra_id,orden')
-                ->find($secuelaPrecuela);
+                ->find($relacionadas);
         }
         return null;
     }
