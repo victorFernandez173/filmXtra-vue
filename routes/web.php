@@ -33,8 +33,7 @@ Route::middleware('auth')
 
 require __DIR__ . '/auth.php';
 
-// TODO revisar funcionalidad completa FICHA PELICULA
-// TODO corregir responsividad posters SAGA
+// TODO revisar funcionalidad completa FICHA PELICULA: falta optimizar al maximo fichero Obra.vue//ver si paso mas funciones a back//y responsividad posters saga
 
 // TODO alguna manera de modificar el id en /obra por el titulo en la url???
 // TODO busqueda navbar reactivar;;;buscador mejorar: paginación, mensajes con los resultados...

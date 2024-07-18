@@ -15,7 +15,7 @@ import Swal from "sweetalert2";
 import Estrellitas from "../Components/Estrellitas.vue";
 import Trailers from "../Components/Trailers.vue";
 
-const props = defineProps(['obra', 'generos', 'mediaEvaluaciones', 'criticas', 'saga', 'secuelaPrecuela', 'nGifs']);
+const props = defineProps(['obra', 'generos', 'reparto', 'direccion', 'mediaEvaluaciones', 'criticas', 'saga', 'secuelaPrecuela', 'nGifs']);
 
 // Funcion para ordenar array por clave interna
 // Necesaria para devolver las secuelas de la saga ordenadas por columna/propiedad interna 'orden' si hubiera varias
@@ -43,33 +43,6 @@ function alertaDarLike() {
         imageAlt: 'ocupate de arreglarlo, imagen para Regístrate y logueate para dar like',
         confirmButtonColor: '#e37f81'
     });
-}
-
-//Se le pasa listado de actores/directores y va generando un string que contiene la enumeracion
-function procesarEnumeracion(listado) {
-    let enumeracionConComas = ' ';
-    for (let i = 0; i < listado.length; i++) {
-        //Procesamos el nombre del individuo
-        let nombre = procesarNombre(listado[i].nombre);
-        //Lo añadimos
-        enumeracionConComas += nombre;
-        //Añadimos punto o coma
-        if (i < listado.length - 1) {
-            enumeracionConComas += ', ';
-        } else {
-            enumeracionConComas += '.';
-        }
-    }
-    return enumeracionConComas;
-}
-
-//Antepone el nombre al apellido al estar (apellido, nombre) en la BBDD y devuelve el string
-function procesarNombre(nombre) {
-    // Primero el nombre
-    let nombreProcesado = nombre.substring(nombre.indexOf(',') + 2, nombre.length);
-    // Despues el apellido
-    nombreProcesado += ' ' + nombre.substring(0, nombre.indexOf(','));
-    return nombreProcesado;
 }
 
 // Coloreado de los likes
@@ -123,12 +96,12 @@ function procesarGustadas($usuario, $gustadas) {
                                 {{ obra.pais }}
                             </li>
                             <li v-if="obra.directors[0]" class="list-disc ml-5"><span
-                                class="font-semibold underline text-lg">Dirección</span>:<span> {{
-                                    procesarEnumeracion(props.obra.directors)
+                                class="font-semibold underline text-lg">Dirección</span>: <span> {{
+                                     props.direccion
                                 }}  </span></li>
                             <li v-if="obra.actors[0]" class="list-disc ml-5"><span
                                 class="font-semibold underline text-lg">Reparto</span>: <span>{{
-                                    procesarEnumeracion(props.obra.actors)
+                                    props.reparto
                                 }} </span></li>
                             <li class="list-disc ml-5"><span class="font-semibold underline text-lg">Productora</span>:
                                 {{ obra.productora }}

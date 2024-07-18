@@ -23,6 +23,8 @@ class ObtenerObraController extends Controller
         return Inertia::render('Obra', [
             'obra'              => $obra,
             'generos'           => $this->procesarGeneros($obra->generos),
+            'reparto'           => $this->procesarCasting($obra->actors),
+            'direccion'         => $this->procesarCasting($obra->directors),
             'mediaEvaluaciones' => ObrasRepo::calcularMediaEvaluaciones($obra->evaluaciones),
             'criticas'          => ObrasRepo::obtenerArrayInfoCriticas($obra->criticas),
             'saga'              => $obra->secuela->saga ?? '',
@@ -34,11 +36,13 @@ class ObtenerObraController extends Controller
 
 
     /**
+     * Retorna string con enumeración de los géneros
      * @param Collection $generos
      * @return string
      * @throws Exception
      */
-    public function procesarGeneros(Collection $generos){
+    public function procesarGeneros(Collection $generos)
+    {
         $cadenaGeneros = '';
         $generos->each(function ($valor) use (&$cadenaGeneros) {
             $cadenaGeneros.=$valor->genero.', ';
@@ -47,15 +51,29 @@ class ObtenerObraController extends Controller
     }
 
     /**
+     * Retorna string con enumeración los nombres de actores, directores
      * @param Collection $casting
      * @return string
      * @throws Exception
      */
-    public function procesarCasting(Collection $casting){
+    public function procesarCasting(Collection $casting)
+    {
         $cadenaCasting = '';
         $casting->each(function ($valor) use (&$cadenaCasting) {
-            $cadenaCasting.=$valor->genero.', ';
+            $cadenaCasting.=$this->procesarNombre($valor->nombre).', ';
         });
         return rtrim($cadenaCasting, ', ').'.';
+    }
+
+    /**
+     * Procesa nombres para anteponer nombre al apellido
+     * @param string $nombre
+     * @return string
+     */
+    public function procesarNombre(string $nombre)
+    {
+        $nombreProcesado = substr($nombre, strrpos($nombre, ',') + 2).' ';
+        $nombreProcesado .= substr($nombre, 0, strrpos($nombre, ','));
+        return $nombreProcesado;
     }
 }
