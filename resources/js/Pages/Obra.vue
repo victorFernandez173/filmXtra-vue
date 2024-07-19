@@ -54,7 +54,7 @@ function colorearManoLike($usuario, $gustadas) {
     <div class="container mx-auto mt-10 mb-10">
         <h1 class="text-center font-bold text-flamingo underline text-3xl px-8">{{ obra.titulo }}</h1>
         <!--3 apartados para poster, datos y valoraciones-->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
             <!--Poster-->
             <div class="flex justify-start flex-col m-auto h-[100%] w-[90%]">
                 <img :src="'../posters/' + obra.poster.ruta" :alt="obra.poster.alt">
@@ -63,7 +63,7 @@ function colorearManoLike($usuario, $gustadas) {
             </div>
 
             <!--Datos pelicula-->
-            <div class="flex justify-center mr-10 pl-10 pr-10 w-full md:-ml[150px]">
+            <div class="flex justify-center mr-10 pl-10 pr-10 w-full md:-ml[100px]">
                 <ul>
                     <li class="list-disc font-bold text-flamingo text-xl"><span class="underline">Obra</span>:</li>
                     <li>
@@ -123,44 +123,28 @@ function colorearManoLike($usuario, $gustadas) {
                                 <span class="underline">Saga</span>:
                                 <span class="inline-block w-full text-center mb-1">&nbsp;{{saga}}</span>
                             </li>
-                            <!-- Si solo hay un poster en secuelas, flex justify-center -->
-
-
-
-
-
-
                             <!-- Bloque para secuela/precuela -->
-                            <div :class="secuelaPrecuela.length <= 1 ? 'text-center flex justify-center' : 'text-center grid lg:grid-cols-2 justify-items-center'">
-                                <div v-for="obra in secuelaPrecuela" :class="secuelaPrecuela.length <= 1 ? 'w-[100%] sm:w-[100%] md:w-[80%] lg' : 'w-[80%] sm:w-[100%] md:w-[80%] lg mb-5'">
+                            <div v-if="secuelaPrecuela" :class="secuelaPrecuela.length == 1 ? 'text-center flex justify-center' : 'text-center grid lg:grid-cols-2 justify-items-center'">
+                                <div v-for="obra in secuelaPrecuela" :class="secuelaPrecuela.length == 1 ? 'w-[100%] md:w-[80%]' : 'w-[80%] sm:w-[100%] md:w-[80%] mb-5'">
                                     <span>
-                                    {{obra.secuela.orden < props.obra.secuela.orden ? 'Precuela' : 'Secuela'}}
+                                        {{props.obra.secuela.orden == 0 ? 'Relación' : obra.secuela.orden < props.obra.secuela.orden ? 'Precuela' : 'Secuela'}}
                                     </span>
-                                    <div :class="secuelaPrecuela.length <= 1 ? 'w-[60%] md:w-[70%] mx-auto flex justify-center -my-[25px] md:m:0 mt-0.5' : 'w-[80%] md:w-[90%] mx-auto flex justify-center -my-[25px] md:m:0 mt-0.5'">
+                                    <div :class="secuelaPrecuela.length == 1 ? 'w-[60%] md:w-[70%] mx-auto flex justify-center -my-[25px] md:m:0 mt-0.5' : 'w-[80%] md:w-[90%] mx-auto -my-[25px] md:m:0 mt-0.5'">
                                         <Poster :obra="obra" :titulo="`text-lg hover:text-sm md:text-base md:hover:text-base`" :info="true"/>
                                     </div>
                                 </div>
                             </div>
-
-
-
-
                             <!-- Bloque para spin-offs -->
-                            <div :class="spinoffs.length <= 1 ? 'text-center flex justify-center' : 'text-center grid lg:grid-cols-2 justify-items-center'">
-                                <div v-for="obra in spinoffs" :class="spinoffs.length <= 1 ? 'w-[100%] sm:w-[100%] md:w-[80%] lg' : 'w-[80%] sm:w-[100%] md:w-[80%] lg mb-5'">
+                            <div v-if="spinoffs" :class="spinoffs.length == 1 ? 'text-center flex justify-center' : 'text-center grid lg:grid-cols-2 justify-items-center'">
+                                <div v-for="obra in spinoffs" :class="spinoffs.length == 1 ? 'w-[100%] md:w-[80%]' : 'w-[80%] sm:w-[100%] md:w-[80%] mb-5'">
                                     <span>
-                                    {{obra.secuela.orden < props.obra.secuela.orden ? 'Precuela' : 'Secuela'}}
+                                        {{props.obra.secuela.orden == 0 ? 'Relación' : 'Spinoff'}}
                                     </span>
-                                    <div :class="spinoffs.length <= 1 ? 'w-[60%] md:w-[70%] mx-auto flex justify-center -my-[25px] md:m:0 mt-0.5' : 'w-[80%] md:w-[90%] mx-auto flex justify-center -my-[25px] md:m:0 mt-0.5'">
+                                    <div :class="spinoffs.length == 1 ? 'w-[60%] md:w-[70%] mx-auto flex justify-center -my-[25px] md:m:0 mt-0.5' : 'w-[80%] md:w-[90%] mx-auto -my-[25px] md:m:0 mt-0.5'">
                                         <Poster :obra="obra" :titulo="`text-lg hover:text-sm md:text-base md:hover:text-base`" :info="true"/>
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
                         </ul>
                     </li>
                 </ul>
