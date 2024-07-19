@@ -82,26 +82,34 @@ class ObrasRepo extends Controller
     }
 
     /**
-     * Para obtener: secuelas, precuelas o spinoffs si las hubiera
-     * @param $obra
+     * Para obtener: secuelas, precuelas o spinoffs si las hubiera.
+     * $tipo defecto true equivale a precuelas/secuelas; false spinoffs
+     * @param Obra $obra
+     * @param bool $tipo
      * @return mixed
      */
-    static function obtenerSecuelaPrecuela($obra): mixed
+    static function obtenerObrasRelacionadas(Obra $obra, bool $tipo = true): mixed
     {
         // Si es parte de una saga esta obra
         if ($obra->secuela) {
             // Obtenemos su orden en la saga
             $orden = $obra->secuela->orden;
-            // Obtenemos las que haya: secuela, precuela y spin-offs según 'orden'
-            $secuelaPrecuela = Secuela::select('obra_id')
+            // Obtenemos las que haya según 'orden'
+            $relacionadas = Secuela::select('obra_id')
                 ->where('saga', $obra->secuela->saga)
-                ->whereIn('orden', [0, $orden + 1, $orden - 1])
-                ->orderBy('orden', 'desc')
+                // $tipo = true: obtenemos secuelas/precuelas
+                ->when($tipo, function ($query) use ($orden) {
+                    return $query->whereIn('orden', [$orden + 1, $orden - 1]);
+                })
+                // $tipo = false: obtenemos spinoffs
+                ->when(!$tipo, function ($query) {
+                    return $query->where('orden', 0);
+                })
                 ->get();
 
             // Retornamos info de esas obras
             return Obra::with('poster', 'secuela:obra_id,orden')
-                ->find($secuelaPrecuela);
+                ->find($relacionadas);
         }
         return null;
     }

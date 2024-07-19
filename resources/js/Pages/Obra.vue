@@ -1,6 +1,5 @@
 <script>
 import LayoutPrincipal from "../Layouts/LayoutPrincipal.vue";
-
 export default {
     layout: LayoutPrincipal,
 }
@@ -8,6 +7,7 @@ export default {
 
 <script setup>
 import dayjs from "dayjs";
+import es from "dayjs/locale/es";
 import relativeTime from 'dayjs/plugin/relativeTime';
 import {Head, Link, usePage} from "@inertiajs/vue3";
 import Poster from "../Components/Poster.vue";
@@ -15,25 +15,13 @@ import Swal from "sweetalert2";
 import Estrellitas from "../Components/Estrellitas.vue";
 import Trailers from "../Components/Trailers.vue";
 
-const props = defineProps(['obra', 'generos', 'reparto', 'direccion', 'mediaEvaluaciones', 'criticas', 'saga', 'secuelaPrecuela', 'nGifs']);
-
-// Funcion para ordenar array por clave interna
-// Necesaria para devolver las secuelas de la saga ordenadas por columna/propiedad interna 'orden' si hubiera varias
-const ordenarAnidado = (p1, p2 = null, sentido = 'asc') => (e1, e2) => {
-    const a = p2 ? e1[p1][p2] : e1[p1],
-        b = p2 ? e2[p1][p2] : e2[p1],
-        ordenarPor = sentido === "asc" ? 1 : -1
-    return (a < b) ? -ordenarPor : (a > b) ? ordenarPor : 0;
-}
-
-// Si hay secuelas, se genera un array con el objeto y despues se ordena dicho array
-const secuelasOrdenadas = props.secuelaPrecuela !== null ? props.secuelaPrecuela.sort(ordenarAnidado("secuela", "orden", "desc")) : null;
+const props = defineProps(['obra', 'generos', 'reparto', 'direccion', 'mediaEvaluaciones', 'criticas', 'saga', 'secuelaPrecuela', 'spinoffs', 'nGifs']);
 
 // Configuración fechas relativas dayjs
 dayjs.extend(relativeTime);
-dayjs.locale('es');
+dayjs.locale(es);
 
-// Función alert para avisar que no pueder dar like sin estar registrado y logueado
+// Alert para avisar que no pueder dar like sin estar registrado y logueado
 function alertaDarLike() {
     Swal.fire({
         title: 'UPSSS!',
@@ -45,11 +33,11 @@ function alertaDarLike() {
     });
 }
 
-// Coloreado de los likes
-//Se le pasa el usuario logueado y un json con los datos de la critica en concreto que se recoje con el inidice del v-for que va cargando las criticas.
-//A continuación se tranforma a array el objeto gustaPor.
-//Y si este incluye el id del usuario logueado, es que el like fue activado, se colorea de negro pues.
-function procesarGustadas($usuario, $gustadas) {
+// Coloreado de los likes.
+// Parametros: usuario logueado y  datos de la critica.
+// Se crea un array al que le pasamos los id de los usuarios que gustan la crítica.
+// Retornamos si incluye el id del usuario logueado (true): se colorea de negro pues.
+function colorearManoLike($usuario, $gustadas) {
     let gustadaPorArray = []
     for(const usuario_id in $gustadas.gustadaPor){
         gustadaPorArray.push($gustadas.gustadaPor[usuario_id].usuario_id);
@@ -77,90 +65,102 @@ function procesarGustadas($usuario, $gustadas) {
             <!--Datos pelicula-->
             <div class="flex justify-center mr-10 pl-10 pr-10 w-full md:-ml[150px]">
                 <ul>
-                    <!--Datos de la pelicula-->
                     <li class="list-disc font-bold text-flamingo text-xl"><span class="underline">Obra</span>:</li>
                     <li>
                         <ul>
-                            <li class="list-disc ml-5"><span class="font-semibold underline text-lg">Título</span>: {{
-                                    obra.titulo
-                                }} ({{ obra.titulo_original }})
+                            <li class="list-disc ml-5">
+                                <span class="font-semibold underline text-lg">Título</span>:
+                                {{ obra.titulo }}
+                                ({{ obra.titulo_original }})
                             </li>
-                            <li class="list-disc ml-5"><span class="font-semibold underline text-lg">Año</span>:
+                            <li class="list-disc ml-5">
+                                <span class="font-semibold underline text-lg">Año</span>:
                                 {{ obra.fecha }}
                             </li>
-                            <li class="list-disc ml-5"><span class="font-semibold underline text-lg">Duración</span>:
+                            <li class="list-disc ml-5">
+                                <span class="font-semibold underline text-lg">Duración</span>:
                                 {{ Math.floor((parseInt(obra.duracion) / 60)) }}h
                                 {{ parseInt(obra.duracion) % 60 }}min
                             </li>
-                            <li class="list-disc ml-5"><span class="font-semibold underline text-lg">País</span>:
+                            <li class="list-disc ml-5">
+                                <span class="font-semibold underline text-lg">País</span>:
                                 {{ obra.pais }}
                             </li>
-                            <li v-if="obra.directors[0]" class="list-disc ml-5"><span
-                                class="font-semibold underline text-lg">Dirección</span>: <span> {{
-                                     props.direccion
-                                }}  </span></li>
-                            <li v-if="obra.actors[0]" class="list-disc ml-5"><span
-                                class="font-semibold underline text-lg">Reparto</span>: <span>{{
-                                    props.reparto
-                                }} </span></li>
-                            <li class="list-disc ml-5"><span class="font-semibold underline text-lg">Productora</span>:
+                            <li v-if="obra.directors[0]" class="list-disc ml-5">
+                                <span class="font-semibold underline text-lg">Dirección</span>:
+                                <span> {{ props.direccion }}  </span>
+                            </li>
+                            <li v-if="obra.actors[0]" class="list-disc ml-5">
+                                <span class="font-semibold underline text-lg">Reparto</span>:
+                                <span>{{ props.reparto }} </span>
+                            </li>
+                            <li class="list-disc ml-5">
+                                <span class="font-semibold underline text-lg">Productora</span>:
                                 {{ obra.productora }}
                             </li>
-                            <li v-if="obra.generos" class="list-disc ml-5"><span
-                                class="font-semibold underline text-lg">Género</span>: <span> {{
-                                    props.generos
-                                }} </span></li>
-                            <li class="list-disc ml-5"><span class="font-semibold underline text-lg">Sinopsis</span>:
+                            <li v-if="obra.generos" class="list-disc ml-5">
+                                <span class="font-semibold underline text-lg">Género</span>:
+                                <span> {{ props.generos }} </span>
+                            </li>
+                            <li class="list-disc ml-5">
+                                <span class="font-semibold underline text-lg">Sinopsis</span>:
                                 {{ obra.sinopsis }}
                             </li>
                             <!--Festivales y premios-->
-                            <li v-if="obra.festivals.length > 0"
-                                class="list-disc font-bold underline text-flamingo text-xl mt-2">Galardones:
+                            <li v-if="obra.festivals.length > 0" class="list-disc font-bold underline text-flamingo text-xl mt-2">
+                                Galardones:
                             </li>
                             <li>
                                 <ul>
-                                    <li v-for="fest in obra.festivals" class="list-disc ml-5"><span
-                                        class="font-semibold underline text-lg">Mejor película</span>: {{
-                                            fest.nombre
-                                        }}({{ fest.edicion }})
+                                    <li v-for="fest in obra.festivals" class="list-disc ml-5">
+                                        <span class="font-semibold underline text-lg">Mejor película</span>:
+                                        {{ fest.nombre }}({{ fest.edicion }})
                                     </li>
                                 </ul>
                             </li>
-                            <li v-if="saga" class="list-disc font-bold text-flamingo text-xl mt-2"><span
-                                class="underline">Saga</span>: <span class="inline-block w-full text-center mb-1">&nbsp;{{
-                                    saga
-                                }}</span>
+                            <!--Saga-->
+                            <li v-if="saga" class="list-disc font-bold text-flamingo text-xl mt-2">
+                                <span class="underline">Saga</span>:
+                                <span class="inline-block w-full text-center mb-1">&nbsp;{{saga}}</span>
                             </li>
                             <!-- Si solo hay un poster en secuelas, flex justify-center -->
-                            <div v-if="secuelasOrdenadas && secuelasOrdenadas.length <= 1"
-                                 class="text-center flex justify-center">
-                                <div v-for="secuela in secuelasOrdenadas" class="w-[100%] sm:w-[100%] md:w-[80%] lg">
-                                <span>
-                                {{
-                                        obra.secuela.orden === 0 ? 'Inicio saga' : secuela.secuela.orden === 0 ? 'Spin-off' : secuela.secuela.orden > obra.secuela.orden ? 'Secuela' : 'Precuela'
-                                    }}
-                                </span>
-                                    <div class="w-[60%] md:w-[70%] mx-auto flex justify-center -my-[25px] md:m:0 mt-0.5">
-                                        <Poster :obra="secuela" :titulo="`text-lg hover:text-sm md:text-base md:hover:text-base`"
-                                                :info="true"/>
+
+
+
+
+
+
+                            <!-- Bloque para secuela/precuela -->
+                            <div :class="secuelaPrecuela.length <= 1 ? 'text-center flex justify-center' : 'text-center grid lg:grid-cols-2 justify-items-center'">
+                                <div v-for="obra in secuelaPrecuela" :class="secuelaPrecuela.length <= 1 ? 'w-[100%] sm:w-[100%] md:w-[80%] lg' : 'w-[80%] sm:w-[100%] md:w-[80%] lg mb-5'">
+                                    <span>
+                                    {{obra.secuela.orden < props.obra.secuela.orden ? 'Precuela' : 'Secuela'}}
+                                    </span>
+                                    <div :class="secuelaPrecuela.length <= 1 ? 'w-[60%] md:w-[70%] mx-auto flex justify-center -my-[25px] md:m:0 mt-0.5' : 'w-[80%] md:w-[90%] mx-auto flex justify-center -my-[25px] md:m:0 mt-0.5'">
+                                        <Poster :obra="obra" :titulo="`text-lg hover:text-sm md:text-base md:hover:text-base`" :info="true"/>
                                     </div>
                                 </div>
                             </div>
-                            <div v-else class="text-center grid lg:grid-cols-2 justify-items-center">
-                                <div v-for="secuela in secuelasOrdenadas"
-                                     class="w-[80%] sm:w-[100%] md:w-[80%] lg mb-5">
-                                <span>
-                                {{
-                                        obra.secuela.orden === 0 ? 'Inicio saga' : secuela.secuela.orden === 0 ? 'Spin-off' : secuela.secuela.orden > obra.secuela.orden ? 'Secuela' : 'Precuela'
-                                    }}
-                                </span>
-                                    <div
-                                        class="w-[80%] md:w-[90%] mx-auto flex justify-center -my-[25px] md:m:0 mt-0.5">
-                                        <Poster :obra="secuela" :titulo="`text-lg hover:text-sm md:text-base md:hover:text-base`"
-                                                :info="true"/>
+
+
+
+
+                            <!-- Bloque para spin-offs -->
+                            <div :class="spinoffs.length <= 1 ? 'text-center flex justify-center' : 'text-center grid lg:grid-cols-2 justify-items-center'">
+                                <div v-for="obra in spinoffs" :class="spinoffs.length <= 1 ? 'w-[100%] sm:w-[100%] md:w-[80%] lg' : 'w-[80%] sm:w-[100%] md:w-[80%] lg mb-5'">
+                                    <span>
+                                    {{obra.secuela.orden < props.obra.secuela.orden ? 'Precuela' : 'Secuela'}}
+                                    </span>
+                                    <div :class="spinoffs.length <= 1 ? 'w-[60%] md:w-[70%] mx-auto flex justify-center -my-[25px] md:m:0 mt-0.5' : 'w-[80%] md:w-[90%] mx-auto flex justify-center -my-[25px] md:m:0 mt-0.5'">
+                                        <Poster :obra="obra" :titulo="`text-lg hover:text-sm md:text-base md:hover:text-base`" :info="true"/>
                                     </div>
                                 </div>
                             </div>
+
+
+
+
+
                         </ul>
                     </li>
                 </ul>
@@ -200,21 +200,21 @@ function procesarGustadas($usuario, $gustadas) {
                         usuarios:
                     </li>
                 </ul>
-                <ul v-for="(cri, i) in criticas.data">
+                <ul v-for="(critica, indice) in criticas.data">
                     <!--Críticas usuarios-->
-                    <li v-if="i < 2" class="list-disc ml-5 mb-4">
+                    <li v-if="indice < 2" class="list-disc ml-5 mb-4">
                         <span
-                            class="underline font-semibold">{{ cri.usuario[0].usuario }}
-                        </span>: {{ cri.critica }}
-                        ({{ dayjs(cri.fecha).fromNow() }}) - Likes: {{ cri.likes }}
+                            class="underline font-semibold">{{ critica.usuario[0].usuario }}
+                        </span>: {{ critica.critica }}
+                        ({{ dayjs(critica.fecha).fromNow() }}) - Likes: {{ critica.likes }}
 
                         <!--Mano arriba-->
                         <Link v-if="$page.props.auth.user" class="inline-block" as="button" method="post"
                               :href="route('darLike')"
-                              :data="{ usuario_id: $page.props.auth.user.id, critica_id: cri.id_critica }"
+                              :data="{ usuario_id: $page.props.auth.user.id, critica_id: critica.id_critica }"
                               preserveScroll>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                 :fill="procesarGustadas($page.props.auth.user, $page.props.criticas.data[i]) ? 'black' : 'white'"
+                                 :fill="colorearManoLike($page.props.auth.user, $page.props.criticas.data[indice]) ? 'black' : 'white'"
                                  class="w-5 h-5 inline-block hover:fill-yellow-300">
                                 <path
                                     d="M1 8.25a1.25 1.25 0 112.5 0v7.5a1.25 1.25 0 11-2.5 0v-7.5zM11 3V1.7c0-.268.14-.526.395-.607A2 2 0 0114 3c0 .995-.182 1.948-.514 2.826-.204.54.166 1.174.744 1.174h2.52c1.243 0 2.261 1.01 2.146 2.247a23.864 23.864 0 01-1.341 5.974C17.153 16.323 16.072 17 14.9 17h-3.192a3 3 0 01-1.341-.317l-2.734-1.366A3 3 0 006.292 15H5V8h.963c.685 0 1.258-.483 1.612-1.068a4.011 4.011 0 012.166-1.73c.432-.143.853-.386 1.011-.814.16-.432.248-.9.248-1.388z"/>
@@ -262,11 +262,9 @@ function procesarGustadas($usuario, $gustadas) {
                     </Link>
                 </div>
             </div>
-
         </div>
+
         <!-- Componente para el trailer-->
         <Trailers :obra="obra"/>
-
-
     </div>
 </template>

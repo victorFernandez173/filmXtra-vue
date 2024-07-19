@@ -70,7 +70,7 @@ class Obra extends Model
      */
     public function secuela(): HasOne
     {
-        return $this->hasOne(Secuela::class);
+        return $this->hasOne(Secuela::class)->orderBy('orden');
     }
 
     /**

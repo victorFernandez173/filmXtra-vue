@@ -28,7 +28,8 @@ class ObtenerObraController extends Controller
             'mediaEvaluaciones' => ObrasRepo::calcularMediaEvaluaciones($obra->evaluaciones),
             'criticas'          => ObrasRepo::obtenerArrayInfoCriticas($obra->criticas),
             'saga'              => $obra->secuela->saga ?? '',
-            'secuelaPrecuela'   => ObrasRepo::obtenerSecuelaPrecuela($obra),
+            'secuelaPrecuela'   => ObrasRepo::obtenerObrasRelacionadas($obra),
+            'spinoffs'          => ObrasRepo::obtenerObrasRelacionadas($obra, false),
             //Numero de gifs disponibles en public/gif
             'nGifs'             => count(glob(public_path('/gif/') . '*'))
         ]);
@@ -45,9 +46,9 @@ class ObtenerObraController extends Controller
     {
         $cadenaGeneros = '';
         $generos->each(function ($valor) use (&$cadenaGeneros) {
-            $cadenaGeneros.=$valor->genero.', ';
+            $cadenaGeneros .= $valor->genero . ', ';
         });
-        return rtrim($cadenaGeneros, ', ').'.';
+        return rtrim($cadenaGeneros, ', ') . '.';
     }
 
     /**
@@ -60,9 +61,9 @@ class ObtenerObraController extends Controller
     {
         $cadenaCasting = '';
         $casting->each(function ($valor) use (&$cadenaCasting) {
-            $cadenaCasting.=$this->procesarNombre($valor->nombre).', ';
+            $cadenaCasting .= $this->procesarNombre($valor->nombre) . ', ';
         });
-        return rtrim($cadenaCasting, ', ').'.';
+        return rtrim($cadenaCasting, ', ') . '.';
     }
 
     /**
@@ -72,7 +73,7 @@ class ObtenerObraController extends Controller
      */
     public function procesarNombre(string $nombre)
     {
-        $nombreProcesado = substr($nombre, strrpos($nombre, ',') + 2).' ';
+        $nombreProcesado = substr($nombre, strrpos($nombre, ',') + 2) . ' ';
         $nombreProcesado .= substr($nombre, 0, strrpos($nombre, ','));
         return $nombreProcesado;
     }
