@@ -97,8 +97,18 @@ class ObrasRepo extends Controller
             // Obtenemos las que haya según 'orden'
             $relacionadas = Secuela::select('obra_id')
                 ->where('saga', $obra->secuela->saga)
+                ->where('obra_id', '!=', $obra->id)
                 // $tipo = true: obtenemos secuelas/precuelas
-                ->when($tipo, function ($query) use ($orden) {
+                // Si es un spinoff obtenemos la primera de la saga como relacion
+                ->when($tipo && $orden == 0, function ($query) use ($orden) {
+                    return $query->where('orden', 1);
+                })
+                // Si es la primera de la saga solo obtenemos la secuela
+                ->when($tipo && $orden == 1, function ($query) use ($orden) {
+                    return $query->whereIn('orden', [$orden + 1]);
+                })
+                // Si es otra: secuela y precuela
+                ->when($tipo && $orden > 1, function ($query) use ($orden) {
                     return $query->whereIn('orden', [$orden + 1, $orden - 1]);
                 })
                 // $tipo = false: obtenemos spinoffs
