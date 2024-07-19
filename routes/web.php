@@ -33,7 +33,7 @@ Route::middleware('auth')
 
 require __DIR__ . '/auth.php';
 
-// TODO corregir styling/responsiveness posters saga area
+// TODO corregir styling/responsiveness posters saga area // mt entre secuelas y spinoff // el titulo y su truncate causa el desajuste del texto en pantallas estrechas
 // TODO login: no redirige a la ficha de la pelicula en la que estabas
 
 // TODO alguna manera de modificar el id en /obra por el titulo en la url???
@@ -55,3 +55,5 @@ require __DIR__ . '/auth.php';
 // TODO sección fotos de pelicula
 // TODO roles para los gestores en una posible futura sección de gestion de datos
 // TODO session bbdd driver, tabla con almacenamiento de sesiones
+
+
