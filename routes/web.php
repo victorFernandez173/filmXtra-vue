@@ -33,7 +33,7 @@ Route::middleware('auth')
 
 require __DIR__ . '/auth.php';
 
-// TODO corregir styling/responsiveness posters saga area // mt entre secuelas y spinoff // el titulo y su truncate causa el desajuste del texto en pantallas estrechas
+// TODO corregir styling/responsiveness posters saga area // mt entre secuelas y spinoff // el titulo y su truncate causa el desajuste del texto en pantallas estrechas // break point entre md y lg para dos columnas puede ser una buena idea cambiarlo para que las dos columnas entren en lg no en md
 // TODO login: no redirige a la ficha de la pelicula en la que estabas
 
 // TODO alguna manera de modificar el id en /obra por el titulo en la url???
