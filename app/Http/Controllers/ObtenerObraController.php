@@ -27,7 +27,6 @@ class ObtenerObraController extends Controller
             'direccion'         => $this->procesarCasting($obra->directors),
             'mediaEvaluaciones' => ObrasRepo::calcularMediaEvaluaciones($obra->evaluaciones),
             'criticas'          => ObrasRepo::obtenerArrayInfoCriticas($obra->criticas),
-            'saga'              => $obra->secuela->saga ?? '',
             'secuelaPrecuela'   => ObrasRepo::obtenerObrasRelacionadas($obra),
             'spinoffs'          => ObrasRepo::obtenerObrasRelacionadas($obra, false),
             //Numero de gifs disponibles en public/gif

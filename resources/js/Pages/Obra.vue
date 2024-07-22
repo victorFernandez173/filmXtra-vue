@@ -15,7 +15,7 @@ import Swal from "sweetalert2";
 import Estrellitas from "../Components/Estrellitas.vue";
 import Trailers from "../Components/Trailers.vue";
 
-const props = defineProps(['obra', 'generos', 'reparto', 'direccion', 'mediaEvaluaciones', 'criticas', 'saga', 'secuelaPrecuela', 'spinoffs', 'nGifs']);
+const props = defineProps(['obra', 'generos', 'reparto', 'direccion', 'mediaEvaluaciones', 'criticas', 'secuelaPrecuela', 'spinoffs', 'nGifs']);
 
 // Configuración fechas relativas dayjs
 dayjs.extend(relativeTime);
@@ -52,7 +52,7 @@ function colorearManoLike($usuario, $gustadas) {
         <meta name="description" content="Página de bienvenida">
     </Head>
     <div class="container mx-auto mt-10 mb-10">
-        <h1 class="text-center font-bold text-flamingo underline text-3xl px-8">{{ obra.titulo }}</h1>
+        <h1 class="text-center font-bold text-flamingo text-3xl px-8">{{ obra.titulo }}</h1>
         <!--3 apartados para poster, datos y valoraciones-->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
             <!--Poster-->
@@ -64,51 +64,64 @@ function colorearManoLike($usuario, $gustadas) {
 
             <!--Datos pelicula-->
             <div class="flex justify-center mr-10 pl-10 pr-10 w-full md:-ml[100px]">
-                <ul>
-                    <li class="list-disc font-bold text-flamingo text-xl"><span class="underline">Obra</span>:</li>
-                    <li>
+                <div>
+                    <!--Info general-->
+                    <div>
                         <ul>
+                            <!--Títulos-->
                             <li class="list-disc ml-5">
                                 <span class="font-semibold underline text-lg">Título</span>:
                                 {{ obra.titulo }}
                                 ({{ obra.titulo_original }})
                             </li>
+                            <!--Año-->
                             <li class="list-disc ml-5">
                                 <span class="font-semibold underline text-lg">Año</span>:
                                 {{ obra.fecha }}
                             </li>
+                            <!--Duración-->
                             <li class="list-disc ml-5">
                                 <span class="font-semibold underline text-lg">Duración</span>:
                                 {{ Math.floor((parseInt(obra.duracion) / 60)) }}h
                                 {{ parseInt(obra.duracion) % 60 }}min
                             </li>
+                            <!--País-->
                             <li class="list-disc ml-5">
                                 <span class="font-semibold underline text-lg">País</span>:
                                 {{ obra.pais }}
                             </li>
+                            <!--Dirección-->
                             <li v-if="obra.directors[0]" class="list-disc ml-5">
                                 <span class="font-semibold underline text-lg">Dirección</span>:
                                 <span> {{ props.direccion }}  </span>
                             </li>
+                            <!--Reparto-->
                             <li v-if="obra.actors[0]" class="list-disc ml-5">
                                 <span class="font-semibold underline text-lg">Reparto</span>:
                                 <span>{{ props.reparto }} </span>
                             </li>
+                            <!--Productora-->
                             <li class="list-disc ml-5">
                                 <span class="font-semibold underline text-lg">Productora</span>:
                                 {{ obra.productora }}
                             </li>
+                            <!--Géneros-->
                             <li v-if="obra.generos" class="list-disc ml-5">
                                 <span class="font-semibold underline text-lg">Género</span>:
                                 <span> {{ props.generos }} </span>
                             </li>
+                            <!--Sinopsis-->
                             <li class="list-disc ml-5">
                                 <span class="font-semibold underline text-lg">Sinopsis</span>:
                                 {{ obra.sinopsis }}
                             </li>
-                            <!--Festivales y premios-->
-                            <li v-if="obra.festivals.length > 0" class="list-disc font-bold underline text-flamingo text-xl mt-2">
-                                Galardones:
+                        </ul>
+                    </div>
+                    <!--Festivales y premios-->
+                    <div class="mt-4">
+                        <ul>
+                            <li v-if="obra.festivals.length > 0" class="font-bold text-flamingo text-xl list-none">
+                            Galardones:
                             </li>
                             <li>
                                 <ul>
@@ -118,36 +131,33 @@ function colorearManoLike($usuario, $gustadas) {
                                     </li>
                                 </ul>
                             </li>
-                            <!--Saga-->
-                            <li v-if="saga" class="list-disc font-bold text-flamingo text-xl mt-2">
-                                <span class="underline">Saga</span>:
-                                <span class="inline-block w-full text-center mb-1">&nbsp;{{saga}}</span>
-                            </li>
-                            <!-- Bloque para secuela/precuela -->
-                            <div v-if="secuelaPrecuela" :class="secuelaPrecuela.length == 1 ? 'text-center flex justify-center' : 'text-center grid lg:grid-cols-2 justify-items-center'">
-                                <div v-for="obra in secuelaPrecuela" :class="secuelaPrecuela.length == 1 ? 'w-[100%] md:w-[80%]' : 'w-[80%] sm:w-[100%] md:w-[80%] mb-5'">
-                                    <span>
-                                        {{props.obra.secuela.orden == 0 ? 'Relación' : obra.secuela.orden < props.obra.secuela.orden ? 'Precuela' : 'Secuela'}}
-                                    </span>
-                                    <div :class="secuelaPrecuela.length == 1 ? 'w-[60%] md:w-[70%] mx-auto flex justify-center -my-[25px] md:m:0 mt-0.5' : 'w-[80%] md:w-[90%] mx-auto -my-[25px] md:m:0 mt-0.5'">
-                                        <Poster :obra="obra" :titulo="`text-lg hover:text-sm md:text-base md:hover:text-base`" :info="true"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Bloque para spin-offs -->
-                            <div v-if="spinoffs" :class="spinoffs.length == 1 ? 'text-center flex justify-center' : 'text-center grid lg:grid-cols-2 justify-items-center'">
-                                <div v-for="obra in spinoffs" :class="spinoffs.length == 1 ? 'w-[100%] md:w-[80%]' : 'w-[80%] sm:w-[100%] md:w-[80%] mb-5'">
-                                    <span>
-                                        {{props.obra.secuela.orden == 0 ? 'Relación' : 'Spinoff'}}
-                                    </span>
-                                    <div :class="spinoffs.length == 1 ? 'w-[60%] md:w-[70%] mx-auto flex justify-center -my-[25px] md:m:0 mt-0.5' : 'w-[80%] md:w-[90%] mx-auto -my-[25px] md:m:0 mt-0.5'">
-                                        <Poster :obra="obra" :titulo="`text-lg hover:text-sm md:text-base md:hover:text-base`" :info="true"/>
-                                    </div>
-                                </div>
-                            </div>
                         </ul>
-                    </li>
-                </ul>
+                    </div>
+                    <!--Saga-->
+                    <div class="mt-4">
+                        <span v-if="obra.secuela.saga" class="font-bold text-flamingo text-xl mt-2">
+                            Saga:
+                        </span>
+                        <!-- Bloque para secuela/precuela -->
+                        <div v-if="secuelaPrecuela" class="text-center flex flex-col items-center">
+                            <div v-for="obra in secuelaPrecuela" class="w-[80%] md:w-[60%]">
+                                <p class="mt-2 -mb-3">
+                                    {{props.obra.secuela.orden === 0 ? 'Relación' : obra.secuela.orden < props.obra.secuela.orden ? 'Precuela' : 'Secuela'}}
+                                </p>
+                                <Poster :obra="obra" :titulo="`text-lg hover:text-sm md:text-base md:hover:text-base`" :info="true"/>
+                            </div>
+                        </div>
+                        <!-- Bloque para spin-offs -->
+                        <div v-if="spinoffs" class="text-center flex flex-col items-center">
+                            <div v-for="obra in spinoffs" class="w-[80%] md:w-[60%]">
+                                <p class="mt-2 -mb-3">
+                                    {{props.obra.secuela.orden === 0 ? 'Relación' : 'Spinoff'}}
+                                </p>
+                                <Poster :obra="obra" :titulo="`text-lg hover:text-sm md:text-base md:hover:text-base`" :info="true"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
