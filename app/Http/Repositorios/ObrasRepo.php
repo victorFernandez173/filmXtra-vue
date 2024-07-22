@@ -118,8 +118,7 @@ class ObrasRepo extends Controller
                 ->get();
 
             // Retornamos info de esas obras
-            return Obra::with('poster', 'secuela:obra_id,orden')
-                ->find($relacionadas);
+            return Obra::with(['poster', 'secuela' => function ($query) { $query->orderBy('orden');}])->find($relacionadas);
         }
         return null;
     }

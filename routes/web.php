@@ -34,7 +34,6 @@ Route::middleware('auth')
 require __DIR__ . '/auth.php';
 
 
-// TODO orden de la precuela/secuela
 // TODO login: no redirige a la ficha de la pelicula en la que estabas
 
 // TODO alguna manera de modificar el id en /obra por el titulo en la url???
