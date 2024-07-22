@@ -22,7 +22,7 @@ class ObrasRepo extends Controller
      */
     static function obtenerDatosFichaObra(string $tituloSlug): Obra|Builder|Model|_IH_Obra_QB
     {
-        return Obra::with([
+        $obra = Obra::with([
             'poster',
             'secuela:obra_id,orden,saga',
             'criticas',
@@ -35,6 +35,13 @@ class ObrasRepo extends Controller
             'trailer'])
             ->where('titulo_slug', $tituloSlug)
             ->first();
+
+        // Si no hubiera obra, se aborta 404
+        if (!$obra){
+            abort(404);
+        }
+
+        return $obra;
     }
 
     /**
