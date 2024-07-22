@@ -34,9 +34,9 @@ Route::middleware('auth')
 require __DIR__ . '/auth.php';
 
 
-// TODO login: no redirige a la ficha de la pelicula en la que estabas
-
 // TODO alguna manera de modificar el id en /obra por el titulo en la url???
+
+
 // TODO busqueda navbar reactivar;;;buscador mejorar: paginación, mensajes con los resultados...
 // TODO 'route model binding' para las rutas de obra
 // TODO REPRODUCIR funcionalidades filmXtraVic
