@@ -34,7 +34,7 @@ Route::middleware('auth')
 require __DIR__ . '/auth.php';
 
 
-// TODO alguna manera de modificar el id en /obra por el titulo en la url???
+// TODO alguna manera de modificar el id en /obra por el titulo en la url??? SOLUCION eloquen/sluggable
 
 
 // TODO busqueda navbar reactivar;;;buscador mejorar: paginación, mensajes con los resultados...
