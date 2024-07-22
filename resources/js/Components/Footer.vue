@@ -27,7 +27,7 @@ import {Link} from "@inertiajs/vue3";
                             <Link :href="route('/')">Top Valoraciones</Link>
                         </li>
                         <li>
-                            <Link :href="route('/')">Cuenta</Link>
+                            <Link :href="route('profile.edit')">Cuenta</Link>
                         </li>
                     </ul>
                 </div>
@@ -48,8 +48,7 @@ import {Link} from "@inertiajs/vue3";
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8"/>
             <div class="text-center sm:flex sm:items-center sm:justify-between">
-            <span class="text-sm text-gray-500 sm:text-center">© 2023 <Link class="hover:text-flamingo"
-                                                                            :href="route('/')">filmXtra<span>™</span></Link>. Todos los derechos reservados.
+            <span class="text-sm text-gray-500 sm:text-center">© 2023 <Link class="hover:text-flamingo" :href="route('/')">filmXtra<span>™</span></Link>. Todos los derechos reservados.
             </span>
                 <div class="hover:[&>a]:text-flamingo flex justify-center mt-4 space-x-6 sm:margin-auto sm:mt-0 [&>a]:text-gray-500 [&>a>svg]:w-5 [&>a>svg]:h-5">
                     <a href="https://www.facebook.com/" target="_blank">

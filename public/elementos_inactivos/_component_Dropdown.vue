@@ -75,3 +75,24 @@ const open = ref(false);
         </Transition>
     </div>
 </template>
+
+<!-- Componente muy interesante para hacer menus desplegables, incluye ej. con Dropdownlink -->
+<!--<Dropdown v-if="condicion renderizado">-->
+<!--    &lt;!&ndash;  <slot name="trigger" /> -> <template #trigger> &ndash;&gt;-->
+<!--    <template #trigger>-->
+<!--        <button>-->
+<!--            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">-->
+<!--                <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />-->
+<!--            </svg>-->
+<!--        </button>-->
+<!--    </template>-->
+<!--    &lt;!&ndash;  <slot name="content" /> -> <template #content>  &ndash;&gt;-->
+<!--    <template #content>-->
+<!--        <button class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 transition duration-150 ease-in-out" @click="">-->
+<!--            Edit-->
+<!--        </button>-->
+<!--        <DropdownLink as="button" :href="route('')" method="delete">-->
+<!--            Delete-->
+<!--        </DropdownLink>-->
+<!--    </template>-->
+<!--</Dropdown>-->

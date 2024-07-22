@@ -49,8 +49,6 @@ class Secuela extends Model
         'saga_id' => 'int',
         'obra_id' => 'int',
         'orden' => 'int',
-        'creada' => 'datetime',
-        'modificada' => 'datetime'
     ];
 
     /**

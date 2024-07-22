@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property Carbon $modificada
  *
  * @property Obra $obra
- * @property User $user
+ * @property Usuario $user
  * @property Collection|Like[] $likes
  *
  * @package App\Models
@@ -36,9 +36,7 @@ class Critica extends Model
      */
     protected $casts = [
         'obra_id' => 'int',
-        'user_id' => 'int',
-        'creada' => 'datetime',
-        'modificada' => 'datetime'
+        'usuario_id' => 'int',
     ];
 
     /**
@@ -48,7 +46,7 @@ class Critica extends Model
      */
     protected $fillable = [
         'obra_id',
-        'user_id',
+        'usuario_id',
         'critica',
     ];
 
@@ -65,7 +63,7 @@ class Critica extends Model
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Usuario::class);
     }
 
     /**
@@ -73,6 +71,6 @@ class Critica extends Model
      */
     public function likes(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'likes', 'critica_id', 'user_id', 'id');
+        return $this->belongsToMany(Usuario::class, 'likes', 'critica_id', 'usuario_id', 'id');
     }
 }

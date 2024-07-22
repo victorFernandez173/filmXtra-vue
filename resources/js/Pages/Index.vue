@@ -16,18 +16,32 @@ import {computed, onMounted} from "vue";
 import {initCarousels} from "flowbite";
 import Swal from "sweetalert2";
 
-const props = defineProps(['obras', 'verificacionExitosa', 'gifNumero', 'cita', 'cita2', 'cita3', 'cita4']);
+const props = defineProps(['obras', 'verificacionExitosa', 'gifNumero', 'citaInspiring', 'citaQuotable', 'citaPelicula', 'citaCine']);
 const page = usePage();
 const confirmacionVerificacionMail = computed(() => page.props.verificacionExitosa);
+const borradoCuentaExitoso = computed(() => page.props.borradoCuentaExitoso);
 
 onMounted(() => {
     /*Iniciamos el carrusel*/
     initCarousels();
-    /*Si hay flash de password reset, lanzamos SWAL*/
-    if (confirmacionVerificacionMail.value === true) {
+    /*Si hay flash de email verificado, lanzamos SWAL*/
+    if (confirmacionVerificacionMail.value) {
         Swal.fire({
             title: 'Enhorabuena!!',
             text: 'Tu email ha sido validado exitosamente',
+            imageUrl: '../gif/' + usePage().props.gifNumero + '.gif',
+            imageWidth: 400,
+            imageAlt: 'gif de cine',
+            showConfirmButton: false,
+            position: 'center',
+            timer: 4500
+        });
+    }
+    /*Si hay flash de cuenta borrada, lanzamos SWAL*/
+    if (borradoCuentaExitoso.value) {
+        Swal.fire({
+            title: 'Adios!!',
+            text: 'Tu cuenta ha sido borrada. Lamentamos que te vayas.',
             imageUrl: '../gif/' + usePage().props.gifNumero + '.gif',
             imageWidth: 400,
             imageAlt: 'gif de cine',
@@ -47,12 +61,12 @@ onMounted(() => {
     </Head>
 
     <!--  Carrusel   -->
-    <Carrusel :cita="cita" :cita2="cita2" :cita3="cita3" :cita4="cita4" />
+    <Carrusel :citaInspiring="citaInspiring" :citaQuotable="citaQuotable" :citaPelicula="citaPelicula" :citaCine="citaCine" />
 
     <!-- Seccion Principal de contenido -->
     <div
         class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-4 m-auto my-8">
         <!-- Posters -->
-        <Poster v-for="obra in obras" :obra="obra" :info="true"/>
+        <Poster v-for="obra in obras" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>
     </div>
 </template>

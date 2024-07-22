@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\BajaUsuario;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\LoginTipo;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,7 +22,7 @@ class ProfileController extends Controller
     {
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'status' => session('status'),
+            'status'          => session('status'),
         ]);
     }
 
@@ -32,7 +34,7 @@ class ProfileController extends Controller
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+            $request->user()->email_verificado_fecha = null;
         }
 
         $request->user()->save();
@@ -45,24 +47,28 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validate(
-            [
-                'password' => ['required', 'current_password'],
-            ],
-            [
-                'password.required' => 'Por favor, el password',
-                'password.current_password' => 'Revise el password introducido'
-            ]);
-
         $user = $request->user();
+
+        if($user->login_tipo_id == LoginTipo::FILMXTRA_TIPO){
+            $request->validate(
+                [
+                    'password' => ['required', 'current_password'],
+                ],
+                [
+                    'password.required'         => 'Por favor, el password',
+                    'password.current_password' => 'Revise el password introducido'
+                ]
+            );
+        }
 
         Auth::logout();
 
-        $user->delete();
+        // Si el borrado es efectivo, se despacha el evento
+        BajaUsuario::dispatchIf($user->delete(), $user);
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return Redirect::to('/')->with('borradoCuentaExitoso', true);
     }
 }

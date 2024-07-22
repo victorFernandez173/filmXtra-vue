@@ -19,13 +19,14 @@ class IndexController extends Controller
      * que serán las películas cargadas en Index
      * @throws Exception
      */
-    public function obtenerObrasAleatorias(){
+    public function obtenerObrasAleatorias()
+    {
         $numPeliculas = Obra::count();
         $peliculasId = [];
-        for($i = 0; $i < 24; $i++){
-            $aleatorio = rand(1, $numPeliculas);
-            while(in_array($aleatorio, $peliculasId)){
-                $aleatorio = rand(1, $numPeliculas);
+        for ($i = 0; $i < 24; $i++) {
+            $aleatorio = random_int(1, $numPeliculas);
+            while (in_array($aleatorio, $peliculasId)) {
+                $aleatorio = random_int(1, $numPeliculas);
             }
             $peliculasId[] = $aleatorio;
         }
@@ -36,19 +37,22 @@ class IndexController extends Controller
      * Devuelve la vista de bienvenida con esas películas
      * @throws Exception
      */
-    public function index(){
+    public function index()
+    {
         return Inertia::render('Index', [
-            'obras' => Obra::select(['id', 'titulo'])
+            'obras'                => Obra::select(['id', 'titulo', 'titulo_slug'])
                 ->with('poster:id,obra_id,ruta,alt')
                 ->whereIn('id', $this->obtenerObrasAleatorias())
-                ->get(),
-            'verificacionExitosa' => session('verificacionExitosa'),
-            'gifNumero' => $this->obtenerUnNumDeGif(),
+                ->get()
+                ->shuffle(),
+            'verificacionExitosa'  => session('verificacionExitosa'),
+            'borradoCuentaExitoso' => session('borradoCuentaExitoso'),
+            'gifNumero'            => $this->obtenerUnNumDeGif(),
             /*Citas*/
-            'cita' => Inspiring::quote(),
-            'cita2' => $this->citaQuotable(),
-            'cita3' => $this->citaPelicula(),
-            'cita4' => $this->citaSobreCine(),
+            'citaInspiring'        => Inspiring::quote(),
+            'citaQuotable'         => $this->citaQuotable(),
+            'citaPelicula'         => $this->citaPelicula(),
+            'citaCine'             => $this->citaSobreCine(),
         ]);
     }
 }

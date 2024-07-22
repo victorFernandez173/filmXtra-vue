@@ -2,10 +2,15 @@
 
 namespace App\Providers;
 
+use App\Events\BajaUsuario;
+use App\Listeners\BajaUsuarioEscuchador;
+use App\Listeners\ReseteoPasswordExitosoEscuchador;
+use App\Listeners\VerificacionEmailExitosaEscuchador;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -15,9 +20,18 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        Registered::class => [
+        Registered::class    => [
             SendEmailVerificationNotification::class,
         ],
+        Verified::class      => [
+            VerificacionEmailExitosaEscuchador::class
+        ],
+        PasswordReset::class => [
+            ReseteoPasswordExitosoEscuchador::class
+        ],
+        BajaUsuario::class   => [
+            BajaUsuarioEscuchador::class
+        ]
     ];
 
     /**

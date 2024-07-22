@@ -1,5 +1,6 @@
 <script setup>
 import {Link, useForm} from "@inertiajs/vue3";
+import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 
 // Para el formulario de busqueda
 const form = useForm({
@@ -13,7 +14,7 @@ const form = useForm({
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <!-- Logo de la pagina -->
             <Link :href="route('/')" class="flex items-center">
-                <img src="/images/logo.png" class="h-14" alt="Logo FilmXtra" />
+                <img src="/images/logo.png" class="h-10 sm:h-14" alt="Logo FilmXtra" />
             </Link>
             <!-- Bloque de búsqueda  -->
             <div class="flex justify-end md:order-2">
@@ -64,7 +65,7 @@ const form = useForm({
                             <Link href="#">Mis favoritas</Link>
                         </li>
                         <li>
-                            <Link :href="route('/')">Ajustes</Link>
+                            <Link :href="route('profile.edit')">Ajustes</Link>
                         </li>
                         <li>
                             <Link class="block px-4 py-2 text-sm text-gray-700 hover:bg-flamingo hover:text-white w-full text-left" :href="route('logout')" method="post" as="button">Cerrar sesión</Link>
@@ -81,16 +82,16 @@ const form = useForm({
                 <ul class="hover:[&>li>a]:text-flamingo flex flex-col font-medium p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white [&>li>a]:block [&>li>a]:py-2 [&>li>a]:pl-3 [&>li>a]:pr-4 [&>li>a]:text-gray-900 md:hover:[&>li>a]:bg-transparent md:[&>li>a]:p-0">
                     <!-- md:hover:[&>li>Link]:bg-transparent md:[&>li>Link]:p-0                    -->
                     <li>
-                        <Link :href="route('/')" >Inicio</Link>
+                        <ResponsiveNavLink :href="route('/')" >Inicio</ResponsiveNavLink>
                     </li>
                     <li>
-                        <Link :href="route('/')" >Top FilmXtra</Link>
+                        <ResponsiveNavLink :href="route('/')" >Top FilmXtra</ResponsiveNavLink>
                     </li>
                     <li>
-                        <Link :href="route('/')" >Top Valoraciones</Link>
+                        <ResponsiveNavLink :href="route('/')" >Top Valoraciones</ResponsiveNavLink>
                     </li>
                     <li>
-                        <Link :href="route('/')" >Cuenta</Link>
+                        <ResponsiveNavLink :href="route('profile.edit')" >Cuenta</ResponsiveNavLink>
                     </li>
                 </ul>
             </div>

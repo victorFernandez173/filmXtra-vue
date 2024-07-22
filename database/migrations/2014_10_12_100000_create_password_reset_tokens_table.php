@@ -8,6 +8,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * Necesaria para el reseteo de password -> PasswordResetLinkController (linea 39) sino no funciona, aunque no se haga inserción
      */
     public function up(): void
     {

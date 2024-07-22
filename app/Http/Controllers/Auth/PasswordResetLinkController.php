@@ -36,6 +36,9 @@ class PasswordResetLinkController extends Controller
         // Mandaremos un link de reseteo al usario. Cuando hayamos intentado mandarlo
         // examinaremos la respuesta y veremos el mensaje que hay que enseñar al usario.
         // Para finalmente envíar el mensaje adecuado.
+
+        // En sendResetLink() se requiere la existencia de la tabla pasword_reset_tokens,
+        // aunque parece que no se almacenan registros con esta implementación que tengo activa
         $status = Password::sendResetLink(
             $request->only('email')
         );

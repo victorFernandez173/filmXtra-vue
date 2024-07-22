@@ -2,24 +2,26 @@
 
 namespace App\Mail;
 
+use App\Models\LoginTipo;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use App\Models\User;
+use App\Models\Usuario;
 
 class SocialiteLoginMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public User $user;
+    public Usuario $usuario;
+    public LoginTipo $loginTipo;
     /**
      * Create a new message instance.
      */
-    public function __construct($user)
+    public function __construct($usuario)
     {
-        $this->user = $user;
+        $this->usuario = $usuario;
+        $this->loginTipo = LoginTipo::where('id', $usuario->login_tipo_id)->first();
     }
 
     /**
@@ -28,7 +30,7 @@ class SocialiteLoginMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Login en filmXtra con ' . $this->user->social_type);
+            subject: 'Login en filmXtra con ' . $this->loginTipo->nombre);
     }
 
     /**
@@ -38,16 +40,9 @@ class SocialiteLoginMail extends Mailable
     {
         return new Content(
             view: 'emails.socialiteLogin',
+            with: [
+                'logo'    => public_path('images/logo.png'),
+            ]
         );
-    }
-
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, Attachment>
-     */
-    public function attachments(): array
-    {
-        return [];
     }
 }

@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Carbon $modificada
  *
  * @property Obra $obra
- * @property User $user
+ * @property Usuario $user
  *
  * @package App\Models
  */
@@ -40,7 +40,7 @@ class Evaluacion extends Model
      */
     protected $casts = [
         'obra_id' => 'int',
-        'user_id' => 'int',
+        'usuario_id' => 'int',
         'evaluacion' => 'int',
     ];
 
@@ -51,7 +51,7 @@ class Evaluacion extends Model
      */
     protected $fillable = [
         'obra_id',
-        'user_id',
+        'usuario_id',
         'evaluacion',
     ];
 
@@ -68,6 +68,6 @@ class Evaluacion extends Model
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Usuario::class);
     }
 }

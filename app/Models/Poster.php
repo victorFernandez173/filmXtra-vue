@@ -46,8 +46,6 @@ class Poster extends Model
      */
     protected $casts = [
         'obra_id' => 'int',
-        'creado' => 'datetime',
-        'modificado' => 'datetime'
     ];
 
     /**

@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $id
  * @property int $obra_id
  * @property string $cita
- * @property string $tipo
+ * @property int $tipo
  *
  * @package App\Models
  */
@@ -20,13 +20,13 @@ class Cita extends Model
     public $table = 'citas';
     public $timestamps = false;
 
+//    Constantes para el tipo de cita
+    const int PELICULA = 1;
+    const int SOBRECINE = 2;
+    const int MOTIVACIONAL = 3;
+
     /**
      * Atributos asignables
-     *
-     * TIPOS:
-     * -Pelicula
-     * -SobreCine
-     * -Motivacional
      *
      * @var array<string>
      */

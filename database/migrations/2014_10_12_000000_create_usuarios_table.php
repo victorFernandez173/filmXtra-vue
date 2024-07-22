@@ -11,22 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 53)->nullable(false);
-            $table->string('username', 33)->nullable();
+            $table->string('usuario', 53)->nullable(false);
+            $table->string('nombre', 53)->nullable();
+            $table->string('apellidos', 106)->nullable();
             $table->date('age')->nullable();
-            $table->string('country', 73)->nullable();
+            $table->string('pais', 73)->nullable();
             $table->string('email', 73);
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('email_verificado_fecha')->nullable();
             $table->string('password', 253)->nullable();
-            $table->rememberToken();
             $table->string('social_id')->unique()->nullable();
-            $table->string('social_type')->default('filmXtra');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
+            $table->string('login_tipo_id')->default(\App\Models\LoginTipo::FILMXTRA_TIPO);
+            $table->timestamp('creado')->useCurrent();
+            $table->timestamp('modificado')->useCurrent();
 
-            $table->unique(['email', 'social_type']);
+            $table->unique(['email', 'login_tipo_id']);
 
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
@@ -39,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('usuarios');
     }
 };

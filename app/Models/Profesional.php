@@ -37,8 +37,6 @@ class Profesional extends Model
         'obra_id' => 'int',
         'medio_id' => 'int',
         'fecha' => 'date',
-        'creada' => 'datetime',
-        'modificada' => 'datetime'
     ];
 
     /**

@@ -1,5 +1,4 @@
 <script setup>
-import Checkbox from '@/Components/Checkbox.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
@@ -87,16 +86,7 @@ onMounted(() => {
                             <InputError class="mt-2" :message="form.errors.password"/>
                         </div>
                         <!-- bloque recuérdame y contraseña olvidada -->
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-start">
-
-                                <div class="ml-0 text-sm">
-                                    <label class="flex items-center">
-                                        <Checkbox name="remember" v-model:checked="form.remember"/>
-                                        <span class="ml-2 text-sm text-gray-800 hover:text-flamingo active:text-gray-800">Recuérdame</span>
-                                    </label>
-                                </div>
-                            </div>
+                        <div class="flex items-center justify-end">
                             <Link
                                 v-if="canResetPassword"
                                 :href="route('password.request')"
@@ -106,9 +96,11 @@ onMounted(() => {
                             </Link>
                         </div>
                         <!--botón principal-->
-                        <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                            Inicia sesión
-                        </PrimaryButton>
+                        <div class="text-center">
+                            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                Inicia sesión
+                            </PrimaryButton>
+                        </div>
                         <div class="flex justify-around">
                             <!--Iniciar sesion Github-->
                             <a :href="route('auth.github')" type="button" class="text-white bg-gray-800 hover:bg-flamingo hover:text-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-800/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
@@ -121,7 +113,7 @@ onMounted(() => {
                                 Inicia con Google
                             </a>
                         </div>
-                        <p class="text-sm font-light text-gray-700">
+                        <p class="text-right text-sm font-light text-gray-700">
                             ¿Aún no tienes cuenta? <Link :href="route('register')" class="font-medium text-primary-600 hover:text-flamingo focus:outline-none focus:border-[2px] focus:border-flamingo border-[2px] border-white rounded-md">¡Regístrate aquí!</Link>
                         </p>
                     </form>
