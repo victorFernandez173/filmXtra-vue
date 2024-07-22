@@ -168,9 +168,9 @@ function colorearManoLike($usuario, $gustadas) {
             <div class="py-10 pl-12 lg:col-span-3 md:col-span-2">
                 <!--Titulo-->
                 <ul>
-                    <p v-if="obra.profesionals.length > 0" class="list-disc font-bold text-black text-xl mb-5">
+                    <li v-if="obra.profesionals.length > 0" class="list-none font-bold text-black text-xl mb-5">
                         Críticas profesionales
-                    </p>
+                    </li>
                 </ul>
                 <ul v-for="p in obra.profesionals">
                     <!--Críticas profesionales-->
@@ -190,9 +190,9 @@ function colorearManoLike($usuario, $gustadas) {
                 </ul>
                 <!--Titulo-->
                 <ul>
-                    <p class="list-disc font-bold text-black text-xl mt-10 mb-5">
+                    <li class="list-none font-bold text-black text-xl mt-10 mb-5">
                         Críticas de nuestros usuarios
-                    </p>
+                    </li>
                 </ul>
                 <ul v-for="(critica, indice) in criticas.data">
                     <!--Críticas usuarios-->
