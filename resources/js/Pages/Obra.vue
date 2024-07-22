@@ -54,7 +54,7 @@ function colorearManoLike($usuario, $gustadas) {
     <div class="container mx-auto mt-10 mb-10">
         <h1 class="text-center font-bold text-flamingo text-3xl px-8">{{ obra.titulo }}</h1>
         <!--3 apartados para poster, datos y valoraciones-->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-10">
             <!--Poster-->
             <div class="flex justify-start flex-col m-auto h-[100%] w-[90%]">
                 <img :src="'../posters/' + obra.poster.ruta" :alt="obra.poster.alt">
@@ -63,7 +63,7 @@ function colorearManoLike($usuario, $gustadas) {
             </div>
 
             <!--Datos pelicula-->
-            <div class="flex justify-center mr-10 pl-10 pr-10 w-full md:-ml[100px]">
+            <div class="flex justify-center mr-10 px-5 w-full md:-ml[100px]">
                 <div>
                     <!--Info general-->
                     <div>
@@ -140,7 +140,7 @@ function colorearManoLike($usuario, $gustadas) {
                         </span>
                         <!-- Bloque para secuela/precuela -->
                         <div v-if="secuelaPrecuela" class="text-center flex flex-col items-center">
-                            <div v-for="obra in secuelaPrecuela" class="w-[80%] md:w-[60%]">
+                            <div v-for="obra in secuelaPrecuela" class="w-[80%] md:w-[70%]">
                                 <p class="mt-2 -mb-3">
                                     {{props.obra.secuela.orden === 0 ? 'Relación' : obra.secuela.orden < props.obra.secuela.orden ? 'Precuela' : 'Secuela'}}
                                 </p>
@@ -149,7 +149,7 @@ function colorearManoLike($usuario, $gustadas) {
                         </div>
                         <!-- Bloque para spin-offs -->
                         <div v-if="spinoffs" class="text-center flex flex-col items-center">
-                            <div v-for="obra in spinoffs" class="w-[80%] md:w-[60%]">
+                            <div v-for="obra in spinoffs" class="w-[80%] md:w-[70%]">
                                 <p class="mt-2 -mb-3">
                                     {{props.obra.secuela.orden === 0 ? 'Relación' : 'Spinoff'}}
                                 </p>
@@ -163,7 +163,7 @@ function colorearManoLike($usuario, $gustadas) {
 
         <!--Contenedor criticas-->
         <div
-            class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 mb-15 pr-10 justify-center bg-flamingo text-white rounded lg:divide-x md:divide-x divide-y ">
+            class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 mb-15 pr-10 justify-center bg-flamingo text-white lg:divide-x md:divide-x divide-y ">
             <!--Criticas-->
             <div class="py-10 pl-12 lg:col-span-3 md:col-span-2">
                 <!--Titulo-->

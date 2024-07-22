@@ -14,10 +14,10 @@ const props = defineProps(['obra']);
         <Link :href="route('obra', obra.id)" class="w-full flex justify-center flex-wrap text-center py-4 group relative font-oswald cursor-pointer">
             <!-- Título estático -->
             <div class="w-full px-3">
-                <p class="group-hover:invisible truncate text-flamingo font-bold text-lg">{{ obra.titulo }}</p>
+                <p class="group-hover:invisible lg:truncate text-flamingo font-bold text-lg">{{ obra.titulo }}</p>
             </div>
             <!-- Título que aparece con el hover -->
-            <div :class="obra.titulo.length > 50 ? 'text-sm py-2.5 top-0.5' : 'text-lg'" class="z-10 inline-block px-3 py-2 duration-0 absolute opacity-0 transition-opacity group-hover:opacity-100 w-full truncate text-flamingo font-bold group-hover:underline text-lg top-0">
+            <div :class="obra.titulo.length > 50 ? 'text-sm py-2.5 top-0.5' : 'text-lg'" class="z-10 inline-block px-3 py-2 duration-0 absolute opacity-0 transition-opacity group-hover:opacity-100 w-full lg:truncate text-flamingo font-bold group-hover:underline text-lg top-0">
                 <p>{{ obra.titulo }}</p>
             </div>
 
