@@ -5,7 +5,7 @@ import NumValoraciones from "@/Components/NumValoraciones.vue";
 
 // Props:
 // 'obra': título y poster de la obra;
-const props = defineProps(['obra']);
+const props = defineProps(['obra', 'titulo']);
 </script>
 
 <template>
@@ -17,7 +17,7 @@ const props = defineProps(['obra']);
                 <p class="group-hover:invisible lg:truncate text-flamingo font-bold text-lg">{{ obra.titulo }}</p>
             </div>
             <!-- Título que aparece con el hover -->
-            <div :class="obra.titulo.length > 50 ? 'text-sm py-2.5 top-0.5' : 'text-lg'" class="z-10 inline-block px-3 py-2 duration-0 absolute opacity-0 transition-opacity group-hover:opacity-100 w-full lg:truncate text-flamingo font-bold group-hover:underline text-lg top-0">
+            <div :class="(titulo && obra.titulo.length > 50) ? titulo : 'text-lg'" class="z-10 inline-block px-3 py-2 duration-0 absolute opacity-0 transition-opacity group-hover:opacity-100 w-full lg:truncate text-flamingo font-bold group-hover:underline text-lg top-0">
                 <p>{{ obra.titulo }}</p>
             </div>
 

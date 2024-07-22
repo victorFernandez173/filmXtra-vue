@@ -70,49 +70,49 @@ function colorearManoLike($usuario, $gustadas) {
                         <ul>
                             <!--Títulos-->
                             <li class="list-disc ml-5">
-                                <span class="font-semibold underline text-lg">Título</span>:
+                                <span class="font-semibold text-lg">Título</span>:
                                 {{ obra.titulo }}
                                 ({{ obra.titulo_original }})
                             </li>
                             <!--Año-->
                             <li class="list-disc ml-5">
-                                <span class="font-semibold underline text-lg">Año</span>:
+                                <span class="font-semibold text-lg">Año</span>:
                                 {{ obra.fecha }}
                             </li>
                             <!--Duración-->
                             <li class="list-disc ml-5">
-                                <span class="font-semibold underline text-lg">Duración</span>:
+                                <span class="font-semibold text-lg">Duración</span>:
                                 {{ Math.floor((parseInt(obra.duracion) / 60)) }}h
                                 {{ parseInt(obra.duracion) % 60 }}min
                             </li>
                             <!--País-->
                             <li class="list-disc ml-5">
-                                <span class="font-semibold underline text-lg">País</span>:
+                                <span class="font-semibold text-lg">País</span>:
                                 {{ obra.pais }}
                             </li>
                             <!--Dirección-->
                             <li v-if="obra.directors[0]" class="list-disc ml-5">
-                                <span class="font-semibold underline text-lg">Dirección</span>:
+                                <span class="font-semibold text-lg">Dirección</span>:
                                 <span> {{ props.direccion }}  </span>
                             </li>
                             <!--Reparto-->
                             <li v-if="obra.actors[0]" class="list-disc ml-5">
-                                <span class="font-semibold underline text-lg">Reparto</span>:
+                                <span class="font-semibold text-lg">Reparto</span>:
                                 <span>{{ props.reparto }} </span>
                             </li>
                             <!--Productora-->
                             <li class="list-disc ml-5">
-                                <span class="font-semibold underline text-lg">Productora</span>:
+                                <span class="font-semibold text-lg">Productora</span>:
                                 {{ obra.productora }}
                             </li>
                             <!--Géneros-->
                             <li v-if="obra.generos" class="list-disc ml-5">
-                                <span class="font-semibold underline text-lg">Género</span>:
+                                <span class="font-semibold text-lg">Género</span>:
                                 <span> {{ props.generos }} </span>
                             </li>
                             <!--Sinopsis-->
                             <li class="list-disc ml-5">
-                                <span class="font-semibold underline text-lg">Sinopsis</span>:
+                                <span class="font-semibold text-lg">Sinopsis</span>:
                                 {{ obra.sinopsis }}
                             </li>
                         </ul>
@@ -121,12 +121,12 @@ function colorearManoLike($usuario, $gustadas) {
                     <div class="mt-4">
                         <ul>
                             <li v-if="obra.festivals.length > 0" class="font-bold text-flamingo text-xl list-none">
-                            Galardones:
+                            Galardones
                             </li>
                             <li>
                                 <ul>
                                     <li v-for="fest in obra.festivals" class="list-disc ml-5">
-                                        <span class="font-semibold underline text-lg">Mejor película</span>:
+                                        <span class="font-semibold text-lg">Mejor película</span>:
                                         {{ fest.nombre }}({{ fest.edicion }})
                                     </li>
                                 </ul>
@@ -135,8 +135,8 @@ function colorearManoLike($usuario, $gustadas) {
                     </div>
                     <!--Saga-->
                     <div class="mt-4">
-                        <span v-if="obra.secuela.saga" class="font-bold text-flamingo text-xl mt-2">
-                            Saga:
+                        <span v-if="secuelaPrecuela || spinoffs" class="font-bold text-flamingo text-xl mt-2">
+                            Saga
                         </span>
                         <!-- Bloque para secuela/precuela -->
                         <div v-if="secuelaPrecuela" class="text-center flex flex-col items-center">
@@ -153,7 +153,7 @@ function colorearManoLike($usuario, $gustadas) {
                                 <p class="mt-2 -mb-3">
                                     {{props.obra.secuela.orden === 0 ? 'Relación' : 'Spinoff'}}
                                 </p>
-                                <Poster :obra="obra" :titulo="`text-lg hover:text-sm md:text-base md:hover:text-base`" :info="true"/>
+                                <Poster :obra="obra" :info="true"/>
                             </div>
                         </div>
                     </div>
@@ -169,7 +169,7 @@ function colorearManoLike($usuario, $gustadas) {
                 <!--Titulo-->
                 <ul>
                     <p v-if="obra.profesionals.length > 0" class="list-disc font-bold text-black text-xl mb-5">
-                        Críticas profesionales:
+                        Críticas profesionales
                     </p>
                 </ul>
                 <ul v-for="p in obra.profesionals">
@@ -191,7 +191,7 @@ function colorearManoLike($usuario, $gustadas) {
                 <!--Titulo-->
                 <ul>
                     <p class="list-disc font-bold text-black text-xl mt-10 mb-5">
-                        Críticas de nuestros usuarios:
+                        Críticas de nuestros usuarios
                     </p>
                 </ul>
                 <ul v-for="(critica, indice) in criticas.data">
