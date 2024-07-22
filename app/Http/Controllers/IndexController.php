@@ -40,7 +40,7 @@ class IndexController extends Controller
     public function index()
     {
         return Inertia::render('Index', [
-            'obras'                => Obra::select(['id', 'titulo'])
+            'obras'                => Obra::select(['id', 'titulo', 'titulo_slug'])
                 ->with('poster:id,obra_id,ruta,alt')
                 ->whereIn('id', $this->obtenerObrasAleatorias())
                 ->get()

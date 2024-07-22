@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -37,6 +38,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class Obra extends Model
 {
+    use Sluggable;
+
     const string CREATED_AT = 'creada';
     const string UPDATED_AT = 'modificada';
 
@@ -64,6 +67,20 @@ class Obra extends Model
         'fecha',
         'productora',
     ];
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable(): array
+    {
+        return [
+            'titulo_slug' => [
+                'source' => 'titulo'
+            ]
+        ];
+    }
 
     /**
      * Obtener las secuelas.

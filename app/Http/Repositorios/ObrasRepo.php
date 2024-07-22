@@ -17,10 +17,10 @@ class ObrasRepo extends Controller
 {
     /**
      * Para obtener los datos iniciales/base de la obra con relaciones
-     * @param int $idObra
+     * @param string $tituloSlug
      * @return Obra|Builder|Model|_IH_Obra_QB
      */
-    static function obtenerDatosFichaObra(int $idObra): Obra|Builder|Model|_IH_Obra_QB
+    static function obtenerDatosFichaObra(string $tituloSlug): Obra|Builder|Model|_IH_Obra_QB
     {
         return Obra::with([
             'poster',
@@ -33,7 +33,7 @@ class ObrasRepo extends Controller
             'actors:nombre,nombre_real,edad,defuncion,pais',
             'generos:genero',
             'trailer'])
-            ->where('id', $idObra)
+            ->where('titulo_slug', $tituloSlug)
             ->first();
     }
 

@@ -11,7 +11,7 @@ const props = defineProps(['obra', 'titulo']);
 <template>
     <div>
         <!-- Sección de títulos -->
-        <Link :href="route('obra', obra.id)" class="w-full flex justify-center flex-wrap text-center py-4 group relative font-oswald cursor-pointer">
+        <Link :href="route('obra', obra.titulo_slug)" class="w-full flex justify-center flex-wrap text-center py-4 group relative font-oswald cursor-pointer">
             <!-- Título estático -->
             <div class="w-full px-3">
                 <p class="group-hover:invisible lg:truncate text-flamingo font-bold text-lg">{{ obra.titulo }}</p>

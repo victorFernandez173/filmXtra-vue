@@ -3,7 +3,6 @@
 use App\Models\Obra;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -16,6 +15,7 @@ return new class extends Migration
         Schema::create('obras', function (Blueprint $table) {
             $table->id();
             $table->string('titulo', 200)->nullable(false)->unique();
+            $table->string('titulo_slug', 200)->nullable();
             $table->string('titulo_original', 200)->nullable(false);
             $table->string('pais', 60)->nullable(false);
             $table->decimal('duracion', 3, 0)->nullable(false);

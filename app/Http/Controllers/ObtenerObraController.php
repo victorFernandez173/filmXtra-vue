@@ -12,13 +12,13 @@ class ObtenerObraController extends Controller
 {
     /**
      * Datos necesarios para pasar a la ficha de película
-     * @param int $id
+     * @param string $tituloSlug
      * @return Response
      * @throws Exception
      */
-    public function fichaPelicula(int $id)
+    public function fichaPelicula(string $tituloSlug)
     {
-        $obra = ObrasRepo::obtenerDatosFichaObra($id);
+        $obra = ObrasRepo::obtenerDatosFichaObra($tituloSlug);
 
         return Inertia::render('Obra', [
             'obra'              => $obra,
