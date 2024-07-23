@@ -67,9 +67,6 @@ onMounted(() => {
     <div v-if="numResultados > 0" class="col-span-full  text-center my-6">
         <h2 class="text-2xl">{{ numResultados }} Resultados:</h2>
     </div>
-    <div v-if="errors.tituloBuscado" class="col-span-full  text-center my-6">
-        <h2 class="text-2xl">{{ errors.tituloBuscado }}</h2>
-    </div>
 
     <!-- Seccion Principal de contenido -->
     <div class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-4 m-auto my-8">
