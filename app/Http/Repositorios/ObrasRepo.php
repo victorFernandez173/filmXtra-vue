@@ -166,7 +166,7 @@ class ObrasRepo extends Controller
         return [
             'verificacionExitosa'  => session('verificacionExitosa'),
             'borradoCuentaExitoso' => session('borradoCuentaExitoso'),
-            'gifNumero'            => static::obtenerUnNumDeGif(),
+            'nGifs'            => static::obtenerUnNumDeGif(),
             /*Citas*/
             'citaInspiring'        => Inspiring::quote(),
             'citaQuotable'         => static::citaQuotable(),

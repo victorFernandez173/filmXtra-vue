@@ -1,6 +1,7 @@
 <script setup>
 import {Link, useForm, usePage} from "@inertiajs/vue3";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
+import Swal from "sweetalert2";
 
 // Para el formulario de busqueda
 const form = useForm({
@@ -18,6 +19,16 @@ const submit = () => {
                 if (error.response.status === 422) {
                     form.reset();
                     usePage().props.errors = error.response.data.errors;
+                    Swal.fire({
+                        title: 'Upps...',
+                        text: usePage().props.errors.tituloBuscado,
+                        imageUrl: '../gif/' + (Math.floor(Math.random() * usePage().props.nGifs) + 1) + '.gif',
+                        imageWidth: '80%',
+                        imageAlt: 'gif de cine',
+                        showConfirmButton: false,
+                        position: 'center',
+                        timer: 4500
+                    });
                 }
             }
         )

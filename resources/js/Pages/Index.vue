@@ -16,7 +16,7 @@ import {computed, onMounted} from "vue";
 import {initCarousels} from "flowbite";
 import Swal from "sweetalert2";
 
-const props = defineProps(['obras', 'verificacionExitosa', 'gifNumero', 'citaInspiring', 'citaQuotable', 'citaPelicula', 'citaCine', 'numResultados', 'errors']);
+const props = defineProps(['obras', 'verificacionExitosa', 'nGifs', 'citaInspiring', 'citaQuotable', 'citaPelicula', 'citaCine', 'numResultados', 'errors']);
 const page = usePage();
 const confirmacionVerificacionMail = computed(() => page.props.verificacionExitosa);
 const borradoCuentaExitoso = computed(() => page.props.borradoCuentaExitoso);
@@ -29,8 +29,8 @@ onMounted(() => {
         Swal.fire({
             title: 'Enhorabuena!!',
             text: 'Tu email ha sido validado exitosamente',
-            imageUrl: '../gif/' + usePage().props.gifNumero + '.gif',
-            imageWidth: 400,
+            imageUrl: '../gif/' + (Math.floor(Math.random() * usePage().props.nGifs) + 1) + '.gif',
+            imageWidth: '80%',
             imageAlt: 'gif de cine',
             showConfirmButton: false,
             position: 'center',
@@ -42,8 +42,8 @@ onMounted(() => {
         Swal.fire({
             title: 'Adios!!',
             text: 'Tu cuenta ha sido borrada. Lamentamos que te vayas.',
-            imageUrl: '../gif/' + usePage().props.gifNumero + '.gif',
-            imageWidth: 400,
+            imageUrl: '../gif/' + (Math.floor(Math.random() * usePage().props.nGifs) + 1) + '.gif',
+            imageWidth: '80%',
             imageAlt: 'gif de cine',
             showConfirmButton: false,
             position: 'center',

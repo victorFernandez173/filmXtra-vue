@@ -37,7 +37,7 @@ class BuscarTitulosRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'tituloBuscado.required' => 'Busca algún título',
+            'tituloBuscado.required' => 'Introduce texto',
         ];
     }
 }
