@@ -16,11 +16,11 @@ use App\Http\Controllers\IndexController;
 */
 
 
-Route::get('/', [IndexController::class, 'index'])
-    ->name('/');
+Route::get('/', [IndexController::class, 'index'])->name('/');
 
-Route::get('/obra/{tituloSlug}', [ObtenerObraController::class, 'fichaPelicula'])
-    ->name('obra');
+Route::post('/', [IndexController::class, 'buscar'])->name('/buscado');
+
+Route::get('/obra/{tituloSlug}', [ObtenerObraController::class, 'fichaPelicula'])->name('obra');
 
 Route::post('/like', [CriticasController::class, 'darLike'])->name('darLike')->middleware('auth', 'verified');
 
@@ -34,12 +34,9 @@ Route::middleware('auth')
 require __DIR__ . '/auth.php';
 
 
-// TODO 'route model binding' para las rutas de obra
-
-
 // TODO busqueda navbar reactivar;;;buscador mejorar: paginación, mensajes con los resultados...
 // TODO REPRODUCIR funcionalidades filmXtraVic
-// TODO al modificar la ruta de una obra, solo añadiendo caracteres en el trozo del titulo, se intenta acceder a esa obra pero claro, NO EXISTE y da un error de array[0] nulo porque claro no hay obra ESTUDIAR
+
 
 // TODO notificaciones de algún tipo?? likes? criticas? estudiar (bootcamp ojear codigo)
 // TODO policies para las modificaciones (bootcamp ojear codigo)

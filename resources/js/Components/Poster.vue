@@ -22,8 +22,7 @@ const props = defineProps(['obra', 'titulo']);
             </div>
 
             <!-- Sección de imagen -->
-            <img :src="'/posters/' + obra.poster.ruta"
-                 :alt="obra.poster.alt" class="w-4/5 border-[10px] border-white group-hover:border-flamingo">
+            <img :src="'/posters/' + obra.poster.ruta" :alt="obra.poster.alt" class="w-4/5 border-[10px] border-white group-hover:border-flamingo">
 
             <!-- Sección de nota y numero de valoraciones -->
             <!-- Se muestran solo si se pasa como parte de la info de la obra: -->
