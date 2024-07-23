@@ -16,11 +16,11 @@ use App\Http\Controllers\IndexController;
 */
 
 
-Route::get('/', [IndexController::class, 'index'])
-    ->name('/');
+Route::get('/', [IndexController::class, 'index'])->name('/');
 
-Route::get('/obra/{tituloSlug}', [ObtenerObraController::class, 'fichaPelicula'])
-    ->name('obra');
+Route::post('/', [IndexController::class, 'buscar'])->name('/buscado');
+
+Route::get('/obra/{tituloSlug}', [ObtenerObraController::class, 'fichaPelicula'])->name('obra');
 
 Route::post('/like', [CriticasController::class, 'darLike'])->name('darLike')->middleware('auth', 'verified');
 
