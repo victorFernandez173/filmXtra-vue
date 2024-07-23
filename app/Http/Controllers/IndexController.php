@@ -9,6 +9,7 @@ use App\Traits\CitasTrait;
 use App\Traits\GifsTrait;
 use Inertia\Inertia;
 use Exception;
+use Log;
 
 class IndexController extends Controller
 {
@@ -29,21 +30,27 @@ class IndexController extends Controller
     }
 
     /**
-     * Devuelve la vista de bienvenida con mensaje informativo de busqueda o los resultados
+     * Devuelve la info de busqueda necesaria
      * @throws Exception
      */
     public function buscar(BuscarTitulosRequest $request)
     {
-        $obras = ObrasRepo::obtenerObrasBusqueda($request->tituloBuscado);
+        return ['tituloBuscado' => $request->tituloBuscado];
+    }
 
-        return Inertia::render('Index',
-            array_merge(
-                [
-                    'obras'         => $obras,
-                    'numResultados' => $obras->count()
-                ],
-                ObrasRepo::obtenerDatosGeneralesIndex()
-            )
-        );
+    /**
+     * @throws Exception
+     */
+    public function cargarResultados()
+    {
+        $obras = ObrasRepo::obtenerObrasBusqueda(request('tituloBuscado'));
+
+        return Inertia::render('Index', array_merge(
+            [
+                'obras'         => $obras,
+                'numResultados' => $obras->count()
+            ],
+            ObrasRepo::obtenerDatosGeneralesIndex()
+        ));
     }
 }

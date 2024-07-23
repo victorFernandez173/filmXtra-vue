@@ -18,7 +18,10 @@ use App\Http\Controllers\IndexController;
 
 Route::get('/', [IndexController::class, 'index'])->name('/');
 
-Route::post('/buscar-index', [IndexController::class, 'buscar'])->name('buscarIndex');
+Route::post('/buscar-nav', [IndexController::class, 'buscar'])->name('buscarNav');
+
+Route::post('/buscar-nav-exito', [IndexController::class, 'cargarResultados'])->name('buscarNavExito');
+
 
 Route::get('/obra/{tituloSlug}', [ObtenerObraController::class, 'fichaPelicula'])->name('obra');
 
@@ -34,7 +37,7 @@ Route::middleware('auth')
 require __DIR__ . '/auth.php';
 
 
-// TODO busqueda navbar reactivar;;;buscador mejorar: paginación, mensajes con los resultados...
+// TODO busqueda navbar: busqueda titulos tambien originales, paginación, boton volver al index en titulo Resultados, corregir colocación footer...
 // TODO REPRODUCIR funcionalidades filmXtraVic
 
 

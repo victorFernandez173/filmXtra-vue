@@ -65,7 +65,7 @@ onMounted(() => {
 
     <!--  Encabezado en caso de hacer búsqueda  -->
     <div v-if="numResultados > 0" class="col-span-full  text-center my-6">
-        <h2 class="text-2xl">{{ numResultados }} Resultados:</h2>
+        <h2 class="text-2xl">{{ numResultados }} {{ numResultados === 1 ?  'Resultado:' : 'Resultados' }}</h2>
     </div>
 
     <!-- Seccion Principal de contenido -->

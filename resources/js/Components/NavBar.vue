@@ -1,5 +1,5 @@
 <script setup>
-import {Link, useForm, usePage} from "@inertiajs/vue3";
+import {Link, useForm, usePage, router} from "@inertiajs/vue3";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import Swal from "sweetalert2";
 
@@ -9,29 +9,26 @@ const form = useForm({
 });
 
 const submit = () => {
-    axios.post(route('buscarIndex'), {tituloBuscado: form.tituloBuscado})
-        .then(
-            (response)=>{
+    axios.post(route('buscarNav'), {tituloBuscado: form.tituloBuscado})
+        .then((response) => {
+            router.post('/buscar-nav-exito', response.data);
+        })
+        .catch((error) => {
+            if (error.response.status === 422) {
+                form.reset();
+                usePage().props.errors = error.response.data.errors;
+                Swal.fire({
+                    title: 'Upps...',
+                    text: usePage().props.errors.tituloBuscado,
+                    imageUrl: '../gif/' + (Math.floor(Math.random() * usePage().props.nGifs) + 1) + '.gif',
+                    imageWidth: '80%',
+                    imageAlt: 'gif de cine',
+                    showConfirmButton: false,
+                    position: 'center',
+                    timer: 4500
+                });
             }
-        )
-        .catch(
-            (error)=>{
-                if (error.response.status === 422) {
-                    form.reset();
-                    usePage().props.errors = error.response.data.errors;
-                    Swal.fire({
-                        title: 'Upps...',
-                        text: usePage().props.errors.tituloBuscado,
-                        imageUrl: '../gif/' + (Math.floor(Math.random() * usePage().props.nGifs) + 1) + '.gif',
-                        imageWidth: '80%',
-                        imageAlt: 'gif de cine',
-                        showConfirmButton: false,
-                        position: 'center',
-                        timer: 4500
-                    });
-                }
-            }
-        )
+        })
 };
 </script>
 
