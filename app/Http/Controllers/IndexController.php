@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Obra;
+use App\Http\Repositorios\ObrasRepo;
+use App\Http\Requests\BuscarTitulosRequest;
 use App\Traits\APIsTrait;
 use App\Traits\CitasTrait;
 use App\Traits\GifsTrait;
-use Illuminate\Foundation\Inspiring;
 use Inertia\Inertia;
 use Exception;
 
@@ -15,44 +15,35 @@ class IndexController extends Controller
     use CitasTrait, APIsTrait, GifsTrait;
 
     /**
-     * Genera un array con 24 ids al azar
-     * que serán las películas cargadas en Index
-     * @throws Exception
-     */
-    public function obtenerObrasAleatorias()
-    {
-        $numPeliculas = Obra::count();
-        $peliculasId = [];
-        for ($i = 0; $i < 24; $i++) {
-            $aleatorio = random_int(1, $numPeliculas);
-            while (in_array($aleatorio, $peliculasId)) {
-                $aleatorio = random_int(1, $numPeliculas);
-            }
-            $peliculasId[] = $aleatorio;
-        }
-        return $peliculasId;
-    }
-
-    /**
-     * Devuelve la vista de bienvenida con esas películas
+     * Devuelve la vista de bienvenida con los posters y datos necesarios
      * @throws Exception
      */
     public function index()
     {
-        return Inertia::render('Index', [
-            'obras'                => Obra::select(['id', 'titulo', 'titulo_slug'])
-                ->with('poster:id,obra_id,ruta,alt')
-                ->whereIn('id', $this->obtenerObrasAleatorias())
-                ->get()
-                ->shuffle(),
-            'verificacionExitosa'  => session('verificacionExitosa'),
-            'borradoCuentaExitoso' => session('borradoCuentaExitoso'),
-            'gifNumero'            => $this->obtenerUnNumDeGif(),
-            /*Citas*/
-            'citaInspiring'        => Inspiring::quote(),
-            'citaQuotable'         => $this->citaQuotable(),
-            'citaPelicula'         => $this->citaPelicula(),
-            'citaCine'             => $this->citaSobreCine(),
-        ]);
+        return Inertia::render('Index',
+            array_merge(
+                ['obras' => ObrasRepo::obtenerObrasIndex()],
+                ObrasRepo::obtenerDatosGeneralesIndex(),
+            )
+        );
+    }
+
+    /**
+     * Devuelve la vista de bienvenida con mensaje informativo de busqueda o los resultados
+     * @throws Exception
+     */
+    public function buscar(BuscarTitulosRequest $request)
+    {
+        $obras = ObrasRepo::obtenerObrasBusqueda($request->tituloBuscado);
+
+        return Inertia::render('Index',
+            array_merge(
+                [
+                    'obras'         => $obras,
+                    'numResultados' => $obras->count()
+                ],
+                ObrasRepo::obtenerDatosGeneralesIndex()
+            )
+        );
     }
 }

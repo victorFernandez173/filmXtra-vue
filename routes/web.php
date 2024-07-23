@@ -18,7 +18,7 @@ use App\Http\Controllers\IndexController;
 
 Route::get('/', [IndexController::class, 'index'])->name('/');
 
-Route::post('/', [IndexController::class, 'buscar'])->name('/buscado');
+Route::post('/buscar-index', [IndexController::class, 'buscar'])->name('buscarIndex');
 
 Route::get('/obra/{tituloSlug}', [ObtenerObraController::class, 'fichaPelicula'])->name('obra');
 

@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use Http;
 use Log;
+use Random\RandomException;
 use Throwable;
 
 trait APIsTrait
@@ -14,8 +15,9 @@ trait APIsTrait
      * Por medio de una consulta a la API Quotable
      * Obtenemos una cita y la devovemos para usarla
      * @return string
+     * @throws RandomException
      */
-    public function citaQuotable(): string
+    static function citaQuotable(): string
     {
         try {
             // Consultamos la api
@@ -26,7 +28,7 @@ trait APIsTrait
         } catch(Throwable $e) {
             Log::error($e->getMessage().': '.$e->getTraceAsString());
 
-            return $this->citaSobreCine();
+            return static::citaSobreCine();
         }
     }
 }

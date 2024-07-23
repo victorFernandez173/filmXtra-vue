@@ -12,7 +12,7 @@ trait CitasTrait
      * @return string
      * @throws RandomException
      */
-    public function citaPelicula(): string
+    static function citaPelicula(): string
     {
         $citasPeliculas = Cita::where('tipo', Cita::PELICULA)->get();
         return $citasPeliculas[random_int(0, count($citasPeliculas)-1)]['cita'];
@@ -23,7 +23,7 @@ trait CitasTrait
      * @return string
      * @throws RandomException
      */
-    public function citaSobreCine(): string
+    static function citaSobreCine(): string
     {
         $citasPeliculas = Cita::where('tipo', Cita::SOBRECINE)->get();
         return $citasPeliculas[random_int(0, count($citasPeliculas)-1)]['cita'];

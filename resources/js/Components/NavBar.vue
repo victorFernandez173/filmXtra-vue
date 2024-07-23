@@ -4,7 +4,7 @@ import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 
 // Para el formulario de busqueda
 const form = useForm({
-    titulo : ''
+    tituloBuscado : ''
 });
 </script>
 
@@ -18,7 +18,7 @@ const form = useForm({
             </Link>
             <!-- Bloque de búsqueda  -->
             <div class="flex justify-end md:order-2">
-                <button type="button" data-collapse-toggle="navbar-search"  aria-controls="navbar-search" aria-expanded="false" class="lg:hidden text-gray-500  hover:bg-gray-100  focus:outline-none focus:ring-4 focus:ring-gray-200  rounded-lg text-sm p-2.5 mr-1" >
+                <button  type="button" data-collapse-toggle="navbar-search"  aria-controls="navbar-search" aria-expanded="false" class="lg:hidden text-gray-500  hover:bg-gray-100  focus:outline-none focus:ring-4 focus:ring-gray-200  rounded-lg text-sm p-2.5 mr-1" >
                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                     <span class="sr-only">Buscar</span>
                 </button>
@@ -27,11 +27,8 @@ const form = useForm({
                         <svg class="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                         <span class="sr-only">Icono buscar</span>
                     </div>
-                    <form @submit.prevent="form.get( route('/'),
-                    {
-                    preserveScroll: true,
-                    })">
-                        <input v-model="form.titulo" type="text" id="search-navbar" class="block w-full p-2 pl-10 text-sm text-gray-900 border-gray-300 rounded-lg bg-gray-50  border-[3px] focus:border-flamingo
+                    <form @submit.prevent="form.post(route('buscarIndex'), {  preserveScroll: true })">
+                        <input v-model="form.tituloBuscado" type="text" id="navbar-search" class="block w-full p-2 pl-10 text-sm text-gray-900 border-gray-300 rounded-lg bg-gray-50  border-[3px] focus:border-flamingo
                         focus:ring-0" placeholder="Buscar...">
                     </form>
                 </div>

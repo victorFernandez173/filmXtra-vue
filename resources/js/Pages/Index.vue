@@ -16,7 +16,7 @@ import {computed, onMounted} from "vue";
 import {initCarousels} from "flowbite";
 import Swal from "sweetalert2";
 
-const props = defineProps(['obras', 'verificacionExitosa', 'gifNumero', 'citaInspiring', 'citaQuotable', 'citaPelicula', 'citaCine']);
+const props = defineProps(['obras', 'verificacionExitosa', 'gifNumero', 'citaInspiring', 'citaQuotable', 'citaPelicula', 'citaCine', 'numResultados', 'errors']);
 const page = usePage();
 const confirmacionVerificacionMail = computed(() => page.props.verificacionExitosa);
 const borradoCuentaExitoso = computed(() => page.props.borradoCuentaExitoso);
@@ -63,9 +63,16 @@ onMounted(() => {
     <!--  Carrusel   -->
     <Carrusel :citaInspiring="citaInspiring" :citaQuotable="citaQuotable" :citaPelicula="citaPelicula" :citaCine="citaCine" />
 
+    <!--  Encabezado en caso de hacer búsqueda  -->
+    <div v-if="numResultados > 0" class="col-span-full  text-center my-6">
+        <h2 class="text-2xl">{{ numResultados }} Resultados:</h2>
+    </div>
+    <div v-if="errors.tituloBuscado" class="col-span-full  text-center my-6">
+        <h2 class="text-2xl">{{ errors.tituloBuscado }}</h2>
+    </div>
+
     <!-- Seccion Principal de contenido -->
-    <div
-        class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-4 m-auto my-8">
+    <div class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-4 m-auto my-8">
         <!-- Posters -->
         <Poster v-for="obra in obras" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>
     </div>
