@@ -20,7 +20,7 @@ Route::get('/', [IndexController::class, 'index'])->name('/');
 
 Route::post('/buscar-nav', [IndexController::class, 'buscar'])->name('buscarNav');
 
-Route::post('/buscar-nav-exito', [IndexController::class, 'cargarResultados'])->name('buscarNavExito');
+Route::get('/buscar-exito', [IndexController::class, 'cargarResultadosBusqueda'])->name('buscarNavExito');
 
 
 Route::get('/obra/{tituloSlug}', [ObtenerObraController::class, 'fichaPelicula'])->name('obra');

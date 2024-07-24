@@ -45,7 +45,7 @@ class ObrasRepo extends Controller
             ->first();
 
         // Si no hubiera obra, se aborta 404
-        if (!$obra){
+        if (!$obra) {
             abort(404);
         }
 
@@ -133,7 +133,9 @@ class ObrasRepo extends Controller
                 ->get();
 
             // Retornamos info de esas obras
-            return Obra::with(['poster', 'secuela' => function ($query) { $query->orderBy('orden');}])->find($relacionadas);
+            return Obra::with(['poster', 'secuela' => function ($query) {
+                $query->orderBy('orden');
+            }])->find($relacionadas);
         }
         return null;
     }
@@ -166,7 +168,7 @@ class ObrasRepo extends Controller
         return [
             'verificacionExitosa'  => session('verificacionExitosa'),
             'borradoCuentaExitoso' => session('borradoCuentaExitoso'),
-            'nGifs'            => static::obtenerUnNumDeGif(),
+            'nGifs'                => static::obtenerUnNumDeGif(),
             /*Citas*/
             'citaInspiring'        => Inspiring::quote(),
             'citaQuotable'         => static::citaQuotable(),

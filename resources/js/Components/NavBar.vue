@@ -11,7 +11,7 @@ const form = useForm({
 const submit = () => {
     axios.post(route('buscarNav'), {tituloBuscado: form.tituloBuscado})
         .then((response) => {
-            router.post('/buscar-nav-exito', response.data);
+            router.get('/buscar-exito', {'titulo-buscado':response.data.tituloBuscado});
         })
         .catch((error) => {
             if (error.response.status === 422) {

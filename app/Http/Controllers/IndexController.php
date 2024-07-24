@@ -40,9 +40,9 @@ class IndexController extends Controller
     /**
      * @throws Exception
      */
-    public function cargarResultados()
+    public function cargarResultadosBusqueda()
     {
-        $obras = ObrasRepo::obtenerObrasBusqueda(request('tituloBuscado'));
+        $obras = ObrasRepo::obtenerObrasBusqueda(request('titulo-buscado'));
 
         return Inertia::render('Index', array_merge(
             [
