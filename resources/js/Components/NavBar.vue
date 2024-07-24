@@ -2,6 +2,31 @@
 import {Link, useForm, usePage, router} from "@inertiajs/vue3";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import Swal from "sweetalert2";
+import Modal from "@/Components/Modal.vue";
+import SecondaryButton from "@/Components/SecondaryButton.vue";
+import {ref} from "vue";
+import Poster from "@/Components/Poster.vue";
+
+
+
+const busquedaExito = ref(false);
+const confirmarBusquedaExito = () => {
+    busquedaExito.value = true;
+};
+// const deleteUser = () => {
+//     form.delete(route('profile.destroy'), {
+//         preserveScroll: true,
+//         onSuccess: () => closeModal(),
+//         onFinish: () => form.reset(),
+//     });
+// };
+const closeModal = () => {
+    busquedaExito.value = false;
+    form.reset();
+};
+
+
+
 
 // Para el formulario de busqueda
 const form = useForm({
@@ -11,7 +36,9 @@ const form = useForm({
 const submit = () => {
     axios.post(route('buscarNav'), {tituloBuscado: form.tituloBuscado})
         .then((response) => {
+            confirmarBusquedaExito();
             router.get('/buscar-exito', {'titulo-buscado':response.data.tituloBuscado});
+            form.reset();
         })
         .catch((error) => {
             if (error.response.status === 422) {
@@ -33,6 +60,26 @@ const submit = () => {
 </script>
 
 <template>
+
+    <Modal :show="busquedaExito" @close="closeModal">
+        <div class="p-6">
+            <!--  Encabezado en caso de hacer búsqueda  -->
+            <div v-if="usePage().props.numResultados > 0" class="col-span-full  text-center mt-12">
+                <h2 class="text-2xl">{{ usePage().props.numResultados }} {{ usePage().props.numResultados === 1 ?  'Resultado:' : 'Resultados' }}</h2>
+            </div>
+
+            <!-- Seccion Principal de contenido -->
+            <div class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-4 m-auto my-8">
+                <!-- Posters -->
+                <Poster v-for="obra in usePage().props.obras" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>
+            </div>
+
+            <div class="mt-6 flex justify-center">
+                <SecondaryButton @click="closeModal"> Cerrar resultados </SecondaryButton>
+            </div>
+        </div>
+    </Modal>
+
     <nav class="bg-white border-gray-200  sticky top-0 z-50">
         <!-- Div con el contenido del nav -->
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
