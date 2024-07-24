@@ -22,11 +22,11 @@ Route::post('/buscar-nav', [IndexController::class, 'buscar'])->name('buscarNav'
 
 Route::get('/buscar-exito', [IndexController::class, 'cargarResultadosBusqueda'])->name('buscarNavExito');
 
-
 Route::get('/obra/{tituloSlug}', [ObtenerObraController::class, 'fichaPelicula'])->name('obra');
 
 Route::post('/like', [CriticasController::class, 'darLike'])->name('darLike')->middleware('auth', 'verified');
 
+// Rutas perfil: mostrar, editar y borrar
 Route::middleware('auth')
     ->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -34,10 +34,12 @@ Route::middleware('auth')
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
+// Resto rutas auth
 require __DIR__ . '/auth.php';
 
 
 // TODO busqueda navbar: paginación, boton volver index titulo Resultados...
+// TODO reorganizar rutas...
 // TODO REPRODUCIR funcionalidades filmXtraVic
 
 
