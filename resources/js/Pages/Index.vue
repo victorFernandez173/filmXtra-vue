@@ -64,7 +64,7 @@ onMounted(() => {
     <Carrusel :citaInspiring="citaInspiring" :citaQuotable="citaQuotable" :citaPelicula="citaPelicula" :citaCine="citaCine" />
 
     <!--  Encabezado en caso de hacer búsqueda  -->
-    <div v-if="numResultados > 0" class="col-span-full  text-center my-6">
+    <div v-if="numResultados > 0" class="col-span-full  text-center mt-12">
         <h2 class="text-2xl">{{ numResultados }} {{ numResultados === 1 ?  'Resultado:' : 'Resultados' }}</h2>
     </div>
 

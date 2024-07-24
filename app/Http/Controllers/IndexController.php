@@ -9,7 +9,6 @@ use App\Traits\CitasTrait;
 use App\Traits\GifsTrait;
 use Inertia\Inertia;
 use Exception;
-use Log;
 
 class IndexController extends Controller
 {

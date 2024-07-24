@@ -194,9 +194,10 @@ class ObrasRepo extends Controller
      */
     static function obtenerObrasBusqueda(string $tituloBuscado)
     {
-        return Obra::select(['id', 'titulo', 'titulo_slug'])
+        return Obra::select(['id', 'titulo', 'titulo_original', 'titulo_slug'])
             ->with('poster:id,obra_id,ruta,alt')
             ->where('obras.titulo', 'like', '%' . $tituloBuscado . '%')
+            ->orWhere('obras.titulo_original', 'like', '%' . $tituloBuscado . '%')
             ->get()
             ->shuffle();
     }
