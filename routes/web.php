@@ -37,7 +37,7 @@ Route::middleware('auth')
 require __DIR__ . '/auth.php';
 
 
-// TODO busqueda navbar: paginación, boton volver al index en titulo Resultados, busqueda por get...
+// TODO busqueda navbar: paginación, boton volver index titulo Resultados...
 // TODO REPRODUCIR funcionalidades filmXtraVic
 
 
