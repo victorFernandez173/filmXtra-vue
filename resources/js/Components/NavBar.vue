@@ -37,7 +37,10 @@ const submit = () => {
     axios.post(route('buscarNav'), {tituloBuscado: form.tituloBuscado})
         .then((response) => {
             confirmarBusquedaExito();
-            router.get('/buscar-exito', {'titulo-buscado':response.data.tituloBuscado});
+            router.post('/buscar-exito', {'titulo-buscado':response.data.tituloBuscado, preserveState: true,
+                preserveScroll: true,
+                only: {'titulo-buscado':response.data.tituloBuscado},
+            });
             form.reset();
         })
         .catch((error) => {
@@ -64,17 +67,17 @@ const submit = () => {
     <Modal :show="busquedaExito" @close="closeModal">
         <div class="p-6">
             <!--  Encabezado en caso de hacer búsqueda  -->
-            <div v-if="usePage().props.numResultados > 0" class="col-span-full  text-center mt-12">
-                <h2 class="text-2xl">{{ usePage().props.numResultados }} {{ usePage().props.numResultados === 1 ?  'Resultado:' : 'Resultados' }}</h2>
+            <div v-if="usePage().props.numResultados > 0" class="col-span-full  text-center mt-2">
+                <h2 class="text-2xl text-flamingo">{{ usePage().props.numResultados }} {{ usePage().props.numResultados === 1 ?  'Resultado:' : 'Resultados' }}</h2>
             </div>
 
             <!-- Seccion Principal de contenido -->
-            <div class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-4 m-auto my-8">
+            <div class="container grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-2 m-auto my-2">
                 <!-- Posters -->
                 <Poster v-for="obra in usePage().props.obras" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>
             </div>
 
-            <div class="mt-6 flex justify-center">
+            <div class="my-2 flex justify-center">
                 <SecondaryButton @click="closeModal"> Cerrar resultados </SecondaryButton>
             </div>
         </div>
