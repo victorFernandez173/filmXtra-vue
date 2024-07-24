@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
             //Numero de gif en caso de que haya mensaje de reset password
-            'gifNumero' => $this->obtenerUnNumDeGif(),
+            'nGifs' => $this->obtenerUnNumDeGif(),
         ]);
     }
 

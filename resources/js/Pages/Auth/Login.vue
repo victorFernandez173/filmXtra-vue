@@ -9,7 +9,7 @@ import AppLogoIndex from "@/Components/AppLogoIndex.vue";
 import {computed, onMounted} from "vue";
 import Swal from "sweetalert2";
 
-const props = defineProps(['canResetPassword', 'status', 'gifNumero']);
+const props = defineProps(['canResetPassword', 'status', 'nGifs']);
 const page = usePage();
 const confirmacionPasswordModificado = computed(() => page.props.status);
 
@@ -31,8 +31,8 @@ onMounted(() => {
         Swal.fire({
             title: 'Bravo!!',
             text: confirmacionPasswordModificado.value,
-            imageUrl: '../gif/' + usePage().props.gifNumero + '.gif',
-            imageWidth: 400,
+            imageUrl: '../gif/' + (Math.floor(Math.random() * usePage().props.nGifs) + 1) + '.gif',
+            imageWidth: '80%',
             imageAlt: 'gif de cine',
             showConfirmButton: false,
             position: 'center',

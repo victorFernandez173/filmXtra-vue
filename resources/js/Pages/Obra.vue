@@ -27,7 +27,7 @@ function alertaDarLike() {
         title: 'UPSSS!',
         text: `Regístrate y logueate para dar like`,
         imageUrl: '../gif/' + (Math.floor(Math.random() * usePage().props.nGifs) + 1) + '.gif',
-        imageWidth: 400,
+        imageWidth: '80%',
         imageAlt: 'ocupate de arreglarlo, imagen para Regístrate y logueate para dar like',
         confirmButtonColor: '#e37f81'
     });

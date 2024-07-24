@@ -8,13 +8,21 @@ use App\Models\Like;
 use App\Models\Obra;
 use App\Models\Secuela;
 use App\Models\Usuario;
+use App\Traits\APIsTrait;
+use App\Traits\CitasTrait;
+use App\Traits\GifsTrait;
+use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Inspiring;
 use Illuminate\Pagination\LengthAwarePaginator;
 use LaravelIdea\Helper\App\Models\_IH_Obra_QB;
+use Random\RandomException;
 
 class ObrasRepo extends Controller
 {
+    use CitasTrait, APIsTrait, GifsTrait;
+
     /**
      * Para obtener los datos iniciales/base de la obra con relaciones
      * @param string $tituloSlug
@@ -37,7 +45,7 @@ class ObrasRepo extends Controller
             ->first();
 
         // Si no hubiera obra, se aborta 404
-        if (!$obra){
+        if (!$obra) {
             abort(404);
         }
 
@@ -125,8 +133,74 @@ class ObrasRepo extends Controller
                 ->get();
 
             // Retornamos info de esas obras
-            return Obra::with(['poster', 'secuela' => function ($query) { $query->orderBy('orden');}])->find($relacionadas);
+            return Obra::with(['poster', 'secuela' => function ($query) {
+                $query->orderBy('orden');
+            }])->find($relacionadas);
         }
         return null;
+    }
+
+    /**
+     * Genera un array con 24 ids al azar
+     * que serán las películas cargadas en Index
+     * @throws Exception
+     */
+    static function obtenerObrasAleatorias(): array
+    {
+        $numPeliculas = Obra::count();
+        $peliculasId = [];
+        for ($i = 0; $i < 24; $i++) {
+            $aleatorio = random_int(1, $numPeliculas);
+            while (in_array($aleatorio, $peliculasId)) {
+                $aleatorio = random_int(1, $numPeliculas);
+            }
+            $peliculasId[] = $aleatorio;
+        }
+        return $peliculasId;
+    }
+
+    /**
+     * @return array
+     * @throws RandomException
+     */
+    static function obtenerDatosGeneralesIndex(): array
+    {
+        return [
+            'verificacionExitosa'  => session('verificacionExitosa'),
+            'borradoCuentaExitoso' => session('borradoCuentaExitoso'),
+            'nGifs'                => static::obtenerUnNumDeGif(),
+            /*Citas*/
+            'citaInspiring'        => Inspiring::quote(),
+            'citaQuotable'         => static::citaQuotable(),
+            'citaPelicula'         => static::citaPelicula(),
+            'citaCine'             => static::citaSobreCine(),
+        ];
+    }
+
+    /**
+     * Consulta estan
+     * @throws Exception
+     */
+    static function obtenerObrasIndex()
+    {
+        return Obra::select(['id', 'titulo', 'titulo_slug'])
+            ->with('poster:id,obra_id,ruta,alt')
+            ->whereIn('id', static::obtenerObrasAleatorias())
+            ->get()
+            ->shuffle();
+    }
+
+
+    /**
+     * @throws Exception
+     */
+    static function obtenerObrasBusqueda(string $tituloBuscado)
+    {
+        return Obra::select(['id', 'titulo', 'titulo_original', 'titulo_slug'])
+            ->with('poster:id,obra_id,ruta,alt')
+            ->where('obras.titulo', 'like', '%' . $tituloBuscado . '%')
+            ->orWhere('obras.titulo_original', 'like', '%' . $tituloBuscado . '%')
+            ->get()
+            ->shuffle();
     }
 }

@@ -18,12 +18,15 @@ use App\Http\Controllers\IndexController;
 
 Route::get('/', [IndexController::class, 'index'])->name('/');
 
-Route::post('/', [IndexController::class, 'buscar'])->name('/buscado');
+Route::post('/buscar-nav', [IndexController::class, 'buscar'])->name('buscarNav');
+
+Route::get('/buscar-exito', [IndexController::class, 'cargarResultadosBusqueda'])->name('buscarNavExito');
 
 Route::get('/obra/{tituloSlug}', [ObtenerObraController::class, 'fichaPelicula'])->name('obra');
 
 Route::post('/like', [CriticasController::class, 'darLike'])->name('darLike')->middleware('auth', 'verified');
 
+// Rutas perfil: mostrar, editar y borrar
 Route::middleware('auth')
     ->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -31,10 +34,12 @@ Route::middleware('auth')
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
+// Resto rutas auth
 require __DIR__ . '/auth.php';
 
 
-// TODO busqueda navbar reactivar;;;buscador mejorar: paginación, mensajes con los resultados...
+// TODO busqueda navbar: paginación, boton volver index titulo Resultados...
+// TODO reorganizar rutas...
 // TODO REPRODUCIR funcionalidades filmXtraVic
 
 
@@ -47,8 +52,7 @@ require __DIR__ . '/auth.php';
 // TODO honeypot (tallpad)
 // TODO evaluación/criticas en el perfil de usuario
 // TODO podcast en el permanent layout
-// TODO avatar de usuario, completar las posibilidades de edición de datos personales en pagina de usuario
-// TODO sección fotos de pelicula
+// TODO avatar de usuario y datos faltantes personales en pagina de usuario
 // TODO roles para los gestores en una posible futura sección de gestion de datos
 // TODO session bbdd driver, tabla con almacenamiento de sesiones
 
