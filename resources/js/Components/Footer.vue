@@ -3,7 +3,7 @@ import {Link} from "@inertiajs/vue3";
 </script>
 
 <template>
-    <footer class="bg-black 100vw">
+    <footer class="bg-black 100vw mt-auto">
         <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 justify-items-center px-2 text-center">
                 <div class="w-full flex items-start col-span-1 sm:col-span-2 md:items-center md:col-span-1 justify-center">

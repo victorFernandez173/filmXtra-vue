@@ -11,13 +11,15 @@ onMounted(() => {
 </script>
 
 <template>
-    <!-- Barra de navegacion -->
-    <NavBar/>
+    <div class="min-h-[100vh] flex flex-col">
+        <!-- Barra de navegacion -->
+        <NavBar/>
 
-    <slot>
-        <!-- Contenido del layout -->
-    </slot>
+        <slot>
+            <!-- Contenido del layout -->
+        </slot>
 
-    <!-- Pie de pagina -->
-    <Footer/>
+        <!-- Pie de pagina -->
+        <Footer/>
+    </div>
 </template>
