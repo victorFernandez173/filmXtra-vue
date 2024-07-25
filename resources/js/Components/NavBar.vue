@@ -7,12 +7,14 @@ import SecondaryButton from "@/Components/SecondaryButton.vue";
 import {ref} from "vue";
 import Poster from "@/Components/Poster.vue";
 
-
-
 const busquedaExito = ref(false);
-const confirmarBusquedaExito = () => {
+const resultados = ref(null);
+
+const confirmarBusquedaExito = function (res) {
     busquedaExito.value = true;
+    resultados.value = res;
 };
+
 // const deleteUser = () => {
 //     form.delete(route('profile.destroy'), {
 //         preserveScroll: true,
@@ -20,6 +22,7 @@ const confirmarBusquedaExito = () => {
 //         onFinish: () => form.reset(),
 //     });
 // };
+
 const closeModal = () => {
     busquedaExito.value = false;
     form.reset();
@@ -36,11 +39,7 @@ const form = useForm({
 const submit = () => {
     axios.post(route('buscarNav'), {tituloBuscado: form.tituloBuscado})
         .then((response) => {
-            confirmarBusquedaExito();
-            router.post('/buscar-exito', {'titulo-buscado':response.data.tituloBuscado, preserveState: true,
-                preserveScroll: true,
-                only: {'titulo-buscado':response.data.tituloBuscado},
-            });
+            confirmarBusquedaExito(response.data);
             form.reset();
         })
         .catch((error) => {
@@ -67,14 +66,13 @@ const submit = () => {
     <Modal :show="busquedaExito" @close="closeModal">
         <div class="p-6">
             <!--  Encabezado en caso de hacer búsqueda  -->
-            <div v-if="usePage().props.numResultados > 0" class="col-span-full  text-center mt-2">
-                <h2 class="text-2xl text-flamingo">{{ usePage().props.numResultados }} {{ usePage().props.numResultados === 1 ?  'Resultado:' : 'Resultados' }}</h2>
+            <div v-if="resultados.numResultados > 0" class="col-span-full  text-center mt-2">
+                <h2 class="text-2xl text-flamingo">{{ resultados.numResultados }} {{ resultados.numResultados === 1 ?  'Resultado:' : 'Resultados' }}</h2>
             </div>
-
             <!-- Seccion Principal de contenido -->
             <div class="container grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-2 m-auto my-2">
                 <!-- Posters -->
-                <Poster v-for="obra in usePage().props.obras" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>
+                <Poster v-for="obra in resultados.obrasFiltradas" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>
             </div>
 
             <div class="my-2 flex justify-center">

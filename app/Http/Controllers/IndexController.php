@@ -9,7 +9,6 @@ use App\Traits\CitasTrait;
 use App\Traits\GifsTrait;
 use Inertia\Inertia;
 use Exception;
-use Random\RandomException;
 
 class IndexController extends Controller
 {
@@ -35,25 +34,13 @@ class IndexController extends Controller
      */
     public function buscar(BuscarTitulosRequest $request)
     {
-        return ['tituloBuscado' => $request->tituloBuscado];
-    }
-
-    /**
-     * Recibe el texto buscado y recupera los datos que está confirmado que existen
-     * @return mixed
-     * @throws RandomException
-     * @throws Exception
-     */
-    public function cargarResultadosBusqueda()
-    {
-        $obras = ObrasRepo::obtenerObrasBusqueda(request('titulo-buscado'));
+        $obras = ObrasRepo::obtenerObrasBusqueda($request->tituloBuscado);
 
         return array_merge(
-                [
-                    'obras'         => $obras,
-                    'numResultados' => $obras->count()
-                ],
-                ObrasRepo::obtenerDatosGeneralesIndex()
+            [
+                'obrasFiltradas'    => $obras,
+                'numResultados'     => $obras->count()
+            ],
         );
     }
 }
