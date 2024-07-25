@@ -9,7 +9,7 @@ use App\Traits\GifsTrait;
 use Inertia\Inertia;
 use Exception;
 
-class IndexController extends Controller
+class MainController extends Controller
 {
     use CitasTrait, APIsTrait, GifsTrait;
 

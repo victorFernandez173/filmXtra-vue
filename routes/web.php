@@ -3,7 +3,7 @@
 use App\Http\Controllers\CriticasController;
 use App\Http\Controllers\ObtenerObraController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\IndexController;
+use App\Http\Controllers\MainController;
 
 
 /*
@@ -15,10 +15,12 @@ use App\Http\Controllers\IndexController;
 |
 */
 
-
-Route::get('/', [IndexController::class, 'index'])->name('/');
-
-Route::post('/buscar-nav', [IndexController::class, 'buscar'])->name('buscarNav');
+// Rutas principales: index, buscar, tops...
+Route::controller(MainController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('/');
+        Route::post('/buscar-nav', 'buscar')->name('buscarNav');
+    });
 
 Route::get('/obra/{tituloSlug}', [ObtenerObraController::class, 'fichaPelicula'])->name('obra');
 
@@ -36,8 +38,7 @@ Route::middleware('auth')
 require __DIR__ . '/auth.php';
 
 
-// TODO busqueda: paginación/limite resultados, onKeyPress...
-// TODO reorganizar rutas y nuevo controlador para busquedas...
+// TODO busqueda: limite resultados, delay...
 // TODO estilos navbar mobile
 // TODO REPRODUCIR funcionalidades filmXtraVic
 // TODO mobile registro sin confirmación de email enviado
