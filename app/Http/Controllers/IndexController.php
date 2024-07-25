@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Repositorios\ObrasRepo;
-use App\Http\Requests\BuscarTitulosRequest;
 use App\Traits\APIsTrait;
 use App\Traits\CitasTrait;
 use App\Traits\GifsTrait;
@@ -34,9 +33,9 @@ class IndexController extends Controller
      * Pasa la validacion y devuelve el titulo buscado
      * @throws Exception
      */
-    public function buscar(BuscarTitulosRequest $request)
+    public function buscar()
     {
-        $obras = ObrasRepo::obtenerObrasBusqueda($request->tituloBuscado);
+        $obras = ObrasRepo::obtenerObrasBusqueda(request('tituloBuscado'));
 
         return array_merge(
             [
