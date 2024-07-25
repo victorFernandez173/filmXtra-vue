@@ -16,7 +16,7 @@ import {computed, onMounted} from "vue";
 import {initCarousels} from "flowbite";
 import Swal from "sweetalert2";
 
-const props = defineProps(['obras', 'verificacionExitosa', 'nGifs', 'citaInspiring', 'citaQuotable', 'citaPelicula', 'citaCine', 'numResultados', 'errors']);
+const props = defineProps(['obras', 'verificacionExitosa', 'nGifs', 'citaInspiring', 'citaQuotable', 'citaPelicula', 'citaCine', 'errors']);
 const page = usePage();
 const confirmacionVerificacionMail = computed(() => page.props.verificacionExitosa);
 const borradoCuentaExitoso = computed(() => page.props.borradoCuentaExitoso);
@@ -62,11 +62,6 @@ onMounted(() => {
 
     <!--  Carrusel   -->
     <Carrusel :citaInspiring="citaInspiring" :citaQuotable="citaQuotable" :citaPelicula="citaPelicula" :citaCine="citaCine" />
-
-    <!--  Encabezado en caso de hacer búsqueda  -->
-    <div v-if="numResultados > 0" class="col-span-full  text-center mt-12">
-        <h2 class="text-2xl">{{ numResultados }} {{ numResultados === 1 ?  'Resultado:' : 'Resultados' }}</h2>
-    </div>
 
     <!-- Seccion Principal de contenido -->
     <div class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-4 m-auto my-8">
