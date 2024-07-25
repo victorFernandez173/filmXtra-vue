@@ -1,11 +1,11 @@
 <script setup>
 import {Link, useForm, usePage} from "@inertiajs/vue3";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
-import Swal from "sweetalert2";
-import Modal from "@/Components/Modal.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import {ref} from "vue";
 import Poster from "@/Components/Poster.vue";
+import ModalBusqueda from "@/Components/ModalBusqueda.vue";
+import Swal from "sweetalert2";
 
 const busquedaExito = ref(false);
 const resultados = ref(null);
@@ -25,19 +25,26 @@ const form = useForm({
     tituloBuscado : ''
 });
 
+// Entrega del formulario se lleva a cabo cuando "activarBusqueda()" y el timeout tras no pulsar teclas finaliza
+let retrasoActivo = null;
+const activarBusqueda = () => {
+    if(retrasoActivo !== null){
+        clearTimeout(retrasoActivo);
+    }
+    retrasoActivo = setTimeout(submit, 1000)
+};
 const submit = () => {
-    axios.post(route('buscarNav'), {tituloBuscado: form.tituloBuscado})
-        .then((response) => {
-            confirmarBusquedaExito(response.data);
-            form.reset();
-        })
-        .catch((error) => {
-            if (error.response.status === 422) {
-                form.reset();
-                usePage().props.errors = error.response.data.errors;
+    // crono.value = setInterval();
+    if(form.tituloBuscado.length > 3){
+        axios.post(route('buscarNav'), {tituloBuscado: form.tituloBuscado})
+            .then((response) => {
+                console.log('busquedaExito')
+                confirmarBusquedaExito(response.data);
+            })
+            .catch(() => {
                 Swal.fire({
                     title: 'Upps...',
-                    text: usePage().props.errors.tituloBuscado,
+                    text: 'Parece que algo fue mal con la búsqueda...',
                     imageUrl: '../gif/' + (Math.floor(Math.random() * usePage().props.nGifs) + 1) + '.gif',
                     imageWidth: '80%',
                     imageAlt: 'gif de cine',
@@ -45,31 +52,32 @@ const submit = () => {
                     position: 'center',
                     timer: 4500
                 });
-            }
-        })
+            })
+    }
 };
 </script>
 
 <template>
 
     <!--  Modal para los resultados de la busqueda  -->
-    <Modal :show="busquedaExito" @close="cerrarModal">
+    <ModalBusqueda :show="busquedaExito" @close="cerrarModal">
         <div class="p-6">
             <!--  Encabezado en caso de hacer búsqueda  -->
-            <div v-if="resultados.numResultados > 0" class="col-span-full  text-center mt-2">
-                <h2 class="text-2xl text-flamingo">{{ resultados.numResultados }} {{ resultados.numResultados === 1 ?  'Resultado:' : 'Resultados' }}</h2>
+            <div class="col-span-full  text-center mt-2">
+                <h2 v-if="resultados.numResultados > 0" class="text-2xl text-flamingo">{{ resultados.numResultados }} {{ resultados.numResultados === 1 ?  'Resultado:' : 'Resultados' }}</h2>
+                <h2 v-else class="text-2xl text-flamingo">Sin resultados</h2>
             </div>
             <!-- Seccion Principal de contenido -->
             <div class="container grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-2 m-auto my-2">
                 <!-- Posters -->
-                <Poster v-for="obra in resultados.obrasFiltradas" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>
+                <Poster @click="cerrarModal" v-for="obra in resultados.obrasFiltradas" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>
             </div>
 
             <div class="my-2 flex justify-center">
                 <SecondaryButton @click="cerrarModal"> Cerrar resultados </SecondaryButton>
             </div>
         </div>
-    </Modal>
+    </ModalBusqueda>
 
     <nav class="bg-white border-gray-200  sticky top-0 z-50">
         <!-- Div con el contenido del nav -->
@@ -90,7 +98,7 @@ const submit = () => {
                         <span class="sr-only">Icono buscar</span>
                     </div>
                     <form @submit.prevent="submit">
-                        <input v-model="form.tituloBuscado" type="text" id="navbar-search" class="block w-full p-2 pl-10 text-sm text-gray-900 border-gray-300 rounded-lg bg-gray-50 border-[3px] focus:border-flamingo focus:ring-0" :placeholder="$page.props.errors.tituloBuscado ? $page.props.errors.tituloBuscado[0] : 'Busca...'">
+                        <input @keydown="activarBusqueda" v-model="form.tituloBuscado" type="text" id="navbar-search" class="block w-full p-2 pl-10 text-sm text-gray-900 border-gray-300 rounded-lg bg-gray-50 border-[3px] focus:border-flamingo focus:ring-0" :placeholder="$page.props.errors.tituloBuscado ? $page.props.errors.tituloBuscado[0] : 'Busca...'">
                     </form>
                 </div>
             </div>
