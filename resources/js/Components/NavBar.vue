@@ -1,5 +1,5 @@
 <script setup>
-import {Link, useForm, usePage, router} from "@inertiajs/vue3";
+import {Link, useForm, usePage} from "@inertiajs/vue3";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import Swal from "sweetalert2";
 import Modal from "@/Components/Modal.vue";
@@ -15,21 +15,10 @@ const confirmarBusquedaExito = function (res) {
     resultados.value = res;
 };
 
-// const deleteUser = () => {
-//     form.delete(route('profile.destroy'), {
-//         preserveScroll: true,
-//         onSuccess: () => closeModal(),
-//         onFinish: () => form.reset(),
-//     });
-// };
-
-const closeModal = () => {
+const cerrarModal = () => {
     busquedaExito.value = false;
     form.reset();
 };
-
-
-
 
 // Para el formulario de busqueda
 const form = useForm({
@@ -63,7 +52,8 @@ const submit = () => {
 
 <template>
 
-    <Modal :show="busquedaExito" @close="closeModal">
+    <!--  Modal para los resultados de la busqueda  -->
+    <Modal :show="busquedaExito" @close="cerrarModal">
         <div class="p-6">
             <!--  Encabezado en caso de hacer búsqueda  -->
             <div v-if="resultados.numResultados > 0" class="col-span-full  text-center mt-2">
@@ -76,7 +66,7 @@ const submit = () => {
             </div>
 
             <div class="my-2 flex justify-center">
-                <SecondaryButton @click="closeModal"> Cerrar resultados </SecondaryButton>
+                <SecondaryButton @click="cerrarModal"> Cerrar resultados </SecondaryButton>
             </div>
         </div>
     </Modal>
