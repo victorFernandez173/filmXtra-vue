@@ -38,10 +38,8 @@ Route::middleware('auth')
 require __DIR__ . '/auth.php';
 
 
-// TODO busqueda: limite resultados, delay...
-// TODO estilos navbar mobile
+// TODO estilos navbar mobile: probar a esconder lupa y user al desplegar links y tb al darle a buscar esconder algo...recuerda el fallo que luego se requiere un doble click para ciertas cosas y sino dejar como está...
 // TODO REPRODUCIR funcionalidades filmXtraVic
-// TODO mobile registro sin confirmación de email enviado
 
 
 // TODO notificaciones de algún tipo?? likes? criticas? estudiar (bootcamp ojear codigo)
