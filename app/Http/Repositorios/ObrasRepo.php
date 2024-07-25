@@ -198,10 +198,11 @@ class ObrasRepo extends Controller
      */
     static function obtenerObrasBusqueda(string $tituloBuscado): array|Collection|_IH_Obra_C
     {
-        return Obra::select(['id', 'titulo', 'titulo_original', 'titulo_slug'])
+        return Obra::select(['id', 'titulo', 'titulo_original', 'titulo_slug', 'fecha'])
             ->with('poster:id,obra_id,ruta,alt')
             ->where('obras.titulo', 'like', '%' . $tituloBuscado . '%')
             ->orWhere('obras.titulo_original', 'like', '%' . $tituloBuscado . '%')
+            ->orderBy('fecha', 'DESC')
             ->get();
     }
 }

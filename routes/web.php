@@ -20,8 +20,6 @@ Route::get('/', [IndexController::class, 'index'])->name('/');
 
 Route::post('/buscar-nav', [IndexController::class, 'buscar'])->name('buscarNav');
 
-Route::post('/buscar-exito', [IndexController::class, 'cargarResultadosBusqueda'])->name('buscarNavExito');
-
 Route::get('/obra/{tituloSlug}', [ObtenerObraController::class, 'fichaPelicula'])->name('obra');
 
 Route::post('/like', [CriticasController::class, 'darLike'])->name('darLike')->middleware('auth', 'verified');
@@ -38,9 +36,11 @@ Route::middleware('auth')
 require __DIR__ . '/auth.php';
 
 
-// TODO busqueda: modal, paginación, boton volver index titulo Resultados...
+// TODO busqueda: paginación/limite resultados, onKeyPress...
 // TODO reorganizar rutas y nuevo controlador para busquedas...
+// TODO estilos navbar mobile
 // TODO REPRODUCIR funcionalidades filmXtraVic
+// TODO mobile registro sin confirmación de email enviado
 
 
 // TODO notificaciones de algún tipo?? likes? criticas? estudiar (bootcamp ojear codigo)

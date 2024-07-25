@@ -22,7 +22,9 @@ class IndexController extends Controller
     {
         return Inertia::render('Index',
             array_merge(
-                ['obras' => ObrasRepo::obtenerObrasIndex()],
+                [
+                    'obras' => ObrasRepo::obtenerObrasIndex()
+                ],
                 ObrasRepo::obtenerDatosGeneralesIndex(),
             )
         );
