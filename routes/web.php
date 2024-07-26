@@ -38,8 +38,8 @@ Route::middleware('auth')
 require __DIR__ . '/auth.php';
 
 
-// TODO estilos navbar mobile: probar a esconder lupa y user al desplegar links y tb al darle a buscar esconder algo...recuerda el fallo que luego se requiere un doble click para ciertas cosas y sino dejar como está...
-// TODO REPRODUCIR funcionalidades filmXtraVic
+// TODO quitar roundeds...
+// TODO REPRODUCIR funcionalidades filmXtraVic...
 
 
 // TODO notificaciones de algún tipo?? likes? criticas? estudiar (bootcamp ojear codigo)
