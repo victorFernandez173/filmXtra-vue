@@ -56,14 +56,39 @@ const submit = () => {
     }
 };
 
+// Para manteneer posicionado el boton de menu en pantallas estrechas arriba
 const posicionarme = () => {
     if($('#mobile-menu-2').hasClass('hidden')){
         $('#mobile-menu-2-button').removeClass('absolute');
-
     } else {
         $('#mobile-menu-2-button').addClass('absolute');
     }
 };
+
+
+// Para el posicionamiento y mostrado/escondido barra busqueda pantallas estrechas
+const mostrarBusquedaMobile = () => {
+    if($('#navbar-search-mobile').hasClass('hidden')){
+        $('#navbar-search-mobile').removeClass('hidden');
+    } else {
+        $('#navbar-search-mobile').addClass('hidden');
+    }
+}
+const cierraBarraBusqueda = (e) => {
+    if(!$('#navbar-search-mobile').hasClass('hidden')){
+        console.log('clicado en bloque de busqueda')
+        e.stopPropagation();
+        return false;
+    }
+}
+// TODO falla esto que es lo que cerraria el campo de busqueda al hacer click en cualquier sitio salvo el mismo tiene que ver con que haces click en el mismo body
+// $(document).click(function(e) {
+//     if(!$('#navbar-search-mobile').hasClass('hidden')){
+//         console.log('click en body');
+//         $('#navbar-search-mobile').addClass('hidden');
+//         cierraBarraBusqueda();
+//     }
+// });
 </script>
 
 <template>
@@ -109,7 +134,7 @@ const posicionarme = () => {
             <!-- Apartado de usuario -->
             <div class="flex items-center font-bold lg:order-2">
                 <!-- Boton de búsqueda pantallas estrechas incluido aquí por motivos de responsividad -->
-                <button  type="button" class="absolute right-[6.75rem] lg:hidden text-gray-500 focus:ring-flamingo focus:ring-4 hover:ring-4 hover:ring-flamingo focus:flamingo text-sm p-2.5 mr-1">
+                <button @click="mostrarBusquedaMobile" type="button" class="absolute right-[6.75rem] lg:hidden text-gray-500 focus:ring-flamingo focus:ring-4 hover:ring-4 hover:ring-flamingo focus:flamingo text-sm p-2.5 mr-1" id="navbar-search-mobile-button">
                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                 </button>
                 <button type="button" class="absolute right-16 lg:right-3 flex text-sm bg-gray-800 focus:ring-flamingo focus:ring-4 hover:ring-4 p-1 hover:ring-flamingo focus:flamingo" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
@@ -167,7 +192,7 @@ const posicionarme = () => {
                     </li>
                 </ul>
             </div>
-            <div id="navbar-search" class="lg:hidden absolute top-[85px] sm:top-[102px] w-full -ml-[17px] bg-white z-40">
+            <div @click="cierraBarraBusqueda" id="navbar-search-mobile" class="hidden lg:hidden absolute top-[85px] sm:top-[102px] w-full -ml-[17px] bg-white z-40">
                 <div class="relative inset-y-[1.9rem] pl-3 pointer-events-none">
                     <svg class="w-5 h-5 text-gray-500 ml-[8.5%]" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                     <span class="sr-only">Icono buscar</span>
