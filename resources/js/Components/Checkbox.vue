@@ -6,6 +6,6 @@ const checked = defineModel();
     <input
         type="checkbox"
         v-model="checked"
-        class="rounded border-gray-300 text-flamingo shadow-sm focus:ring-flamingo"
+        class="border-gray-300 text-flamingo shadow-sm focus:ring-flamingo"
     />
 </template>
