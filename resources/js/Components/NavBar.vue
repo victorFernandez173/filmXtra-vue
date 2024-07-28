@@ -7,39 +7,29 @@ import Poster from "@/Components/Poster.vue";
 import ModalBusqueda from "@/Components/ModalBusqueda.vue";
 import Swal from "sweetalert2";
 
-const busquedaExito = ref(false);
-const resultados = ref(null);
-
-const confirmarBusquedaExito = function (res) {
-    busquedaExito.value = true;
-    resultados.value = res;
-};
-
-const cerrarModal = () => {
-    busquedaExito.value = false;
-    form.reset();
-};
 
 // Para el formulario de busqueda
 const form = useForm({
     tituloBuscado : ''
 });
 
-// Entrega del formulario se lleva a cabo cuando "activarBusqueda()" y el timeout tras no pulsar teclas finaliza
-let retrasoActivo = null;
-const activarBusqueda = () => {
-    if(retrasoActivo !== null){
-        clearTimeout(retrasoActivo);
+
+// Variable para almacenar el timeout de retardo de la busqueda
+let retardoBusquedaActivo = null;
+// Con inputs se activa la busqueda: reactivacion del retardo de 1' con "on input" para dar tiempo a escribir y no realizar tantas consultas
+const reactivarRetardoBusqueda = () => {
+    if(retardoBusquedaActivo !== null){
+        clearTimeout(retardoBusquedaActivo);
     }
-    retrasoActivo = setTimeout(submit, 1000)
+    retardoBusquedaActivo = setTimeout(submit, 1000)
 };
+// Entrega del formulario se lleva a cabo cuando no se reestablece el retardo tras no hacer input en 1'
 const submit = () => {
     // crono.value = setInterval();
     if(form.tituloBuscado.length > 3){
         axios.post(route('buscarNav'), {tituloBuscado: form.tituloBuscado})
             .then((response) => {
-                console.log('busquedaExito')
-                confirmarBusquedaExito(response.data);
+                mostrarModalResultados(response.data);
             })
             .catch(() => {
                 Swal.fire({
@@ -55,6 +45,22 @@ const submit = () => {
             })
     }
 };
+// Si hay resultados || si estamos en pantalla movil y hemos pulsado el boton de busqueda, para mostrar modal resultados:
+const mostrarModalResultados = function (res) {
+    busquedaExito.value = true;
+    resultados.value = res;
+};
+// busquedaExito = reactiva para renderizar el bloque de resultados
+const busquedaExito = ref(false);
+// Y se almacenan en const resultados para mostrarlos:
+const resultados = ref(null);
+// Si hay algun error se muestra un SWAL y si no hay resultados se indica que no los hay
+// Para cerrar el bloque de resultados:
+const cerrarModalBusqueda = () => {
+    busquedaExito.value = false;
+    form.reset();
+};
+
 
 // Para manteneer posicionado el boton de menu en pantallas estrechas arriba
 const posicionarme = () => {
@@ -64,38 +70,22 @@ const posicionarme = () => {
         $('#mobile-menu-2-button').addClass('absolute');
     }
 };
-
-
-// Para el posicionamiento y mostrado/escondido barra busqueda pantallas estrechas
-const mostrarBusquedaMobile = () => {
-    if($('#navbar-search-mobile').hasClass('hidden')){
-        $('#navbar-search-mobile').removeClass('hidden');
-    } else {
-        $('#navbar-search-mobile').addClass('hidden');
-    }
-}
-const cierraBarraBusqueda = (e) => {
-    if(!$('#navbar-search-mobile').hasClass('hidden')){
-        console.log('clicado en bloque de busqueda')
-        e.stopPropagation();
-        return false;
-    }
-}
-// TODO falla esto que es lo que cerraria el campo de busqueda al hacer click en cualquier sitio salvo el mismo tiene que ver con que haces click en el mismo body
-// $(document).click(function(e) {
-//     if(!$('#navbar-search-mobile').hasClass('hidden')){
-//         console.log('click en body');
-//         $('#navbar-search-mobile').addClass('hidden');
-//         cierraBarraBusqueda();
-//     }
-// });
 </script>
 
 <template>
 
     <!--  Modal para los resultados de la busqueda  -->
-    <ModalBusqueda :show="busquedaExito" @close="cerrarModal">
+    <ModalBusqueda :show="busquedaExito" @close="cerrarModalBusqueda">
         <div class="p-6">
+            <div id="navbar-search-mobile" class="w-full">
+                <div class="relative inset-y-[1.9rem] pl-3">
+                    <svg class="w-5 h-5 text-gray-500 ml-[8.5%]" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                    <span class="sr-only">Icono buscar</span>
+                </div>
+                <form @submit.prevent="submit" class="w-10/12 ml-[8.33%] mb-[23px]">
+                    <input @input="reactivarRetardoBusqueda" v-model="form.tituloBuscado" type="text" id="navbar-search" class="w-full p-2 pl-10 text-sm text-gray-900 border-gray-300 bg-gray-50 border-[4px] focus:border-flamingo focus:ring-0" :placeholder="$page.props.errors.tituloBuscado ? $page.props.errors.tituloBuscado[0] : 'Busca...'">
+                </form>
+            </div>
             <!--  Encabezado en caso de hacer búsqueda  -->
             <div class="col-span-full  text-center mt-2">
                 <h2 v-if="resultados.numResultados > 0" class="text-2xl text-flamingo">{{ resultados.numResultados }} {{ resultados.numResultados === 1 ?  'Resultado:' : 'Resultados' }}</h2>
@@ -104,11 +94,11 @@ const cierraBarraBusqueda = (e) => {
             <!-- Seccion Principal de contenido -->
             <div class="container grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-2 m-auto my-2">
                 <!-- Posters -->
-                <Poster @click="cerrarModal" v-for="obra in resultados.obrasFiltradas" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>
+                <Poster @click="cerrarModalBusqueda" v-for="obra in resultados.obrasFiltradas" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>
             </div>
 
             <div class="my-2 flex justify-center">
-                <SecondaryButton @click="cerrarModal"> Cerrar resultados </SecondaryButton>
+                <SecondaryButton @click="cerrarModalBusqueda"> Cerrar resultados </SecondaryButton>
             </div>
         </div>
     </ModalBusqueda>
@@ -122,19 +112,19 @@ const cierraBarraBusqueda = (e) => {
             <!-- Bloque de búsqueda  -->
             <div class="flex md:order-2">
                 <div id="navbar-search" class="relative hidden lg:block">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                         <span class="sr-only">Icono buscar</span>
                     </div>
                     <form @submit.prevent="submit">
-                        <input @keydown="activarBusqueda" v-model="form.tituloBuscado" type="text" id="navbar-search" class="block w-full p-2 pl-10 text-sm text-gray-900 border-gray-300 bg-gray-50 border-[4px] focus:border-flamingo focus:ring-0" :placeholder="$page.props.errors.tituloBuscado ? $page.props.errors.tituloBuscado[0] : 'Busca...'">
+                        <input @input="reactivarRetardoBusqueda" v-model="form.tituloBuscado" type="text" id="navbar-search" class="block w-full p-2 pl-10 text-sm text-gray-900 border-gray-300 bg-gray-50 border-[4px] focus:border-flamingo focus:ring-0" :placeholder="$page.props.errors.tituloBuscado ? $page.props.errors.tituloBuscado[0] : 'Busca...'">
                     </form>
                 </div>
             </div>
             <!-- Apartado de usuario -->
             <div class="flex items-center font-bold lg:order-2">
                 <!-- Boton de búsqueda pantallas estrechas incluido aquí por motivos de responsividad -->
-                <button @click="mostrarBusquedaMobile" type="button" class="absolute right-[6.75rem] lg:hidden text-gray-500 focus:ring-flamingo focus:ring-4 hover:ring-4 hover:ring-flamingo focus:flamingo text-sm p-2.5 mr-1" id="navbar-search-mobile-button">
+                <button @click="mostrarModalResultados" type="button" class="absolute right-[6.75rem] lg:hidden text-gray-500 focus:ring-flamingo focus:ring-4 hover:ring-4 hover:ring-flamingo focus:flamingo text-sm p-2.5 mr-1" id="navbar-search-mobile-button">
                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                 </button>
                 <button type="button" class="absolute right-16 lg:right-3 flex text-sm bg-gray-800 focus:ring-flamingo focus:ring-4 hover:ring-4 p-1 hover:ring-flamingo focus:flamingo" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
@@ -177,7 +167,7 @@ const cierraBarraBusqueda = (e) => {
                 <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
             </button>
             <div class="lg:order-1 items-center justify-between hidden w-full lg:flex lg:w-auto text-center" id="mobile-menu-2">
-                <ul class="hover:[&>li>a]:text-flamingo flex flex-col font-medium p-4 lg:p-0 mt-4 lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0 lg:bg-white [&>li>a]:block [&>li>a]:py-2 [&>li>a]:pl-3 [&>li>a]:pr-4 [&>li>a]:text-gray-900 lg:hover:[&>li>a]:bg-transparent lg:[&>li>a]:p-0">
+                <ul class="hover:[&>li>a]:text-flamingo flex flex-col font-medium p-4 lg:p-0 lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0 lg:bg-white [&>li>a]:block [&>li>a]:py-2 [&>li>a]:pl-3 [&>li>a]:pr-4 [&>li>a]:text-gray-900 lg:hover:[&>li>a]:bg-transparent lg:[&>li>a]:p-0">
                     <li>
                         <ResponsiveNavLink :href="route('/')">Inicio</ResponsiveNavLink>
                     </li>
@@ -191,15 +181,6 @@ const cierraBarraBusqueda = (e) => {
                         <ResponsiveNavLink :href="route('profile.edit')">Cuenta</ResponsiveNavLink>
                     </li>
                 </ul>
-            </div>
-            <div @click="cierraBarraBusqueda" id="navbar-search-mobile" class="hidden lg:hidden absolute top-[85px] sm:top-[102px] w-full -ml-[17px] bg-white z-40">
-                <div class="relative inset-y-[1.9rem] pl-3 pointer-events-none">
-                    <svg class="w-5 h-5 text-gray-500 ml-[8.5%]" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-                    <span class="sr-only">Icono buscar</span>
-                </div>
-                <form @submit.prevent="submit" class="w-10/12 ml-[8.33%] mb-[23px]">
-                    <input @keydown="activarBusqueda" v-model="form.tituloBuscado" type="text" id="navbar-search" class="w-full p-2 pl-10 text-sm text-gray-900 border-gray-300 bg-gray-50 border-[4px] focus:border-flamingo focus:ring-0" :placeholder="$page.props.errors.tituloBuscado ? $page.props.errors.tituloBuscado[0] : 'Busca...'">
-                </form>
             </div>
         </div>
     </nav>
