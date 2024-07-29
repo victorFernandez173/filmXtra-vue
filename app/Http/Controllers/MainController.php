@@ -30,7 +30,7 @@ class MainController extends Controller
     }
 
     /**
-     *
+     * Para la busqueda de obras del navbar
      * @throws Exception
      */
     public function buscar()
@@ -44,4 +44,6 @@ class MainController extends Controller
             ],
         );
     }
+
+
 }
