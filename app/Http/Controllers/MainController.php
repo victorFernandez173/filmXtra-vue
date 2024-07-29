@@ -97,7 +97,12 @@ class MainController extends Controller
             'obras'   => $obras,
             'generos' => Genero::select('genero')->get(),
             'paises'  => Obra::select('pais')->groupBy('pais')->orderBy('pais')->get(),
-            'filtros' => [$genero, $pais, $desde, $hasta],
+            'filtros' => [
+                'genero' => $genero,
+                'pais'   => $pais,
+                'desde'  => $desde,
+                'hasta'  => $hasta
+            ],
             'pionera' => Obra::select('fecha')->orderBy('fecha')->limit(1)->get(),
         ]);
     }

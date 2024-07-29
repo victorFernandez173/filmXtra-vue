@@ -30,7 +30,7 @@ const annoActual = (new Date().getFullYear() + 1);
 </script>
 
 <template>
-    <form @submit.prevent="submit" class="m-auto flex border-solid border-flamingo border-3 p-[5px] w-4.5/5">
+    <form @submit.prevent="submit" class="m-auto flex">
         <div class="m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 hover:[&>div>select]:cursor-pointer">
             <!-- Selects-->
             <div>
@@ -57,8 +57,7 @@ const annoActual = (new Date().getFullYear() + 1);
                     </PrimaryButton>
                 </div>
                 <div class="w-[48%] flex m-auto">
-                    <Link
-                        class="w-full m-auto text-white bg-flamingo hover:text-black focus:bg-flamingo focus:ring-flamingo focus:border-flamingo focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    <Link class="w-full m-auto text-white bg-flamingo hover:text-black focus:bg-flamingo focus:ring-flamingo focus:border-flamingo focus:outline-none font-medium text-sm px-5 py-[.7rem] text-center"
                         :href="route('top')">RESET
                     </Link>
                 </div>
