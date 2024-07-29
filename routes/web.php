@@ -39,7 +39,6 @@ require __DIR__ . '/auth.php';
 
 
 // TODO REPRODUCIR funcionalidades filmXtraVic...
-// TODO titulos largos no se esconden en pantallas moviles....
 
 
 // TODO notificaciones de algún tipo?? likes? criticas? estudiar (bootcamp ojear codigo)
