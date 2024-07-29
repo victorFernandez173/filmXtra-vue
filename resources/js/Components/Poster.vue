@@ -25,11 +25,10 @@ const props = defineProps(['obra', 'titulo']);
             <img :src="'/posters/' + obra.poster.ruta" :alt="obra.poster.alt" class="w-4/5 border-[10px] border-white group-hover:border-flamingo">
 
             <!-- Sección de nota y numero de valoraciones -->
-            <!-- Se muestran solo si se pasa como parte de la info de la obra: -->
-            <!-- O 'NotaMedia' para el top filmXtra -->
-            <NotaMedia v-if="obra.evaluaciones_avg_evaluacion" :avg-evaluaciones="obra.evaluaciones_avg_evaluacion" />
-            <!-- o 'NumValoraciones' para el top valoraciones -->
-            <NumValoraciones v-if="obra.evaluaciones_count" :num-valoraciones="obra.evaluaciones_count" />
+            <div class="mt-0.5">
+                <NotaMedia v-if="obra.evaluaciones_avg_evaluacion" :avg-evaluaciones="obra.evaluaciones_avg_evaluacion" />
+                <NumValoraciones v-if="obra.evaluaciones_count" :num-valoraciones="obra.evaluaciones_count" />
+            </div>
         </Link>
     </div>
 </template>
