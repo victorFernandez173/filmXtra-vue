@@ -50,8 +50,8 @@ defineProps(['obras', 'titulo', 'filtros']);
                 </p>
                 <div v-else class="w-full text-center"><p>Sin filtros</p></div>
                 <!-- Seccion Principal de contenido -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 seccion-peliculas text-center w-11/12 justify-items-center pl-8 pr-8 mt-8 m-auto">
-                    <!-- Cada poster es un componente -->
+                <div class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-4 m-auto my-8">
+                    <!-- Posters -->
                     <Poster v-for="obra in obras.data" :key="obra.id" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>
                 </div>
                 <!-- Componente para la paginación -->

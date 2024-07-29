@@ -1,7 +1,7 @@
 <script setup>
-const props = defineProps(['obra']);
+const props = defineProps(['numValoraciones']);
 </script>
 
 <template>
-    <h3 class="font-medium">({{obra['num_valoraciones']}} valoraciones)</h3>
+    <h3 class="font-medium">({{numValoraciones}} valoraciones)</h3>
 </template>

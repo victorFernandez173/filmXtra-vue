@@ -67,10 +67,7 @@ class MainController extends Controller
         // Consulta multicondición para filtrar películas
         $obras = Obra::with(
             [
-                'poster',
-                'evaluaciones' => function ($query) {
-                    $query->select();
-                }
+                'poster'
             ]
         )->where(
             'pais', 'LIKE', '%' . $pais . '%'

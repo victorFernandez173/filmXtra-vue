@@ -27,9 +27,9 @@ const props = defineProps(['obra', 'titulo']);
             <!-- Sección de nota y numero de valoraciones -->
             <!-- Se muestran solo si se pasa como parte de la info de la obra: -->
             <!-- O 'NotaMedia' para el top filmXtra -->
-            <NotaMedia v-if="obra.nota_media" :obra="obra" />
+            <NotaMedia v-if="obra.evaluaciones_avg_evaluacion" :avg-evaluaciones="obra.evaluaciones_avg_evaluacion" />
             <!-- o 'NumValoraciones' para el top valoraciones -->
-            <NumValoraciones v-if="obra.num_valoraciones" :obra="obra" />
+            <NumValoraciones v-if="obra.evaluaciones_count" :num-valoraciones="obra.evaluaciones_count" />
         </Link>
     </div>
 </template>
