@@ -13,9 +13,11 @@ use App\Traits\CitasTrait;
 use App\Traits\GifsTrait;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Pagination\LengthAwarePaginator;
+use LaravelIdea\Helper\App\Models\_IH_Obra_C;
 use LaravelIdea\Helper\App\Models\_IH_Obra_QB;
 use Random\RandomException;
 
@@ -194,13 +196,13 @@ class ObrasRepo extends Controller
     /**
      * @throws Exception
      */
-    static function obtenerObrasBusqueda(string $tituloBuscado)
+    static function obtenerObrasBusqueda(string $tituloBuscado): array|Collection|_IH_Obra_C
     {
-        return Obra::select(['id', 'titulo', 'titulo_original', 'titulo_slug'])
+        return Obra::select(['id', 'titulo', 'titulo_original', 'titulo_slug', 'fecha'])
             ->with('poster:id,obra_id,ruta,alt')
             ->where('obras.titulo', 'like', '%' . $tituloBuscado . '%')
             ->orWhere('obras.titulo_original', 'like', '%' . $tituloBuscado . '%')
-            ->get()
-            ->shuffle();
+            ->orderBy('fecha', 'DESC')
+            ->get();
     }
 }

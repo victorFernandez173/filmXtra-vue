@@ -3,7 +3,7 @@
 use App\Http\Controllers\CriticasController;
 use App\Http\Controllers\ObtenerObraController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\IndexController;
+use App\Http\Controllers\MainController;
 
 
 /*
@@ -15,15 +15,17 @@ use App\Http\Controllers\IndexController;
 |
 */
 
+// Rutas principales: index, buscar, tops...
+Route::controller(MainController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('/');
+        Route::post('/buscar', 'buscar')->name('buscar');
+    });
 
-Route::get('/', [IndexController::class, 'index'])->name('/');
-
-Route::post('/buscar-nav', [IndexController::class, 'buscar'])->name('buscarNav');
-
-Route::get('/buscar-exito', [IndexController::class, 'cargarResultadosBusqueda'])->name('buscarNavExito');
-
+// Ficha de obra
 Route::get('/obra/{tituloSlug}', [ObtenerObraController::class, 'fichaPelicula'])->name('obra');
 
+// Dar/quitar like
 Route::post('/like', [CriticasController::class, 'darLike'])->name('darLike')->middleware('auth', 'verified');
 
 // Rutas perfil: mostrar, editar y borrar
@@ -38,9 +40,7 @@ Route::middleware('auth')
 require __DIR__ . '/auth.php';
 
 
-// TODO busqueda navbar: paginación, boton volver index titulo Resultados...
-// TODO reorganizar rutas...
-// TODO REPRODUCIR funcionalidades filmXtraVic
+// TODO REPRODUCIR funcionalidades filmXtraVic...
 
 
 // TODO notificaciones de algún tipo?? likes? criticas? estudiar (bootcamp ojear codigo)

@@ -1,26 +1,39 @@
 <script setup>
-import {Link, useForm, usePage, router} from "@inertiajs/vue3";
+import {Link, useForm, usePage} from "@inertiajs/vue3";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
+import SecondaryButton from "@/Components/SecondaryButton.vue";
+import {ref} from "vue";
+import Poster from "@/Components/Poster.vue";
+import ModalBusqueda from "@/Components/ModalBusqueda.vue";
 import Swal from "sweetalert2";
+
 
 // Para el formulario de busqueda
 const form = useForm({
     tituloBuscado : ''
 });
 
+
+// Variable para almacenar el timeout de retardo de la busqueda
+let retardoBusquedaActivo = null;
+// Con inputs se activa la busqueda: reactivacion del retardo de 1' con "on input" para dar tiempo a escribir y no realizar tantas consultas
+const reactivarRetardoBusqueda = () => {
+    if(retardoBusquedaActivo !== null){
+        clearTimeout(retardoBusquedaActivo);
+    }
+    retardoBusquedaActivo = setTimeout(submit, 1000)
+};
+// Entrega del formulario se lleva a cabo cuando no se reestablece el retardo tras no hacer input en 1'
 const submit = () => {
-    axios.post(route('buscarNav'), {tituloBuscado: form.tituloBuscado})
-        .then((response) => {
-            form.reset();
-            router.get('/buscar-exito', {'titulo-buscado':response.data.tituloBuscado});
-        })
-        .catch((error) => {
-            if (error.response.status === 422) {
-                form.reset();
-                usePage().props.errors = error.response.data.errors;
+    if(form.tituloBuscado.length > 3){
+        axios.post(route('buscar'), {tituloBuscado: form.tituloBuscado})
+            .then((response) => {
+                mostrarModalResultados(response.data);
+            })
+            .catch(() => {
                 Swal.fire({
                     title: 'Upps...',
-                    text: usePage().props.errors.tituloBuscado,
+                    text: 'Parece que algo fue mal con la búsqueda...',
                     imageUrl: '../gif/' + (Math.floor(Math.random() * usePage().props.nGifs) + 1) + '.gif',
                     imageWidth: '80%',
                     imageAlt: 'gif de cine',
@@ -28,43 +41,96 @@ const submit = () => {
                     position: 'center',
                     timer: 4500
                 });
-            }
-        })
+            })
+    }
+};
+// Si hay resultados || si estamos en pantalla movil y hemos pulsado el boton de busqueda, para mostrar modal resultados:
+const mostrarModalResultados = function (res) {
+    busquedaExito.value = true;
+    resultados.value = res;
+};
+// busquedaExito = reactiva para renderizar el bloque de resultados
+const busquedaExito = ref(false);
+// Y se almacenan en const resultados para mostrarlos:
+const resultados = ref(null);
+// Si hay algun error se muestra un SWAL y si no hay resultados se indica que no los hay
+// Para cerrar el bloque de resultados:
+const cerrarModalBusqueda = () => {
+    busquedaExito.value = false;
+    form.reset();
+};
+
+
+// Para manteneer posicionado el boton de menu en pantallas estrechas arriba
+const posicionarme = () => {
+    if($('#mobile-menu-2').hasClass('hidden')){
+        $('#mobile-menu-2-button').removeClass('absolute');
+    } else {
+        $('#mobile-menu-2-button').addClass('absolute');
+    }
 };
 </script>
 
 <template>
-    <nav class="bg-white border-gray-200  sticky top-0 z-50">
-        <!-- Div con el contenido del nav -->
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+
+    <!--  Modal para los resultados de la busqueda  -->
+    <ModalBusqueda :show="busquedaExito" @close="cerrarModalBusqueda">
+        <div class="p-6">
+            <div id="navbar-search-mobile" class="w-full">
+                <div class="relative inset-y-[1.9rem] pl-3">
+                    <svg class="w-5 h-5 text-gray-500 ml-[8.5%]" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                    <span class="sr-only">Icono buscar</span>
+                </div>
+                <form @submit.prevent="submit" class="w-10/12 ml-[8.33%] mb-[23px]">
+                    <input @input="reactivarRetardoBusqueda" v-model="form.tituloBuscado" type="text" id="navbar-search" class="w-full p-2 pl-10 text-sm text-gray-900 border-gray-300 bg-gray-50 border-[4px] focus:border-flamingo focus:ring-0" :placeholder="$page.props.errors.tituloBuscado ? $page.props.errors.tituloBuscado[0] : 'Busca...'">
+                </form>
+            </div>
+            <!--  Encabezado en caso de hacer búsqueda  -->
+            <div class="col-span-full  text-center mt-2">
+                <h2 v-if="resultados.numResultados > 0" class="text-2xl text-flamingo">{{ resultados.numResultados }} {{ resultados.numResultados === 1 ?  'Resultado:' : 'Resultados' }}</h2>
+                <h2 v-else class="text-2xl text-flamingo">Sin resultados</h2>
+            </div>
+            <!-- Seccion Principal de contenido -->
+            <div class="container grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-2 m-auto my-2">
+                <!-- Posters -->
+                <Poster @click="cerrarModalBusqueda" v-for="obra in resultados.obrasFiltradas" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>
+            </div>
+
+            <div class="my-2 flex justify-center">
+                <SecondaryButton @click="cerrarModalBusqueda"> Cerrar resultados </SecondaryButton>
+            </div>
+        </div>
+    </ModalBusqueda>
+
+    <nav class="bg-white border-gray-200 sticky top-0 z-50">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between lg:mx-auto p-4 relative">
             <!-- Logo de la pagina -->
-            <Link :href="route('/')" class="flex items-center">
+            <Link :href="route('/')" class="flex items-center mb-2 lg:mb-0">
                 <img src="/images/logo.png" class="h-10 sm:h-14" alt="Logo FilmXtra" />
             </Link>
             <!-- Bloque de búsqueda  -->
-            <div class="flex justify-end md:order-2">
-                <button  type="button" data-collapse-toggle="navbar-search"  aria-controls="navbar-search" aria-expanded="false" class="lg:hidden text-gray-500  hover:bg-gray-100  focus:outline-none focus:ring-4 focus:ring-gray-200  rounded-lg text-sm p-2.5 mr-1" >
-                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-                    <span class="sr-only">Buscar</span>
-                </button>
+            <div class="flex md:order-2">
                 <div id="navbar-search" class="relative hidden lg:block">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg class="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+                        <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                         <span class="sr-only">Icono buscar</span>
                     </div>
                     <form @submit.prevent="submit">
-                        <input v-model="form.tituloBuscado" type="text" id="navbar-search" class="block w-full p-2 pl-10 text-sm text-gray-900 border-gray-300 rounded-lg bg-gray-50 border-[3px] focus:border-flamingo focus:ring-0" :placeholder="$page.props.errors.tituloBuscado ? $page.props.errors.tituloBuscado[0] : 'Busca...'">
+                        <input @input="reactivarRetardoBusqueda" v-model="form.tituloBuscado" type="text" id="navbar-search" class="block w-full p-2 pl-10 text-sm text-gray-900 border-gray-300 bg-gray-50 border-[4px] focus:border-flamingo focus:ring-0" :placeholder="$page.props.errors.tituloBuscado ? $page.props.errors.tituloBuscado[0] : 'Busca...'">
                     </form>
                 </div>
             </div>
             <!-- Apartado de usuario -->
-            <div class="flex items-center md:order-3 font-bold">
-                <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-flamingo focus:ring-2 hover:ring-4 hover:ring-flamingo focus:flamingo" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-                    <span class="sr-only">Abrir menú de usuario</span>
-                    <img class="w-8 h-8 rounded-full" src="/favicon.png" alt="Foto del usuario">
+            <div class="flex items-center font-bold lg:order-2">
+                <!-- Boton de búsqueda pantallas estrechas incluido aquí por motivos de responsividad -->
+                <button @click="mostrarModalResultados" type="button" class="absolute right-[6.75rem] lg:hidden text-gray-500 focus:ring-flamingo focus:ring-4 hover:ring-4 hover:ring-flamingo focus:flamingo text-sm p-2.5 mr-1" id="navbar-search-mobile-button">
+                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                 </button>
-                <!-- Menu de usuario desplegable -->
-                <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-300 rounded-lg shadow-2xl" id="user-dropdown">
+                <button type="button" class="absolute right-16 lg:right-3 flex text-sm bg-gray-800 focus:ring-flamingo focus:ring-4 hover:ring-4 p-1 hover:ring-flamingo focus:flamingo" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                    <span class="sr-only">Abrir menú de usuario</span>
+                    <img class="w-8 h-8" src="/favicon.png" alt="Foto del usuario">
+                </button>
+                <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-300 shadow-3xl" id="user-dropdown">
                     <div class="px-4 py-3">
                         <span class="block text-sm text-gray-900">FilmXtra</span>
                         <span v-if="$page.props.auth.user" class="block text-sm  text-gray-500 truncate">{{ $page.props.auth.user.email }}</span>
@@ -93,26 +159,25 @@ const submit = () => {
                         </li>
                     </ul>
                 </div>
-                <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="mobile-menu-2" aria-expanded="false">
-                    <span class="sr-only">Abrir menú principal</span>
-                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                </button>
             </div>
-            <!-- Links -->
-            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 text-center" id="mobile-menu-2">
-                <ul class="hover:[&>li>a]:text-flamingo flex flex-col font-medium p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white [&>li>a]:block [&>li>a]:py-2 [&>li>a]:pl-3 [&>li>a]:pr-4 [&>li>a]:text-gray-900 md:hover:[&>li>a]:bg-transparent md:[&>li>a]:p-0">
-                    <!-- md:hover:[&>li>Link]:bg-transparent md:[&>li>Link]:p-0                    -->
+            <!-- Bloque Links -->
+            <button id="mobile-menu-2-button" @click="posicionarme" data-collapse-toggle="mobile-menu-2" type="button" class="absolute right-4 inline-flex items-center text-sm text-gray-500 lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-flamingo hover:ring-4 hover:ring-flamingo p-2" aria-controls="mobile-menu-2" aria-expanded="false">
+                <span class="sr-only">Abrir menú principal</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+            </button>
+            <div class="lg:order-1 items-center justify-between hidden w-full lg:flex lg:w-auto text-center" id="mobile-menu-2">
+                <ul class="hover:[&>li>a]:text-flamingo flex flex-col font-medium p-4 lg:p-0 lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0 lg:bg-white [&>li>a]:block [&>li>a]:py-2 [&>li>a]:pl-3 [&>li>a]:pr-4 [&>li>a]:text-gray-900 lg:hover:[&>li>a]:bg-transparent lg:[&>li>a]:p-0">
                     <li>
-                        <ResponsiveNavLink :href="route('/')" >Inicio</ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('/')">Inicio</ResponsiveNavLink>
                     </li>
                     <li>
-                        <ResponsiveNavLink :href="route('/')" >Top FilmXtra</ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('/')">Top FilmXtra</ResponsiveNavLink>
                     </li>
                     <li>
-                        <ResponsiveNavLink :href="route('/')" >Top Valoraciones</ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('/')">Top Valoraciones</ResponsiveNavLink>
                     </li>
                     <li>
-                        <ResponsiveNavLink :href="route('profile.edit')" >Cuenta</ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('profile.edit')">Cuenta</ResponsiveNavLink>
                     </li>
                 </ul>
             </div>
