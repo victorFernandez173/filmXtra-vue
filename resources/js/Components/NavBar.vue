@@ -77,11 +77,8 @@ const posicionarme = () => {
     <ModalBusqueda :show="busquedaExito" @close="cerrarModalBusqueda">
         <div class="p-6">
             <div id="navbar-search-mobile" class="w-full">
-                <div class="relative inset-y-[1.9rem] pl-3">
-                    <svg class="w-5 h-5 text-gray-500 ml-[8.5%]" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-                    <span class="sr-only">Icono buscar</span>
-                </div>
-                <form @submit.prevent="submit" class="w-10/12 ml-[8.33%] mb-[23px]">
+                <form @submit.prevent="submit" class="w-10/12 ml-[8.33%] mb-[23px] relative">
+                    <svg class="w-5 h-5 text-gray-500 absolute top-[.7rem] left-[.8rem]" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                     <input @input="reactivarRetardoBusqueda" v-model="form.tituloBuscado" type="text" id="navbar-search" class="w-full p-2 pl-10 text-sm text-gray-900 border-gray-300 bg-gray-50 border-[4px] focus:border-flamingo focus:ring-0" :placeholder="$page.props.errors.tituloBuscado ? $page.props.errors.tituloBuscado[0] : 'Busca...'">
                 </form>
             </div>
