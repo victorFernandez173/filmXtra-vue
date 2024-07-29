@@ -65,11 +65,9 @@ class MainController extends Controller
         $h = request('hasta') ?: Carbon::now()->format('Y');
 
         // Consulta multicondición para filtrar películas
-        $obras = Obra::with(
-            [
-                'poster'
-            ]
-        )->where(
+        $obras = Obra::with([
+            'poster'
+        ])->where(
             'pais', 'LIKE', '%' . $pais . '%'
         )->whereBetween(
             'fecha', [$d, $h]
@@ -88,7 +86,6 @@ class MainController extends Controller
         )->paginate(
             12
         );
-
 
         return Inertia::render('Top', [
             'obras'   => $obras,
