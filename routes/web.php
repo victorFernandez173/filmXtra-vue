@@ -41,7 +41,7 @@ Route::middleware('auth')
 // Resto rutas auth
 require __DIR__ . '/auth.php';
 
-
+// TODO top: barra lateral hasta abajo, nota de las pelis abajo junto a valoraciones, quizas otra forma de mostrar el top con unas mini-fichas?????
 // TODO REPRODUCIR funcionalidades filmXtraVic...
 
 
