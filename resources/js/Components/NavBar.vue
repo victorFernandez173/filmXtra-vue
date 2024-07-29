@@ -27,7 +27,7 @@ const reactivarRetardoBusqueda = () => {
 const submit = () => {
     // crono.value = setInterval();
     if(form.tituloBuscado.length > 3){
-        axios.post(route('buscarNav'), {tituloBuscado: form.tituloBuscado})
+        axios.post(route('buscar'), {tituloBuscado: form.tituloBuscado})
             .then((response) => {
                 mostrarModalResultados(response.data);
             })

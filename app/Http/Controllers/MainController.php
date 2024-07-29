@@ -30,7 +30,7 @@ class MainController extends Controller
     }
 
     /**
-     * Pasa la validacion y devuelve el titulo buscado
+     *
      * @throws Exception
      */
     public function buscar()
