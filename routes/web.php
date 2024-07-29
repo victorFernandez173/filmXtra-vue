@@ -20,10 +20,12 @@ Route::controller(MainController::class)
     ->group(function () {
         Route::get('/', 'index')->name('/');
         Route::post('/buscar', 'buscar')->name('buscar');
+        Route::get('/top', 'obtenerTop')->name('top');
     });
 
 // Ficha de obra
 Route::get('/obra/{tituloSlug}', [ObtenerObraController::class, 'fichaPelicula'])->name('obra');
+
 
 // Dar/quitar like
 Route::post('/like', [CriticasController::class, 'darLike'])->name('darLike')->middleware('auth', 'verified');
