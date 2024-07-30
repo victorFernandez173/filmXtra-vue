@@ -65,7 +65,11 @@ class MainController extends Controller
         $h = request('hasta') ?: Carbon::now()->format('Y');
 
         // Consulta multicondición para filtrar películas
-        $obras = Obra::with([
+        $obras = Obra::select([
+            'id',
+            'titulo',
+            'titulo_slug'
+        ])->with([
             'poster'
         ])->where(
             'pais', 'LIKE', '%' . $pais . '%'

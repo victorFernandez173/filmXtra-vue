@@ -41,7 +41,7 @@ Route::middleware('auth')
 // Resto rutas auth
 require __DIR__ . '/auth.php';
 
-// TODO top: barra lateral hasta abajo && revisar: barralateral, formulariofiltrado, selectconsulta, selectRangoanno... && quizas otra forma de mostrar el top con unas mini-fichas... && probar a meter en el boton RESET un link con la routa 'top' para los estilos de boton secundario... && estilos formulario...
+// TODO top: barra lateral hasta abajo && revisar: barralateral, formulariofiltrado, selectconsulta, selectRangoanno... && quizas otra forma de mostrar el top con unas mini-fichas... && desactivar filtros deseleccionando opciones individualmente
 // TODO REPRODUCIR funcionalidades filmXtraVic...
 
 

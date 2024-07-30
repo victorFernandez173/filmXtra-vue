@@ -25,7 +25,7 @@ const props = defineProps(['obra', 'titulo']);
             <img :src="'/posters/' + obra.poster.ruta" :alt="obra.poster.alt" class="w-4/5 border-[10px] border-white group-hover:border-flamingo">
 
             <!-- Sección de nota y numero de valoraciones -->
-            <div class="mt-0.5">
+            <div class="w-full mt-0.5">
                 <NotaMedia v-if="obra.evaluaciones_avg_evaluacion" :avg-evaluaciones="obra.evaluaciones_avg_evaluacion" />
                 <NumValoraciones v-if="obra.evaluaciones_count" :num-valoraciones="obra.evaluaciones_count" />
             </div>

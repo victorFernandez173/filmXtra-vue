@@ -29,7 +29,7 @@ defineProps(['obras', 'titulo', 'filtros']);
             <BarraLateral/>
         </div>
         <!-- Contenido -->
-        <div class="lg:w-[87vw] xl:w-[89vw] 2xl:w-[92vw] h-full">
+        <div class="lg:w-[87vw] xl:w-[89vw] 2xl:w-[92vw] h-full mx-auto">
                 <!-- Título -->
                 <h1 class="w-full mt-2 font-oswald text-center text-5xl h-[8vh] text-flamingo">Top FilmXtra</h1>
                 <!-- Formulario de filtrado -->

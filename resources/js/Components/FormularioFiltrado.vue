@@ -3,6 +3,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SelectConsulta from "./SelectConsulta.vue";
 import {useForm, Link} from '@inertiajs/vue3';
 import SelectRangoAnno from "./SelectRangoAnno.vue";
+import SecondaryButton from "@/Components/SecondaryButton.vue";
 
 // Formulario
 const form = useForm({
@@ -51,16 +52,15 @@ const annoActual = (new Date().getFullYear() + 1);
             </div>
 
             <!-- Botones -->
-            <div class="m-auto w-11/12 py-[10px] px-0 flex justify-between md:col-span-2 lg:col-span-1">
-                <div class="w-[48%]">
-                    <PrimaryButton :disabled="form.processing" :class="{ 'opacity-25': form.processing }">FILTRA
-                    </PrimaryButton>
-                </div>
-                <div class="w-[48%] flex m-auto">
-                    <Link class="w-full m-auto text-white bg-flamingo hover:text-black focus:bg-flamingo focus:ring-flamingo focus:border-flamingo focus:outline-none font-medium text-sm px-5 py-[.7rem] text-center"
-                        :href="route('top')">RESET
+            <div class="flex pt-2.5 pb-3 md:col-span-2 lg:col-span-1">
+                <PrimaryButton :disabled="form.processing" :class="{ 'opacity-25': form.processing }">
+                    FILTRA
+                </PrimaryButton>
+                <SecondaryButton class="">
+                    <Link :href="route('top')">
+                        RESET
                     </Link>
-                </div>
+                </SecondaryButton>
             </div>
         </div>
     </form>
