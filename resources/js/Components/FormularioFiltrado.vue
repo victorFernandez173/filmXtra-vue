@@ -34,11 +34,11 @@ const annoActual = (new Date().getFullYear() + 1);
         <div class="m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 hover:[&>div>select]:cursor-pointer">
             <!-- Selects-->
             <div>
-                <SelectConsulta :consulta="generos" :clave="`genero`" @emision="(e) => form.genero = e">Género
+                <SelectConsulta :consulta="generos" :valor="`genero`" @emision="(e) => form.genero = e">Género
                 </SelectConsulta>
             </div>
             <div>
-                <SelectConsulta :consulta="paises" :clave="`pais`" @emision="(e) => form.pais = e">País
+                <SelectConsulta :consulta="paises" :valor="`pais`" @emision="(e) => form.pais = e">País
                 </SelectConsulta>
             </div>
             <div>
