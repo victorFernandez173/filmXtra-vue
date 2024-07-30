@@ -25,8 +25,9 @@ const props = defineProps({
     pionera: String
 })
 
-const peliPionera = parseInt((new Date().getFullYear()).toString()) - parseInt(props.pionera) + 1;
+const rangoAnnos = parseInt((new Date().getFullYear()).toString()) - parseInt(props.pionera) + 1;
 const annoActual = (new Date().getFullYear() + 1);
+console.log(rangoAnnos, ' ', annoActual);
 </script>
 
 <template>
@@ -42,11 +43,11 @@ const annoActual = (new Date().getFullYear() + 1);
                 </SelectConsulta>
             </div>
             <div>
-                <SelectRangoAnno :limite-inferior="peliPionera" :limite-superior="annoActual" @emision="(e) => form.desde = e">Desde
+                <SelectRangoAnno :rango-annos="rangoAnnos" :limite-superior="annoActual" @emision="(e) => form.desde = e">Desde
                 </SelectRangoAnno>
             </div>
             <div>
-                <SelectRangoAnno :limite-inferior="peliPionera" :limite-superior="annoActual" @emision="(e) => form.hasta = e">Hasta
+                <SelectRangoAnno :rango-annos="rangoAnnos" :limite-superior="annoActual" @emision="(e) => form.hasta = e">Hasta
                 </SelectRangoAnno>
             </div>
 
