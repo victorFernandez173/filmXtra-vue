@@ -42,6 +42,7 @@ Route::middleware('auth')
 require __DIR__ . '/auth.php';
 
 // TODO top: barra lateral hasta abajo && revisar: barralateral, formulariofiltrado, selectconsulta, selectRangoanno... && quizas otra forma de mostrar el top con unas mini-fichas... && desactivar filtros deseleccionando opciones individualmente
+// TODO fondo perfil cuenta corregir
 // TODO REPRODUCIR funcionalidades filmXtraVic...
 
 
