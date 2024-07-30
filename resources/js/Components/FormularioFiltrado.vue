@@ -22,11 +22,10 @@ const submit = () => {
 const props = defineProps({
     generos: Object,
     paises: Object,
-    pionera: [Number, Array]
+    pionera: String
 })
 
-const peliPionera = parseInt((new Date().getFullYear()).toString()) - parseInt(props.pionera[0]['fecha']) + 1;
-
+const peliPionera = parseInt((new Date().getFullYear()).toString()) - parseInt(props.pionera) + 1;
 const annoActual = (new Date().getFullYear() + 1);
 </script>
 

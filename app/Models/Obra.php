@@ -50,7 +50,7 @@ class Obra extends Model
      */
     protected $casts = [
         'duracion' => 'float',
-        'fecha' => 'date:Y',
+        'fecha'    => 'timestamp:Y',
     ];
 
     /**

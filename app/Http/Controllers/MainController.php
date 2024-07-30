@@ -101,7 +101,7 @@ class MainController extends Controller
                 'desde'  => $desde,
                 'hasta'  => $hasta
             ],
-            'pionera' => Obra::select('fecha')->orderBy('fecha')->limit(1)->get(),
+            'pionera' => Obra::select(['fecha'])->orderBy('fecha')->first()->fecha,
         ]);
     }
 

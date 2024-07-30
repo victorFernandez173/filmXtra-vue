@@ -15,7 +15,7 @@ import FormularioFiltrado from "../Components/FormularioFiltrado.vue";
 import Paginacion from "../Components/Paginacion.vue";
 import Poster from "../Components/Poster.vue";
 
-defineProps(['obras', 'titulo', 'filtros']);
+defineProps(['obras', 'titulo', 'filtros', 'pionera']);
 </script>
 
 <template>
