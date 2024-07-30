@@ -27,7 +27,6 @@ const props = defineProps({
 
 const rangoAnnos = parseInt((new Date().getFullYear()).toString()) - parseInt(props.pionera) + 1;
 const annoActual = (new Date().getFullYear() + 1);
-console.log(rangoAnnos, ' ', annoActual);
 </script>
 
 <template>
