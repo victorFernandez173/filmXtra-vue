@@ -23,13 +23,13 @@ defineProps(['obras', 'titulo', 'filtros', 'pionera']);
         <title>Top FilmXtra</title>
         <meta name="filter" content="Página top filmXtra">
     </Head>
-    <div class="flex">
+    <div class="flex content-stretch">
         <!-- Barra lateral -->
-        <div class="hidden lg:block lg:w-[13vw] xl:w-[11vw] 2xl:w-[8vw] h-full">
+        <div class="hidden lg:block lg:w-[13vw] xl:w-[11vw] 2xl:w-[8vw]">
             <BarraLateral/>
         </div>
         <!-- Contenido -->
-        <div class="lg:w-[87vw] xl:w-[89vw] 2xl:w-[92vw] h-full mx-auto">
+        <div class="lg:w-[87vw] xl:w-[89vw] 2xl:w-[92vw] mx-auto">
                 <!-- Título -->
                 <h1 class="w-full mt-2 font-oswald text-center text-5xl h-[8vh] text-flamingo">Top FilmXtra</h1>
                 <!-- Formulario de filtrado -->
@@ -50,7 +50,7 @@ defineProps(['obras', 'titulo', 'filtros', 'pionera']);
                 </p>
                 <div v-else class="w-full text-center"><p>Sin filtros</p></div>
                 <!-- Seccion Principal de contenido -->
-                <div class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-4 m-auto my-8">
+                <div class="container grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-4 m-auto my-8">
                     <!-- Posters -->
                     <Poster v-for="obra in obras.data" :key="obra.id" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>
                 </div>
