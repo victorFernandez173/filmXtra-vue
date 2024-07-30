@@ -42,7 +42,6 @@ Route::middleware('auth')
 require __DIR__ . '/auth.php';
 
 // TODO top: quizas otra forma de mostrar el top con unas mini-fichas...
-// TODO fondo perfil cuenta corregir
 // TODO REPRODUCIR funcionalidades filmXtraVic...
 
 
