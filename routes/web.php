@@ -41,7 +41,7 @@ Route::middleware('auth')
 // Resto rutas auth
 require __DIR__ . '/auth.php';
 
-// TODO top: barra lateral hasta abajo && revisar: barralateral, formulariofiltrado, selectconsulta, selectRangoanno... && quizas otra forma de mostrar el top con unas mini-fichas... && desactivar filtros deseleccionando opciones individualmente
+// TODO top: barra lateral hasta abajo && revisar: formulariofiltrado, selectconsulta, selectRangoanno... && quizas otra forma de mostrar el top con unas mini-fichas... && desactivar filtros deseleccionando opciones individualmente && filtro años no llega hasta 1870
 // TODO fondo perfil cuenta corregir
 // TODO REPRODUCIR funcionalidades filmXtraVic...
 
