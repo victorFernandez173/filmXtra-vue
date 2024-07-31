@@ -1,7 +1,5 @@
 <script setup>
 import { Link } from "@inertiajs/vue3";
-import NotaMedia from "@/Components/NotaMedia.vue";
-import NumValoraciones from "@/Components/NumValoraciones.vue";
 
 // Props:
 // 'obra': título y poster de la obra;
@@ -23,12 +21,6 @@ const props = defineProps(['obra', 'titulo']);
 
             <!-- Sección de imagen -->
             <img :src="'/posters/' + obra.poster.ruta" :alt="obra.poster.alt" class="w-4/5 border-[10px] border-white group-hover:border-flamingo">
-
-            <!-- Sección de nota y numero de valoraciones -->
-            <div class="w-full mt-0.5">
-                <NotaMedia v-if="obra.evaluaciones_avg_evaluacion" :avg-evaluaciones="obra.evaluaciones_avg_evaluacion" />
-                <NumValoraciones v-if="obra.evaluaciones_count" :num-valoraciones="obra.evaluaciones_count" />
-            </div>
         </Link>
     </div>
 </template>

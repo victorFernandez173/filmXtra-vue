@@ -68,9 +68,16 @@ class MainController extends Controller
         $obras = Obra::select([
             'id',
             'titulo',
-            'titulo_slug'
+            'titulo_slug',
+            'pais',
+            'duracion',
+            'fecha',
+            'productora'
         ])->with([
-            'poster'
+            'poster',
+            'directors',
+            'actors',
+            'generos'
         ])->where(
             'pais', 'LIKE', '%' . $pais . '%'
         )->whereBetween(

@@ -13,7 +13,7 @@ import {Head} from "@inertiajs/vue3";
 import BarraLateral from "../Components/BarraLateral.vue";
 import FormularioFiltrado from "../Components/FormularioFiltrado.vue";
 import Paginacion from "../Components/Paginacion.vue";
-import Poster from "../Components/Poster.vue";
+import FichaPeli from "@/Components/FichaPeli.vue";
 
 defineProps(['obras', 'titulo', 'filtros', 'pionera']);
 </script>
@@ -50,10 +50,11 @@ defineProps(['obras', 'titulo', 'filtros', 'pionera']);
                 </p>
                 <div v-else class="w-full text-center"><p>Sin filtros</p></div>
                 <!-- Seccion Principal de contenido -->
-                <div class="container grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-4 m-auto my-8">
-                    <!-- Posters -->
-                    <Poster v-for="obra in obras.data" :key="obra.id" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>
-                </div>
+            <div class="container grid grid-cols-1 m-auto my-8">
+            <!-- Posters -->
+            <FichaPeli v-for="obra in obras.data" :obra="obra" :info="true" />
+            <!--                    <Poster v-for="obra in obras.data" :key="obra.id" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>-->
+            </div>
                 <!-- Componente para la paginación -->
                 <div class="w-full flex mt-8 mb-2">
                     <Paginacion class="mx-auto" :obras="obras"/>

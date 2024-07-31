@@ -69,49 +69,50 @@ function colorearManoLike($usuario, $gustadas) {
                     <div>
                         <ul>
                             <!--Títulos-->
-                            <li class="list-disc ml-5">
+                            <li class="ml-5">
                                 <span class="font-semibold text-lg">Título</span>:
                                 {{ obra.titulo }}
                                 ({{ obra.titulo_original }})
                             </li>
                             <!--Año-->
-                            <li class="list-disc ml-5">
+                            <li class="ml-5">
                                 <span class="font-semibold text-lg">Año</span>:
                                 {{ obra.fecha }}
                             </li>
                             <!--Duración-->
-                            <li class="list-disc ml-5">
+                            <li class="ml-5">
                                 <span class="font-semibold text-lg">Duración</span>:
                                 {{ Math.floor((parseInt(obra.duracion) / 60)) }}h
                                 {{ parseInt(obra.duracion) % 60 }}min
                             </li>
                             <!--País-->
-                            <li class="list-disc ml-5">
+                            <li class="ml-5">
                                 <span class="font-semibold text-lg">País</span>:
                                 {{ obra.pais }}
                             </li>
                             <!--Dirección-->
-                            <li v-if="obra.directors[0]" class="list-disc ml-5">
+                            <li v-if="obra.directors[0]" class="ml-5">
                                 <span class="font-semibold text-lg">Dirección</span>:
                                 <span> {{ props.direccion }}  </span>
                             </li>
                             <!--Reparto-->
-                            <li v-if="obra.actors[0]" class="list-disc ml-5">
+                            <li v-if="obra.actors[0]" class="
+                             ml-5">
                                 <span class="font-semibold text-lg">Reparto</span>:
                                 <span>{{ props.reparto }} </span>
                             </li>
                             <!--Productora-->
-                            <li class="list-disc ml-5">
+                            <li class="ml-5">
                                 <span class="font-semibold text-lg">Productora</span>:
                                 {{ obra.productora }}
                             </li>
                             <!--Géneros-->
-                            <li v-if="obra.generos" class="list-disc ml-5">
+                            <li v-if="obra.generos" class="ml-5">
                                 <span class="font-semibold text-lg">Género</span>:
                                 <span> {{ props.generos }} </span>
                             </li>
                             <!--Sinopsis-->
-                            <li class="list-disc ml-5">
+                            <li class="ml-5">
                                 <span class="font-semibold text-lg">Sinopsis</span>:
                                 {{ obra.sinopsis }}
                             </li>
@@ -125,7 +126,7 @@ function colorearManoLike($usuario, $gustadas) {
                             </li>
                             <li>
                                 <ul>
-                                    <li v-for="fest in obra.festivals" class="list-disc ml-5">
+                                    <li v-for="fest in obra.festivals" class="ml-5">
                                         <span class="font-semibold text-lg">Mejor película</span>:
                                         {{ fest.nombre }}({{ fest.edicion }})
                                     </li>
@@ -174,7 +175,7 @@ function colorearManoLike($usuario, $gustadas) {
                 </ul>
                 <ul v-for="p in obra.profesionals">
                     <!--Críticas profesionales-->
-                    <li class="list-disc ml-5 mb-4">
+                    <li class="ml-5 mb-4">
                         <span class="font-semibold">
                             <a class="hover:text-black" :href="p.medio.web" target="_blank">
                                 {{ p.medio.nombre }}
@@ -196,7 +197,7 @@ function colorearManoLike($usuario, $gustadas) {
                 </ul>
                 <ul v-for="(critica, indice) in criticas.data">
                     <!--Críticas usuarios-->
-                    <li v-if="indice < 2" class="list-disc ml-5 mb-4">
+                    <li v-if="indice < 2" class="ml-5 mb-4">
                         <span class="font-semibold">
                             {{ critica.usuario[0].usuario }}
                         </span>
@@ -236,7 +237,7 @@ function colorearManoLike($usuario, $gustadas) {
                 <h3 class="font-bold underline text-black text-xl my-5 text-center">¿Quieres valorar esta
                     película?</h3>
                 <h4>En FilmXtra nos apasiona el cine y queremos escuchar tu voz. ¡Exprésate como quieras!</h4>
-                <ul class="list-disc ml-[20px]">
+                <ul class="ml-[20px]">
                     <li>Puedes ponerle una puntuación del 1 al 10 a las películas que veas.</li>
                     <li>Si te gusta entrar en detalles, déjanos tus críticas más elaboradas. ¡Suelta todo lo que
                         piensas!
