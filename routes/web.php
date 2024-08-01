@@ -46,7 +46,6 @@ Route::middleware('auth')
 // Resto rutas auth
 require __DIR__ . '/auth.php';
 
-// TODO style cuadrado boton SWAL
 // TODO seccion ficha criticas obra...
 // TODO REPRODUCIR funcionalidades filmXtraVic...
 
