@@ -28,7 +28,7 @@ Route::controller(MainController::class)
 Route::get('/obra/{tituloSlug}', [ObtenerObraController::class, 'fichaPelicula'])->name('obra');
 
 
-// Dar/quitar like
+// Rutas para likes, criticas...
 Route::controller(CriticasController::class)
     ->group(function () {
         Route::post('/like', 'darLike')->name('darLike')->middleware('auth', 'verified');
