@@ -250,5 +250,14 @@ class ObrasRepo extends Controller
         );
     }
 
+    /**
+     * Obtiene la nota media de una obra
+     * @param string $tituloSlug
+     * @return Obra
+     */
+    static function obtenerObraNotaMedia(string $tituloSlug): Obra
+    {
+        return Obra::where('titulo_slug', $tituloSlug)->withAvg('evaluaciones', 'evaluacion')->first();
+    }
 
 }
