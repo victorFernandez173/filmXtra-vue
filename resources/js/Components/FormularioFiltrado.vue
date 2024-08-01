@@ -25,13 +25,14 @@ const props = defineProps({
     pionera: String
 })
 
+// Calculamos el rango de años a partir de la pelicula más vieja
 const rangoAnnos = parseInt((new Date().getFullYear()).toString()) - parseInt(props.pionera) + 1;
 const annoActual = (new Date().getFullYear() + 1);
 </script>
 
 <template>
     <form @submit.prevent="submit" class="m-auto flex">
-        <div class="m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 hover:[&>div>select]:cursor-pointer">
+        <div class="m-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 hover:[&>div>select]:cursor-pointer">
             <!-- Selects-->
             <div>
                 <SelectConsulta :consulta="generos" :valor="`genero`" @emision="(e) => form.genero = e">Género
@@ -51,7 +52,7 @@ const annoActual = (new Date().getFullYear() + 1);
             </div>
 
             <!-- Botones -->
-            <div class="flex pt-2.5 pb-3 md:col-span-2 lg:col-span-1">
+            <div class="flex pt-2.5 pb-3 md:col-span-2 xl:col-span-1">
                 <PrimaryButton :disabled="form.processing" :class="{ 'opacity-25': form.processing }">
                     FILTRA
                 </PrimaryButton>
