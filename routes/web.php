@@ -21,6 +21,7 @@ Route::controller(MainController::class)
         Route::get('/', 'index')->name('/');
         Route::post('/buscar', 'buscar')->name('buscar');
         Route::get('/top', 'obtenerTop')->name('top');
+        Route::get('/valoraciones-top', 'obtenerValoracionesTop')->name('valoracionesTop');
     });
 
 // Ficha de obra

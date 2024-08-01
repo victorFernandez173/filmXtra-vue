@@ -11,6 +11,7 @@ use App\Models\Usuario;
 use App\Traits\APIsTrait;
 use App\Traits\CitasTrait;
 use App\Traits\GifsTrait;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -162,6 +163,7 @@ class ObrasRepo extends Controller
     }
 
     /**
+     * Datos adicionales necesario para el Index
      * @return array
      * @throws RandomException
      */
@@ -180,7 +182,7 @@ class ObrasRepo extends Controller
     }
 
     /**
-     * Consulta estan
+     * Datos de obras aleatorias mostrados en el index
      * @throws Exception
      */
     static function obtenerObrasIndex()
@@ -205,4 +207,48 @@ class ObrasRepo extends Controller
             ->orderBy('fecha', 'DESC')
             ->get();
     }
+
+
+    /**
+     * Datos consulta comunes a los dos tops
+     * @return Builder|_IH_Obra_QB
+     */
+    static function obtenerDatosObrasTop(): Builder|_IH_Obra_QB
+    {
+        return Obra::select([
+            'id',
+            'titulo',
+            'titulo_slug',
+            'pais',
+            'duracion',
+            'fecha',
+            'productora'
+        ])->with([
+            'poster',
+            'directors',
+            'actors',
+            'generos'
+        ])->where(
+            'pais',
+            'LIKE',
+            '%' . (request('pais') ?? '') . '%'
+        )->whereBetween(
+            'fecha',
+            [
+                request('desde') ?: '1870',
+                request('hasta') ?: Carbon::now()->format('Y')
+            ]
+        )->whereHas(
+            'generos',
+            function ($query) {
+                $query->where(
+                    'genero',
+                    'like',
+                    '%' . (request('genero') ?? '') . '%'
+                );
+            }
+        );
+    }
+
+
 }

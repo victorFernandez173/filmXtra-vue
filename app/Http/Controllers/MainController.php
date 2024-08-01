@@ -8,7 +8,6 @@ use App\Models\Obra;
 use App\Traits\APIsTrait;
 use App\Traits\CitasTrait;
 use App\Traits\GifsTrait;
-use Carbon\Carbon;
 use Inertia\Inertia;
 use Exception;
 use Inertia\Response;
@@ -50,50 +49,21 @@ class MainController extends Controller
     }
 
     /**
-     * Peticiones GET: carga inicial o enlaces de filtrado de la barra lateral
+     * Datos necesarios para obtener el TOP con filtrado si se incluyen parametros en la peticion
      * @return Response
      * @throws Exception
      */
     public function obtenerTop(): Response
     {
-        // Si no hay valor se asigna valor vacío u otro
-        $desde = request('desde') ?? '';
-        $hasta = request('hasta') ?? '';
-        $pais = request('pais') ?? '';
-        $genero = request('genero') ?? '';
-        $d = request('desde') ?: '1870';
-        $h = request('hasta') ?: Carbon::now()->format('Y');
-
-        // Consulta multicondición para filtrar películas
-        $obras = Obra::select([
-            'id',
-            'titulo',
-            'titulo_slug',
-            'pais',
-            'duracion',
-            'fecha',
-            'productora'
-        ])->with([
-            'poster',
-            'directors',
-            'actors',
-            'generos'
-        ])->where(
-            'pais', 'LIKE', '%' . $pais . '%'
-        )->whereBetween(
-            'fecha', [$d, $h]
-        )->whereHas(
-            'generos',
-            function ($query) use ($genero) {
-                $query->where('genero', 'like', '%' . $genero . '%');
-            }
+        $obras = ObrasRepo::obtenerDatosObrasTop(
         )->withCount(
             'evaluaciones'
         )->withAvg(
             'evaluaciones',
             'evaluacion'
         )->orderBy(
-            'evaluaciones_avg_evaluacion', 'DESC'
+            'evaluaciones_avg_evaluacion',
+            'DESC'
         )->paginate(
             12
         );
@@ -103,12 +73,37 @@ class MainController extends Controller
             'generos' => Genero::select('genero')->get(),
             'paises'  => Obra::select('pais')->groupBy('pais')->orderBy('pais')->get(),
             'filtros' => [
-                'genero' => $genero,
-                'pais'   => $pais,
-                'desde'  => $desde,
-                'hasta'  => $hasta
+                'genero' => request('genero') ?? '',
+                'pais'   => request('pais') ?? '',
+                'desde'  => request('desde') ?? '',
+                'hasta'  => request('hasta') ?? ''
             ],
             'pionera' => Obra::select(['fecha'])->orderBy('fecha')->first()->fecha,
+        ]);
+    }
+
+    /**
+     * Datos necesarios para obtener el TOP VALORACIONES con filtrado si se incluyen parametros en la peticion
+     * @return Response
+     * @throws Exception
+     */
+    public function obtenerValoracionesTop(): Response
+    {
+        $obras = ObrasRepo::obtenerDatosObrasTop(
+        )->withCount(
+            'evaluaciones'
+        )->orderBy(
+            'evaluaciones_count',
+            'DESC'
+        )->withAvg(
+        'evaluaciones',
+        'evaluacion'
+        )->paginate(
+            8
+        );
+
+        return Inertia::render('ValoracionesTop', [
+            'obras'   => $obras,
         ]);
     }
 

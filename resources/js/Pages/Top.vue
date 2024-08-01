@@ -30,33 +30,35 @@ defineProps(['obras', 'titulo', 'filtros', 'pionera']);
         </div>
         <!-- Contenido -->
         <div class="lg:w-[87vw] xl:w-[89vw] 2xl:w-[92vw] mx-auto">
-                <!-- Título -->
-                <h1 class="w-full mt-2 font-oswald text-center text-5xl h-[8vh] text-flamingo">Top FilmXtra</h1>
-                <!-- Formulario de filtrado -->
-                <FormularioFiltrado :paises="$page.props.paises" :generos="$page.props.generos" :pionera="$page.props.pionera"  />
-                <!-- Mensaje de filtrado condicionado en funcion de parámetros del formulario -->
-                <p v-if="filtros.genero || filtros.pais || filtros.desde || filtros.hasta" class="w-full text-center mt-1">
-                    Filtros&rarr; &nbsp;
-                    <!-- Si hay genero (filtros[0])... -->
-                    {{ filtros.genero === '' ? '' : `género: ${filtros.genero}`  }}
-                    <!--se añade coma, y así sucesivamente ... -->
-                    {{(filtros.genero !== '' && filtros.pais !== '') ? ', &nbsp;' : ''}}
-                    {{ filtros.pais === '' ? '' : ` país: ${filtros.pais}`   }}
-                    {{(filtros.pais !== '' && filtros.desde !== '') ? ', &nbsp;' : ''}}
-                    {{ filtros.desde === '' ? '' : ` desde: ${filtros.desde}`  }}
-                    {{(filtros.desde !== '' && filtros.hasta !== '') ? ', &nbsp;' : ''}}
-                    {{ filtros.hasta === '' ? '' : ` hasta: ${filtros.hasta}`  }}
-                    {{ filtros.genero !== null ?  '.' : '' }}
-                </p>
-                <div v-else class="w-full text-center"><p>Sin filtros</p></div>
+            <!-- Título -->
+            <h1 class="w-full mt-2 font-oswald text-center text-5xl h-[8vh] text-flamingo">Top FilmXtra</h1>
+            <!-- Formulario de filtrado -->
+            <FormularioFiltrado :paises="$page.props.paises" :generos="$page.props.generos" :pionera="$page.props.pionera"  />
+            <!-- Mensaje de filtrado condicionado en funcion de parámetros del formulario -->
+            <p v-if="filtros.genero || filtros.pais || filtros.desde || filtros.hasta" class="w-full text-center mt-1">
+                Filtros&rarr; &nbsp;
+                <!-- Si hay genero (filtros[0])... -->
+                {{ filtros.genero === '' ? '' : `género: ${filtros.genero}`  }}
+                <!--se añade coma, y así sucesivamente ... -->
+                {{(filtros.genero !== '' && filtros.pais !== '') ? ', &nbsp;' : ''}}
+                {{ filtros.pais === '' ? '' : ` país: ${filtros.pais}`   }}
+                {{(filtros.pais !== '' && filtros.desde !== '') ? ', &nbsp;' : ''}}
+                {{ filtros.desde === '' ? '' : ` desde: ${filtros.desde}`  }}
+                {{(filtros.desde !== '' && filtros.hasta !== '') ? ', &nbsp;' : ''}}
+                {{ filtros.hasta === '' ? '' : ` hasta: ${filtros.hasta}`  }}
+                {{ filtros.genero !== null ?  '.' : '' }}
+            </p>
+            <div v-else class="w-full text-center">
+                <p>Sin filtros</p>
+            </div>
             <!-- Seccion Principal con las fichas -->
             <div class="container grid grid-cols-1 m-auto my-8">
                 <FichaPeli v-for="obra in obras.data" :obra="obra" :info="true" />
             </div>
-                <!-- Componente para la paginación -->
-                <div class="w-full flex mt-8 mb-2">
-                    <Paginacion class="mx-auto" :obras="obras"/>
-                </div>
+            <!-- Componente para la paginación -->
+            <div class="w-full flex mt-8 mb-2">
+                <Paginacion class="mx-auto" :obras="obras"/>
             </div>
+        </div>
     </div>
 </template>
