@@ -29,7 +29,10 @@ Route::get('/obra/{tituloSlug}', [ObtenerObraController::class, 'fichaPelicula']
 
 
 // Dar/quitar like
-Route::post('/like', [CriticasController::class, 'darLike'])->name('darLike')->middleware('auth', 'verified');
+Route::controller(CriticasController::class)
+    ->group(function () {
+        Route::post('/like', 'darLike')->name('darLike')->middleware('auth', 'verified');
+    });
 
 // Rutas perfil: mostrar, editar y borrar
 Route::middleware('auth')

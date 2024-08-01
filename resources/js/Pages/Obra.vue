@@ -224,11 +224,13 @@ function colorearManoLike($usuario, $gustadas) {
                 <p>[...]</p>
                 <p v-if="!criticas.data[0]" class="py-3">Sin críticas de usuarios todavía. Participa, pon la
                     tuya.</p>
-                <Link :href="route('/')" as="button"
-                      class="my-5 m-auto text-flamingo bg-white hover:text-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-medium text-sm px-5 py-2.5"
-                      preserve-scroll>
-                    Ver más críticas de usuarios/Valorar {{ obra.titulo }}&rarr;
-                </Link>
+                <div class="text-center">
+                    <Link :href="route('/')" as="button"
+                          class="my-5 m-auto text-flamingo bg-white hover:text-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-medium text-sm px-5 py-2.5"
+                          preserve-scroll>
+                        Ir a criticas de {{ obra.titulo }}&rarr;
+                    </Link>
+                </div>
             </div>
 
             <!--Seccion valorar-->
@@ -248,7 +250,7 @@ function colorearManoLike($usuario, $gustadas) {
                 </ul>
                 <p class="pt-7">¡Tu voz cinéfila importa! Exprésate libremente y comparte el amor por el cine.</p>
                 <div class="mt-10">
-                    <Link as="button" :href="route('/')"
+                    <Link as="button" :href="route('valoracionesTop')"
                           class="my-15 m-auto text-flamingo bg-white hover:text-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-medium text-sm px-5 py-2.5 block"
                           preserve-scroll>
                         Top Valoraciones &rarr;
