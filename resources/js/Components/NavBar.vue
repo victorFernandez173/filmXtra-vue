@@ -168,7 +168,7 @@ const posicionarme = () => {
                         <ResponsiveNavLink :href="route('/')">Inicio</ResponsiveNavLink>
                     </li>
                     <li>
-                        <ResponsiveNavLink :href="route('/')">Top FilmXtra</ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('top')">Top FilmXtra</ResponsiveNavLink>
                     </li>
                     <li>
                         <ResponsiveNavLink :href="route('/')">Top Valoraciones</ResponsiveNavLink>

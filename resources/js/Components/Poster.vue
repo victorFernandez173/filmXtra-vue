@@ -1,7 +1,5 @@
 <script setup>
 import { Link } from "@inertiajs/vue3";
-import NotaMedia from "@/Components/NotaMedia.vue";
-import NumValoraciones from "@/Components/NumValoraciones.vue";
 
 // Props:
 // 'obra': título y poster de la obra;
@@ -23,13 +21,6 @@ const props = defineProps(['obra', 'titulo']);
 
             <!-- Sección de imagen -->
             <img :src="'/posters/' + obra.poster.ruta" :alt="obra.poster.alt" class="w-4/5 border-[10px] border-white group-hover:border-flamingo">
-
-            <!-- Sección de nota y numero de valoraciones -->
-            <!-- Se muestran solo si se pasa como parte de la info de la obra: -->
-            <!-- O 'NotaMedia' para el top filmXtra -->
-            <NotaMedia v-if="obra.nota_media" :obra="obra" />
-            <!-- o 'NumValoraciones' para el top valoraciones -->
-            <NumValoraciones v-if="obra.num_valoraciones" :obra="obra" />
         </Link>
     </div>
 </template>

@@ -19,7 +19,7 @@ import {Link} from "@inertiajs/vue3";
                             <Link :href="route('/')">Inicio</Link>
                         </li>
                         <li>
-                            <Link :href="route('/')">Top FilmXtra</Link>
+                            <Link :href="route('top')">Top FilmXtra</Link>
                         </li>
                         <li>
                             <Link :href="route('/')">Top Valoraciones</Link>

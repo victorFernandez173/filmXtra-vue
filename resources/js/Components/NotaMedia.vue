@@ -1,7 +1,7 @@
 <script setup>
-const props = defineProps(['obra']);
+const props = defineProps(['avgEvaluaciones']);
 </script>
 
 <template>
-    <h3 class="font-bold text-flamingo">{{ parseFloat(obra['nota_media']).toFixed(1) }}</h3>
+    <h3 class="font-bold text-flamingo">{{ parseFloat(avgEvaluaciones).toFixed(1) }}</h3>
 </template>
