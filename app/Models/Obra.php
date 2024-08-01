@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  *
  * @property int $id
  * @property string $titulo
+ * @property string $titulo_slug
  * @property string $titulo_original
  * @property string $pais
  * @property float $duracion
@@ -60,6 +61,7 @@ class Obra extends Model
      */
     protected $fillable = [
         'titulo',
+        'titulo_slug',
         'titulo_original',
         'pais',
         'duracion',

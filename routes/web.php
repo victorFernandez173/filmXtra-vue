@@ -31,6 +31,7 @@ Route::get('/obra/{tituloSlug}', [ObtenerObraController::class, 'fichaPelicula']
 // Rutas para likes, criticas...
 Route::controller(CriticasController::class)
     ->group(function () {
+        Route::get('/obra/{tituloSlug}/valoraciones', 'obtenerFichaValoraciones')->name('obraValoraciones');
         Route::post('/like', 'darLike')->name('darLike')->middleware('auth', 'verified');
     });
 

@@ -225,7 +225,7 @@ function colorearManoLike($usuario, $gustadas) {
                 <p v-if="!criticas.data[0]" class="py-3">Sin críticas de usuarios todavía. Participa, pon la
                     tuya.</p>
                 <div class="text-center">
-                    <Link :href="route('/')" as="button"
+                    <Link :href="route('obraValoraciones', obra.titulo_slug)" as="button"
                           class="my-5 m-auto text-flamingo bg-white hover:text-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-medium text-sm px-5 py-2.5"
                           preserve-scroll>
                         Ir a criticas de {{ obra.titulo }}&rarr;
