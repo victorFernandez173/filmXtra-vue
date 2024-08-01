@@ -49,11 +49,9 @@ defineProps(['obras', 'titulo', 'filtros', 'pionera']);
                     {{ filtros.genero !== null ?  '.' : '' }}
                 </p>
                 <div v-else class="w-full text-center"><p>Sin filtros</p></div>
-                <!-- Seccion Principal de contenido -->
+            <!-- Seccion Principal con las fichas -->
             <div class="container grid grid-cols-1 m-auto my-8">
-            <!-- Posters -->
-            <FichaPeli v-for="obra in obras.data" :obra="obra" :info="true" />
-            <!--                    <Poster v-for="obra in obras.data" :key="obra.id" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>-->
+                <FichaPeli v-for="obra in obras.data" :obra="obra" :info="true" />
             </div>
                 <!-- Componente para la paginación -->
                 <div class="w-full flex mt-8 mb-2">
