@@ -201,22 +201,22 @@ const existeLaCriticaVarComputed = computed(() => {
             </div>
 
             <!--Criticas-->
-            <div class="mx-5 lg:mr-0 col-span-3 flex flex-wrap bg-flamingo">
+            <div class="w-11/12 mx-auto lg:mr-0 col-span-3 flex flex-wrap bg-flamingo">
                 <!--Titulo usuarios-->
                 <div>
                     <div class="flex flex-wrap pt-5 pb-12">
-                        <div class="w-full pl-12 pr-10">
+                        <div class="w-full px-10 lg:px-20">
                             <ul>
-                                <li class="font-bold  text-xl mt-10 mb-5">Críticas de nuestros
+                                <li class="font-bold text-xl mt-10 mb-5">Críticas de nuestros
                                     usuarios:
                                 </li>
                             </ul>
                         </div>
-                        <div class="px-12">
+                        <div class="px-10">
                             <ul v-for="(cri, i) in criticas.data">
                                 <!--Críticas usuarios-->
-                                <li class="list-disc ml-5 mb-4 text-white"><span
-                                    class="font-semibold">{{ cri.usuario[0].nombre }}</span>: {{ cri.critica }}
+                                <li class="list-disc ml-5 mb-4 text-white">
+                                    <span class="font-semibold">{{ cri.usuario[0].nombre }}</span>: {{ cri.critica }}
                                     ({{ dayjs(cri.fecha).fromNow() }}) - Likes: {{ cri.likes }}
 
                                     <!--Mano arriba-->

@@ -75,7 +75,8 @@ class CriticasController extends Controller
                 'gustadaPor' => DB::table('likes')->select('usuario_id')->where('critica_id', '=', $critica['id'])->get(),
             ];
         }
-        return PaginacionController::paginar($criticasLikes, 4);
+        // Solo 2 para testear los estilos del componente de paginacion???
+        return PaginacionController::paginar($criticasLikes, 2);
     }
 
 
