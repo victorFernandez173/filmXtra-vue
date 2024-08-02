@@ -175,13 +175,13 @@ const existeLaCriticaVarComputed = computed(() => {
         <meta name="description" content="Ficha valoraciones obra">
     </Head>
     <div class="container mx-auto mt-10 mb-10">
-        <h1 class="text-center font-bold text-flamingo text-3xl">{{ obra.titulo }}</h1>
+        <h1 class="text-center font-bold text-flamingo text-3xl w-11/12 mx-auto">{{ obra.titulo }}</h1>
         <!--2 bloque para poster, criticas usuarios-->
-        <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4 mt-10">
+        <div class="grid grid-cols-1 lg:grid-cols-4 mt-10">
             <div>
                 <!--Poster-->
                 <div class="w-full flex justify-center flex-wrap items-center">
-                    <img :src="'/posters/' + obra.poster.ruta" :alt="obra.poster.alt">
+                    <img class="w-11/12 sm:w-8/12 lg:w-[98%]" :src="'/posters/' + obra.poster.ruta" :alt="obra.poster.alt">
                     <Estrellitas class="w-full mb-1" :mediaEvaluaciones="mediaEvaluaciones.evaluaciones_avg_evaluacion" :obra="obra"/>
                     <p class="text-black text-center"> &nbsp;&nbsp;
                         {{ parseFloat(mediaEvaluaciones.evaluaciones_avg_evaluacion).toFixed(1) }}/10 ({{ obra.evaluaciones.length }}
@@ -192,7 +192,7 @@ const existeLaCriticaVarComputed = computed(() => {
                     )
                 </div>
                 <!--Boton para llevarte a la pagina de datos de la película-->
-                <div class="flex justify-center w-full">
+                <div class="flex justify-center mx-auto w-11/12 lg:w-full mb-7 lg:mb-0">
                     <Link :href="route('obra', obra.titulo_slug)"
                           class="text-white bg-flamingo hover:text-black focus:bg-flamingo focus:ring-flamingo focus:border-flamingo focus:outline-none font-medium text-sm px-5 py-2.5 mt-5 text-center">
                         &larr; Ficha {{ obra.titulo }}
