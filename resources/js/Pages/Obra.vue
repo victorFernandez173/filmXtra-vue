@@ -49,7 +49,7 @@ function colorearManoLike($usuario, $gustadas) {
 <template>
     <Head>
         <title>{{ obra.titulo }}</title>
-        <meta name="description" content="Página de bienvenida">
+        <meta name="description" content="Ficha general de obra">
     </Head>
     <div class="container mx-auto mt-10 mb-10">
         <h1 class="text-center font-bold text-flamingo text-3xl px-8">{{ obra.titulo }}</h1>
