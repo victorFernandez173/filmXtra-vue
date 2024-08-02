@@ -172,17 +172,17 @@ const existeLaCriticaVarComputed = computed(() => {
 <template>
     <Head>
         <title>Valoraciones: {{ obra.titulo }}</title>
-        <meta name="description" content="Página de bienvenida">
+        <meta name="description" content="Ficha valoraciones obra">
     </Head>
     <div class="container mx-auto mt-10 mb-10">
         <h1 class="text-center font-bold text-flamingo text-3xl">{{ obra.titulo }}</h1>
         <!--2 bloque para poster, criticas usuarios-->
         <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4 mt-10">
-            <!--Poster-->
             <div>
+                <!--Poster-->
                 <div class="w-full flex justify-center flex-wrap items-center">
                     <img :src="'/posters/' + obra.poster.ruta" :alt="obra.poster.alt">
-                    <Estrellitas class="w-full" :mediaEvaluaciones="mediaEvaluaciones.evaluaciones_avg_evaluacion" :obra="obra"/>
+                    <Estrellitas class="w-full mb-1" :mediaEvaluaciones="mediaEvaluaciones.evaluaciones_avg_evaluacion" :obra="obra"/>
                     <p class="text-black text-center"> &nbsp;&nbsp;
                         {{ parseFloat(mediaEvaluaciones.evaluaciones_avg_evaluacion).toFixed(1) }}/10 ({{ obra.evaluaciones.length }}
                     </p>
@@ -192,9 +192,9 @@ const existeLaCriticaVarComputed = computed(() => {
                     )
                 </div>
                 <!--Boton para llevarte a la pagina de datos de la película-->
-                <div class="m-auto w-full mt-2">
+                <div class="flex justify-center w-full">
                     <Link :href="route('obra', obra.titulo_slug)"
-                          class="text-white bg-flamingo hover:text-black focus:bg-flamingo focus:ring-flamingo focus:border-flamingo focus:outline-none font-medium text-sm px-5 py-2.5 mt-10 text-center">
+                          class="text-white bg-flamingo hover:text-black focus:bg-flamingo focus:ring-flamingo focus:border-flamingo focus:outline-none font-medium text-sm px-5 py-2.5 mt-5 text-center">
                         &larr; Ficha {{ obra.titulo }}
                     </Link>
                 </div>
@@ -213,11 +213,11 @@ const existeLaCriticaVarComputed = computed(() => {
                             </ul>
                         </div>
                         <div class="px-12">
-                            <ul v-for="(cri, i) in criticas['data']">
+                            <ul v-for="(cri, i) in criticas.data">
                                 <!--Críticas usuarios-->
                                 <li class="list-disc ml-5 mb-4 text-white"><span
-                                    class="underline font-semibold">{{ cri['usuario'][0]['name'] }}</span>: {{ cri['critica'] }}
-                                    ({{ dayjs(cri['fecha']).fromNow() }}) - Likes: {{ cri['likes'] }}
+                                    class="font-semibold">{{ cri.usuario[0].nombre }}</span>: {{ cri.critica }}
+                                    ({{ dayjs(cri.fecha).fromNow() }}) - Likes: {{ cri.likes }}
 
                                     <!--Mano arriba-->
                                     <Link v-if="$page.props.auth.user" class="inline-block" as="button" method="post"
@@ -278,7 +278,7 @@ const existeLaCriticaVarComputed = computed(() => {
                             <p v-if="form2.recentlySuccessful">{{  existeLaEvaluacionVarComputed }}</p></div>
                         <div class="w-full text-center">
                             <button
-                                @click="form2.user_id = $page.props.auth.user['id']; form2.obra_id = obra[0]['id']"
+                                @click="form2.user_id = $page.props.auth.user.id; form2.obra_id = obra.id"
                                 class="w-2/5 sm:w-1/4 md:w-3/4 text-flamingo bg-white hover:text-black font-medium text-sm px-5 py-2.5 my-2 text-center">
                                 Evaluar {{ obra.titulo }} &rarr;
                             </button>
