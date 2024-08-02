@@ -47,6 +47,7 @@ Route::middleware('auth')
 require __DIR__ . '/auth.php';
 
 // TODO 1º seccion ficha criticas y mejorar botones de criticas etc...
+// TODO fecha y likes en una linea nueva a cada critica de usario?????
 // TODO 2º mejorar back seccion ficha criticas obra...
 
 // TODO notificaciones de algún tipo?? likes? criticas? estudiar (bootcamp ojear codigo)
