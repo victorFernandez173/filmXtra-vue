@@ -57,9 +57,9 @@ function colorearManoLike($usuario, $gustadas) {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-10">
             <!--Poster-->
             <div class="flex justify-start flex-col m-auto h-[100%] w-[90%]">
-                <img :src="'../posters/' + obra.poster.ruta" :alt="obra.poster.alt">
+                <img :src="'/posters/' + obra.poster.ruta" :alt="obra.poster.alt">
                 <!--Puntuacion-->
-                <Estrellitas :mediaEvaluaciones="mediaEvaluaciones" :obra="obra" :mostrar-votos="true"/>
+                <Estrellitas :mediaEvaluaciones="parseFloat(mediaEvaluaciones.evaluaciones_avg_evaluacion).toFixed(1)" :obra="obra" :mostrar-votos="true"/>
             </div>
 
             <!--Datos pelicula-->

@@ -2,47 +2,82 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Repositorios\ObrasRepo;
 use App\Models\Critica;
+use App\Models\Evaluacion;
 use App\Models\Like;
-use Exception;
-use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
+use Inertia\Inertia;
 
 class CriticasController extends Controller
 {
-    /**
-     * Para poner o modificar critica de una obra
-     * @param Request $request
-     * @return void
-     * @throws Exception
-     */
-    public function criticar(Request $request)
+    public function obtenerFichaValoraciones($tituloSlug)
     {
-        // Validación (reglas y mensajes de error)
-        $validated = $request->validate([
-            'critica' => 'required|max:5000',
-        ],
-        [
-            'critica.required' => 'No has escrito nada.',
-            'critica.max'      => 'No puedes sobrepasar los 5000 caracteres.'
-        ]);
+        $obra = ObrasRepo::obtenerDatosFichaObra($tituloSlug);
 
-        // Creamos el objeto
-        $critica = new Critica([
-            'user_id' => $request['user_id'],
-            'obra_id' => $request['obra_id'],
-            'critica' => $validated['critica']
-        ]);
-
-        if (Critica::where('user_id', $critica->user_id)
-            ->where('obra_id', $critica->obra_id)
-            ->exists()) {
-            $critica->where('user_id', $critica->user_id)
-                ->where('obra_id', $critica->obra_id)
-                ->update(['critica' => $critica->critica]);
-        } else {
-            $critica->save();
-        }
+        return Inertia::render('FichaValoraciones',
+            [
+                'obra' => $obra,
+                // Para generar la nota media de la película
+                'mediaEvaluaciones' => ObrasRepo::obtenerObraNotaMedia($tituloSlug),
+                // Paginación, organización y mostrado de las críticas
+//                'criticas' => InfoController::obtenerArrayInfoCriticas($obra[0]['criticas']),
+                // Criticas relacionadas con esta película
+                'pelicula_criticas' =>
+                    Critica::select(
+                        [
+                            'usuario_id',
+                            'obra_id',
+                            'critica'
+                        ]
+                    )->where(
+                        'obra_id',
+                        $obra->id
+                    )->get(),
+                // Evaluaciones relacionadas con esta película
+                'pelicula_evaluaciones' =>
+                    Evaluacion::select(
+                        [
+                            'evaluaciones.id',
+                            'usuario_id',
+                            'obra_id',
+                            'evaluacion'
+                        ]
+                    )->where(
+                        'obra_id',
+                        $obra->id
+                    )->get(),
+                // Paginación, organización y mostrado de las críticas
+                'criticas' => $this->obtenerArrayInfoCriticas($obra->criticas),
+                //Numero de gifs disponibles en public/gif
+                'nGifs' => count(glob( public_path('/gif/') . '*'))
+            ]
+        );
     }
+
+    /**
+     * Crea un array con el contenido, likes y fecha de cada critica para la vista a partir de todas las criticas de la película y devuelve dicha información paginada
+     * @param $criticas
+     * @return LengthAwarePaginator
+     */
+    function obtenerArrayInfoCriticas($criticas): LengthAwarePaginator
+    {
+        $criticasLikes = array();
+        foreach ($criticas as $critica) {
+            $criticasLikes[] = [
+                'id_critica' => $critica['id'],
+                'id_usuario' => $critica['user_id'],
+                'critica' => $critica['critica'],
+                'likes' => DB::table('likes')->where('critica_id', '=', $critica['id'])->count(),
+                'fecha' => $critica['modificada'],
+                'usuario' => DB::table('usuarios')->select('nombre', 'usuario')->where('id', '=', $critica['usuario_id'])->get(),
+                'gustadaPor' => DB::table('likes')->select('usuario_id')->where('critica_id', '=', $critica['id'])->get(),
+            ];
+        }
+        return PaginacionController::paginar($criticasLikes, 4);
+    }
+
 
     /**
      * Para insertar tupla en likes o borrarla

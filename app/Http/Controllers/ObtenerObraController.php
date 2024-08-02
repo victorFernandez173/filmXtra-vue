@@ -25,7 +25,7 @@ class ObtenerObraController extends Controller
             'generos'           => $this->procesarGeneros($obra->generos),
             'reparto'           => $this->procesarCasting($obra->actors),
             'direccion'         => $this->procesarCasting($obra->directors),
-            'mediaEvaluaciones' => ObrasRepo::calcularMediaEvaluaciones($obra->evaluaciones),
+            'mediaEvaluaciones' => ObrasRepo::obtenerObraNotaMedia($obra->titulo_slug),
             'criticas'          => ObrasRepo::obtenerArrayInfoCriticas($obra->criticas),
             'secuelaPrecuela'   => ObrasRepo::obtenerObrasRelacionadas($obra),
             'spinoffs'          => ObrasRepo::obtenerObrasRelacionadas($obra, false),

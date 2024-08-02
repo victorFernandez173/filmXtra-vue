@@ -56,23 +56,6 @@ class ObrasRepo extends Controller
     }
 
     /**
-     * Para devolver la nota media de todas las evaluaciones, devuelve 0 si no hay evaluaciones
-     * @param $evaluaciones
-     * @return float
-     */
-    static function calcularMediaEvaluaciones($evaluaciones): float
-    {
-        $sumatorio = 0;
-        foreach ($evaluaciones as $eva) {
-            $sumatorio += $eva->evaluacion;
-        }
-        if (count($evaluaciones) == 0) {
-            return 0;
-        }
-        return round($sumatorio / count($evaluaciones), 1);
-    }
-
-    /**
      * Crea un array con el contenido, likes y fecha de cada critica para la vista a partir de todas las criticas de la película y devuelve dicha información paginada
      * @param $criticas
      * @return LengthAwarePaginator
