@@ -88,7 +88,7 @@ function alertaDarLikeSinLogin(){
                     <div class="flex flex-wrap pt-5 pb-12">
                         <div class="w-full px-10">
                             <ul>
-                                <li class="font-bold text-xl mt-10 mb-5">Críticas de nuestros
+                                <li class="font-bold text-lg md:text-xl mt-10 mb-5">Críticas de nuestros
                                     usuarios:
                                 </li>
                             </ul>
