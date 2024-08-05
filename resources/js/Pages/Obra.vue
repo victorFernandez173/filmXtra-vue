@@ -163,10 +163,9 @@ function colorearManoLike($usuario, $gustadas) {
         </div>
 
         <!--Contenedor criticas-->
-        <div
-            class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 mb-15 pr-10 justify-center bg-flamingo text-white lg:divide-x md:divide-x divide-y ">
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 mb-15 justify-center bg-flamingo text-white lg:divide-x md:divide-x divide-y ">
             <!--Criticas-->
-            <div class="py-10 pl-12 lg:col-span-3 md:col-span-2">
+            <div class="py-10 pr-10 pl-12 lg:col-span-3 md:col-span-2">
                 <!--Titulo-->
                 <ul>
                     <li v-if="obra.profesionals.length > 0" class="list-none font-bold text-black text-xl mb-5">
@@ -224,9 +223,9 @@ function colorearManoLike($usuario, $gustadas) {
                 <p class="ml-5">[...]</p>
                 <p v-if="!criticas[0]" class="py-3">Sin críticas de usuarios todavía. Participa, pon la
                     tuya.</p>
-                <div class="text-center mt-8">
+                <div class="mx-auto w-fit text-center mt-8 bg-white text-flamingo hover:bg-black px-5 py-2.5">
                     <Link :href="route('obraValoraciones', obra.titulo_slug)"
-                          class="my-5 m-auto font-bold bg-white text-flamingo hover:bg-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none text-sm px-5 py-2.5"
+                          class="my-5 m-auto font-bold focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none text-sm"
                           preserve-scroll>
                         Ir a criticas de {{ obra.titulo }}&rarr;
                     </Link>
@@ -234,24 +233,24 @@ function colorearManoLike($usuario, $gustadas) {
             </div>
 
             <!--Seccion valorar-->
-            <div class="py-5 px-5 pl-10">
+            <div class="py-5 pl-10 pr-10">
                 <!--Titulo-->
-                <h3 class="font-bold underline text-black text-xl my-5 text-center">¿Quieres valorar esta
+                <h3 class="font-bold text-black text-xl my-5 text-center">¿Quieres valorar esta
                     película?</h3>
                 <h4>En FilmXtra nos apasiona el cine y queremos escuchar tu voz. ¡Exprésate como quieras!</h4>
                 <ul class="ml-[20px]">
-                    <li>Puedes ponerle una puntuación del 1 al 10 a las películas que veas.</li>
-                    <li>Si te gusta entrar en detalles, déjanos tus críticas más elaboradas. ¡Suelta todo lo que
+                    <li class="list-disc ml-2">Puedes ponerle una puntuación del 1 al 10 a las películas que veas.</li>
+                    <li class="list-disc ml-2">Si te gusta entrar en detalles, déjanos tus críticas más elaboradas. ¡Suelta todo lo que
                         piensas!
                     </li>
-                    <li>Y, por supuesto, dale un buen "like" a las críticas de otros usuarios que te parezcan geniales.
+                    <li class="list-disc ml-2">Y, por supuesto, dale un buen "like" a las críticas de otros usuarios que te parezcan geniales.
                         ¡Comparte el amor cinéfilo!
                     </li>
                 </ul>
                 <p class="pt-7">¡Tu voz cinéfila importa! Exprésate libremente y comparte el amor por el cine.</p>
-                <div class="mt-10 text-center">
+                <div class="mt-10 text-center bg-white text-flamingo hover:bg-black px-5 text-sm py-2.5">
                     <Link :href="route('valoracionesTop')"
-                          class="my-15 m-auto text-flamingo bg-white hover:bg-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 block w-4/6"
+                          class="my-15 m-auto focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold block w-4/6"
                           preserve-scroll>
                         Top Valoraciones &rarr;
                     </Link>
