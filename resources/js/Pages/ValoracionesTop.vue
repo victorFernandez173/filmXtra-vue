@@ -34,7 +34,7 @@ defineProps(['obras']);
             </div>
             <!-- Componente para la paginación -->
             <div class="w-full flex mt-8 mb-2">
-                <Paginacion class="mx-auto" :obras="obras"/>
+                <Paginacion class="mx-auto" :datos="obras"/>
             </div>
         </div>
     </div>
