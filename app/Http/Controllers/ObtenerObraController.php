@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Repositorios\CriticasRepo;
 use App\Http\Repositorios\ObrasRepo;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
@@ -26,7 +27,7 @@ class ObtenerObraController extends Controller
             'reparto'           => $this->procesarCasting($obra->actors),
             'direccion'         => $this->procesarCasting($obra->directors),
             'mediaEvaluaciones' => ObrasRepo::obtenerObraNotaMedia($obra->titulo_slug),
-            'criticas'          => ObrasRepo::obtenerArrayInfoCriticas($obra->criticas),
+            'criticas'          => CriticasRepo::obtenerArrayInfoCriticas($obra->criticas)->get(),
             'secuelaPrecuela'   => ObrasRepo::obtenerObrasRelacionadas($obra),
             'spinoffs'          => ObrasRepo::obtenerObrasRelacionadas($obra, false),
             //Numero de gifs disponibles en public/gif

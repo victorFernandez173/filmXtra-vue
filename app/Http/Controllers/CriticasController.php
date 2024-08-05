@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Repositorios\CriticasRepo;
 use App\Http\Repositorios\ObrasRepo;
 use App\Models\Critica;
 use App\Models\Evaluacion;
@@ -19,8 +20,6 @@ class CriticasController extends Controller
                 'obra'                  => $obra,
                 // Para generar la nota media de la película
                 'mediaEvaluaciones'     => ObrasRepo::obtenerObraNotaMedia($tituloSlug),
-                // Paginación, organización y mostrado de las críticas
-                //                'criticas' => InfoController::obtenerArrayInfoCriticas($obra[0]['criticas']),
                 // Criticas relacionadas con esta película
                 'pelicula_criticas'     =>
                     Critica::select(
@@ -47,7 +46,7 @@ class CriticasController extends Controller
                         $obra->id
                     )->get(),
                 // Paginación, organización y mostrado de las críticas
-                'criticas'              => Critica::with(['likes', 'usuario'])->whereIn('id', $obra->criticas->pluck('id'))->withCount('likes')->paginate(3),
+                'criticas'              => CriticasRepo::obtenerArrayInfoCriticas($obra->criticas)->paginate(3),
                 //Numero de gifs disponibles en public/gif
                 'nGifs'                 => count(glob(public_path('/gif/') . '*'))
             ]
