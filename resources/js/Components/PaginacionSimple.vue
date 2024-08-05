@@ -1,23 +1,22 @@
 <script setup>
 import {Link} from "@inertiajs/vue3";
 
-defineProps(['obras']);
+defineProps(['datos']);
 </script>
 
 <template>
     <nav>
-        <ul class="pagination">
-            <li v-if="obras.current_page === 1" disabled="true">
+        <ul class="flex m-auto">
+            <li v-if="datos.current_page === 1" class="px-4 py-3  md:mr-2 text-gray-600" disabled="true">
                 « Anterior
             </li>
             <li v-else>
-                <Link as="button" class="mr-1 mb-1 px-4 py-3 leading-4 hover:bg-white text-base text-white bg-flamingo border-flamingo border-solid border-1 hover:text-black" :href="obras.prev_page_url" v-html="'« Anterior'" preserve-state/>
+                <Link as="button" class="px-4 py-3 hover:bg-white md:mr-2 hover:text-flamingo font-bold" :href="datos.prev_page_url" v-html="'« Anterior'" preserve-state/>
             </li>
-
-            <li v-if="obras.next_page_url">
-                <Link as="button" class="mr-1 mb-1 px-4 py-3 leading-4 hover:bg-white text-base text-white bg-flamingo border-flamingo border-solid border-1 hover:text-black" :href="obras.next_page_url" v-html="'Siguiente »'" preserve-state/>
+            <li v-if="datos.next_page_url">
+                <Link as="button" class="px-4 py-3 hover:bg-white hover:text-flamingo font-bold" :href="datos.next_page_url" v-html="'Siguiente »'" preserve-state/>
             </li>
-            <li v-else disabled="true">
+            <li v-else class="px-4 py-3 mr-2 text-gray-600" disabled="true">
                 Siguiente »
             </li>
         </ul>
