@@ -221,10 +221,10 @@ function colorearManoLike($usuario, $gustadas) {
                         </svg>
                     </li>
                 </ul>
-                <p>[...]</p>
+                <p class="ml-5">[...]</p>
                 <p v-if="!criticas[0]" class="py-3">Sin críticas de usuarios todavía. Participa, pon la
                     tuya.</p>
-                <div class="text-center">
+                <div class="text-center mt-8">
                     <Link :href="route('obraValoraciones', obra.titulo_slug)"
                           class="my-5 m-auto text-flamingo bg-white hover:text-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-medium text-sm px-5 py-2.5"
                           preserve-scroll>
