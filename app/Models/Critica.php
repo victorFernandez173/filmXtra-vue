@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property Carbon $modificada
  *
  * @property Obra $obra
- * @property Usuario $user
+ * @property Usuario $usuario
  * @property Collection|Like[] $likes
  *
  * @package App\Models
@@ -61,7 +61,7 @@ class Critica extends Model
     /**
      * Obtiene el usuario de la crítica
      */
-    public function user(): BelongsTo
+    public function usuario(): BelongsTo
     {
         return $this->belongsTo(Usuario::class);
     }
