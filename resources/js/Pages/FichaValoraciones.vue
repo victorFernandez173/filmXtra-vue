@@ -134,9 +134,7 @@ function alertaDarLikeSinLogin(){
                 <div v-if="$page.props.auth.user" class="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 p-1">
                     <!-- Formulario evas -->
 
-                    <form
-                        @submit.prevent="form2.post(
-                                route('evaluar'),
+                    <form @submit.prevent="form2.post(route('evaluar'),
                                 {
                                         preserveScroll: true,
                                         })"
@@ -145,7 +143,9 @@ function alertaDarLikeSinLogin(){
                         <div class="w-full text-center">
                             <label class="font-bold text-xl text-white">Evaluar: </label>
                         </div>
-                        <p v-if="existeLaEvaluacionBandera" class="text-center text-xs">(Ya has evaluado esta película, puedes modificar tu evaluación):</p>
+<!--           //////////////////////////////////////////////////////////////////////////////////             -->
+<!--                        <p v-if="existeLaEvaluacionBandera" class="text-center text-xs">(Ya has evaluado esta película, puedes modificar tu evaluación):</p>-->
+                        <!--           //////////////////////////////////////////////////////////////////////////////////             -->
                         <div class="w-full">
                             <SelectRango class="w-2/5 sm:w-1/4 md:w-3/4 text-center" :limite="11"
                                          :valor="'Nota'"
@@ -156,7 +156,10 @@ function alertaDarLikeSinLogin(){
                             <p class="text-yellow-300 w-2/5 sm:w-1/4 md:w-3/4 text-center m-auto">
                                 {{ $page.props.errors['evaluacion'] }}
                             </p>
-                            <p v-if="form2.recentlySuccessful">{{  existeLaEvaluacionVarComputed }}</p></div>
+                            <!--           //////////////////////////////////////////////////////////////////////////////////             -->
+<!--                            <p v-if="form2.recentlySuccessful">{{  existeLaEvaluacionVarComputed }}</p>-->
+                            <!--           //////////////////////////////////////////////////////////////////////////////////             -->
+                        </div>
                         <div class="w-full text-center">
                             <button
                                 @click="form2.usuario_id = $page.props.auth.user.id; form2.obra_id = obra.id"
@@ -178,7 +181,9 @@ function alertaDarLikeSinLogin(){
                                 }}
                             </span>
                         </label>
-                        <p v-if="existeLaCriticaBandera" class="text-center text-xs">(Ya has reseñado esta película, puedes modificar tu crítica):</p>
+                        <!--           //////////////////////////////////////////////////////////////////////////////////             -->
+<!--                        <p v-if="existeLaCriticaBandera" class="text-center text-xs">(Ya has reseñado esta película, puedes modificar tu crítica):</p>-->
+                        <!--           //////////////////////////////////////////////////////////////////////////////////             -->
                         <form
                             @submit.prevent="form.post(
                                 route('criticar'),

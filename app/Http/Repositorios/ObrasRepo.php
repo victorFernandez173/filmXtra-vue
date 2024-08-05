@@ -3,11 +3,8 @@
 namespace App\Http\Repositorios;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\PaginacionController;
-use App\Models\Like;
 use App\Models\Obra;
 use App\Models\Secuela;
-use App\Models\Usuario;
 use App\Traits\APIsTrait;
 use App\Traits\CitasTrait;
 use App\Traits\GifsTrait;
@@ -17,7 +14,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Inspiring;
-use Illuminate\Pagination\LengthAwarePaginator;
 use LaravelIdea\Helper\App\Models\_IH_Obra_C;
 use LaravelIdea\Helper\App\Models\_IH_Obra_QB;
 use Random\RandomException;
@@ -53,33 +49,6 @@ class ObrasRepo extends Controller
         }
 
         return $obra;
-    }
-
-    /**
-     * Crea un array con el contenido, likes y fecha de cada critica para la vista a partir de todas las criticas de la película y devuelve dicha información paginada
-     * @param $criticas
-     * @return LengthAwarePaginator
-     */
-    static function obtenerArrayInfoCriticas($criticas): LengthAwarePaginator
-    {
-        $criticasLikes = array();
-        foreach ($criticas as $critica) {
-            $criticasLikes[] = [
-                'id_critica' => $critica->id,
-                'id_usuario' => $critica->usuario_id,
-                'critica'    => $critica->critica,
-                'likes'      => Like::where('critica_id', $critica->id)
-                    ->count(),
-                'fecha'      => $critica->modificada,
-                'usuario'    => Usuario::select(['usuario'])
-                    ->where('id', $critica->usuario_id)
-                    ->get(),
-                'gustadaPor' => Like::select('usuario_id')
-                    ->where('critica_id', $critica->id)
-                    ->get(),
-            ];
-        }
-        return PaginacionController::paginar($criticasLikes, 4);
     }
 
     /**
