@@ -6,8 +6,6 @@ use App\Http\Repositorios\ObrasRepo;
 use App\Models\Critica;
 use App\Models\Evaluacion;
 use App\Models\Like;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class CriticasController extends Controller
@@ -18,13 +16,13 @@ class CriticasController extends Controller
 
         return Inertia::render('FichaValoraciones',
             [
-                'obra' => $obra,
+                'obra'                  => $obra,
                 // Para generar la nota media de la película
-                'mediaEvaluaciones' => ObrasRepo::obtenerObraNotaMedia($tituloSlug),
+                'mediaEvaluaciones'     => ObrasRepo::obtenerObraNotaMedia($tituloSlug),
                 // Paginación, organización y mostrado de las críticas
-//                'criticas' => InfoController::obtenerArrayInfoCriticas($obra[0]['criticas']),
+                //                'criticas' => InfoController::obtenerArrayInfoCriticas($obra[0]['criticas']),
                 // Criticas relacionadas con esta película
-                'pelicula_criticas' =>
+                'pelicula_criticas'     =>
                     Critica::select(
                         [
                             'usuario_id',
@@ -49,35 +47,13 @@ class CriticasController extends Controller
                         $obra->id
                     )->get(),
                 // Paginación, organización y mostrado de las críticas
-                'criticas' => $this->obtenerArrayInfoCriticas($obra->criticas),
+                'criticas'              => Critica::with(['likes', 'usuario'])->whereIn('id', $obra->criticas->pluck('id'))->withCount('likes')->paginate(3),
                 //Numero de gifs disponibles en public/gif
-                'nGifs' => count(glob( public_path('/gif/') . '*'))
+                'nGifs'                 => count(glob(public_path('/gif/') . '*'))
             ]
         );
     }
 
-    /**
-     * Crea un array con el contenido, likes y fecha de cada critica para la vista a partir de todas las criticas de la película y devuelve dicha información paginada
-     * @param $criticas
-     * @return LengthAwarePaginator
-     */
-    function obtenerArrayInfoCriticas($criticas): LengthAwarePaginator
-    {
-        $criticasLikes = array();
-        foreach ($criticas as $critica) {
-            $criticasLikes[] = [
-                'id_critica' => $critica['id'],
-                'id_usuario' => $critica['user_id'],
-                'critica' => $critica['critica'],
-                'likes' => DB::table('likes')->where('critica_id', '=', $critica['id'])->count(),
-                'fecha' => $critica['modificada'],
-                'usuario' => DB::table('usuarios')->select('nombre', 'usuario')->where('id', '=', $critica['usuario_id'])->get(),
-                'gustadaPor' => DB::table('likes')->select('usuario_id')->where('critica_id', '=', $critica['id'])->get(),
-            ];
-        }
-        // Solo 2 para testear los estilos del componente de paginacion???
-        return PaginacionController::paginar($criticasLikes, 2);
-    }
 
 
     /**
@@ -96,6 +72,37 @@ class CriticasController extends Controller
         } else {
             // Sino, se guarda
             Like::create(['usuario_id' => request('usuario_id'), 'critica_id' => request('critica_id')]);
+        }
+    }
+
+    /**
+     * Añade una evaluacion o la modifica
+     * @return void
+     */
+    public function evaluar()
+    {
+
+        $validated = request()->validate(
+            [
+                'evaluacion' => 'required|int|min:0|max:10',
+            ],
+            [
+                'evaluacion' => 'No has elegido una puntuación.'
+            ]
+        );
+
+        $evaluacion = new Evaluacion(
+            [
+                'usuario_id' => request('usuario_id'),
+                'obra_id'    => request('obra_id'),
+                'evaluacion' => request('evaluacion'),
+            ]
+        );
+
+        if (Evaluacion::where('usuario_id', $evaluacion->usuario_id)->where('obra_id', $evaluacion->obra_id)->exists()) {
+            $evaluacion->where('usuario_id', $evaluacion->usuario_id)->where('obra_id', $evaluacion->obra_id)->update(['evaluacion' => $evaluacion->evaluacion]);
+        } else {
+            $evaluacion->save();
         }
     }
 }
