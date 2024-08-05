@@ -75,7 +75,7 @@ function alertaDarLikeSinLogin(){
                 <!--Boton para llevarte a la pagina de datos de la película-->
                 <div class="flex justify-center mx-auto w-11/12 lg:w-full mb-7 lg:mb-0">
                     <Link :href="route('obra', obra.titulo_slug)"
-                          class="text-white bg-flamingo hover:text-black focus:bg-flamingo focus:ring-flamingo focus:border-flamingo focus:outline-none font-medium text-sm px-5 py-2.5 mt-5 text-center">
+                          class="text-black hover:text-flamingo bg-flamingo hover:bg-black focus:bg-flamingo focus:ring-flamingo focus:border-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 mt-5 text-center">
                         &larr; Ficha {{ obra.titulo }}
                     </Link>
                 </div>
@@ -163,7 +163,7 @@ function alertaDarLikeSinLogin(){
                         <div class="w-full text-center">
                             <button
                                 @click="form2.usuario_id = $page.props.auth.user.id; form2.obra_id = obra.id"
-                                class="w-2/5 sm:w-1/4 md:w-3/4 text-flamingo bg-white hover:text-black font-medium text-sm px-5 py-2.5 my-2 text-center">
+                                class="w-2/5 sm:w-1/4 md:w-3/4 text-flamingo bg-white hover:bg-black font-bold text-sm px-5 py-2.5 my-2 text-center">
                                 Evaluar {{ obra.titulo }} &rarr;
                             </button>
                         </div>
@@ -199,7 +199,7 @@ function alertaDarLikeSinLogin(){
                             </div>
                             <button
                                 @click="form.user_id = $page.props.auth.user['id']; form.obra_id = obra[0]['id']"
-                                class="w-2/5 text-flamingo bg-white hover:text-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-medium text-sm px-5 py-2.5 my-2 text-center">
+                                class="w-2/5 text-flamingo bg-white hover:bg-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 my-2 text-center">
                                 Reseñar {{ obra.titulo }} &rarr;
                             </button>
                         </form>
@@ -209,7 +209,7 @@ function alertaDarLikeSinLogin(){
                 <div v-else class="grid grid-cols-1 p-10 font-bold text-white text-3xl text-center">
                     Para poder evaluar o poner notas a la película tienes que estar logueado.
                     <Link as="button" :href="route('login')"
-                          class="m-auto mt-5 text-flamingo bg-white hover:text-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-medium text-sm px-5 py-2.5 my-2 text-center">
+                          class="m-auto mt-5 text-flamingo bg-white hover:bg-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 my-2 text-center">
                         Loguearse
                     </Link>
                     <img src="/images/logo-blanco.png" class="w-40 pt-5 m-auto" alt="Logo de la web">
