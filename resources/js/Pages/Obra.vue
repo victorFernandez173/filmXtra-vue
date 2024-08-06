@@ -200,7 +200,7 @@ function colorearManoLike($usuario, $gustadas) {
                         <span class="font-semibold">
                             {{ critica.usuario.usuario }}
                         </span>
-                        : {{ critica.critica }} ({{ dayjs(critica.fecha).fromNow() }}) - Likes: {{ critica.likes_count }}
+                        : {{ critica.critica }} ({{ dayjs(critica.modificada).fromNow() }}) - Likes: {{ critica.likes_count }}
 
                         <!--Mano arriba-->
                         <Link v-if="$page.props.auth.user" class="inline-block" as="button" method="post"
