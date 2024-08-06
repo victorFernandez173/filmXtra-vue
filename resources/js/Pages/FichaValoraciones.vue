@@ -7,13 +7,12 @@ export default {
 </script>
 
 <script setup>
-import {Head, Link, useForm, usePage} from "@inertiajs/vue3";
+import {Head, Link, useForm} from "@inertiajs/vue3";
 import Estrellitas from "../Components/Estrellitas.vue";
 import SelectRango from "../Components/SelectRango.vue";
 import PaginacionSimple from "../Components/PaginacionSimple.vue";
 import Critica from "@/Components/Critica.vue";
 
-const page = usePage();
 const props = defineProps(['obra', 'mediaEvaluaciones', 'profesionales', 'criticas', 'pelicula_criticas', 'pelicula_evaluaciones', 'nGifs']);
 
 // Formularios y sus campos dinámicos
