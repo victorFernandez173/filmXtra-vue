@@ -9,9 +9,8 @@ export default {
 import dayjs from "dayjs";
 import es from "dayjs/locale/es";
 import relativeTime from 'dayjs/plugin/relativeTime';
-import {Head, Link, usePage} from "@inertiajs/vue3";
+import {Head, Link} from "@inertiajs/vue3";
 import Poster from "../Components/Poster.vue";
-import Swal from "sweetalert2";
 import Estrellitas from "../Components/Estrellitas.vue";
 import Trailers from "../Components/Trailers.vue";
 import Critica from "@/Components/Critica.vue";
@@ -21,30 +20,6 @@ const props = defineProps(['obra', 'generos', 'reparto', 'direccion', 'mediaEval
 // Configuración fechas relativas dayjs
 dayjs.extend(relativeTime);
 dayjs.locale(es);
-
-// Alert para avisar que no pueder dar like sin estar registrado y logueado
-function alertaDarLike() {
-    Swal.fire({
-        title: 'UPSSS!',
-        text: `Regístrate y logueate para dar like`,
-        imageUrl: '../gif/' + (Math.floor(Math.random() * usePage().props.nGifs) + 1) + '.gif',
-        imageWidth: '80%',
-        imageAlt: 'ocupate de arreglarlo, imagen para Regístrate y logueate para dar like',
-        confirmButtonColor: '#e37f81'
-    });
-}
-
-// Coloreado de los likes.
-// Parametros: usuario logueado y  datos de la critica.
-// Se crea un array al que le pasamos los id de los usuarios que gustan la crítica.
-// Retornamos si incluye el id del usuario logueado (true): se colorea de negro pues.
-function colorearManoLike($usuario, $gustadas) {
-    let gustadaPorArray = []
-    for(const usuario_id in $gustadas.gustadaPor){
-        gustadaPorArray.push($gustadas.gustadaPor[usuario_id].usuario_id);
-    }
-    return gustadaPorArray.includes($usuario.id);
-}
 </script>
 
 <template>

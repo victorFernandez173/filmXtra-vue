@@ -7,7 +7,6 @@ export default {
 </script>
 
 <script setup>
-
 import {Head, Link, useForm, usePage} from "@inertiajs/vue3";
 import Estrellitas from "../Components/Estrellitas.vue";
 import SelectRango from "../Components/SelectRango.vue";
@@ -38,13 +37,15 @@ const form2 = useForm({
         <meta name="description" content="Ficha valoraciones obra">
     </Head>
     <div class="container mx-auto mt-10 mb-10">
-        <h1 class="text-center font-bold text-flamingo text-3xl w-11/12 mx-auto">{{ obra.titulo }}</h1>
-        <!--2 bloque para poster, criticas usuarios-->
+        <h1 class="text-center font-bold text-flamingo text-3xl w-11/12 mx-auto">
+            {{ obra.titulo }}
+        </h1>
+
         <div class="grid grid-cols-1 lg:grid-cols-4 mt-10">
+            <!--Poster y boton ficha obra-->
             <div>
-                <!--Poster-->
                 <div class="w-full flex justify-center flex-wrap items-center">
-                    <img class="w-11/12 sm:w-8/12 lg:w-[98%]" :src="'/posters/' + obra.poster.ruta" :alt="obra.poster.alt">
+                    <img class="w-[95%] lg:w-[98%]" :src="'/posters/' + obra.poster.ruta" :alt="obra.poster.alt">
                     <Estrellitas class="w-full mb-1" :mediaEvaluaciones="mediaEvaluaciones.evaluaciones_avg_evaluacion" :obra="obra"/>
                     <p class="text-black text-center"> &nbsp;&nbsp;
                         {{ parseFloat(mediaEvaluaciones.evaluaciones_avg_evaluacion).toFixed(1) }}/10 ({{ obra.evaluaciones.length }}
@@ -54,10 +55,8 @@ const form2 = useForm({
                     </svg>
                     )
                 </div>
-                <!--Boton para llevarte a la pagina de datos de la película-->
                 <div class="flex justify-center mx-auto w-11/12 lg:w-full mb-7 lg:mb-0">
-                    <Link :href="route('obra', obra.titulo_slug)"
-                          class="text-black hover:text-flamingo bg-flamingo hover:bg-black focus:bg-flamingo focus:ring-flamingo focus:border-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 mt-5 text-center">
+                    <Link :href="route('obra', obra.titulo_slug)" class="text-black hover:text-flamingo bg-flamingo hover:bg-black focus:bg-flamingo focus:ring-flamingo focus:border-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 mt-5 text-center">
                         &larr; Ficha {{ obra.titulo }}
                     </Link>
                 </div>
@@ -85,14 +84,9 @@ const form2 = useForm({
             <!-- Sección formularios container-->
             <div class="w-[95%] lg:w-full mx-auto col-span-1 lg:col-span-4 mt-5 bg-flamingo container">
                 <div v-if="$page.props.auth.user" class="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 p-1">
-                    <!-- Formulario evas -->
+                    <!-- Evaluaciones -->
 
-                    <form @submit.prevent="form2.post(route('evaluar'),
-                                {
-                                        preserveScroll: true,
-                                        })"
-                        class="col-span-1 md:col-span-3 lg:col-span-2 flex justify-center flex-wrap p-1 border-b md:border-r md:border-b-0 content-center">
-
+                    <form @submit.prevent="form2.post(route('evaluar'),{ preserveScroll: true })" class="col-span-1 md:col-span-3 lg:col-span-2 flex justify-center flex-wrap p-1 border-b md:border-r md:border-b-0 content-center">
                         <div class="w-full text-center">
                             <label class="font-bold text-xl text-white">Evaluar: </label>
                         </div>
@@ -100,10 +94,7 @@ const form2 = useForm({
 <!--                        <p v-if="existeLaEvaluacionBandera" class="text-center text-xs">(Ya has evaluado esta película, puedes modificar tu evaluación):</p>-->
                         <!--           //////////////////////////////////////////////////////////////////////////////////             -->
                         <div class="w-full">
-                            <SelectRango class="w-2/5 sm:w-1/4 md:w-3/4 text-center" :limite="11"
-                                         :valor="'Nota'"
-                                         @emision="(e) => form2.evaluacion = e">
-                            </SelectRango>
+                            <SelectRango class="w-2/5 sm:w-1/4 md:w-3/4 text-center" :limite="11" :valor="'Nota'" @emision="(e) => form2.evaluacion = e" />
                         </div>
                         <div class="w-full text-center">
                             <p class="text-yellow-300 w-2/5 sm:w-1/4 md:w-3/4 text-center m-auto">
@@ -114,45 +105,30 @@ const form2 = useForm({
                             <!--           //////////////////////////////////////////////////////////////////////////////////             -->
                         </div>
                         <div class="w-full text-center">
-                            <button
-                                @click="form2.usuario_id = $page.props.auth.user.id; form2.obra_id = obra.id"
-                                class="w-2/5 sm:w-1/4 md:w-3/4 text-flamingo bg-white hover:bg-black font-bold text-sm px-5 py-2.5 my-2 text-center">
+                            <button @click="form2.usuario_id = $page.props.auth.user.id; form2.obra_id = obra.id" class="w-2/5 sm:w-1/4 md:w-3/4 text-flamingo bg-white hover:bg-black font-bold text-sm px-5 py-2.5 my-2 text-center">
                                 Evaluar {{ obra.titulo }} &rarr;
                             </button>
                         </div>
                     </form>
-                    <!-- Formulario críticas -->
-                    <div
-                        class="col-span-1 md:col-span-9 lg:col-span-10 p-1 lg:ml-1 flex justify-center flex-wrap">
+                    <!-- Críticas -->
+                    <div class="col-span-1 md:col-span-9 lg:col-span-10 p-1 lg:ml-1 flex justify-center flex-wrap">
                         <label class="w-full text-center font-bold text-xl mt-3 text-white">Reseña
                             {{ obra.titulo }}
-                            <span
-                                :class="[form.critica.length > 5000 ? 'text-yellow-300  font-bold' : 'text-white']">({{
-                                    form.critica.length
-                                }}/5000 caracteres){{
-                                    form.critica.length > 5000 ? ' Máximo de caracteres sobrepasado' : ''
-                                }}
+                            <span :class="[form.critica.length > 5000 ? 'text-yellow-300  font-bold' : 'text-white']">
+                                ({{ form.critica.length }}/5000 caracteres){{ form.critica.length > 5000 ? ' Máximo de caracteres sobrepasado' : '' }}
                             </span>
                         </label>
                         <!--           //////////////////////////////////////////////////////////////////////////////////             -->
 <!--                        <p v-if="existeLaCriticaBandera" class="text-center text-xs">(Ya has reseñado esta película, puedes modificar tu crítica):</p>-->
                         <!--           //////////////////////////////////////////////////////////////////////////////////             -->
-                        <form
-                            @submit.prevent="form.post(
-                                route('criticar'),
-                                {
-                                        preserveScroll: true,
-                                        })"
-                            class="w-11/12 text-center">
-                            <textarea class="w-full h-[200px] m-1 focus:border-black focus:border-[3px] focus:ring-0" v-model="form.critica"></textarea>
+                        <form @submit.prevent="form.post(route('criticar'),{ preserveScroll: true })" class="w-11/12 text-center">
+                            <textarea class="w-full h-[200px] m-1 focus:border-black focus:border-[3px] focus:ring-0" v-model="form.critica" />
                             <div class="w-full text-center">
                                 <p class="text-yellow-300 w-2/5 sm:w-1/4 md:w-3/4 text-center m-auto">
                                     {{ $page.props.errors['critica'] }}</p>
                                 <p class="invisible" v-if="form.recentlySuccessful">{{ existeLaCriticaVarComputed }}</p>
                             </div>
-                            <button
-                                @click="form.user_id = $page.props.auth.user['id']; form.obra_id = obra[0]['id']"
-                                class="w-2/5 text-flamingo bg-white hover:bg-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 my-2 text-center">
+                            <button @click="form.user_id = $page.props.auth.user['id']; form.obra_id = obra[0]['id']" class="w-2/5 text-flamingo bg-white hover:bg-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 my-2 text-center">
                                 Reseñar {{ obra.titulo }} &rarr;
                             </button>
                         </form>
@@ -161,8 +137,7 @@ const form2 = useForm({
                 </div>
                 <div v-else class="grid grid-cols-1 p-10 font-bold text-white text-lg md:text-2xl lg:text-3xl text-center">
                     Para poder evaluar o poner notas a la película tienes que estar logueado.
-                    <Link as="button" :href="route('login')"
-                          class="m-auto mt-5 text-flamingo bg-white hover:bg-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 my-2 text-center">
+                    <Link as="button" :href="route('login')" class="m-auto mt-5 text-flamingo bg-white hover:bg-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 my-2 text-center">
                         Loguearse
                     </Link>
                     <img src="/images/logo-blanco.png" class="w-40 pt-5 m-auto" alt="Logo de la web">
