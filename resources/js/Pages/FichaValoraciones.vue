@@ -67,8 +67,8 @@ const form2 = useForm({
                 <div class="w-full p-6 md:p-10">
                     <!--Titulo usuarios-->
                     <div class="w-full">
-                        <h5 class="font-bold text-lg md:text-xl mt-2 mb-6">
-                            Críticas de nuestros usuarios:
+                        <h5 class="font-bold text-center text-lg md:text-xl mt-2 mb-6">
+                            Criticas de usuarios
                         </h5>
                     </div>
                     <!--Críticas usuarios-->
@@ -88,7 +88,7 @@ const form2 = useForm({
 
                     <form @submit.prevent="form2.post(route('evaluar'),{ preserveScroll: true })" class="col-span-1 md:col-span-3 lg:col-span-2 flex justify-center flex-wrap p-1 border-b md:border-r md:border-b-0 content-center">
                         <div class="w-full text-center">
-                            <label class="font-bold text-xl text-white">Evaluar {{ obra.titulo}}:</label>
+                            <label class="font-bold text-xl text-black">Evaluar {{ obra.titulo}}:</label>
                         </div>
 <!--           //////////////////////////////////////////////////////////////////////////////////             -->
 <!--                        <p v-if="existeLaEvaluacionBandera" class="text-center text-xs">(Ya has evaluado esta película, puedes modificar tu evaluación):</p>-->
@@ -112,9 +112,9 @@ const form2 = useForm({
                     </form>
                     <!-- Críticas -->
                     <div class="col-span-1 md:col-span-9 lg:col-span-10 p-1 lg:ml-1 flex justify-center flex-wrap">
-                        <label class="w-full text-center font-bold text-xl mt-3 text-white">Reseña
+                        <label class="w-full text-center font-bold text-xl mt-3 text-black">Reseña
                             {{ obra.titulo }}
-                            <span :class="[form.critica.length > 5000 ? 'text-yellow-300  font-bold' : 'text-white']">
+                            <span :class="[form.critica.length > 5000 ? 'text-yellow-300 font-bold' : 'text-black']">
                                 ({{ form.critica.length }}/5000 caracteres){{ form.critica.length > 5000 ? ' Máximo de caracteres sobrepasado' : '' }}
                             </span>
                         </label>
