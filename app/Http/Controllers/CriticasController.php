@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Repositorios\CriticasRepo;
 use App\Http\Repositorios\ObrasRepo;
 use App\Http\Requests\EvaluarObraRequest;
-use App\Models\Critica;
 use App\Models\Evaluacion;
 use App\Models\Like;
 use Auth;
@@ -24,30 +23,30 @@ class CriticasController extends Controller
                 // Para generar la nota media de la película
                 'mediaEvaluaciones'     => ObrasRepo::obtenerObraNotaMedia($tituloSlug),
                 // Criticas relacionadas con esta película
-                'peliculaCriticas'     =>
-                    Critica::select(
-                        [
-                            'usuario_id',
-                            'obra_id',
-                            'critica'
-                        ]
-                    )->where(
-                        'obra_id',
-                        $obra->id
-                    )->get(),
+//                'peliculaCriticas'     =>
+//                    Critica::select(
+//                        [
+//                            'usuario_id',
+//                            'obra_id',
+//                            'critica'
+//                        ]
+//                    )->where(
+//                        'obra_id',
+//                        $obra->id
+//                    )->get(),
                 // Evaluaciones relacionadas con esta película
-                'peliculaEvaluaciones' =>
-                    Evaluacion::select(
-                        [
-                            'evaluaciones.id',
-                            'usuario_id',
-                            'obra_id',
-                            'evaluacion'
-                        ]
-                    )->where(
-                        'obra_id',
-                        $obra->id
-                    )->get(),
+//                'peliculaEvaluaciones' =>
+//                    Evaluacion::select(
+//                        [
+//                            'evaluaciones.id',
+//                            'usuario_id',
+//                            'obra_id',
+//                            'evaluacion'
+//                        ]
+//                    )->where(
+//                        'obra_id',
+//                        $obra->id
+//                    )->get(),
                 // Paginación, organización y mostrado de las críticas
                 'criticas'              => CriticasRepo::obtenerArrayInfoCriticas($obra->criticas)->paginate(3),
                 //Numero de gifs disponibles en public/gif

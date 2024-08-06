@@ -47,11 +47,12 @@ Route::middleware('auth')
 // Resto rutas auth
 require __DIR__ . '/auth.php';
 
+// TODO bloques comentados en CriticasCntroller::obtenerDatosFichaObra()
 // TODO responsividad componente paginación tops en pantallas estrechas...
 // TODO mejorar ficha obra: estilos y html revisar...
 // TODO mejorar ficha criticas obra: html revisar...
 // TODO mejorar back seccion ficha criticas obra: rutas criticar y evaluar, obtención de props y su procesado, tener en cuenta el id de login en el back para ver que criticas etc obtener??? estudiar...
-// TODO dejar de pasar user_id desde el fron si es posible en otras rutas: quitado de evaluar
+// TODO dejar de pasar user_id desde el front si es posible en otras rutas: quitado de evaluar
 
 // TODO notificaciones de algún tipo?? likes? criticas? estudiar (bootcamp ojear codigo)
 // TODO policies para las modificaciones (bootcamp ojear codigo)
