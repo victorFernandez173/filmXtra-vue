@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Repositorios\CriticasRepo;
 use App\Http\Repositorios\ObrasRepo;
+use App\Http\Requests\EvaluarObraRequest;
 use App\Models\Critica;
 use App\Models\Evaluacion;
 use App\Models\Like;
+use Auth;
+use Exception;
 use Inertia\Inertia;
 
 class CriticasController extends Controller
@@ -21,7 +24,7 @@ class CriticasController extends Controller
                 // Para generar la nota media de la película
                 'mediaEvaluaciones'     => ObrasRepo::obtenerObraNotaMedia($tituloSlug),
                 // Criticas relacionadas con esta película
-                'pelicula_criticas'     =>
+                'peliculaCriticas'     =>
                     Critica::select(
                         [
                             'usuario_id',
@@ -33,7 +36,7 @@ class CriticasController extends Controller
                         $obra->id
                     )->get(),
                 // Evaluaciones relacionadas con esta película
-                'pelicula_evaluaciones' =>
+                'peliculaEvaluaciones' =>
                     Evaluacion::select(
                         [
                             'evaluaciones.id',
@@ -77,31 +80,18 @@ class CriticasController extends Controller
     /**
      * Añade una evaluacion o la modifica
      * @return void
+     * @throws Exception
      */
-    public function evaluar()
+    public function evaluar(EvaluarObraRequest $request)
     {
-
-        $validated = request()->validate(
+        Evaluacion::updateOrCreate(
             [
-                'evaluacion' => 'required|int|min:0|max:10',
+                'usuario_id' => Auth::id(),
+                'obra_id' => $request->obra_id
             ],
             [
-                'evaluacion' => 'No has elegido una puntuación.'
+                'evaluacion' => $request->evaluacion,
             ]
         );
-
-        $evaluacion = new Evaluacion(
-            [
-                'usuario_id' => request('usuario_id'),
-                'obra_id'    => request('obra_id'),
-                'evaluacion' => request('evaluacion'),
-            ]
-        );
-
-        if (Evaluacion::where('usuario_id', $evaluacion->usuario_id)->where('obra_id', $evaluacion->obra_id)->exists()) {
-            $evaluacion->where('usuario_id', $evaluacion->usuario_id)->where('obra_id', $evaluacion->obra_id)->update(['evaluacion' => $evaluacion->evaluacion]);
-        } else {
-            $evaluacion->save();
-        }
     }
 }

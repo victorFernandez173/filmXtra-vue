@@ -7,27 +7,28 @@ export default {
 </script>
 
 <script setup>
-import {Head, Link, useForm} from "@inertiajs/vue3";
+import {Head, Link, useForm, usePage} from "@inertiajs/vue3";
 import Estrellitas from "../Components/Estrellitas.vue";
 import SelectRango from "../Components/SelectRango.vue";
 import PaginacionSimple from "../Components/PaginacionSimple.vue";
 import Critica from "@/Components/Critica.vue";
 
-const props = defineProps(['obra', 'mediaEvaluaciones', 'profesionales', 'criticas', 'pelicula_criticas', 'pelicula_evaluaciones', 'nGifs']);
+const page = usePage();
 
-// Formularios y sus campos dinámicos
-// Crítica
+const props = defineProps(['obra', 'mediaEvaluaciones', 'profesionales', 'criticas', 'nGifs']);
+
+// Form Crítica
 const form = useForm({
-    user_id: '',
-    obra_id: '',
+    obra_id: page.props.obra.id,
     critica: '',
 });
-// Evaluación
+// Form Evaluación
 const form2 = useForm({
-    usuario_id: '',
-    obra_id: '',
+    obra_id: page.props.obra.id,
     evaluacion: '',
 });
+
+
 </script>
 
 <template>
@@ -84,10 +85,9 @@ const form2 = useForm({
             <div class="w-[95%] lg:w-full mx-auto col-span-1 lg:col-span-4 mt-5 bg-flamingo container">
                 <div v-if="$page.props.auth.user" class="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 p-1 py-3">
                     <!-- Evaluaciones -->
-
                     <form @submit.prevent="form2.post(route('evaluar'),{ preserveScroll: true })" class="col-span-1 md:col-span-3 lg:col-span-2 flex justify-center flex-wrap p-1 border-b md:border-r md:border-b-0 content-center">
                         <div class="w-full text-center">
-                            <label class="font-bold text-xl text-black">Evaluar {{ obra.titulo}}:</label>
+                            <label class="font-bold text-lg md:text-xl text-black">Evaluar {{ obra.titulo}}:</label>
                         </div>
 <!--           //////////////////////////////////////////////////////////////////////////////////             -->
 <!--                        <p v-if="existeLaEvaluacionBandera" class="text-center text-xs">(Ya has evaluado esta película, puedes modificar tu evaluación):</p>-->
@@ -99,20 +99,18 @@ const form2 = useForm({
                             <p class="text-yellow-300 w-2/5 sm:w-1/4 md:w-3/4 text-center m-auto">
                                 {{ $page.props.errors['evaluacion'] }}
                             </p>
-                            <!--           //////////////////////////////////////////////////////////////////////////////////             -->
-<!--                            <p v-if="form2.recentlySuccessful">{{  existeLaEvaluacionVarComputed }}</p>-->
-                            <!--           //////////////////////////////////////////////////////////////////////////////////             -->
+                            <p v-if="form2.recentlySuccessful">Evaluación exitosa</p>
                         </div>
                         <div class="w-full text-center">
-                            <button @click="form2.usuario_id = $page.props.auth.user.id; form2.obra_id = obra.id" class="w-2/5 sm:w-1/4 md:w-3/4 text-flamingo bg-white hover:bg-black font-bold text-sm px-5 py-2.5 my-2 text-center">
+                            <button class="w-2/5 sm:w-1/4 md:w-3/4 text-flamingo bg-white hover:bg-black font-bold text-sm px-5 py-2.5 my-2 text-center">
                                 Evaluar
                             </button>
                         </div>
                     </form>
                     <!-- Críticas -->
                     <div class="col-span-1 md:col-span-9 lg:col-span-10 p-1 lg:ml-1 flex justify-center flex-wrap">
-                        <label class="w-full text-center font-bold text-xl mt-3 text-black">Reseña
-                            {{ obra.titulo }}
+                        <label class="w-full text-center font-bold text-lg md:text-xl mt-3 text-black">
+                            Reseña {{ obra.titulo }}
                             <span :class="[form.critica.length > 5000 ? 'text-yellow-300 font-bold' : 'text-black']">
                                 ({{ form.critica.length }}/5000 caracteres){{ form.critica.length > 5000 ? ' Máximo de caracteres sobrepasado' : '' }}
                             </span>
@@ -127,7 +125,7 @@ const form2 = useForm({
                                     {{ $page.props.errors['critica'] }}</p>
                                 <p class="invisible" v-if="form.recentlySuccessful">{{ existeLaCriticaVarComputed }}</p>
                             </div>
-                            <button @click="form.user_id = $page.props.auth.user['id']; form.obra_id = obra[0]['id']" class="w-2/5 text-flamingo bg-white hover:bg-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 my-2 text-center">
+                            <button class="w-2/5 text-flamingo bg-white hover:bg-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 my-2 text-center">
                                 Reseñar
                             </button>
                         </form>
