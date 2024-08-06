@@ -7,21 +7,15 @@ export default {
 </script>
 
 <script setup>
-import dayjs from "dayjs";
-import es from "dayjs/locale/es";
-import relativeTime from 'dayjs/plugin/relativeTime';
+
 import {Head, Link, useForm, usePage} from "@inertiajs/vue3";
 import Estrellitas from "../Components/Estrellitas.vue";
 import SelectRango from "../Components/SelectRango.vue";
 import PaginacionSimple from "../Components/PaginacionSimple.vue";
-import Swal from "sweetalert2";
+import Critica from "@/Components/Critica.vue";
 
 const page = usePage();
 const props = defineProps(['obra', 'mediaEvaluaciones', 'profesionales', 'criticas', 'pelicula_criticas', 'pelicula_evaluaciones', 'nGifs']);
-
-// Para las fechas relativas
-dayjs.extend(relativeTime);
-dayjs.locale(es);
 
 // Formularios y sus campos dinámicos
 // Crítica
@@ -36,18 +30,6 @@ const form2 = useForm({
     obra_id: '',
     evaluacion: '',
 });
-
-// SWAL para likes sin login
-function alertaDarLikeSinLogin(){
-    Swal.fire({
-        title: 'UPSSS!',
-        text: `Regístrate y logueate para dar like`,
-        imageUrl: '/gif/' + (Math.floor(Math.random() * page.props.nGifs) + 1) + '.gif',
-        imageWidth: '80%',
-        imageAlt: 'gif de cine para mensaje dar like sin login',
-        confirmButtonColor: '#e37f81'
-    });
-}
 </script>
 
 <template>
@@ -82,53 +64,17 @@ function alertaDarLikeSinLogin(){
             </div>
 
             <!--Criticas-->
-            <div class="w-11/12 mx-auto lg:mr-0 col-span-3 flex flex-wrap bg-flamingo">
-                <!--Titulo usuarios-->
-                <div>
-                    <div class="flex flex-wrap pt-5 pb-12">
-                        <div class="w-full px-10">
-                            <ul>
-                                <li class="font-bold text-lg md:text-xl mt-10 mb-5">Críticas de nuestros
-                                    usuarios:
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="px-10">
-                            <ul v-for="(cri, i) in criticas.data">
-                                <!--Críticas usuarios-->
-                                <li class="list-disc ml-5 mb-4 text-white text-right">
-                                    <p class="font-semibold text-left">
-                                        {{ cri.usuario.nombre }}:
-                                        <span class="font-normal">
-                                            {{ cri.critica }}
-                                        </span>
-                                    </p>
-                                    <p class="inline-block">
-                                        ({{ dayjs(cri.modificada).fromNow() }}) - Likes: {{ cri.likes_count }} &nbsp;
-                                    </p>
-
-                                    <!--Mano arriba-->
-                                    <Link v-if="$page.props.auth.user" as="button" method="post"
-                                          :href="route('darLike')"
-                                          :data="{ usuario_id: $page.props.auth.user['id'], critica_id: cri.id }"
-                                          preserveScroll>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                             :fill=" $page.props.criticas.data[i].likes.map(critica => critica.id).includes($page.props.auth.user.id) ? 'black' : 'white'"
-                                             class="w-5 h-5 inline hover:fill-yellow-300 mb-1">
-                                            <path
-                                                d="M1 8.25a1.25 1.25 0 112.5 0v7.5a1.25 1.25 0 11-2.5 0v-7.5zM11 3V1.7c0-.268.14-.526.395-.607A2 2 0 0114 3c0 .995-.182 1.948-.514 2.826-.204.54.166 1.174.744 1.174h2.52c1.243 0 2.261 1.01 2.146 2.247a23.864 23.864 0 01-1.341 5.974C17.153 16.323 16.072 17 14.9 17h-3.192a3 3 0 01-1.341-.317l-2.734-1.366A3 3 0 006.292 15H5V8h.963c.685 0 1.258-.483 1.612-1.068a4.011 4.011 0 012.166-1.73c.432-.143.853-.386 1.011-.814.16-.432.248-.9.248-1.388z"/>
-                                        </svg>
-                                    </Link>
-                                    <svg v-else @click="alertaDarLikeSinLogin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                         fill="white"
-                                         class="w-5 h-5 inline hover:fill-yellow-300 mb-1">
-                                        <path
-                                            d="M1 8.25a1.25 1.25 0 112.5 0v7.5a1.25 1.25 0 11-2.5 0v-7.5zM11 3V1.7c0-.268.14-.526.395-.607A2 2 0 0114 3c0 .995-.182 1.948-.514 2.826-.204.54.166 1.174.744 1.174h2.52c1.243 0 2.261 1.01 2.146 2.247a23.864 23.864 0 01-1.341 5.974C17.153 16.323 16.072 17 14.9 17h-3.192a3 3 0 01-1.341-.317l-2.734-1.366A3 3 0 006.292 15H5V8h.963c.685 0 1.258-.483 1.612-1.068a4.011 4.011 0 012.166-1.73c.432-.143.853-.386 1.011-.814.16-.432.248-.9.248-1.388z"/>
-                                    </svg>
-                                </li>
-                            </ul>
-                        </div>
-
+            <div class="w-[95%] mx-auto lg:mr-0 col-span-3 flex flex-wrap bg-flamingo">
+                <div class="w-full p-6 md:p-10">
+                    <!--Titulo usuarios-->
+                    <div class="w-full">
+                        <h5 class="font-bold text-lg md:text-xl mt-2 mb-6">
+                            Críticas de nuestros usuarios:
+                        </h5>
+                    </div>
+                    <!--Críticas usuarios-->
+                    <div v-for="(critica, indice) in criticas.data" class="w-full px-3 md:px-6 text-white">
+                        <Critica :critica="critica" :indice="indice" />
                     </div>
                 </div>
                 <div class="w-full flex justify-center self-end mt-5">
@@ -137,7 +83,7 @@ function alertaDarLikeSinLogin(){
             </div>
 
             <!-- Sección formularios container-->
-            <div class="col-span-1 lg:col-span-4 mt-5 bg-flamingo container">
+            <div class="w-[95%] lg:w-full mx-auto col-span-1 lg:col-span-4 mt-5 bg-flamingo container">
                 <div v-if="$page.props.auth.user" class="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 p-1">
                     <!-- Formulario evas -->
 
@@ -213,7 +159,7 @@ function alertaDarLikeSinLogin(){
 
                     </div>
                 </div>
-                <div v-else class="grid grid-cols-1 p-10 font-bold text-white text-3xl text-center">
+                <div v-else class="grid grid-cols-1 p-10 font-bold text-white text-lg md:text-2xl lg:text-3xl text-center">
                     Para poder evaluar o poner notas a la película tienes que estar logueado.
                     <Link as="button" :href="route('login')"
                           class="m-auto mt-5 text-flamingo bg-white hover:bg-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 my-2 text-center">

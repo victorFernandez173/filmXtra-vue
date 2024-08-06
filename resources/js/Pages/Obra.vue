@@ -14,6 +14,7 @@ import Poster from "../Components/Poster.vue";
 import Swal from "sweetalert2";
 import Estrellitas from "../Components/Estrellitas.vue";
 import Trailers from "../Components/Trailers.vue";
+import Critica from "@/Components/Critica.vue";
 
 const props = defineProps(['obra', 'generos', 'reparto', 'direccion', 'mediaEvaluaciones', 'criticas', 'secuelaPrecuela', 'spinoffs', 'nGifs']);
 
@@ -189,37 +190,15 @@ function colorearManoLike($usuario, $gustadas) {
                     </li>
                 </ul>
                 <!--Titulo-->
-                <ul>
-                    <li class="list-none font-bold text-black text-xl mt-10 mb-5">
+                <div>
+                    <h5 class="list-none font-bold text-black text-xl mt-10 mb-5">
                         Críticas de nuestros usuarios
-                    </li>
-                </ul>
-                <ul v-for="(critica, indice) in criticas">
+                    </h5>
+                </div>
+                <div v-for="(critica, indice) in criticas.slice(0, 2)" class="ml-5">
                     <!--Críticas usuarios-->
-                    <li v-if="indice < 2" class="ml-5 mb-4">
-                        <span class="font-semibold">
-                            {{ critica.usuario.usuario }}
-                        </span>
-                        : {{ critica.critica }} ({{ dayjs(critica.modificada).fromNow() }}) - Likes: {{ critica.likes_count }}
-
-                        <!--Mano arriba-->
-                        <Link v-if="$page.props.auth.user" class="inline-block" as="button" method="post"
-                              :href="route('darLike')"
-                              :data="{ usuario_id: $page.props.auth.user.id, critica_id: critica.id_critica }"
-                              preserveScroll>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                 :fill="colorearManoLike($page.props.auth.user, $page.props.criticas) ? 'black' : 'white'"
-                                 class="w-5 h-5 inline-block hover:fill-yellow-300">
-                                <path d="M1 8.25a1.25 1.25 0 112.5 0v7.5a1.25 1.25 0 11-2.5 0v-7.5zM11 3V1.7c0-.268.14-.526.395-.607A2 2 0 0114 3c0 .995-.182 1.948-.514 2.826-.204.54.166 1.174.744 1.174h2.52c1.243 0 2.261 1.01 2.146 2.247a23.864 23.864 0 01-1.341 5.974C17.153 16.323 16.072 17 14.9 17h-3.192a3 3 0 01-1.341-.317l-2.734-1.366A3 3 0 006.292 15H5V8h.963c.685 0 1.258-.483 1.612-1.068a4.011 4.011 0 012.166-1.73c.432-.143.853-.386 1.011-.814.16-.432.248-.9.248-1.388z"/>
-                            </svg>
-                        </Link>
-                        <svg v-else @click="alertaDarLike" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                             fill="white"
-                             class="w-5 h-5 inline-block hover:fill-yellow-300">
-                            <path d="M1 8.25a1.25 1.25 0 112.5 0v7.5a1.25 1.25 0 11-2.5 0v-7.5zM11 3V1.7c0-.268.14-.526.395-.607A2 2 0 0114 3c0 .995-.182 1.948-.514 2.826-.204.54.166 1.174.744 1.174h2.52c1.243 0 2.261 1.01 2.146 2.247a23.864 23.864 0 01-1.341 5.974C17.153 16.323 16.072 17 14.9 17h-3.192a3 3 0 01-1.341-.317l-2.734-1.366A3 3 0 006.292 15H5V8h.963c.685 0 1.258-.483 1.612-1.068a4.011 4.011 0 012.166-1.73c.432-.143.853-.386 1.011-.814.16-.432.248-.9.248-1.388z"/>
-                        </svg>
-                    </li>
-                </ul>
+                    <Critica :critica="critica" :indice="indice" />
+                </div>
                 <p class="ml-5">[...]</p>
                 <p v-if="!criticas[0]" class="py-3">Sin críticas de usuarios todavía. Participa, pon la
                     tuya.</p>
