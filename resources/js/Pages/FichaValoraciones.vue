@@ -83,12 +83,12 @@ const form2 = useForm({
 
             <!-- Sección formularios container-->
             <div class="w-[95%] lg:w-full mx-auto col-span-1 lg:col-span-4 mt-5 bg-flamingo container">
-                <div v-if="$page.props.auth.user" class="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 p-1">
+                <div v-if="$page.props.auth.user" class="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 p-1 py-3">
                     <!-- Evaluaciones -->
 
                     <form @submit.prevent="form2.post(route('evaluar'),{ preserveScroll: true })" class="col-span-1 md:col-span-3 lg:col-span-2 flex justify-center flex-wrap p-1 border-b md:border-r md:border-b-0 content-center">
                         <div class="w-full text-center">
-                            <label class="font-bold text-xl text-white">Evaluar: </label>
+                            <label class="font-bold text-xl text-white">Evaluar {{ obra.titulo}}:</label>
                         </div>
 <!--           //////////////////////////////////////////////////////////////////////////////////             -->
 <!--                        <p v-if="existeLaEvaluacionBandera" class="text-center text-xs">(Ya has evaluado esta película, puedes modificar tu evaluación):</p>-->
@@ -106,7 +106,7 @@ const form2 = useForm({
                         </div>
                         <div class="w-full text-center">
                             <button @click="form2.usuario_id = $page.props.auth.user.id; form2.obra_id = obra.id" class="w-2/5 sm:w-1/4 md:w-3/4 text-flamingo bg-white hover:bg-black font-bold text-sm px-5 py-2.5 my-2 text-center">
-                                Evaluar {{ obra.titulo }} &rarr;
+                                Evaluar
                             </button>
                         </div>
                     </form>
@@ -129,18 +129,18 @@ const form2 = useForm({
                                 <p class="invisible" v-if="form.recentlySuccessful">{{ existeLaCriticaVarComputed }}</p>
                             </div>
                             <button @click="form.user_id = $page.props.auth.user['id']; form.obra_id = obra[0]['id']" class="w-2/5 text-flamingo bg-white hover:bg-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 my-2 text-center">
-                                Reseñar {{ obra.titulo }} &rarr;
+                                Reseñar
                             </button>
                         </form>
 
                     </div>
                 </div>
                 <div v-else class="grid grid-cols-1 p-10 font-bold text-white text-lg md:text-2xl lg:text-3xl text-center">
-                    Para poder evaluar o poner notas a la película tienes que estar logueado.
+                    Para poder evaluar o criticar "{{obra.titulo}}", tienes que estar logueado.
                     <Link as="button" :href="route('login')" class="m-auto mt-5 text-flamingo bg-white hover:bg-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 my-2 text-center">
                         Loguearse
                     </Link>
-                    <img src="/images/logo-blanco.png" class="w-40 pt-5 m-auto" alt="Logo de la web">
+                    <img src="/images/logo.png" class="w-40 pt-5 m-auto" alt="Logo de la web">
                 </div>
             </div>
         </div>
