@@ -34,6 +34,7 @@ Route::controller(CriticasController::class)
         Route::get('/obra/{tituloSlug}/valoraciones', 'obtenerFichaValoraciones')->name('obraValoraciones');
         Route::post('/like', 'darLike')->name('darLike')->middleware('auth', 'verified');
         Route::post('/evaluar', 'evaluar')->name('evaluar')->middleware('auth', 'verified', 'throttle:6,1');
+        Route::post('/criticar', 'criticar')->name('criticar')->middleware('auth', 'verified', 'throttle:6,1');
     });
 
 // Rutas perfil: mostrar, editar y borrar
