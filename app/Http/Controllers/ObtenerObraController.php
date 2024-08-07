@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Repositorios\CriticasRepo;
 use App\Http\Repositorios\ObrasRepo;
+use App\Traits\ProcesadoCamposTrait;
 use Exception;
-use Illuminate\Database\Eloquent\Collection;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class ObtenerObraController extends Controller
 {
+    use ProcesadoCamposTrait;
+
     /**
      * Datos necesarios para pasar a la ficha de película
      * @param string $tituloSlug
@@ -33,48 +35,5 @@ class ObtenerObraController extends Controller
             //Numero de gifs disponibles en public/gif
             'nGifs'             => count(glob(public_path('/gif/') . '*'))
         ]);
-    }
-
-
-    /**
-     * Retorna string con enumeración de los géneros
-     * @param Collection $generos
-     * @return string
-     * @throws Exception
-     */
-    public function procesarGeneros(Collection $generos)
-    {
-        $cadenaGeneros = '';
-        $generos->each(function ($valor) use (&$cadenaGeneros) {
-            $cadenaGeneros .= $valor->genero . ', ';
-        });
-        return rtrim($cadenaGeneros, ', ') . '.';
-    }
-
-    /**
-     * Retorna string con enumeración los nombres de actores, directores
-     * @param Collection $casting
-     * @return string
-     * @throws Exception
-     */
-    public function procesarCasting(Collection $casting)
-    {
-        $cadenaCasting = '';
-        $casting->each(function ($valor) use (&$cadenaCasting) {
-            $cadenaCasting .= $this->procesarNombre($valor->nombre) . ', ';
-        });
-        return rtrim($cadenaCasting, ', ') . '.';
-    }
-
-    /**
-     * Procesa nombres para anteponer nombre al apellido
-     * @param string $nombre
-     * @return string
-     */
-    public function procesarNombre(string $nombre)
-    {
-        $nombreProcesado = substr($nombre, strrpos($nombre, ',') + 2) . ' ';
-        $nombreProcesado .= substr($nombre, 0, strrpos($nombre, ','));
-        return $nombreProcesado;
     }
 }
