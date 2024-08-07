@@ -19,42 +19,27 @@ class CriticasController extends Controller
 
         return Inertia::render('FichaValoraciones',
             [
-                'obra'                  => $obra,
-                // Para generar la nota media de la película
-                'mediaEvaluaciones'     => ObrasRepo::obtenerObraNotaMedia($tituloSlug),
+                'obra'              => $obra,
+                'mediaEvaluaciones' => ObrasRepo::obtenerObraNotaMedia($tituloSlug),
                 // Criticas relacionadas con esta película
-//                'peliculaCriticas'     =>
-//                    Critica::select(
-//                        [
-//                            'usuario_id',
-//                            'obra_id',
-//                            'critica'
-//                        ]
-//                    )->where(
-//                        'obra_id',
-//                        $obra->id
-//                    )->get(),
-                // Evaluaciones relacionadas con esta película
-//                'peliculaEvaluaciones' =>
-//                    Evaluacion::select(
-//                        [
-//                            'evaluaciones.id',
-//                            'usuario_id',
-//                            'obra_id',
-//                            'evaluacion'
-//                        ]
-//                    )->where(
-//                        'obra_id',
-//                        $obra->id
-//                    )->get(),
-                // Paginación, organización y mostrado de las críticas
-                'criticas'              => CriticasRepo::obtenerArrayInfoCriticas($obra->criticas)->paginate(3),
-                //Numero de gifs disponibles en public/gif
-                'nGifs'                 => count(glob(public_path('/gif/') . '*'))
+                //                'peliculaCriticas'     =>
+                //                    Critica::select(
+                //                        [
+                //                            'usuario_id',
+                //                            'obra_id',
+                //                            'critica'
+                //                        ]
+                //                    )->where(
+                //                        'obra_id',
+                //                        $obra->id
+                //                    )->get(),
+                'evaluacionUsuario' => Evaluacion::where('usuario_id', Auth::user()->id)->where('obra_id', $obra->id)
+                    ->pluck('evaluacion'),
+                'criticas'          => CriticasRepo::obtenerArrayInfoCriticas($obra->criticas)->paginate(3),
+                'nGifs'             => count(glob(public_path('/gif/') . '*'))
             ]
         );
     }
-
 
 
     /**
@@ -86,7 +71,7 @@ class CriticasController extends Controller
         Evaluacion::updateOrCreate(
             [
                 'usuario_id' => Auth::id(),
-                'obra_id' => $request->obra_id
+                'obra_id'    => $request->obra_id
             ],
             [
                 'evaluacion' => $request->evaluacion,

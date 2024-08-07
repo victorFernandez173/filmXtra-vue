@@ -14,8 +14,7 @@ import PaginacionSimple from "../Components/PaginacionSimple.vue";
 import Critica from "@/Components/Critica.vue";
 
 const page = usePage();
-
-const props = defineProps(['obra', 'mediaEvaluaciones', 'profesionales', 'criticas', 'nGifs']);
+const props = defineProps(['obra', 'mediaEvaluaciones', 'criticas', 'nGifs', 'evaluacionUsuario']);
 
 // Form Crítica
 const form = useForm({
@@ -27,8 +26,6 @@ const form2 = useForm({
     obra_id: page.props.obra.id,
     evaluacion: '',
 });
-
-
 </script>
 
 <template>
@@ -85,21 +82,29 @@ const form2 = useForm({
             <div class="w-[95%] lg:w-full mx-auto col-span-1 lg:col-span-4 mt-5 bg-flamingo container">
                 <div v-if="$page.props.auth.user" class="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 p-1 py-3">
                     <!-- Evaluaciones -->
-                    <form @submit.prevent="form2.post(route('evaluar'),{ preserveScroll: true })" class="col-span-1 md:col-span-3 lg:col-span-2 flex justify-center flex-wrap p-1 border-b md:border-r md:border-b-0 content-center">
+                    <form @submit.prevent="form2.post(route('evaluar'),
+                    {
+                                preserveScroll: true,
+                                only: ['mediaEvaluaciones', 'evaluacionUsuario']
+                           }
+                    )"
+                          class="col-span-1 md:col-span-3 lg:col-span-2 flex justify-center flex-wrap p-1 border-b md:border-r md:border-b-0 content-center">
                         <div class="w-full text-center">
                             <label class="font-bold text-lg md:text-xl text-black">Evaluar {{ obra.titulo}}:</label>
                         </div>
-<!--           //////////////////////////////////////////////////////////////////////////////////             -->
-<!--                        <p v-if="existeLaEvaluacionBandera" class="text-center text-xs">(Ya has evaluado esta película, puedes modificar tu evaluación):</p>-->
-                        <!--           //////////////////////////////////////////////////////////////////////////////////             -->
+                        <p v-if="evaluacionUsuario.length > 0" class="text-center text-xs">
+                            (Ya has evaluado esta película, puedes modificar tu evaluación):
+                        </p>
                         <div class="w-full">
-                            <SelectRango class="w-2/5 sm:w-1/4 md:w-3/4 text-center" :limite="11" :valor="'Nota'" @emision="(e) => form2.evaluacion = e" />
+                            <SelectRango class="w-2/5 sm:w-1/4 md:w-3/4 text-center" :limite="11" :valor="page.props.evaluacionUsuario.length > 0 ? page.props.evaluacionUsuario.toString() : 'Nota'" @emision="(e) => form2.evaluacion = e" />
                         </div>
                         <div class="w-full text-center">
                             <p class="text-yellow-300 w-2/5 sm:w-1/4 md:w-3/4 text-center m-auto">
                                 {{ $page.props.errors['evaluacion'] }}
                             </p>
-                            <p v-if="form2.recentlySuccessful">Evaluación exitosa</p>
+                            <p v-if="form2.recentlySuccessful">
+                                Evaluación exitosa
+                            </p>
                         </div>
                         <div class="w-full text-center">
                             <button class="w-2/5 sm:w-1/4 md:w-3/4 text-flamingo bg-white hover:bg-black font-bold text-sm px-5 py-2.5 my-2 text-center">
@@ -117,7 +122,6 @@ const form2 = useForm({
                         </label>
                         <!--           //////////////////////////////////////////////////////////////////////////////////             -->
 <!--                        <p v-if="existeLaCriticaBandera" class="text-center text-xs">(Ya has reseñado esta película, puedes modificar tu crítica):</p>-->
-                        <!--           //////////////////////////////////////////////////////////////////////////////////             -->
                         <form @submit.prevent="form.post(route('criticar'),{ preserveScroll: true })" class="w-11/12 text-center">
                             <textarea class="w-full h-[200px] m-1 focus:border-black focus:border-[3px] focus:ring-0" v-model="form.critica" />
                             <div class="w-full text-center">

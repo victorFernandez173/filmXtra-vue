@@ -33,7 +33,7 @@ Route::controller(CriticasController::class)
     ->group(function () {
         Route::get('/obra/{tituloSlug}/valoraciones', 'obtenerFichaValoraciones')->name('obraValoraciones');
         Route::post('/like', 'darLike')->name('darLike')->middleware('auth', 'verified');
-        Route::post('/evaluar', 'evaluar')->name('evaluar')->middleware('auth', 'verified');
+        Route::post('/evaluar', 'evaluar')->name('evaluar')->middleware('auth', 'verified', 'throttle:6,1');
     });
 
 // Rutas perfil: mostrar, editar y borrar
@@ -47,6 +47,7 @@ Route::middleware('auth')
 // Resto rutas auth
 require __DIR__ . '/auth.php';
 
+// TODO only option in forms...
 // TODO bloques comentados en CriticasCntroller::obtenerDatosFichaObra()
 // TODO responsividad componente paginación tops en pantallas estrechas...
 // TODO mejorar ficha obra: estilos y html revisar...
