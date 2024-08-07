@@ -80,7 +80,7 @@ const form2 = useForm({
 
             <!-- Sección formularios container-->
             <div class="w-[95%] lg:w-full mx-auto col-span-1 lg:col-span-4 mt-5 bg-flamingo container">
-                <div v-if="$page.props.auth.user" class="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 p-1 py-3">
+                <div v-if="$page.props.auth.user" class="w-full grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 p-3">
                     <!-- Form Evaluaciones -->
                     <form @submit.prevent="form2.post(route('evaluar'),
                     {
