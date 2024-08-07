@@ -36,9 +36,9 @@ function alertaDarLikeSinLogin(){
         </p>
     </div>
     <!--Fecha relativa y likes-->
-    <div class="w-full text-right mb-6 text-pink-800">
+    <div class="w-full text-right mb-6 text-pink-800 text-sm md:text-base">
         <p class="inline-block">
-            ({{ dayjs(critica.modificada).fromNow() }}) - Likes: {{ critica.likes_count }} &nbsp;
+            ({{ dayjs(critica.modificada).fromNow() }}) Likes: {{ critica.likes_count }} &nbsp;
         </p>
         <Link v-if="$page.props.auth.user" as="button" method="post" :href="route('darLike')" :data="{ usuario_id: $page.props.auth.user['id'], critica_id: critica.id }" preserveScroll>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" :fill="critica.likes.map(critica => critica.id).includes($page.props.auth.user.id) ? 'black' : 'white'" class="w-5 h-5 inline hover:fill-yellow-300 mb-1">
