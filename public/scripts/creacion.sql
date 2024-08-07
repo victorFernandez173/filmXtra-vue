@@ -283,17 +283,17 @@ create table criticas
     id         bigint unsigned auto_increment
         primary key,
     obra_id    bigint unsigned                     not null,
-    user_id    bigint unsigned                     not null,
+    usuario_id    bigint unsigned                     not null,
     critica    varchar(5000)                       not null,
     creada     timestamp default CURRENT_TIMESTAMP not null,
     modificada timestamp default CURRENT_TIMESTAMP not null,
-    constraint criticas_obra_id_user_id_unique
-        unique (obra_id, user_id),
+    constraint criticas_obra_id_usuario_id_unique
+        unique (obra_id, usuario_id),
     constraint criticas_obra_id_foreign
         foreign key (obra_id) references obras (id)
             on delete cascade,
-    constraint criticas_user_id_foreign
-        foreign key (user_id) references usuarios (id)
+    constraint criticas_usuario_id_foreign
+        foreign key (usuario_id) references usuarios (id)
             on delete cascade
 )
     collate = utf8mb4_unicode_ci;
@@ -303,17 +303,17 @@ create table evaluaciones
     id         bigint unsigned auto_increment
         primary key,
     obra_id    bigint unsigned                     not null,
-    user_id    bigint unsigned                     not null,
+    usuario_id    bigint unsigned                     not null,
     evaluacion decimal(3, 1)                       not null,
     creada     timestamp default CURRENT_TIMESTAMP not null,
     modificada timestamp default CURRENT_TIMESTAMP not null,
-    constraint evaluaciones_obra_id_user_id_unique
-        unique (obra_id, user_id),
+    constraint evaluaciones_obra_id_usuario_id_unique
+        unique (obra_id, usuario_id),
     constraint evaluaciones_obra_id_foreign
         foreign key (obra_id) references obras (id)
             on delete cascade,
-    constraint evaluaciones_user_id_foreign
-        foreign key (user_id) references usuarios (id)
+    constraint evaluaciones_usuario_id_foreign
+        foreign key (usuario_id) references usuarios (id)
             on delete cascade,
     constraint evaluacion
         check (`evaluacion` > 0)
@@ -324,12 +324,12 @@ create table likes
 (
     usuario_id    bigint unsigned not null,
     critica_id bigint unsigned not null,
-    constraint likes_user_id_critica_id_unique
+    constraint likes_usuario_id_critica_id_unique
         unique (usuario_id, critica_id),
     constraint likes_critica_id_foreign
         foreign key (critica_id) references criticas (id)
             on delete cascade,
-    constraint likes_user_id_foreign
+    constraint likes_usuario_id_foreign
         foreign key (usuario_id) references usuarios (id)
             on delete cascade
 )

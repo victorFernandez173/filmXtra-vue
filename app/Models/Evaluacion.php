@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @property int $id
  * @property int $obra_id
- * @property int $user_id
+ * @property int $usuario_id
  * @property float $evaluacion
  * @property Carbon $creada
  * @property Carbon $modificada

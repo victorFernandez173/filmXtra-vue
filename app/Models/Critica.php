@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  *
  * @property int $id
  * @property int $obra_id
- * @property int $user_id
+ * @property int $usuario_id
  * @property string $critica
  * @property Carbon $creada
  * @property Carbon $modificada

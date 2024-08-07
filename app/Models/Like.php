@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * Class Like
  *
- * @property int $user_id
+ * @property int $usuario_id
  * @property int $critica_id
  *
  * @property Critica $critica
