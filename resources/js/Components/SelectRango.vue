@@ -1,11 +1,8 @@
 <script setup>
 import {ref} from "vue";
-const emit = defineEmits(['emision']);
 
-const props = defineProps({
-    limite : Number,
-    valor : String
-});
+const props = defineProps(['limite', 'valor']);
+const emit = defineEmits(['emision']);
 
 const valorSelect = ref(props.valor);
 
