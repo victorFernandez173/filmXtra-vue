@@ -36,7 +36,7 @@ function alertaDarLikeSinLogin(){
         </p>
     </div>
     <!--Fecha relativa y likes-->
-    <div class="w-full text-right mb-6">
+    <div class="w-full text-right mb-6 text-pink-800">
         <p class="inline-block">
             ({{ dayjs(critica.modificada).fromNow() }}) - Likes: {{ critica.likes_count }} &nbsp;
         </p>
