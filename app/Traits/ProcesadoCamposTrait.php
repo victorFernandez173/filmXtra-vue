@@ -32,7 +32,7 @@ trait ProcesadoCamposTrait
     {
         $cadenaCasting = '';
         $casting->each(function ($valor) use (&$cadenaCasting) {
-            $cadenaCasting .= $this->procesarNombre($valor->nombre) . ', ';
+            $cadenaCasting .= static::procesarNombre($valor->nombre) . ', ';
         });
         return rtrim($cadenaCasting, ', ') . '.';
     }
