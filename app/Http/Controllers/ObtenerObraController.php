@@ -25,9 +25,9 @@ class ObtenerObraController extends Controller
 
         return Inertia::render('Obra', [
             'obra'              => $obra,
-            'generos'           => $this->procesarGeneros($obra->generos),
-            'reparto'           => $this->procesarCasting($obra->actors),
-            'direccion'         => $this->procesarCasting($obra->directors),
+            'generos'           => static::procesarGeneros($obra->generos),
+            'reparto'           => static::procesarCasting($obra->actors),
+            'direccion'         => static::procesarCasting($obra->directors),
             'mediaEvaluaciones' => ObrasRepo::obtenerObraNotaMedia($obra->titulo_slug),
             'criticas'          => CriticasRepo::obtenerArrayInfoCriticas($obra->criticas)->get(),
             'secuelaPrecuela'   => ObrasRepo::obtenerObrasRelacionadas($obra),
