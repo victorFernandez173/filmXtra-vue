@@ -14,12 +14,12 @@ import PaginacionSimple from "../Components/PaginacionSimple.vue";
 import Critica from "@/Components/Critica.vue";
 
 const page = usePage();
-const props = defineProps(['obra', 'mediaEvaluaciones', 'criticas', 'nGifs', 'evaluacionUsuario']);
+const props = defineProps(['obra', 'mediaEvaluaciones', 'criticas', 'nGifs', 'evaluacionUsuario', 'criticaUsuario']);
 
 // Form Crítica
 const form = useForm({
     obra_id: page.props.obra.id,
-    critica: '',
+    critica: page.props.criticaUsuario[0] ? page.props.criticaUsuario[0] : '',
 });
 // Form Evaluación
 const form2 = useForm({
@@ -81,19 +81,19 @@ const form2 = useForm({
             <!-- Sección formularios container-->
             <div class="w-[95%] lg:w-full mx-auto col-span-1 lg:col-span-4 mt-5 bg-flamingo container">
                 <div v-if="$page.props.auth.user" class="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 p-1 py-3">
-                    <!-- Evaluaciones -->
+                    <!-- Form Evaluaciones -->
                     <form @submit.prevent="form2.post(route('evaluar'),
                     {
                                 preserveScroll: true,
                                 only: ['mediaEvaluaciones', 'evaluacionUsuario']
                            }
                     )"
-                          class="col-span-1 md:col-span-3 lg:col-span-2 flex justify-center flex-wrap p-1 border-b md:border-r md:border-b-0 content-center">
+                    class="col-span-1 md:col-span-3 lg:col-span-2 flex justify-center flex-wrap p-1 border-b md:border-r md:border-b-0 content-center">
                         <div class="w-full text-center">
                             <label class="font-bold text-lg md:text-xl text-black">Evaluar {{ obra.titulo}}:</label>
                         </div>
                         <p v-if="evaluacionUsuario.length > 0" class="text-center text-xs">
-                            (Ya has evaluado esta película, puedes modificar tu evaluación):
+                            (Ya has evaluado esta película, puedes modificar tu evaluación)
                         </p>
                         <div class="w-full">
                             <SelectRango class="w-2/5 sm:w-1/4 md:w-3/4 text-center" :limite="11" :valor="page.props.evaluacionUsuario.length > 0 ? page.props.evaluacionUsuario.toString() : 'Nota'" @emision="(e) => form2.evaluacion = e" />
@@ -112,7 +112,7 @@ const form2 = useForm({
                             </button>
                         </div>
                     </form>
-                    <!-- Críticas -->
+                    <!-- Form Críticas -->
                     <div class="col-span-1 md:col-span-9 lg:col-span-10 p-1 lg:ml-1 flex justify-center flex-wrap">
                         <label class="w-full text-center font-bold text-lg md:text-xl mt-3 text-black">
                             Reseña {{ obra.titulo }}
@@ -120,14 +120,22 @@ const form2 = useForm({
                                 ({{ form.critica.length }}/5000 caracteres){{ form.critica.length > 5000 ? ' Máximo de caracteres sobrepasado' : '' }}
                             </span>
                         </label>
-                        <!--           //////////////////////////////////////////////////////////////////////////////////             -->
-<!--                        <p v-if="existeLaCriticaBandera" class="text-center text-xs">(Ya has reseñado esta película, puedes modificar tu crítica):</p>-->
-                        <form @submit.prevent="form.post(route('criticar'),{ preserveScroll: true })" class="w-11/12 text-center">
+                        <p v-if="criticaUsuario.length > 0" class="text-center text-xs">(Ya has reseñado esta película, puedes modificar tu crítica)</p>
+                        <form @submit.prevent="form.post(route('criticar'),
+                        {
+                                    preserveScroll: true,
+                                    only: ['criticaUsuario', 'criticas']
+                                }
+                        )"
+                        class="w-11/12 text-center">
                             <textarea class="w-full h-[200px] m-1 focus:border-black focus:border-[3px] focus:ring-0" v-model="form.critica" />
                             <div class="w-full text-center">
                                 <p class="text-yellow-300 w-2/5 sm:w-1/4 md:w-3/4 text-center m-auto">
-                                    {{ $page.props.errors['critica'] }}</p>
-                                <p class="invisible" v-if="form.recentlySuccessful">{{ existeLaCriticaVarComputed }}</p>
+                                    {{ $page.props.errors['critica'] }}
+                                </p>
+                                <p v-if="form.recentlySuccessful">
+                                    Crítica registrada con éxito
+                                </p>
                             </div>
                             <button class="w-2/5 text-flamingo bg-white hover:bg-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 my-2 text-center">
                                 Reseñar
