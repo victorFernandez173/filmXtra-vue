@@ -49,14 +49,15 @@ class MainController extends Controller
     }
 
     /**
-     * Datos necesarios para obtener el TOP con filtrado si se incluyen parametros en la peticion
-     * @return Response
+     *  Datos necesarios para obtener el TOP con filtrado si se incluyen parametros en la peticion
+     * @return array|Response
      * @throws Exception
+     * /
      */
-    public function obtenerTop(): Response
+
+    public function obtenerTop()
     {
-        $obras = ObrasRepo::obtenerDatosObrasTop(
-        )->withCount(
+        $obras = ObrasRepo::obtenerDatosObrasTop()->withCount(
             'evaluaciones'
         )->withAvg(
             'evaluaciones',
@@ -64,20 +65,30 @@ class MainController extends Controller
         )->orderBy(
             'evaluaciones_avg_evaluacion',
             'DESC'
-        )->paginate(
-            12
+        )->cursorPaginate(
+            8
         );
+
+        $filtros = [
+            'genero' => request('genero') ?? '',
+            'pais'   => request('pais') ?? '',
+            'desde'  => request('desde') ?? '',
+            'hasta'  => request('hasta') ?? ''
+        ];
+
+        if (request()->wantsJson()) {
+            return [
+                'tienePaginas' => $obras->hasPages(),
+                'obras'        => $obras,
+                'filtros'      => $filtros,
+            ];
+        }
 
         return Inertia::render('Top', [
             'obras'   => $obras,
-            'generos' => Genero::select('genero')->get(),
-            'paises'  => Obra::select('pais')->groupBy('pais')->orderBy('pais')->get(),
-            'filtros' => [
-                'genero' => request('genero') ?? '',
-                'pais'   => request('pais') ?? '',
-                'desde'  => request('desde') ?? '',
-                'hasta'  => request('hasta') ?? ''
-            ],
+            'filtros' => $filtros,
+            'generos' => Genero::select('genero')->pluck('genero'),
+            'paises'  => Obra::select('pais')->groupBy('pais')->orderBy('pais')->pluck('pais'),
             'pionera' => Obra::select(['fecha'])->orderBy('fecha')->first()->fecha,
         ]);
     }
@@ -96,12 +107,12 @@ class MainController extends Controller
             'evaluaciones_count',
             'DESC'
         )->withAvg(
-        'evaluaciones',
-        'evaluacion'
+            'evaluaciones',
+            'evaluacion'
         )->paginate(8);
 
         return Inertia::render('ValoracionesTop', [
-            'obras'   => $obras,
+            'obras' => $obras,
         ]);
     }
 
