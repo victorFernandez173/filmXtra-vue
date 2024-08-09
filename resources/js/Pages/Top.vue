@@ -70,17 +70,9 @@ const { stop } = useIntersectionObserver(
             <formulario-filtrado :paises="paises" :generos="generos" :pionera="pionera" :filtros="filtros"  />
             <!-- Mensaje de filtrado condicionado en funcion de parámetros del formulario -->
             <p v-if="filtros.genero || filtros.pais || filtros.desde || filtros.hasta" class="w-full text-center mt-1">
-                Filtros&rarr; &nbsp;
-                <!-- Si hay genero (filtros[0])... -->
-                {{ filtros.genero === '' ? '' : `género: ${filtros.genero}`  }}
-                <!--se añade coma, y así sucesivamente ... -->
-                {{(filtros.genero !== '' && filtros.pais !== '') ? ', &nbsp;' : ''}}
-                {{ filtros.pais === '' ? '' : ` país: ${filtros.pais}`   }}
-                {{(filtros.pais !== '' && filtros.desde !== '') ? ', &nbsp;' : ''}}
-                {{ filtros.desde === '' ? '' : ` desde: ${filtros.desde}`  }}
-                {{(filtros.desde !== '' && filtros.hasta !== '') ? ', &nbsp;' : ''}}
-                {{ filtros.hasta === '' ? '' : ` hasta: ${filtros.hasta}`  }}
-                {{ filtros.genero !== null ?  '.' : '' }}
+                Filtros&rarr;
+                <!-- Si hay genero (filtros[0])...se añade coma, y así sucesivamente ... -->
+                {{ filtros.genero === '' ? '' : `género: ${filtros.genero}`}}{{(filtros.genero !== '' && filtros.pais !== '') ? ', ' : ''}}{{ filtros.pais === '' ? '' : ` país: ${filtros.pais}`}}{{(filtros.pais !== '' && filtros.desde !== '') ? ', ' : ''}}{{ filtros.desde === '' ? '' : ` desde: ${filtros.desde}`}}{{(filtros.desde !== '' && filtros.hasta !== '') ? ', ' : ''}}{{ filtros.hasta === '' ? '' : ` hasta: ${filtros.hasta}`}}{{ filtros.genero !== null ?  '.' : ''}}
             </p>
             <div v-else class="w-full text-center">
                 <p>Sin filtros</p>
