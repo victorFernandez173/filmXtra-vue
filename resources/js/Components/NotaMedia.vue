@@ -1,5 +1,7 @@
 <script setup>
-const props = defineProps(['avgEvaluaciones']);
+const props = defineProps({
+    'avgEvaluaciones' : String
+});
 </script>
 
 <template>

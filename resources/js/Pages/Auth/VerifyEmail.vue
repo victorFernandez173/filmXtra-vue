@@ -1,7 +1,7 @@
 <script setup>
-import {computed} from 'vue';
+import { computed } from 'vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-import {Head, useForm} from '@inertiajs/vue3';
+import { Head, useForm } from '@inertiajs/vue3';
 import AuthLayout from "@/Layouts/AuthLayout.vue";
 import AppLogoIndex from "@/Components/AppLogoIndex.vue";
 
@@ -22,7 +22,9 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
 
 <template>
     <Head>
-        <title>Verificar email</title>
+        <title>
+            Verificar email
+        </title>
         <meta name="description" content="Página de verificación de email">
     </Head>
     <auth-layout>
@@ -43,9 +45,9 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
                     </h3>
                     <form @submit.prevent="submit">
                         <div class="mt-4 flex items-center justify-between">
-                            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                            <primary-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                                 Reenviar correo
-                            </PrimaryButton>
+                            </primary-button>
                         </div>
                     </form>
                 </div>

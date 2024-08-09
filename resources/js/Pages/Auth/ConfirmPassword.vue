@@ -3,7 +3,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import {Head, useForm} from '@inertiajs/vue3';
+import { Head, useForm } from '@inertiajs/vue3';
 import AuthLayout from "@/Layouts/AuthLayout.vue";
 import AppLogoIndex from "@/Components/AppLogoIndex.vue";
 
@@ -20,7 +20,9 @@ const submit = () => {
 
 <template>
     <Head>
-        <title>Confirmar password</title>
+        <title>
+            Confirmar password
+        </title>
         <meta name="description" content="Pagina de confirmacion de password">
     </Head>
     <auth-layout>
@@ -38,8 +40,8 @@ const submit = () => {
                     </h3>
                     <form class="space-y-4 md:space-y-6" @submit.prevent="submit">
                         <div>
-                            <InputLabel for="password" value="Contraseña" class="block mb-2 text-sm font-medium text-gray-900" />
-                            <TextInput
+                            <input-label for="password" value="Contraseña" class="block mb-2 text-sm font-medium text-gray-900" />
+                            <text-input
                                 id="password"
                                 type="password"
                                 placeholder="••••••••"
@@ -47,11 +49,11 @@ const submit = () => {
                                 v-model="form.password"
                                 autocomplete="current-password"
                             />
-                            <InputError class="mt-2" :message="form.errors.password"/>
+                            <input-error class="mt-2" :message="form.errors.password"/>
                         </div>
-                        <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                        <primary-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                             Confirmar
-                        </PrimaryButton>
+                        </primary-button>
                     </form>
                 </div>
             </div>

@@ -3,7 +3,9 @@ import { Link } from "@inertiajs/vue3";
 import NotaMedia from "@/Components/NotaMedia.vue";
 import NumValoraciones from "@/Components/NumValoraciones.vue";
 
-const props = defineProps(['obra']);
+const props = defineProps({
+    'obra' : Object
+});
 
 // Antepone el nombre al apellido al estar "apellido, nombre" en la BBDD y devuelve el string
 function procesarNombre(nombre) {
@@ -13,7 +15,6 @@ function procesarNombre(nombre) {
     nombreProcesado += ' ' + nombre.substring(0, nombre.indexOf(','));
     return nombreProcesado;
 }
-
 </script>
 
 <template>
@@ -33,8 +34,8 @@ function procesarNombre(nombre) {
             </Link>
             <!-- Bloque valoraciones para pantallas estrechas -->
             <div class="md:hidden w-full text-center flex">
-                <NotaMedia class="text-xl sm:text-2xl mr-4" v-if="obra.evaluaciones_avg_evaluacion" :avg-evaluaciones="obra.evaluaciones_avg_evaluacion" />
-                <NumValoraciones v-if="obra.evaluaciones_count" :num-valoraciones="obra.evaluaciones_count" />
+                <nota-media class="text-xl sm:text-2xl mr-4" v-if="obra.evaluaciones_avg_evaluacion" :avg-evaluaciones="obra.evaluaciones_avg_evaluacion" />
+                <num-valoraciones v-if="obra.evaluaciones_count" :num-valoraciones="obra.evaluaciones_count" />
             </div>
             <!--Pais/Año-->
             <p>
@@ -75,8 +76,8 @@ function procesarNombre(nombre) {
         <!--     Valoraciones    -->
         <div class="hidden md:block md:w-2/12">
             <div class="w-full mt-[33%] text-center">
-                <NotaMedia class="text-2xl md:text-3xl lg:text-4xl" v-if="obra.evaluaciones_avg_evaluacion" :avg-evaluaciones="obra.evaluaciones_avg_evaluacion" />
-                <NumValoraciones v-if="obra.evaluaciones_count" :num-valoraciones="obra.evaluaciones_count" />
+                <nota-media class="text-2xl md:text-3xl lg:text-4xl" v-if="obra.evaluaciones_avg_evaluacion" :avg-evaluaciones="obra.evaluaciones_avg_evaluacion" />
+                <num-valoraciones v-if="obra.evaluaciones_count" :num-valoraciones="obra.evaluaciones_count" />
             </div>
         </div>
     </div>

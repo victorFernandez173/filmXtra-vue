@@ -9,27 +9,33 @@ export default {
 
 <!--script estándar-->
 <script setup>
-import {Head, usePage} from "@inertiajs/vue3";
+import { Head } from "@inertiajs/vue3";
 import Carrusel from "../Components/Carrusel.vue";
 import Poster from "../Components/Poster.vue";
-import {computed, onMounted} from "vue";
-import {initCarousels} from "flowbite";
+import { onMounted } from "vue";
+import { initCarousels } from "flowbite";
 import Swal from "sweetalert2";
 
-const props = defineProps(['obras', 'verificacionExitosa', 'nGifs', 'citaInspiring', 'citaQuotable', 'citaPelicula', 'citaCine', 'errors']);
-const page = usePage();
-const confirmacionVerificacionMail = computed(() => page.props.verificacionExitosa);
-const borradoCuentaExitoso = computed(() => page.props.borradoCuentaExitoso);
+const props = defineProps({
+    'obras' : Object,
+    'verificacionExitosa' : Boolean,
+    'borradoCuentaExitoso' : Boolean,
+    'nGifs' : Number,
+    'citaInspiring' : String,
+    'citaQuotable' : String,
+    'citaPelicula' : String,
+    'citaCine' : String
+});
 
 onMounted(() => {
     /*Iniciamos el carrusel*/
     initCarousels();
     /*Si hay flash de email verificado, lanzamos SWAL*/
-    if (confirmacionVerificacionMail.value) {
+    if (props.verificacionExitosa) {
         Swal.fire({
             title: 'Enhorabuena!!',
             text: 'Tu email ha sido validado exitosamente',
-            imageUrl: '../gif/' + (Math.floor(Math.random() * usePage().props.nGifs) + 1) + '.gif',
+            imageUrl: '../gif/' + (Math.floor(Math.random() * props.nGifs) + 1) + '.gif',
             imageWidth: '80%',
             imageAlt: 'gif de cine',
             showConfirmButton: false,
@@ -38,11 +44,11 @@ onMounted(() => {
         });
     }
     /*Si hay flash de cuenta borrada, lanzamos SWAL*/
-    if (borradoCuentaExitoso.value) {
+    if (props.borradoCuentaExitoso) {
         Swal.fire({
             title: 'Adios!!',
             text: 'Tu cuenta ha sido borrada. Lamentamos que te vayas.',
-            imageUrl: '../gif/' + (Math.floor(Math.random() * usePage().props.nGifs) + 1) + '.gif',
+            imageUrl: '../gif/' + (Math.floor(Math.random() * props.nGifs) + 1) + '.gif',
             imageWidth: '80%',
             imageAlt: 'gif de cine',
             showConfirmButton: false,
@@ -50,8 +56,7 @@ onMounted(() => {
             timer: 4500
         });
     }
-})
-
+});
 </script>
 
 <template>
@@ -61,11 +66,11 @@ onMounted(() => {
     </Head>
 
     <!--  Carrusel   -->
-    <Carrusel :citaInspiring="citaInspiring" :citaQuotable="citaQuotable" :citaPelicula="citaPelicula" :citaCine="citaCine" />
+    <carrusel :citaInspiring="citaInspiring" :citaQuotable="citaQuotable" :citaPelicula="citaPelicula" :citaCine="citaCine" />
 
     <!-- Seccion Principal de contenido -->
     <div class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-4 m-auto my-8">
         <!-- Posters -->
-        <Poster v-for="obra in obras" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>
+        <poster v-for="obra in obras" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>
     </div>
 </template>

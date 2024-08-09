@@ -1,6 +1,6 @@
 <!--Componente que recibe un int (rango de años) y un int (año tope) y genera un select que ofrece todos los años desde el año tope (no incluido) hacia atras: rango=>4; tope=>2000 => 1996, 1997, 1998, 1999-->
 <script setup>
-import {ref} from "vue";
+import { ref } from "vue";
 
 const props = defineProps({
     rangoAnnos : Number,

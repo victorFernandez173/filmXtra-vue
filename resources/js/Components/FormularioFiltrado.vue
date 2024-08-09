@@ -1,12 +1,16 @@
 <script setup>
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SelectConsulta from "./SelectConsulta.vue";
-import {useForm, Link} from '@inertiajs/vue3';
+import { useForm, Link } from '@inertiajs/vue3';
 import SelectRangoAnno from "./SelectRangoAnno.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 
-// Props
-const props = defineProps(['paises', 'generos', 'pionera', 'filtros']);
+const props = defineProps({
+    'paises' : Array,
+    'generos' : Array,
+    'pionera' : String,
+    'filtros' : Object
+});
 
 // Formulario
 const form = useForm({
@@ -15,7 +19,6 @@ const form = useForm({
     desde: '',
     hasta: '',
 });
-
 // Entrega del formulario
 const submit = () => {
     form.get(route('top'),
@@ -35,36 +38,36 @@ const annoActual = (new Date().getFullYear() + 1);
         <div class="m-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 hover:[&>div>select]:cursor-pointer">
             <!-- Selects-->
             <div>
-                <SelectConsulta :consulta="generos" :filtro="filtros.genero" @emision="(e) => form.genero = e">
+                <select-consulta :consulta="generos" :filtro="filtros.genero" @emision="(e) => form.genero = e">
                     Género
-                </SelectConsulta>
+                </select-consulta>
             </div>
             <div>
-                <SelectConsulta :consulta="paises" :filtro="filtros.pais" @emision="(e) => form.pais = e">
+                <select-consulta :consulta="paises" :filtro="filtros.pais" @emision="(e) => form.pais = e">
                     País
-                </SelectConsulta>
+                </select-consulta>
             </div>
             <div>
-                <SelectRangoAnno :filtro="filtros.desde" :rango-annos="rangoAnnos" :limite-superior="annoActual" @emision="(e) => form.desde = e">
+                <select-rango-anno :filtro="filtros.desde" :rango-annos="rangoAnnos" :limite-superior="annoActual" @emision="(e) => form.desde = e">
                     Desde
-                </SelectRangoAnno>
+                </select-rango-anno>
             </div>
             <div>
-                <SelectRangoAnno :filtro="filtros.hasta" :rango-annos="rangoAnnos" :limite-superior="annoActual" @emision="(e) => form.hasta = e">
+                <select-rango-anno :filtro="filtros.hasta" :rango-annos="rangoAnnos" :limite-superior="annoActual" @emision="(e) => form.hasta = e">
                     Hasta
-                </SelectRangoAnno>
+                </select-rango-anno>
             </div>
 
             <!-- Botones -->
             <div class="flex pt-2.5 pb-3 md:col-span-2 xl:col-span-1">
-                <PrimaryButton :disabled="form.processing" :class="{ 'opacity-25': form.processing }">
+                <primary-button :disabled="form.processing" :class="{ 'opacity-25': form.processing }">
                     FILTRA
-                </PrimaryButton>
-                <SecondaryButton class="">
+                </primary-button>
+                <secondary-button class="">
                     <Link :href="route('top')">
                         RESET
                     </Link>
-                </SecondaryButton>
+                </secondary-button>
             </div>
         </div>
     </form>

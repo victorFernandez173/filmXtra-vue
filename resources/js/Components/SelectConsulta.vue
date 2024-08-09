@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from "vue";
+import { ref } from "vue";
 
 const props = defineProps({
     consulta : Object,
@@ -10,7 +10,6 @@ const props = defineProps({
 const emit = defineEmits(['emision']);
 const valorSelect = ref(props.filtro);
 emit('emision', valorSelect);
-
 </script>
 
 <template>
@@ -20,7 +19,7 @@ emit('emision', valorSelect);
                 <slot />
             </option>
             <option v-for="elemento in consulta">
-                {{elemento}}
+                {{ elemento }}
             </option>
         </select>
     </div>

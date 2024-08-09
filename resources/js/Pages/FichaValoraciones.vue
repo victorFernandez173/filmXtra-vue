@@ -7,23 +7,22 @@ export default {
 </script>
 
 <script setup>
-import {Head, Link, useForm, usePage} from "@inertiajs/vue3";
+import { Head, Link, useForm} from "@inertiajs/vue3";
 import Estrellitas from "../Components/Estrellitas.vue";
 import SelectRango from "../Components/SelectRango.vue";
 import PaginacionSimple from "../Components/PaginacionSimple.vue";
 import Critica from "@/Components/Critica.vue";
 
-const page = usePage();
 const props = defineProps(['obra', 'mediaEvaluaciones', 'criticas', 'nGifs', 'evaluacionUsuario', 'criticaUsuario']);
 
 // Form Crítica
 const form = useForm({
-    obra_id: page.props.obra.id,
-    critica: page.props.criticaUsuario[0] ? page.props.criticaUsuario[0] : '',
+    obra_id: props.obra.id,
+    critica: props.criticaUsuario[0] ? props.criticaUsuario[0] : '',
 });
 // Form Evaluación
 const form2 = useForm({
-    obra_id: page.props.obra.id,
+    obra_id: props.obra.id,
     evaluacion: '',
 });
 </script>
@@ -70,11 +69,11 @@ const form2 = useForm({
                     </div>
                     <!--Críticas usuarios-->
                     <div v-for="(critica, indice) in criticas.data" class="w-full px-3 md:px-6 text-white">
-                        <Critica :critica="critica" :indice="indice" />
+                        <critica :critica="critica" :indice="indice" />
                     </div>
                 </div>
                 <div class="w-full flex justify-center self-end mt-5">
-                    <PaginacionSimple :datos="criticas" />
+                    <paginacion-simple :datos="criticas" />
                 </div>
             </div>
 
@@ -96,7 +95,7 @@ const form2 = useForm({
                             (Ya has evaluado esta película, puedes modificar tu evaluación)
                         </p>
                         <div class="w-full">
-                            <SelectRango class="w-2/5 sm:w-1/4 md:w-3/4 text-center" :limite="11" :valor="page.props.evaluacionUsuario.length > 0 ? page.props.evaluacionUsuario.toString() : 'Nota'" @emision="(e) => form2.evaluacion = e" />
+                            <select-rango class="w-2/5 sm:w-1/4 md:w-3/4 text-center" :limite="11" :valor="evaluacionUsuario.length > 0 ? evaluacionUsuario.toString() : 'Nota'" @emision="(e) => form2.evaluacion = e" />
                         </div>
                         <div class="w-full text-center">
                             <p class="text-yellow-300 w-2/5 sm:w-1/4 md:w-3/4 text-center m-auto">

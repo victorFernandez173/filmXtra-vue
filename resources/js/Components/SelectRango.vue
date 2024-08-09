@@ -1,11 +1,14 @@
 <script setup>
-import {ref} from "vue";
+import { ref } from "vue";
 
-const props = defineProps(['limite', 'valor']);
+const props = defineProps({
+    limite : Number,
+    valor : String
+});
+
+// Para la emision a componentes padre
 const emit = defineEmits(['emision']);
-
 const valorSelect = ref(props.valor);
-
 emit('emision', valorSelect);
 </script>
 

@@ -1,9 +1,10 @@
 <script setup>
 import { Link } from "@inertiajs/vue3";
 
-// Props:
-// 'obra': título y poster de la obra;
-const props = defineProps(['obra', 'titulo']);
+const props = defineProps({
+    'obra' : Object,
+    'titulo' : String,
+});
 </script>
 
 <template>

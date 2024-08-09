@@ -1,6 +1,9 @@
 <script setup>
-
-defineProps(['mediaEvaluaciones','obra', 'mostrarVotos'])
+const props = defineProps({
+    'mediaEvaluaciones' : String,
+    'obra' : Object,
+    'mostrarVotos' : Boolean
+});
 </script>
 
 <template>

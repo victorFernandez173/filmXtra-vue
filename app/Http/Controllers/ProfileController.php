@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\BajaUsuario;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\LoginTipo;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Log;
 
 class ProfileController extends Controller
 {
@@ -69,6 +71,8 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/')->with('borradoCuentaExitoso', true);
+        Log::info('falkfdjkldsjflks');
+
+        return redirect()->route(RouteServiceProvider::HOME)->with('borradoCuentaExitoso', true);
     }
 }

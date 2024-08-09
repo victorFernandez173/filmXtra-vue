@@ -3,7 +3,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import {Head, useForm} from '@inertiajs/vue3';
+import { Head, useForm } from '@inertiajs/vue3';
 import AuthLayout from "@/Layouts/AuthLayout.vue";
 import AppLogoIndex from "@/Components/AppLogoIndex.vue";
 
@@ -25,7 +25,9 @@ const submit = () => {
 
 <template>
     <Head>
-        <title>Password olvidado</title>
+        <title>
+            Password olvidado
+        </title>
         <meta name="description" content="Página de password olvidado">
     </Head>
     <auth-layout>
@@ -43,8 +45,8 @@ const submit = () => {
                     </h3>
                     <form class="space-y-4 md:space-y-6" @submit.prevent="submit">
                         <div>
-                            <InputLabel for="email" value="Correo electrónico" class="block mb-2 text-sm font-medium text-gray-900" />
-                            <TextInput
+                            <input-label for="email" value="Correo electrónico" class="block mb-2 text-sm font-medium text-gray-900" />
+                            <text-input
                                 id="email"
                                 type="email"
                                 placeholder="nombre@correo.com"
@@ -53,14 +55,14 @@ const submit = () => {
                                 autofocus
                                 autocomplete="username"
                             />
-                            <InputError class="mt-2" :message="form.errors.email"/>
+                            <input-error class="mt-2" :message="form.errors.email"/>
                             <!--Para el mensaje de confirmación de envío-->
-                            <InputError v-if="status" class="mt-2" :message="'Email enviado satisfactoriamente'"/>
+                            <input-error v-if="status" class="mt-2" :message="'Email enviado satisfactoriamente'"/>
                         </div>
                         <div class="text-center">
-                            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                            <primary-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                                 Enviar email
-                            </PrimaryButton>
+                            </primary-button>
                         </div>
                     </form>
                 </div>

@@ -50,13 +50,15 @@ const { stop } = useIntersectionObserver(
 
 <template>
     <Head>
-        <title>Top FilmXtra</title>
+        <title>
+            Top FilmXtra
+        </title>
         <meta name="filter" content="Página top filmXtra">
     </Head>
     <div class="flex content-stretch">
         <!-- Barra lateral -->
         <div class="hidden lg:block lg:w-[13vw] xl:w-[11vw] 2xl:w-[8vw]">
-            <BarraLateral/>
+            <barra-lateral/>
         </div>
         <!-- Contenido -->
         <div class="lg:w-[87vw] xl:w-[89vw] 2xl:w-[92vw] mx-auto">
@@ -65,7 +67,7 @@ const { stop } = useIntersectionObserver(
                 Top FilmXtra
             </h1>
             <!-- Formulario de filtrado -->
-            <FormularioFiltrado :paises="paises" :generos="generos" :pionera="pionera" :filtros="filtros"  />
+            <formulario-filtrado :paises="paises" :generos="generos" :pionera="pionera" :filtros="filtros"  />
             <!-- Mensaje de filtrado condicionado en funcion de parámetros del formulario -->
             <p v-if="filtros.genero || filtros.pais || filtros.desde || filtros.hasta" class="w-full text-center mt-1">
                 Filtros&rarr; &nbsp;
@@ -85,10 +87,10 @@ const { stop } = useIntersectionObserver(
             </div>
             <!-- Seccion Principal con las fichas -->
             <div class="container grid grid-cols-1 m-auto my-8">
-                <FichaPeli v-for="obra in obras.data" :obra="obra" :info="true" />
+                <ficha-peli v-for="obra in obras.data" :obra="obra" :info="true" />
             </div>
             <!-- Para el infinite scrolling -->
-            <div ref="gatilloScroll"></div>
+            <div ref="gatilloScroll" />
         </div>
     </div>
 </template>

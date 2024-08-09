@@ -1,5 +1,10 @@
 <script setup>
-const props = defineProps(['citaInspiring', 'citaQuotable', 'citaPelicula', 'citaCine']);
+const props = defineProps({
+    'citaInspiring' : String,
+    'citaQuotable': String,
+    'citaPelicula': String,
+    'citaCine': String
+});
 </script>
 
 <template>

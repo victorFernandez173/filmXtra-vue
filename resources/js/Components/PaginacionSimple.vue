@@ -1,7 +1,9 @@
 <script setup>
 import {Link} from "@inertiajs/vue3";
 
-defineProps(['datos']);
+const props = defineProps({
+    'datos' : Object
+});
 </script>
 
 <template>

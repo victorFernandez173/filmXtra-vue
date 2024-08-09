@@ -1,8 +1,6 @@
 <script setup>
-defineProps({
-    value: {
-        type: String,
-    },
+const props = defineProps({
+    value: String,
 });
 </script>
 

@@ -1,6 +1,6 @@
 <script setup>
-import {onMounted} from "vue";
-import {initFlowbite} from "flowbite";
+import { onMounted } from "vue";
+import { initFlowbite } from "flowbite";
 import NavBar from "@/Components/NavBar.vue";
 import Footer from "@/Components/Footer.vue";
 
@@ -12,15 +12,14 @@ onMounted(() => {
 
 <template>
     <div class="min-h-[100vh] flex flex-col">
-        <!-- Barra de navegacion -->
-        <NavBar/>
 
-        <slot>
-            <!-- Contenido del layout -->
-        </slot>
+        <!-- Barra de navegacion -->
+        <nav-bar/>
+
+        <slot />
 
         <!-- Pie de pagina -->
-        <Footer/>
+        <footer/>
     </div>
 </template>
 

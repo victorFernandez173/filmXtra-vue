@@ -36,7 +36,9 @@ const updatePassword = () => {
 <template>
     <section>
         <header>
-            <h2 class="text-lg font-medium text-gray-900">Actualizar contraseña</h2>
+            <h2 class="text-lg font-medium text-gray-900">
+                Actualizar contraseña
+            </h2>
 
             <p class="mt-1 text-sm text-gray-600">
                 Elige una contraseña larga, inverosimil y segura.
@@ -45,9 +47,9 @@ const updatePassword = () => {
 
         <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
             <div>
-                <InputLabel for="current_password" value="Contraseña actual" />
+                <input-label for="current_password" value="Contraseña actual" />
 
-                <TextInput
+                <text-input
                     id="current_password"
                     ref="currentPasswordInput"
                     v-model="form.current_password"
@@ -56,13 +58,13 @@ const updatePassword = () => {
                     autocomplete="current-password"
                 />
 
-                <InputError :message="form.errors.current_password" class="mt-2" />
+                <input-error :message="form.errors.current_password" class="mt-2" />
             </div>
 
             <div>
-                <InputLabel for="password" value="Nueva contraseña" />
+                <input-label for="password" value="Nueva contraseña" />
 
-                <TextInput
+                <text-input
                     id="password"
                     ref="passwordInput"
                     v-model="form.password"
@@ -71,13 +73,13 @@ const updatePassword = () => {
                     autocomplete="new-password"
                 />
 
-                <InputError :message="form.errors.password" class="mt-2" />
+                <input-error :message="form.errors.password" class="mt-2" />
             </div>
 
             <div>
-                <InputLabel for="password_confirmation" value="Confirmar contraseña" />
+                <input-label for="password_confirmation" value="Confirmar contraseña" />
 
-                <TextInput
+                <text-input
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"
@@ -85,11 +87,13 @@ const updatePassword = () => {
                     autocomplete="new-password"
                 />
 
-                <InputError :message="form.errors.password_confirmation" class="mt-2" />
+                <input-error :message="form.errors.password_confirmation" class="mt-2" />
             </div>
 
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing">Guardar</PrimaryButton>
+                <primary-button :disabled="form.processing">
+                    Guardar
+                </primary-button>
 
                 <Transition
                     enter-active-class="transition ease-in-out"
@@ -97,7 +101,9 @@ const updatePassword = () => {
                     leave-active-class="transition ease-in-out"
                     leave-to-class="opacity-0"
                 >
-                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Guardada.</p>
+                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">
+                        Guardada.
+                    </p>
                 </Transition>
             </div>
         </form>

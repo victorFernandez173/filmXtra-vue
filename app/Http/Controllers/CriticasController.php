@@ -38,16 +38,16 @@ class CriticasController extends Controller
      */
     public function darLike(): void
     {
-        if (Like::where('usuario_id', request('usuario_id'))
+        if (Like::where('usuario_id', request()->user()->id)
             ->where('critica_id', request('critica_id'))
             ->exists()) {
             // Si el like ya existe, se elimina
-            Like::where('usuario_id', request('usuario_id'))
+            Like::where('usuario_id', request()->user()->id)
                 ->where('critica_id', request('critica_id'))
                 ->delete();
         } else {
             // Sino, se guarda
-            Like::create(['usuario_id' => request('usuario_id'), 'critica_id' => request('critica_id')]);
+            Like::create(['usuario_id' => request()->user()->id, 'critica_id' => request('critica_id')]);
         }
     }
 

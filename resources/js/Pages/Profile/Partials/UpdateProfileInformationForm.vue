@@ -25,7 +25,9 @@ const form = useForm({
 <template>
     <section>
         <header>
-            <h2 class="text-lg font-medium text-gray-900">Información</h2>
+            <h2 class="text-lg font-medium text-gray-900">
+                Información
+            </h2>
 
             <p class="mt-1 text-sm text-gray-600">
                 Actualizar datos de cuenta.
@@ -34,9 +36,9 @@ const form = useForm({
 
         <form @submit.prevent="form.patch(route('profile.update'))" class="mt-6 space-y-6">
             <div>
-                <InputLabel for="usuario" value="Usuario" />
+                <input-label for="usuario" value="Usuario" />
 
-                <TextInput
+                <text-input
                     id="usuario"
                     type="text"
                     class="mt-1 block w-full"
@@ -46,13 +48,13 @@ const form = useForm({
                     autocomplete="usuario"
                 />
 
-                <InputError class="mt-2" :message="form.errors.usuario" />
+                <input-error class="mt-2" :message="form.errors.usuario" />
             </div>
 
             <div>
-                <InputLabel for="email" value="Email" />
+                <input-label for="email" value="Email" />
 
-                <TextInput
+                <text-input
                     id="email"
                     type="email"
                     class="mt-1 block w-full"
@@ -61,7 +63,7 @@ const form = useForm({
                     autocomplete="username"
                 />
 
-                <InputError class="mt-2" :message="form.errors.email" />
+                <input-error class="mt-2" :message="form.errors.email" />
             </div>
 
             <div v-if="mustVerifyEmail && user.email_verificado_fecha === null">
@@ -86,7 +88,7 @@ const form = useForm({
             </div>
 
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing">Guardar</PrimaryButton>
+                <primary-button :disabled="form.processing">Guardar</primary-button>
 
                 <Transition
                     enter-active-class="transition ease-in-out"

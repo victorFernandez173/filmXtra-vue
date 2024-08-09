@@ -3,7 +3,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import {Head, useForm, Link} from '@inertiajs/vue3';
+import { Head, useForm, Link } from '@inertiajs/vue3';
 import AuthLayout from "@/Layouts/AuthLayout.vue";
 import AppLogoIndex from "@/Components/AppLogoIndex.vue";
 
@@ -34,7 +34,9 @@ const submit = () => {
 
 <template>
     <Head>
-        <title>Resetear password</title>
+        <title>
+            Resetear password
+        </title>
         <meta name="description" content="Página para resetear password">
     </Head>
 
@@ -49,22 +51,30 @@ const submit = () => {
                 </h2>
                 <form class="mt-4 space-y-4 lg:mt-5 md:space-y-5" @submit.prevent="submit">
                     <div>
-                        <InputLabel for="email" class="block mb-2 text-sm font-medium text-gray-900">Correo electrónico</InputLabel>
-                        <TextInput id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm focus:ring-flamingo focus:border-flamingo block w-full p-2.5" placeholder="nombre@correo.com" v-model="form.email" />
-                        <InputError class="mt-2" :message="form.errors.email"/>
+                        <input-label for="email" class="block mb-2 text-sm font-medium text-gray-900">
+                            Correo electrónico
+                        </input-label>
+                        <text-input id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm focus:ring-flamingo focus:border-flamingo block w-full p-2.5" placeholder="nombre@correo.com" v-model="form.email" />
+                        <input-error class="mt-2" :message="form.errors.email"/>
                     </div>
                     <div>
-                        <InputLabel for="password" class="block mb-2 text-sm font-medium text-gray-900">Nueva contraseña</InputLabel>
-                        <TextInput type="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm focus:ring-flamingo focus:border-flamingo block w-full p-2.5"  v-model="form.password" />
-                        <InputError class="mt-2" :message="form.errors.password"/>
+                        <input-label for="password" class="block mb-2 text-sm font-medium text-gray-900">
+                            Nueva contraseña
+                        </input-label>
+                        <text-input type="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm focus:ring-flamingo focus:border-flamingo block w-full p-2.5"  v-model="form.password" />
+                        <input-error class="mt-2" :message="form.errors.password"/>
                     </div>
                     <div>
-                        <InputLabel for="confirm-password" class="block mb-2 text-sm font-medium text-gray-900">Confirmar nueva contraseña</InputLabel>
-                        <TextInput type="password"  id="confirm-password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm focus:ring-flamingo focus:border-flamingo block w-full p-2.5" v-model="form.password_confirmation" />
-                        <InputError class="mt-2" :message="form.errors.password_confirmation"/>
+                        <input-label for="confirm-password" class="block mb-2 text-sm font-medium text-gray-900">
+                            Confirmar nueva contraseña
+                        </input-label>
+                        <text-input type="password"  id="confirm-password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm focus:ring-flamingo focus:border-flamingo block w-full p-2.5" v-model="form.password_confirmation" />
+                        <input-error class="mt-2" :message="form.errors.password_confirmation"/>
                     </div>
                     <div>
-                        <PrimaryButton type="submit" class="w-full text-white bg-flamingo hover:text-black focus:bg-flamingo focus:ring-flamingo focus:border-flamingo focus:outline-none font-medium text-sm px-5 py-2.5 text-center">Resetear contraseña</PrimaryButton>
+                        <primary-button type="submit" class="w-full text-white bg-flamingo hover:text-black focus:bg-flamingo focus:ring-flamingo focus:border-flamingo focus:outline-none font-medium text-sm px-5 py-2.5 text-center">
+                            Resetear contraseña
+                        </primary-button>
                     </div>
                     <p class="text-sm font-light text-gray-500">
                         ¿Ya tienes cuenta?

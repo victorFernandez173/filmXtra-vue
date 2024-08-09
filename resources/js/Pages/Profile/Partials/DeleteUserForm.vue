@@ -5,7 +5,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import Modal from '@/Components/Modal.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import {useForm, usePage} from '@inertiajs/vue3';
+import { useForm, usePage } from '@inertiajs/vue3';
 import { nextTick, ref } from 'vue';
 
 const confirmingUserDeletion = ref(false);
@@ -45,16 +45,20 @@ let socialId = usePage().props.auth.user.login_tipo_id;
 <template>
     <section class="space-y-6">
         <header>
-            <h2 class="text-lg font-medium text-gray-900">Borrar cuenta</h2>
+            <h2 class="text-lg font-medium text-gray-900">
+                Borrar cuenta
+            </h2>
 
             <p class="mt-1 text-sm text-gray-600">
                 Una vez borrada, no podrás recuperar tu cuenta. Guarda los datos antes de confirmar el borrado.
             </p>
         </header>
 
-        <DangerButton @click="confirmUserDeletion">Borrar cuenta</DangerButton>
+        <danger-button @click="confirmUserDeletion">
+            Borrar cuenta
+        </danger-button>
 
-        <Modal :show="confirmingUserDeletion" @close="closeModal">
+        <modal :show="confirmingUserDeletion" @close="closeModal">
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-900">
                     ¿Seguro que quieres borrar la cuenta?
@@ -65,9 +69,9 @@ let socialId = usePage().props.auth.user.login_tipo_id;
                 </p>
 
                 <div class="mt-6">
-                    <InputLabel v-if="socialId === 1" for="password" value="Password" class="sr-only" />
+                    <input-label v-if="socialId === 1" for="password" value="Password" class="sr-only" />
 
-                    <TextInput
+                    <text-input
                         v-if="socialId === 1"
                         id="password"
                         ref="passwordInput"
@@ -78,22 +82,24 @@ let socialId = usePage().props.auth.user.login_tipo_id;
                         @keyup.enter="deleteUser"
                     />
 
-                    <InputError v-if="socialId === 1" :message="form.errors.password" class="mt-2" />
+                    <input-error v-if="socialId === 1" :message="form.errors.password" class="mt-2" />
                 </div>
 
                 <div class="mt-6 flex justify-end">
-                    <SecondaryButton @click="closeModal"> Cancelar </SecondaryButton>
+                    <secondary-button @click="closeModal">
+                        Cancelar
+                    </secondary-button>
 
-                    <DangerButton
+                    <danger-button
                         class="ml-3"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                         @click="deleteUser"
                     >
                         Borrar cuenta
-                    </DangerButton>
+                    </danger-button>
                 </div>
             </div>
-        </Modal>
+        </modal>
     </section>
 </template>
