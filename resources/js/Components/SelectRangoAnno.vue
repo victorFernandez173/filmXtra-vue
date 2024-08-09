@@ -1,15 +1,16 @@
 <!--Componente que recibe un int (rango de años) y un int (año tope) y genera un select que ofrece todos los años desde el año tope (no incluido) hacia atras: rango=>4; tope=>2000 => 1996, 1997, 1998, 1999-->
 <script setup>
 import {ref} from "vue";
-const emit = defineEmits(['emision']);
-
-const valorSelect = ref('');
-emit('emision', valorSelect);
 
 const props = defineProps({
     rangoAnnos : Number,
-    limiteSuperior : Number
+    limiteSuperior : Number,
+    filtro: String
 });
+
+const emit = defineEmits(['emision']);
+const valorSelect = ref(props.filtro);
+emit('emision', valorSelect);
 </script>
 
 <template>
