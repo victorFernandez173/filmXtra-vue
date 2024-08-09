@@ -25,4 +25,3 @@ emit('emision', valorSelect);
         </select>
     </div>
 </template>
-
