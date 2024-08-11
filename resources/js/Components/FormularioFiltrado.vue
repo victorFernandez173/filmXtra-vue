@@ -1,7 +1,7 @@
 <script setup>
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SelectConsulta from "./SelectConsulta.vue";
-import { useForm, Link } from '@inertiajs/vue3';
+import {useForm, Link, router} from '@inertiajs/vue3';
 import SelectRangoAnno from "./SelectRangoAnno.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 
@@ -27,6 +27,10 @@ const submit = () => {
         }
     );
 };
+
+const resetearFiltros = () => {
+    router.get(route('top'));
+}
 
 // Calculamos el rango de años a partir de la pelicula más vieja
 const rangoAnnos = parseInt((new Date().getFullYear()).toString()) - parseInt(props.pionera) + 1;
@@ -63,7 +67,7 @@ const annoActual = (new Date().getFullYear() + 1);
                 <primary-button :disabled="form.processing" :class="{ 'opacity-25': form.processing }">
                     FILTRA
                 </primary-button>
-                <secondary-button class="">
+                <secondary-button @click="resetearFiltros">
                     <Link :href="route('top')">
                         RESET
                     </Link>
