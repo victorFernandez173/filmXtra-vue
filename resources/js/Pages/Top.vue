@@ -17,7 +17,14 @@ import { useIntersectionObserver } from '@vueuse/core';
 import { ref } from "vue";
 import axios from "axios";
 
-const props = defineProps(['obras', 'paises', 'generos', 'filtros', 'pionera']);
+const props = defineProps({
+    'obras' : Object,
+    'paises' : Array,
+    'generos' : Array,
+    'filtros' : Object,
+    'pionera' : Number,
+    'decadas' : Array
+});
 
 const gatilloScroll = ref(null);
 
@@ -57,11 +64,11 @@ const { stop } = useIntersectionObserver(
     </Head>
     <div class="flex content-stretch">
         <!-- Barra lateral -->
-        <div class="hidden lg:block lg:w-[13vw] xl:w-[11vw] 2xl:w-[8vw]">
-            <barra-lateral/>
+        <div class="hidden lg:block lg:w-[14vw] xl:w-[13vw] 2xl:w-[11vw] min-[1800px]:w-[10vw] min-[2000px]:w-[9vw]">
+            <barra-lateral :generos="generos" :paises="paises" :decadas="decadas" />
         </div>
         <!-- Contenido -->
-        <div class="lg:w-[87vw] xl:w-[89vw] 2xl:w-[92vw] mx-auto">
+        <div class="lg:w-[86vw] xl:w-[87vw] 2xl:w-[89vw] min-[1800px]:w-[90vw] min-[2000px]:w-[91vw] mx-auto">
             <!-- Título -->
             <h1 class="w-full mt-2 font-oswald text-center text-5xl h-[8vh] text-flamingo">
                 Top FilmXtra

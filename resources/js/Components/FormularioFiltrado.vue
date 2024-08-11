@@ -8,7 +8,7 @@ import SecondaryButton from "@/Components/SecondaryButton.vue";
 const props = defineProps({
     'paises' : Array,
     'generos' : Array,
-    'pionera' : String,
+    'pionera' : Number,
     'filtros' : Object
 });
 
