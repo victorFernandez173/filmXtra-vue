@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <section class="h-full bg-flamingo p-4 pb-8 hover:[&>ul>li]:text-white [&>ul>li]:overflow-ellipsis [&>ul>li]:overflow-hidden">
+    <section class="h-full bg-flamingo p-4 pb-8 hover:[&>ul>li]:text-white [&>ul>li]:truncate">
         <!-- Genero -->
         <h5 class="pt-3 font-bold underline">Género</h5>
         <ul>
