@@ -14,11 +14,9 @@ defineProps({
     },
 });
 
-const user = usePage().props.auth.user;
-
 const form = useForm({
-    usuario: user.usuario,
-    email: user.email,
+    usuario: usePage().props.auth.user.usuario,
+    email: usePage().props.auth.user.email,
 });
 </script>
 
@@ -66,7 +64,7 @@ const form = useForm({
                 <input-error class="mt-2" :message="form.errors.email" />
             </div>
 
-            <div v-if="mustVerifyEmail && user.email_verificado_fecha === null">
+            <div v-if="mustVerifyEmail && $page.props.auth.user.email_verificado_fecha === null">
                 <p class="text-sm mt-2 text-gray-800">
                     Tu email no ha sido verificado.
                     <Link

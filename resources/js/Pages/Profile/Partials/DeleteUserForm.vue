@@ -18,7 +18,7 @@ const form = useForm({
 const confirmUserDeletion = () => {
     confirmingUserDeletion.value = true;
 
-    if(socialId === 1){
+    if(usePage().props.auth.user.login_tipo_id === 1){
         nextTick(() => passwordInput.value.focus());
     }
 };
@@ -37,9 +37,6 @@ const closeModal = () => {
 
     form.reset();
 };
-
-// Para saber el tipo de cuenta y así determinar el tipo de borrado (cuentas o'auth no requerirán contraseña)
-let socialId = usePage().props.auth.user.login_tipo_id;
 </script>
 
 <template>
@@ -69,10 +66,10 @@ let socialId = usePage().props.auth.user.login_tipo_id;
                 </p>
 
                 <div class="mt-6">
-                    <input-label v-if="socialId === 1" for="password" value="Password" class="sr-only" />
+                    <input-label v-if="$page.props.auth.user.login_tipo_id === 1" for="password" value="Password" class="sr-only" />
 
                     <text-input
-                        v-if="socialId === 1"
+                        v-if="$page.props.auth.user.login_tipo_id === 1"
                         id="password"
                         ref="passwordInput"
                         v-model="form.password"
@@ -82,7 +79,7 @@ let socialId = usePage().props.auth.user.login_tipo_id;
                         @keyup.enter="deleteUser"
                     />
 
-                    <input-error v-if="socialId === 1" :message="form.errors.password" class="mt-2" />
+                    <input-error v-if="$page.props.auth.user.login_tipo_id === 1" :message="form.errors.password" class="mt-2" />
                 </div>
 
                 <div class="mt-6 flex justify-end">
