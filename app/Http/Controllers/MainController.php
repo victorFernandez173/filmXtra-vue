@@ -5,16 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Repositorios\ObrasRepo;
 use App\Models\Genero;
 use App\Models\Obra;
-use App\Traits\APIsTrait;
-use App\Traits\CitasTrait;
-use App\Traits\GifsTrait;
+use App\Traits\ProcesadosNumericosTrait;
 use Inertia\Inertia;
 use Exception;
 use Inertia\Response;
 
 class MainController extends Controller
 {
-    use CitasTrait, APIsTrait, GifsTrait;
+    use ProcesadosNumericosTrait;
 
     /**
      * Devuelve la vista de bienvenida con los posters y datos necesarios
@@ -89,7 +87,8 @@ class MainController extends Controller
             'filtros' => $filtros,
             'generos' => Genero::select('genero')->pluck('genero'),
             'paises'  => Obra::select('pais')->groupBy('pais')->orderBy('pais')->pluck('pais'),
-            'pionera' => Obra::select(['fecha'])->orderBy('fecha')->first()->fecha,
+            'pionera' => $this->obtenerDecadaPionera(),
+            'decadas' => $this->obtenerArrayDecadas()
         ]);
     }
 
