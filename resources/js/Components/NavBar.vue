@@ -68,6 +68,31 @@ const posicionarme = () => {
         $('#mobile-menu-2-button').addClass('absolute');
     }
 };
+
+// Configuracion para el sistema de toggle del menu en pantallas estrechas con codigo variado jquery, js, etc por testing
+$(document).ready(function () {
+    document.getElementById("mobile-menu-2-button").addEventListener("click", () => {
+        const element = document.getElementById("mobile-menu-2");
+        if (element.classList.contains("block")) {
+            element.classList.remove("block");
+            element.classList.add("hidden");
+        } else {
+            element.classList.remove("hidden");
+            element.classList.add("block");
+        }
+    });
+
+    $('.nav-item').click(function(){
+        const element = document.getElementById("mobile-menu-2");
+        if (element.classList.contains("block")) {
+            element.classList.remove("block");
+            element.classList.add("hidden");
+        } else {
+            element.classList.remove("hidden");
+            element.classList.add("block");
+        }
+    });
+});
 </script>
 
 <template>
@@ -187,7 +212,7 @@ const posicionarme = () => {
                 </div>
             </div>
             <!-- Bloque Links -->
-            <button id="mobile-menu-2-button" @click="posicionarme" data-collapse-toggle="mobile-menu-2" type="button" class="absolute right-4 inline-flex items-center text-sm text-gray-500 lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-flamingo hover:ring-4 hover:ring-flamingo p-2" aria-controls="mobile-menu-2" aria-expanded="false">
+            <button id="mobile-menu-2-button" @click="posicionarme" type="button" class="absolute right-4 inline-flex items-center text-sm text-gray-500 lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-flamingo hover:ring-4 hover:ring-flamingo p-2">
                 <span class="sr-only">
                     Abrir menú principal
                 </span>
@@ -199,22 +224,22 @@ const posicionarme = () => {
             <div class="lg:order-1 items-center justify-between hidden w-full lg:flex lg:w-auto text-center" id="mobile-menu-2">
                 <ul class="hover:[&>li>a]:text-flamingo flex flex-col font-medium p-4 lg:p-0 lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0 lg:bg-white [&>li>a]:block [&>li>a]:py-2 [&>li>a]:pl-3 [&>li>a]:pr-4 [&>li>a]:text-gray-900 lg:hover:[&>li>a]:bg-transparent lg:[&>li>a]:p-0">
                     <li>
-                        <responsive-nav-link :href="route('/')">
+                        <responsive-nav-link :href="route('/')" class="nav-item">
                             Inicio
                         </responsive-nav-link>
                     </li>
                     <li>
-                        <responsive-nav-link :href="route('top')">
+                        <responsive-nav-link :href="route('top')" class="nav-item">
                             Top FilmXtra
                         </responsive-nav-link>
                     </li>
                     <li>
-                        <responsive-nav-link :href="route('valoracionesTop')">
+                        <responsive-nav-link :href="route('valoracionesTop')" class="nav-item">
                             Top Valoraciones
                         </responsive-nav-link>
                     </li>
                     <li>
-                        <responsive-nav-link :href="route('profile.edit')">
+                        <responsive-nav-link :href="route('profile.edit')" class="nav-item">
                             Cuenta
                         </responsive-nav-link>
                     </li>
