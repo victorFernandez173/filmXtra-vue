@@ -74,7 +74,7 @@ const closeModal = () => {
                         ref="passwordInput"
                         v-model="form.password"
                         type="password"
-                        class="mt-1 block w-3/4"
+                        class="mx-auto mt-1 block w-3/4"
                         placeholder="Password"
                         @keyup.enter="deleteUser"
                     />
