@@ -11,7 +11,7 @@ trait ProcesadosNumericosTrait
      * Retorna int con la decada inicial de las peliculas existentes a partir de la mas antigua
      * @return int
      */
-    function obtenerDecadaPionera(): int
+    static function obtenerDecadaPionera(): int
     {
         return (int)(substr(Obra::select(['fecha'])->orderBy('fecha')->first()->fecha, 0, 2).'00');
     }
@@ -21,9 +21,9 @@ trait ProcesadosNumericosTrait
      * @return array
      * @throws Exception
      */
-    function obtenerArrayDecadas(): array
+    static function obtenerArrayDecadas(): array
     {
-        $decadaInicial = $this->obtenerDecadaPionera();
+        $decadaInicial = static::obtenerDecadaPionera();
         $decadas = [];
         for ($i = $decadaInicial; $i <= now()->format('Y'); $i+=10) {
             $decadas[] = $i;

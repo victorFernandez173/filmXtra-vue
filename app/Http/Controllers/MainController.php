@@ -87,8 +87,8 @@ class MainController extends Controller
             'filtros' => $filtros,
             'generos' => Genero::select('genero')->pluck('genero'),
             'paises'  => Obra::select('pais')->groupBy('pais')->orderBy('pais')->pluck('pais'),
-            'pionera' => $this->obtenerDecadaPionera(),
-            'decadas' => $this->obtenerArrayDecadas()
+            'pionera' => static::obtenerDecadaPionera(),
+            'decadas' => static::obtenerArrayDecadas()
         ]);
     }
 
