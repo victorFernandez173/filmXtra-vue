@@ -52,7 +52,7 @@ const form2 = useForm({
                     )
                 </div>
                 <div class="flex justify-center mx-auto w-11/12 lg:w-full mb-7 lg:mb-0">
-                    <Link :href="route('obra', obra.titulo_slug)" class="text-black hover:text-flamingo bg-flamingo hover:bg-black focus:bg-flamingo focus:ring-flamingo focus:border-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 mt-5 text-center">
+                    <Link :href="route('obra', obra.titulo_slug)" class="text-black hover:bg-black hover:text-flamingo bg-flamingo focus:bg-flamingo focus:text-black focus:ring-flamingo focus:border-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 mt-5 text-center">
                         &larr; Ficha {{ obra.titulo }}
                     </Link>
                 </div>

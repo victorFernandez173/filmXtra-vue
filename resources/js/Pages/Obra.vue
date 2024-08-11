@@ -218,13 +218,15 @@ dayjs.locale(es);
                     Sin críticas de usuarios todavía. Participa, pon la
                     tuya.
                 </p>
-                <div class="mx-auto w-fit text-center mt-8 bg-white text-flamingo hover:bg-black px-5 py-2.5">
-                    <Link :href="route('obraValoraciones', obra.titulo_slug)"
-                          class="my-5 m-auto font-bold focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none text-sm"
-                          preserve-scroll>
+
+                <Link :href="route('obraValoraciones', obra.titulo_slug)"
+                      class="my-5 m-auto font-bold focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none text-sm"
+                      preserve-scroll>
+                    <div class="mx-auto w-fit text-center mt-8 bg-white text-flamingo hover:bg-black px-5 py-2.5">
                         Ir a criticas de {{ obra.titulo }}&rarr;
-                    </Link>
-                </div>
+                    </div>
+                </Link>
+
             </div>
 
             <!--Seccion valorar-->
@@ -251,13 +253,13 @@ dayjs.locale(es);
                 <p class="pt-7">
                     ¡Tu voz cinéfila importa! Exprésate libremente y comparte el amor por el cine.
                 </p>
-                <div class="mt-10 text-center bg-white text-flamingo hover:bg-black px-5 text-sm py-2.5">
-                    <Link :href="route('valoracionesTop')"
-                          class="my-15 m-auto focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold block w-4/6"
-                          preserve-scroll>
+                <Link :href="route('valoracionesTop')"
+                      class="my-15 m-auto focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold block w-4/6"
+                      preserve-scroll>
+                    <div class="mt-10 text-center bg-white text-flamingo hover:bg-black px-5 text-sm py-2.5">
                         Top Valoraciones &rarr;
-                    </Link>
-                </div>
+                    </div>
+                </Link>
             </div>
         </div>
 

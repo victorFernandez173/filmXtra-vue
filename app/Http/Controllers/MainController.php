@@ -108,7 +108,7 @@ class MainController extends Controller
         )->withAvg(
             'evaluaciones',
             'evaluacion'
-        )->paginate(8);
+        )->paginate(12);
 
         return Inertia::render('ValoracionesTop', [
             'obras' => $obras,
