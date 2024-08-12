@@ -27,7 +27,6 @@ Route::controller(MainController::class)
 // Ficha de obra
 Route::get('/obra/{tituloSlug}', [ObtenerObraController::class, 'fichaPelicula'])->name('obra');
 
-
 // Rutas para likes, criticas...
 Route::controller(CriticasController::class)
     ->group(function () {
@@ -48,7 +47,6 @@ Route::middleware('auth')
 // Resto rutas auth
 require __DIR__ . '/auth.php';
 
-// TODO mejorar ficha obra: estilos y html revisar...
 // TODO quitar bloque paginacion en topvaloraciones o combinar top valoraciones con top ????....
 
 // TODO link email en footer a formulario para contacto, sugerencias...
