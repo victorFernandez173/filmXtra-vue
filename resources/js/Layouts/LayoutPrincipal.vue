@@ -19,7 +19,7 @@ onMounted(() => {
         <slot />
 
         <!-- Pie de pagina -->
-        <footer/>
+        <Footer/>
     </div>
 </template>
 
