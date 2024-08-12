@@ -62,34 +62,34 @@ const { stop } = useIntersectionObserver(
         </title>
         <meta name="filter" content="Página top filmXtra">
     </Head>
-    <div class="flex content-stretch">
-        <!-- Barra lateral -->
-        <div class="hidden lg:block lg:w-[14vw] xl:w-[13vw] 2xl:w-[11vw] min-[1800px]:w-[10vw] min-[2000px]:w-[9vw]">
-            <barra-lateral :generos="generos" :paises="paises" :decadas="decadas" />
-        </div>
-        <!-- Contenido -->
-        <div class="lg:w-[86vw] xl:w-[87vw] 2xl:w-[89vw] min-[1800px]:w-[90vw] min-[2000px]:w-[91vw] mx-auto">
-            <!-- Título -->
-            <h1 class="w-full mt-2 font-oswald text-center text-5xl h-[8vh] text-flamingo">
-                Top FilmXtra
-            </h1>
-            <!-- Formulario de filtrado -->
-            <formulario-filtrado :paises="paises" :generos="generos" :pionera="pionera" :filtros="filtros"  />
-            <!-- Mensaje de filtrado condicionado en funcion de parámetros del formulario -->
-            <p v-if="filtros.genero || filtros.pais || filtros.desde || filtros.hasta" class="w-full text-center mt-1">
-                Filtros&rarr;
-                <!-- Si hay genero (filtros[0])...se añade coma, y así sucesivamente ... -->
-                {{ filtros.genero === '' ? '' : `género: ${filtros.genero}`}}{{(filtros.genero !== '' && filtros.pais !== '') ? ', ' : ''}}{{ filtros.pais === '' ? '' : ` país: ${filtros.pais}`}}{{(filtros.pais !== '' && filtros.desde !== '') ? ', ' : ''}}{{ filtros.desde === '' ? '' : ` desde: ${filtros.desde}`}}{{(filtros.desde !== '' && filtros.hasta !== '') ? ', ' : ''}}{{ filtros.hasta === '' ? '' : ` hasta: ${filtros.hasta}`}}{{ filtros.genero !== null ?  '.' : ''}}
-            </p>
-            <div v-else class="w-full text-center">
-                <p>Sin filtros</p>
+        <div class="min-h-[70.475vh] flex content-stretch">
+            <!-- Barra lateral -->
+            <div class="hidden lg:block lg:w-[14vw] xl:w-[13vw] 2xl:w-[11vw] min-[1800px]:w-[10vw] min-[2000px]:w-[9vw]">
+                <barra-lateral :generos="generos" :paises="paises" :decadas="decadas" />
             </div>
-            <!-- Seccion Principal con las fichas -->
-            <div class="container grid grid-cols-1 m-auto my-8">
-                <ficha-peli v-for="obra in obras.data" :obra="obra" :info="true" />
+            <!-- Contenido -->
+            <div class="lg:w-[86vw] xl:w-[87vw] 2xl:w-[89vw] min-[1800px]:w-[90vw] min-[2000px]:w-[91vw] mx-auto">
+                <!-- Título -->
+                <h1 class="w-full mt-2 font-oswald text-center text-5xl h-[8vh] text-flamingo">
+                    Top FilmXtra
+                </h1>
+                <!-- Formulario de filtrado -->
+                <formulario-filtrado :paises="paises" :generos="generos" :pionera="pionera" :filtros="filtros"  />
+                <!-- Mensaje de filtrado condicionado en funcion de parámetros del formulario -->
+                <p v-if="filtros.genero || filtros.pais || filtros.desde || filtros.hasta" class="w-full text-center mt-1">
+                    Filtros&rarr;
+                    <!-- Si hay genero (filtros[0])...se añade coma, y así sucesivamente ... -->
+                    {{ filtros.genero === '' ? '' : `género: ${filtros.genero}`}}{{(filtros.genero !== '' && filtros.pais !== '') ? ', ' : ''}}{{ filtros.pais === '' ? '' : ` país: ${filtros.pais}`}}{{(filtros.pais !== '' && filtros.desde !== '') ? ', ' : ''}}{{ filtros.desde === '' ? '' : ` desde: ${filtros.desde}`}}{{(filtros.desde !== '' && filtros.hasta !== '') ? ', ' : ''}}{{ filtros.hasta === '' ? '' : ` hasta: ${filtros.hasta}`}}{{ filtros.genero !== null ?  '.' : ''}}
+                </p>
+                <div v-else class="w-full text-center">
+                    <p>Sin filtros</p>
+                </div>
+                <!-- Seccion Principal con las fichas -->
+                <div class="container grid grid-cols-1 m-auto my-8">
+                    <ficha-peli v-for="obra in obras.data" :obra="obra" :info="true" />
+                </div>
+                <!-- Para el infinite scrolling -->
+                <div ref="gatilloScroll" />
             </div>
-            <!-- Para el infinite scrolling -->
-            <div ref="gatilloScroll" />
         </div>
-    </div>
 </template>

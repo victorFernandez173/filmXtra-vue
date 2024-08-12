@@ -31,7 +31,7 @@ const desplegarListado = (e) => {
 </script>
 
 <template>
-    <section class="h-full bg-flamingo p-4 pb-8 hover:[&>ul>li]:text-white [&>ul>li]:truncate">
+    <section class="h-full bg-flamingo p-4 hover:[&>ul>li]:text-white [&>ul>li]:truncate">
         <!-- Genero -->
         <div @click="desplegarListado" class="hover:cursor-pointer">
             <h5 class="mt-5 font-bold">
