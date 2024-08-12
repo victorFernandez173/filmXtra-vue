@@ -35,12 +35,12 @@ const submit = () => {
             <!--logo filmXtra-->
             <app-logo-index />
             <!--bloque principal-->
-            <div class="w-full bg-white shadow md:mt-0 sm:max-w-md xl:p-0">
+            <div class="w-[95%] bg-white shadow md:mt-0 sm:max-w-md xl:p-0">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-xl">
                         ¿Has olvidado tu contraseña?
                     </h1>
-                    <h3 class="text-xl font-normal leading-tight tracking-tight text-gray-900 md:text-lg">
+                    <h3 class="text-xl leading-tight tracking-tight text-gray-900 md:text-lg">
                         Introduce tu email y te enviaremos un link para restablecer la contraseña.
                     </h3>
                     <form class="space-y-4 md:space-y-6" @submit.prevent="submit">

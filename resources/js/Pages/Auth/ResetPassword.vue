@@ -45,7 +45,7 @@ const submit = () => {
             <!--logo filmXtra-->
             <app-logo-index />
             <!--bloque principal-->
-            <div class="w-full p-6 bg-white shadow md:mt-0 sm:max-w-md sm:p-8">
+            <div class="w-[95%] p-6 bg-white shadow md:mt-0 sm:max-w-md sm:p-8">
                 <h2 class="mb-1 text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                     Cambiar contraseña
                 </h2>
