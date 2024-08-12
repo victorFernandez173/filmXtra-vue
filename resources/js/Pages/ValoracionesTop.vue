@@ -19,7 +19,7 @@ defineProps(['obras']);
 <template>
     <Head>
         <title>
-            Top FilmXtra
+            Top Valoraciones FilmXtra
         </title>
         <meta name="filter" content="Página top filmXtra">
     </Head>
@@ -27,9 +27,11 @@ defineProps(['obras']);
         <!-- Contenido -->
         <div class="lg:w-[87vw] xl:w-[89vw] 2xl:w-[92vw] mx-auto">
             <!-- Título -->
-            <h1 class="w-full mt-2 font-oswald text-center text-5xl h-[8vh] text-flamingo">
-                Top Valoraciones FilmXtra
-            </h1>
+            <div class="mb-16 md:mb-8 mt-4">
+                <h1 class="w-full font-oswald text-center text-5xl h-[8vh] text-flamingo">
+                    Top Valoraciones FilmXtra
+                </h1>
+            </div>
             <!-- Seccion Principal con las fichas -->
             <div class="container grid grid-cols-1 m-auto my-8">
                 <ficha-peli v-for="obra in obras.data" :obra="obra" :info="true" />
