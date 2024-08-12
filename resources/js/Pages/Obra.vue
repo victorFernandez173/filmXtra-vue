@@ -178,7 +178,7 @@ dayjs.locale(es);
         </div>
 
         <!--Contenedor criticas-->
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 mb-15 justify-center bg-flamingo text-white lg:divide-x md:divide-x divide-y ">
+        <div class="m-auto w-[95%] grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 mb-15 justify-center bg-flamingo text-white lg:divide-x md:divide-x divide-y">
             <!--Criticas-->
             <div class="py-10 pr-10 pl-12 lg:col-span-3 md:col-span-2">
                 <!--Titulo-->
@@ -189,7 +189,7 @@ dayjs.locale(es);
                 </ul>
                 <ul v-for="p in obra.profesionals">
                     <!--Críticas profesionales-->
-                    <li class="ml-5 mb-4">
+                    <li class="ml-3 mb-4">
                         <span class="font-semibold">
                             <a class="hover:text-black" :href="p.medio.web" target="_blank">
                                 {{ p.medio.nombre }}
@@ -209,11 +209,11 @@ dayjs.locale(es);
                         Críticas de nuestros usuarios
                     </h5>
                 </div>
-                <div v-for="(critica, indice) in criticas.slice(0, 2)" class="ml-5">
+                <div v-for="(critica, indice) in criticas.slice(0, 2)" class="ml-3">
                     <!--Críticas usuarios-->
                     <critica :critica="critica" :indice="indice" />
                 </div>
-                <p class="ml-5">[...]</p>
+                <p class="ml-3">[...]</p>
                 <p v-if="!criticas[0]" class="py-3">
                     Sin críticas de usuarios todavía. Participa, pon la
                     tuya.
