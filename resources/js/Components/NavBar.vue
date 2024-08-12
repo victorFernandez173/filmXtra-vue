@@ -2,7 +2,7 @@
 import { Link, useForm, usePage } from "@inertiajs/vue3";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
-import { ref } from "vue";
+import {onUpdated, ref} from "vue";
 import Poster from "@/Components/Poster.vue";
 import ModalBusqueda from "@/Components/ModalBusqueda.vue";
 import Swal from "sweetalert2";
@@ -76,22 +76,22 @@ $(document).ready(function () {
         if (element.classList.contains("block")) {
             element.classList.remove("block");
             element.classList.add("hidden");
+            $('#mobile-menu-2-button').removeClass('mr-4');
         } else {
             element.classList.remove("hidden");
             element.classList.add("block");
+            $('#mobile-menu-2-button').addClass('mr-4');
         }
     });
-
-    $('.nav-item').click(function(){
-        const element = document.getElementById("mobile-menu-2");
-        if (element.classList.contains("block")) {
-            element.classList.remove("block");
-            element.classList.add("hidden");
-        } else {
-            element.classList.remove("hidden");
-            element.classList.add("block");
-        }
-    });
+});
+onUpdated(() => {
+    const element = document.getElementById("mobile-menu-2");
+    if (element.classList.contains("block")) {
+        element.classList.remove("block");
+        element.classList.add("hidden");
+        $('#mobile-menu-2-button').addClass('absolute');
+        $('#mobile-menu-2-button').removeClass('mr-4');
+    }
 });
 </script>
 
@@ -132,9 +132,9 @@ $(document).ready(function () {
     </modal-busqueda>
 
     <nav class="bg-white border-gray-200 sticky top-0 z-50">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between lg:mx-auto p-4 relative">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between lg:mx-auto py-3 relative">
             <!-- Logo de la pagina -->
-            <Link :href="route('/')" class="flex items-center mb-2 lg:mb-0">
+            <Link :href="route('/')" class="flex items-center mb-2 lg:mb-0 p-3">
                 <img src="/images/logo.png" class="h-10 sm:h-14" alt="Logo FilmXtra" />
             </Link>
             <!-- Bloque de búsqueda  -->
@@ -221,7 +221,7 @@ $(document).ready(function () {
                     </path>
                 </svg>
             </button>
-            <div class="lg:order-1 items-center justify-between hidden w-full lg:flex lg:w-auto text-center" id="mobile-menu-2">
+            <div class="lg:order-1 items-center justify-between hidden w-full lg:flex lg:w-auto text-center shadow-bajera lg:shadow-none" id="mobile-menu-2">
                 <ul class="hover:[&>li>a]:text-flamingo flex flex-col font-medium p-4 lg:p-0 lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0 lg:bg-white [&>li>a]:block [&>li>a]:py-2 [&>li>a]:pl-3 [&>li>a]:pr-4 [&>li>a]:text-gray-900 lg:hover:[&>li>a]:bg-transparent lg:[&>li>a]:p-0">
                     <li>
                         <responsive-nav-link :href="route('/')" class="nav-item">
