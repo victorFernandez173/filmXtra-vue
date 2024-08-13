@@ -89,8 +89,7 @@ onUpdated(() => {
     if (element.classList.contains("block")) {
         element.classList.remove("block");
         element.classList.add("hidden");
-        $('#mobile-menu-2-button').addClass('absolute');
-        $('#mobile-menu-2-button').removeClass('mr-4');
+        $('#mobile-menu-2-button').addClass('absolute').removeClass('mr-4');
     }
 });
 </script>
@@ -239,7 +238,10 @@ onUpdated(() => {
                         </responsive-nav-link>
                     </li>
                     <li>
-                        <responsive-nav-link :href="route('profile.edit')" class="nav-item">
+                        <responsive-nav-link v-if="$page.props.auth.user" :href="route('profile.edit')" class="nav-item">
+                            Cuenta
+                        </responsive-nav-link>
+                        <responsive-nav-link v-else :href="route('login')" class="nav-item">
                             Cuenta
                         </responsive-nav-link>
                     </li>
