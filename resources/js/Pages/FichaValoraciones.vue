@@ -13,7 +13,14 @@ import SelectRango from "../Components/SelectRango.vue";
 import PaginacionSimple from "../Components/PaginacionSimple.vue";
 import Critica from "@/Components/Critica.vue";
 
-const props = defineProps(['obra', 'mediaEvaluaciones', 'criticas', 'nGifs', 'evaluacionUsuario', 'criticaUsuario']);
+const props = defineProps({
+    'obra' : Object,
+    'mediaEvaluaciones' : Object,
+    'criticas' : Object,
+    'nGifs' : Number,
+    'evaluacionUsuario' : Array,
+    'criticaUsuario' : Array,
+});
 
 // Form Crítica
 const form = useForm({

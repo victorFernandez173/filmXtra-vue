@@ -13,7 +13,9 @@ import { Head } from "@inertiajs/vue3";
 import Paginacion from "../Components/Paginacion.vue";
 import FichaPeli from "@/Components/FichaPeli.vue";
 
-defineProps(['obras']);
+const props = defineProps({
+    'obras' : Object
+});
 </script>
 
 <template>
