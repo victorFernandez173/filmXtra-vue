@@ -6,7 +6,7 @@ const props = defineProps({
 
 <template>
         <!--Trailer-->
-        <div v-if="obra.trailer" class="mt-16 flex justify-center flex-wrap w-[95vw] mx-auto">
+        <div v-if="obra.trailer" class="mt-16 flex justify-center flex-wrap w-[95%] mx-auto">
             <!-- Titulo de la seccion -->
             <h3 class="w-full text-center text-flamingo font-bold text-2xl mb-4 px-4">Trailer de {{ obra.titulo }}</h3>
             <iframe
