@@ -160,7 +160,7 @@ dayjs.locale(es);
                                 <p class="mt-2 -mb-3">
                                     {{props.obra.secuela.orden === 0 ? 'Relación' : obra.secuela.orden < props.obra.secuela.orden ? 'Precuela' : 'Secuela'}}
                                 </p>
-                                <Poster :obra="obra" :titulo="`text-lg hover:text-sm md:text-base md:hover:text-base`" :info="true"/>
+                                <poster :obra="obra" :titulo="`text-lg hover:text-sm md:text-base md:hover:text-base`" :info="true"/>
                             </div>
                         </div>
                         <!-- Bloque para spin-offs -->
