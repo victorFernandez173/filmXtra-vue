@@ -119,7 +119,7 @@ onUpdated(() => {
             <!-- Seccion Principal de contenido -->
             <div class="container grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-2 m-auto my-2">
                 <!-- Posters -->
-                <poster @click="cerrarModalBusqueda" v-for="obra in resultados.obrasFiltradas" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" :info="true"/>
+                <poster @click="cerrarModalBusqueda" v-for="obra in resultados.obrasFiltradas" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" />
             </div>
 
             <div class="my-2 flex justify-center">
