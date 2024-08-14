@@ -221,27 +221,27 @@ onUpdated(() => {
                 </svg>
             </button>
             <div class="lg:order-1 items-center justify-between hidden w-full lg:flex lg:w-auto text-center shadow-bajera lg:shadow-none" id="mobile-menu-2">
-                <ul class="hover:[&>li>a]:text-flamingo flex flex-col font-medium p-4 lg:p-0 lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0 lg:bg-white [&>li>a]:block [&>li>a]:py-2 [&>li>a]:pl-3 [&>li>a]:pr-4 [&>li>a]:text-gray-900 lg:hover:[&>li>a]:bg-transparent lg:[&>li>a]:p-0">
+                <ul class="hover:[&>li>a]:text-flamingo flex flex-col font-medium p-4 lg:p-0 lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0 lg:bg-white [&>li>a]:block [&>li>a]:py-2 [&>li>a]:pl-3 [&>li>a]:pr-4 lg:hover:[&>li>a]:bg-transparent lg:[&>li>a]:p-0">
                     <li>
-                        <responsive-nav-link :href="route('/')" class="nav-item">
+                        <responsive-nav-link :href="route('/')" :elegido="$page.url === '/' ? 'text-flamingo' : ''">
                             Inicio
                         </responsive-nav-link>
                     </li>
                     <li>
-                        <responsive-nav-link :href="route('top')" class="nav-item">
+                        <responsive-nav-link :href="route('top')" :elegido="$page.url === '/top' ? 'text-flamingo' : ''">
                             Top FilmXtra
                         </responsive-nav-link>
                     </li>
                     <li>
-                        <responsive-nav-link :href="route('valoracionesTop')" class="nav-item">
+                        <responsive-nav-link :href="route('valoracionesTop')" :elegido="$page.url === '/valoraciones-top' ? 'text-flamingo' : ''">
                             Top Valoraciones
                         </responsive-nav-link>
                     </li>
                     <li>
-                        <responsive-nav-link v-if="$page.props.auth.user" :href="route('profile.edit')" class="nav-item">
+                        <responsive-nav-link v-if="$page.props.auth.user" :href="route('profile.edit')" :elegido="$page.url === '/profile' ? 'text-flamingo' : ''">
                             Cuenta
                         </responsive-nav-link>
-                        <responsive-nav-link v-else :href="route('login')" class="nav-item">
+                        <responsive-nav-link v-else :href="route('login')" >
                             Cuenta
                         </responsive-nav-link>
                     </li>

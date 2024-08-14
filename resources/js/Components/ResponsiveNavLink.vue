@@ -10,12 +10,16 @@ const props = defineProps({
     dark: {
         type: Boolean,
         required: false,
-        default: true,
+        default: false,
+    },
+    elegido: {
+        type: String,
+        required: false,
     },
 });
 
 const classes = computed(() =>
-    props.dark ? 'block w-full' : 'block w-full bg-flamingo'
+    props.dark ? 'block w-full' + props.elegido : 'block w-full ' + props.elegido
 );
 </script>
 
