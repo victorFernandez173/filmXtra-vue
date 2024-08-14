@@ -17,22 +17,22 @@ import { Link } from "@inertiajs/vue3";
                     </h2>
                     <ul class="text-gray-500 font-medium hover:[&>li]:text-flamingo hover:[&>li]:no-underline [&>li]:mb-4">
                         <li>
-                            <Link :href="route('/')">
+                            <Link :href="route('/')" :class="$page.url ==='/' ? 'text-flamingo' : ''">
                                 Inicio
                             </Link>
                         </li>
                         <li>
-                            <Link :href="route('top')">
+                            <Link :href="route('top')" :class="$page.url ==='/top' ? 'text-flamingo' : ''">
                                 Top FilmXtra
                             </Link>
                         </li>
                         <li>
-                            <Link :href="route('valoracionesTop')">
+                            <Link :href="route('valoracionesTop')" :class="$page.url ==='/valoraciones-top' ? 'text-flamingo' : ''">
                                 Top Valoraciones
                             </Link>
                         </li>
                         <li>
-                            <Link v-if="$page.props.auth.user" :href="route('profile.edit')">
+                            <Link v-if="$page.props.auth.user" :href="route('profile.edit')" :class="$page.url ==='/profile' ? 'text-flamingo' : ''">
                                 Cuenta
                             </Link>
                             <Link v-else :href="route('login')">
