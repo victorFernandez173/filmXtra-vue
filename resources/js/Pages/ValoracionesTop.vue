@@ -36,7 +36,7 @@ const props = defineProps({
             </div>
             <!-- Seccion Principal con las fichas -->
             <div class="container grid grid-cols-1 m-auto my-4">
-                <ficha-peli v-for="obra in obras.data" :obra="obra" :info="true" />
+                <ficha-peli v-for="obra in obras.data" :obra="obra" />
             </div>
             <!-- Componente para la paginación -->
             <div class="w-full flex mt-8 mb-2">

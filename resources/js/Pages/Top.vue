@@ -86,7 +86,7 @@ const { stop } = useIntersectionObserver(
                 </div>
                 <!-- Seccion Principal con las fichas -->
                 <div class="container grid grid-cols-1 m-auto my-8">
-                    <ficha-peli v-for="obra in obras.data" :obra="obra" :info="true" />
+                    <ficha-peli v-for="obra in obras.data" :obra="obra" />
                 </div>
                 <!-- Para el infinite scrolling -->
                 <div ref="gatilloScroll" />
