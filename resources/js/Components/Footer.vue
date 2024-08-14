@@ -35,7 +35,7 @@ import { Link } from "@inertiajs/vue3";
                             <Link v-if="$page.props.auth.user" :href="route('profile.edit')">
                                 Cuenta
                             </Link>
-                            <Link :href="route('login')">
+                            <Link v-else :href="route('login')">
                                 Cuenta
                             </Link>
                         </li>
