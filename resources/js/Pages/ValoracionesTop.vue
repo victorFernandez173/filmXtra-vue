@@ -29,13 +29,13 @@ const props = defineProps({
         <!-- Contenido -->
         <div class="lg:w-[87vw] xl:w-[89vw] 2xl:w-[92vw] mx-auto">
             <!-- Título -->
-            <div class="mb-16 md:mb-8 mt-4">
-                <h1 class="w-full font-oswald text-center text-5xl h-[8vh] text-flamingo">
+            <div class="m-4">
+                <h1 class="w-full font-oswald text-center text-4xl md:text-5xl h-[8vh] text-flamingo">
                     Top Valoraciones FilmXtra
                 </h1>
             </div>
             <!-- Seccion Principal con las fichas -->
-            <div class="container grid grid-cols-1 m-auto my-8">
+            <div class="container grid grid-cols-1 m-auto my-4">
                 <ficha-peli v-for="obra in obras.data" :obra="obra" :info="true" />
             </div>
             <!-- Componente para la paginación -->
