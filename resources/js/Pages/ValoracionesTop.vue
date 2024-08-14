@@ -10,7 +10,7 @@ export default {
 <!--script estandar para lo habitual-->
 <script setup>
 import { Head } from "@inertiajs/vue3";
-import Paginacion from "../Components/Paginacion.vue";
+import Paginacion3 from "../Components/Paginacion3.vue";
 import FichaPeli from "@/Components/FichaPeli.vue";
 
 const props = defineProps({
@@ -40,7 +40,7 @@ const props = defineProps({
             </div>
             <!-- Componente para la paginación -->
             <div class="w-full flex mt-8 mb-2">
-                <paginacion class="mx-auto" :datos="obras"/>
+                <paginacion3 class="mx-auto" :datos="obras"/>
             </div>
         </div>
     </div>

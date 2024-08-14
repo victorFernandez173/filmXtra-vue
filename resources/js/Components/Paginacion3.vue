@@ -1,0 +1,17 @@
+<script setup>
+import { Link } from "@inertiajs/vue3";
+
+const props = defineProps({
+    'datos' : Object
+});
+</script>
+
+<template>
+    <div class="mb-2" v-if="datos.links.length > 3">
+        <div class="flex flex-wrap">
+            <template v-for="(link) in datos.links">
+                <Link v-if="link.label === '&#38;laquo;Anterior'|| link.label === 'Siguiente&#38;raquo;' || link.label === datos.current_page.toString() || (datos.current_page - parseInt(link.label) <= 1 && parseInt(link.label) < datos.current_page) || (parseInt(link.label) - datos.current_page <= 1 && parseInt(link.label) > datos.current_page)" as="button" class="m-0 sm:mr-1 sm:mb-1 px-2.5 py-1.5 sm:px-4 sm:py-3 leading-4 hover:bg-flamingo text-sm sm:text-base" :class="{ 'text-white bg-flamingo border-flamingo border-solid border-1 hover:text-black': link.active }" :href="link.url" v-html="link.label" :disabled="link.active" preserve-state/>
+            </template>
+        </div>
+    </div>
+</template>
