@@ -2,7 +2,7 @@
 import { Link, useForm, usePage } from "@inertiajs/vue3";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
-import {onUpdated, ref} from "vue";
+import {onMounted, onUpdated, ref} from "vue";
 import Poster from "@/Components/Poster.vue";
 import ModalBusqueda from "@/Components/ModalBusqueda.vue";
 import Swal from "sweetalert2";
@@ -60,7 +60,8 @@ const cerrarModalBusqueda = () => {
     form.reset();
 };
 
-// Para manteneer posicionado el boton de menu en pantallas estrechas arriba
+
+// Para mantener posicionado el boton de menu en pantallas estrechas arriba
 const posicionarme = () => {
     if($('#mobile-menu-2').hasClass('hidden')){
         $('#mobile-menu-2-button').removeClass('absolute');
@@ -68,28 +69,27 @@ const posicionarme = () => {
         $('#mobile-menu-2-button').addClass('absolute');
     }
 };
-
 // Configuracion para el sistema de toggle del menu en pantallas estrechas con codigo variado jquery, js, etc por testing
-$(document).ready(function () {
-    document.getElementById("mobile-menu-2-button").addEventListener("click", () => {
-        const element = document.getElementById("mobile-menu-2");
-        if (element.classList.contains("block")) {
-            element.classList.remove("block");
-            element.classList.add("hidden");
+// Desde que se montan: responden a los click en los correspondientes botones
+onMounted(() => {
+    $('#mobile-menu-2-button').click(function() {
+        if ($('#mobile-menu-2').hasClass("block")) {
+            $('#mobile-menu-2').removeClass("block").addClass("hidden");
             $('#mobile-menu-2-button').removeClass('mr-4');
         } else {
-            element.classList.remove("hidden");
-            element.classList.add("block");
+            $('#mobile-menu-2').removeClass("hidden").addClass("block");
             $('#mobile-menu-2-button').addClass('mr-4');
         }
     });
 });
+// Con cambios en la seccion: nos aseguramos que cualquiera de los dos menus se pliegan
 onUpdated(() => {
-    const element = document.getElementById("mobile-menu-2");
-    if (element.classList.contains("block")) {
-        element.classList.remove("block");
-        element.classList.add("hidden");
+    if ($('#mobile-menu-2').hasClass('block')) {
+        $('#mobile-menu-2').removeClass("block").addClass("hidden");
         $('#mobile-menu-2-button').addClass('absolute').removeClass('mr-4');
+    }
+    if ($('#user-dropdown').hasClass('block')) {
+        $('#user-dropdown').removeClass("block").addClass("hidden");
     }
 });
 </script>
@@ -211,7 +211,7 @@ onUpdated(() => {
                 </div>
             </div>
             <!-- Bloque Links -->
-            <button id="mobile-menu-2-button" @click="posicionarme" type="button" class="absolute right-4 inline-flex items-center text-sm text-gray-500 lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-flamingo hover:ring-4 hover:ring-flamingo p-2">
+            <button id="mobile-menu-2-button" @click="posicionarme" type="button" class="absolute right-4 inline-flex items-center text-sm text-gray-500 lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-flamingo hover:ring-4 hover:ring-flamingo p-2" aria-expanded="false" data-dropdown-toggle="mobile-menu-2">
                 <span class="sr-only">
                     Abrir menú principal
                 </span>
@@ -220,7 +220,7 @@ onUpdated(() => {
                     </path>
                 </svg>
             </button>
-            <div class="lg:order-1 items-center justify-between hidden w-full lg:flex lg:w-auto text-center shadow-bajera lg:shadow-none" id="mobile-menu-2">
+            <div class="bg-white lg:order-1 items-center justify-between hidden w-full lg:flex lg:w-auto text-center shadow-bajera lg:shadow-none" id="mobile-menu-2">
                 <ul class="hover:[&>li>a]:text-flamingo flex flex-col font-medium p-4 lg:p-0 lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0 lg:bg-white [&>li>a]:block [&>li>a]:py-2 [&>li>a]:pl-3 [&>li>a]:pr-4 lg:hover:[&>li>a]:bg-transparent lg:[&>li>a]:p-0">
                     <li>
                         <responsive-nav-link :href="route('/')" :elegido="$page.url === '/' ? 'text-flamingo' : ''">
