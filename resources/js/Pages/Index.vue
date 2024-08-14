@@ -71,6 +71,6 @@ onMounted(() => {
     <!-- Seccion Principal de contenido -->
     <div class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-4 m-auto my-8">
         <!-- Posters -->
-        <poster v-for="obra in obras" :obra="obra" :titulo="`text-sm py-2.5 top-0.5`" />
+        <poster v-for="obra in obras" :obra="obra" :truncarTitulo="true" />
     </div>
 </template>
