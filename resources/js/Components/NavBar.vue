@@ -211,7 +211,7 @@ onUpdated(() => {
                 </div>
             </div>
             <!-- Bloque Links -->
-            <button id="mobile-menu-2-button" @click="posicionarme" type="button" class="absolute right-4 inline-flex items-center text-sm text-gray-500 lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-flamingo hover:ring-4 hover:ring-flamingo p-2" aria-expanded="false" data-dropdown-toggle="mobile-menu-2">
+            <button id="mobile-menu-2-button" @click="posicionarme" type="button" class="absolute right-4 inline-flex items-center text-sm text-gray-500 lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-flamingo hover:ring-4 hover:ring-flamingo p-2">
                 <span class="sr-only">
                     Abrir menú principal
                 </span>
