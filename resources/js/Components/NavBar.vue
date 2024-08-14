@@ -187,16 +187,16 @@ onUpdated(() => {
                         </li>
                     </ul>
                     <ul v-else class="py-2 [&>li>a]:block [&>li>a]:px-4 [&>li>a]:py-2 [&>li>a]:text-sm [&>li>a]:text-gray-700 hover:[&>li>a]:bg-flamingo hover:[&>li>a]:text-white" aria-labelledby="user-menu-button">
-                        <li>
-                            <Link href="#">
-                                Mis valoraciones
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                Mis favoritas
-                            </Link>
-                        </li>
+<!--                        <li>-->
+<!--                            <Link href="#">-->
+<!--                                Mis valoraciones-->
+<!--                            </Link>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <Link href="#">-->
+<!--                                Mis favoritas-->
+<!--                            </Link>-->
+<!--                        </li>-->
                         <li>
                             <Link :href="route('profile.edit')">
                                 Ajustes
