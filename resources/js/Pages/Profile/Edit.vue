@@ -43,7 +43,7 @@ defineProps({
                     class="my-4 w-4/5 sm:w-3/5 lg:w-4/5"
                 />
 
-                <update-password-form v-if="$page.props.auth.user.login_tipo_id === 1 && $page.props.auth.user.email_verificado_fecha" class="mt-24 lg:mt-4 w-4/5  sm:w-3/5 lg:w-4/5" />
+                <update-password-form v-if="$page.props.auth.user.login_tipo_id === 1 && $page.props.auth.user.email_verificado_fecha" class="mt-24 mb-6 lg:mt-4 w-4/5  sm:w-3/5 lg:w-4/5" />
             </div>
 
             <div class="w-[95%] lg:w-fit mb-12 p-4 sm:p-8 bg-white shadow text-center">
