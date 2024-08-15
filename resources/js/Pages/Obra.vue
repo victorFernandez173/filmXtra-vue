@@ -261,7 +261,7 @@ dayjs.locale(es);
 <!--            </div>-->
 <!--        </div>-->
 
-         Componente para el trailer
+<!--         Componente para el trailer-->
         <trailers :obra="obra"/>
     </div>
 </template>
