@@ -53,3 +53,9 @@ defineProps({
     </auth-layout>
 
 </template>
+
+<style>
+    .barra{
+        display: none!important;
+    }
+</style>

@@ -130,7 +130,7 @@ onUpdated(() => {
         </div>
     </modal-busqueda>
 
-    <nav class="bg-white border-gray-200 sticky top-0 z-50">
+    <nav class="bg-white border-gray-200 sticky top-0 z-50 barra">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between lg:mx-auto py-3 relative">
             <!-- Logo de la pagina -->
             <Link :href="route('/')" class="flex items-center mb-2 lg:mb-0 p-3">
