@@ -5,8 +5,7 @@
         <meta name="author" content="FilmXtra">
         <meta name="description" content="Proyecto personal a partir del PFG Filxtra">
         <meta name="keywords" content="HTML, CSS, JavaScript, VUE, Laravel">
-{{--        <meta name="viewport" content="width=device-width, initial-scale=1">--}}
-        <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         {{--Configurado dinámicamente en app.js--}}
         {{--<title></title>--}}
