@@ -56,123 +56,123 @@ dayjs.locale(es);
             <div class="flex justify-center mr-10 px-5 w-full md:-ml[100px]">
                 <div>
                     <!--Info general-->
-                    <div>
-                        <ul>
-                            <!--Títulos-->
-                            <li class="ml-5">
-                                <span class="font-semibold text-lg">
-                                    Título:
-                                </span>
-                                {{ obra.titulo }}
-                                ({{ obra.titulo_original }})
-                            </li>
-                            <!--Año-->
-                            <li class="ml-5">
-                                <span class="font-semibold text-lg">
-                                    Año:
-                                </span>
-                                {{ obra.fecha }}
-                            </li>
-                            <!--Duración-->
-                            <li class="ml-5">
-                                <span class="font-semibold text-lg">
-                                    Duración:
-                                </span>
-                                {{ Math.floor((parseInt(obra.duracion) / 60)) }}h
-                                {{ parseInt(obra.duracion) % 60 }}min
-                            </li>
-                            <!--País-->
-                            <li class="ml-5">
-                                <span class="font-semibold text-lg">
-                                    País:
-                                </span>
-                                {{ obra.pais }}
-                            </li>
-                            <!--Dirección-->
-                            <li v-if="obra.directors[0]" class="ml-5">
-                                <span class="font-semibold text-lg">
-                                    Dirección:
-                                </span>
-                                <span>
-                                    {{ props.direccion }}
-                                </span>
-                            </li>
-                            <!--Reparto-->
-                            <li v-if="obra.actors[0]" class="ml-5">
-                                <span class="font-semibold text-lg">
-                                    Reparto:
-                                </span>
-                                <span>
-                                    {{ props.reparto }}
-                                </span>
-                            </li>
-                            <!--Productora-->
-                            <li class="ml-5">
-                                <span class="font-semibold text-lg">
-                                    Productora:
-                                </span>
-                                {{ obra.productora }}
-                            </li>
-                            <!--Géneros-->
-                            <li v-if="obra.generos" class="ml-5">
-                                <span class="font-semibold text-lg">
-                                    Género:
-                                </span>
-                                <span>
-                                    {{ props.generos }}
-                                </span>
-                            </li>
-                            <!--Sinopsis-->
-                            <li class="ml-5">
-                                <span class="font-semibold text-lg">
-                                    Sinopsis:
-                                </span>
-                                {{ obra.sinopsis }}
-                            </li>
-                        </ul>
-                    </div>
+<!--                    <div>-->
+<!--                        <ul>-->
+<!--                            &lt;!&ndash;Títulos&ndash;&gt;-->
+<!--                            <li class="ml-5">-->
+<!--                                <span class="font-semibold text-lg">-->
+<!--                                    Título:-->
+<!--                                </span>-->
+<!--                                {{ obra.titulo }}-->
+<!--                                ({{ obra.titulo_original }})-->
+<!--                            </li>-->
+<!--                            &lt;!&ndash;Año&ndash;&gt;-->
+<!--                            <li class="ml-5">-->
+<!--                                <span class="font-semibold text-lg">-->
+<!--                                    Año:-->
+<!--                                </span>-->
+<!--                                {{ obra.fecha }}-->
+<!--                            </li>-->
+<!--                            &lt;!&ndash;Duración&ndash;&gt;-->
+<!--                            <li class="ml-5">-->
+<!--                                <span class="font-semibold text-lg">-->
+<!--                                    Duración:-->
+<!--                                </span>-->
+<!--                                {{ Math.floor((parseInt(obra.duracion) / 60)) }}h-->
+<!--                                {{ parseInt(obra.duracion) % 60 }}min-->
+<!--                            </li>-->
+<!--                            &lt;!&ndash;País&ndash;&gt;-->
+<!--                            <li class="ml-5">-->
+<!--                                <span class="font-semibold text-lg">-->
+<!--                                    País:-->
+<!--                                </span>-->
+<!--                                {{ obra.pais }}-->
+<!--                            </li>-->
+<!--                            &lt;!&ndash;Dirección&ndash;&gt;-->
+<!--                            <li v-if="obra.directors[0]" class="ml-5">-->
+<!--                                <span class="font-semibold text-lg">-->
+<!--                                    Dirección:-->
+<!--                                </span>-->
+<!--                                <span>-->
+<!--                                    {{ props.direccion }}-->
+<!--                                </span>-->
+<!--                            </li>-->
+<!--                            &lt;!&ndash;Reparto&ndash;&gt;-->
+<!--                            <li v-if="obra.actors[0]" class="ml-5">-->
+<!--                                <span class="font-semibold text-lg">-->
+<!--                                    Reparto:-->
+<!--                                </span>-->
+<!--                                <span>-->
+<!--                                    {{ props.reparto }}-->
+<!--                                </span>-->
+<!--                            </li>-->
+<!--                            &lt;!&ndash;Productora&ndash;&gt;-->
+<!--                            <li class="ml-5">-->
+<!--                                <span class="font-semibold text-lg">-->
+<!--                                    Productora:-->
+<!--                                </span>-->
+<!--                                {{ obra.productora }}-->
+<!--                            </li>-->
+<!--                            &lt;!&ndash;Géneros&ndash;&gt;-->
+<!--                            <li v-if="obra.generos" class="ml-5">-->
+<!--                                <span class="font-semibold text-lg">-->
+<!--                                    Género:-->
+<!--                                </span>-->
+<!--                                <span>-->
+<!--                                    {{ props.generos }}-->
+<!--                                </span>-->
+<!--                            </li>-->
+<!--                            &lt;!&ndash;Sinopsis&ndash;&gt;-->
+<!--                            <li class="ml-5">-->
+<!--                                <span class="font-semibold text-lg">-->
+<!--                                    Sinopsis:-->
+<!--                                </span>-->
+<!--                                {{ obra.sinopsis }}-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
                     <!--Festivales y premios-->
-                    <div class="mt-4">
-                        <ul>
-                            <li v-if="obra.festivals.length > 0" class="font-bold text-flamingo text-xl list-none">
-                            Galardones
-                            </li>
-                            <li>
-                                <ul>
-                                    <li v-for="fest in obra.festivals" class="ml-5">
-                                        <span class="font-semibold text-lg">
-                                            Mejor película
-                                        </span>:
-                                        {{ fest.nombre }}({{ fest.edicion }})
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+<!--                    <div class="mt-4">-->
+<!--                        <ul>-->
+<!--                            <li v-if="obra.festivals.length > 0" class="font-bold text-flamingo text-xl list-none">-->
+<!--                            Galardones-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <ul>-->
+<!--                                    <li v-for="fest in obra.festivals" class="ml-5">-->
+<!--                                        <span class="font-semibold text-lg">-->
+<!--                                            Mejor película-->
+<!--                                        </span>:-->
+<!--                                        {{ fest.nombre }}({{ fest.edicion }})-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
                     <!--Saga-->
-                    <div class="mt-4">
-                        <span v-if="secuelaPrecuela || spinoffs" class="font-bold text-flamingo text-xl mt-2">
-                            Saga
-                        </span>
-                        <!-- Bloque para secuela/precuela -->
-                        <div v-if="secuelaPrecuela" class="text-center flex flex-col items-center">
-                            <div v-for="obra in secuelaPrecuela" class="w-[80%] md:w-[70%]">
-                                <p class="mt-2 -mb-3">
-                                    {{props.obra.secuela.orden === 0 ? 'Relación' : obra.secuela.orden < props.obra.secuela.orden ? 'Precuela' : 'Secuela'}}
-                                </p>
-                                <poster :obra="obra" />
-                            </div>
-                        </div>
-                        <!-- Bloque para spin-offs -->
-                        <div v-if="spinoffs" class="text-center flex flex-col items-center">
-                            <div v-for="obra in spinoffs" class="w-[80%] md:w-[70%]">
-                                <p class="mt-2 -mb-3">
-                                    {{props.obra.secuela.orden === 0 ? 'Relación' : 'Spinoff'}}
-                                </p>
-                                <poster :obra="obra" />
-                            </div>
-                        </div>
-                    </div>
+<!--                    <div class="mt-4">-->
+<!--                        <span v-if="secuelaPrecuela || spinoffs" class="font-bold text-flamingo text-xl mt-2">-->
+<!--                            Saga-->
+<!--                        </span>-->
+<!--                        &lt;!&ndash; Bloque para secuela/precuela &ndash;&gt;-->
+<!--                        <div v-if="secuelaPrecuela" class="text-center flex flex-col items-center">-->
+<!--                            <div v-for="obra in secuelaPrecuela" class="w-[80%] md:w-[70%]">-->
+<!--                                <p class="mt-2 -mb-3">-->
+<!--                                    {{props.obra.secuela.orden === 0 ? 'Relación' : obra.secuela.orden < props.obra.secuela.orden ? 'Precuela' : 'Secuela'}}-->
+<!--                                </p>-->
+<!--                                <poster :obra="obra" />-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Bloque para spin-offs &ndash;&gt;-->
+<!--                        <div v-if="spinoffs" class="text-center flex flex-col items-center">-->
+<!--                            <div v-for="obra in spinoffs" class="w-[80%] md:w-[70%]">-->
+<!--                                <p class="mt-2 -mb-3">-->
+<!--                                    {{props.obra.secuela.orden === 0 ? 'Relación' : 'Spinoff'}}-->
+<!--                                </p>-->
+<!--                                <poster :obra="obra" />-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>
