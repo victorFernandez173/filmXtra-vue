@@ -30,7 +30,7 @@ defineProps({
     </Head>
 
     <auth-layout>
-        <div class="py-16 md:py-32 flex flex-col items-center h-fit">
+        <div class="flex flex-col items-center h-fit">
 
             <div class="mb-16 max-w-fit bg-white">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">Perfil</h2>
