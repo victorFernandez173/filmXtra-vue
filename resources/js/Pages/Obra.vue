@@ -132,23 +132,23 @@ dayjs.locale(es);
 <!--                        </ul>-->
 <!--                    </div>-->
                     <!--Festivales y premios-->
-<!--                    <div class="mt-4">-->
-<!--                        <ul>-->
-<!--                            <li v-if="obra.festivals.length > 0" class="font-bold text-flamingo text-xl list-none">-->
-<!--                            Galardones-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                <ul>-->
-<!--                                    <li v-for="fest in obra.festivals" class="ml-5">-->
-<!--                                        <span class="font-semibold text-lg">-->
-<!--                                            Mejor película-->
-<!--                                        </span>:-->
-<!--                                        {{ fest.nombre }}({{ fest.edicion }})-->
-<!--                                    </li>-->
-<!--                                </ul>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </div>-->
+                    <div class="mt-4">
+                        <ul>
+                            <li v-if="obra.festivals.length > 0" class="font-bold text-flamingo text-xl list-none">
+                            Galardones
+                            </li>
+                            <li>
+                                <ul>
+                                    <li v-for="fest in obra.festivals" class="ml-5">
+                                        <span class="font-semibold text-lg">
+                                            Mejor película
+                                        </span>:
+                                        {{ fest.nombre }}({{ fest.edicion }})
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                     <!--Saga-->
 <!--                    <div class="mt-4">-->
 <!--                        <span v-if="secuelaPrecuela || spinoffs" class="font-bold text-flamingo text-xl mt-2">-->
