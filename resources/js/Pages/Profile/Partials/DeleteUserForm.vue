@@ -56,7 +56,7 @@ const closeModal = () => {
         </danger-button>
 
         <modal :show="confirmingUserDeletion" @close="closeModal">
-            <div>
+            <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-900">
                     ¿Seguro que quieres borrar la cuenta?
                 </h2>
