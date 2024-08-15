@@ -58,7 +58,4 @@ defineProps({
     .barra{
         display: none!important;
     }
-    .foot{
-        display: none!important;
-    }
 </style>
