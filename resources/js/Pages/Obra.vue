@@ -53,8 +53,8 @@ dayjs.locale(es);
             </div>
 
             <!--Datos pelicula-->
-            <div class="flex justify-center mr-10 px-5 w-full md:-ml[100px]">
-                <div>
+            <div class="flex justify-center w-full md:-ml[100px]">
+                <div class="w-[95%]">
                     <!--Info general-->
 <!--                    <div>-->
 <!--                        <ul>-->
@@ -132,22 +132,15 @@ dayjs.locale(es);
 <!--                        </ul>-->
 <!--                    </div>-->
                     <!--Festivales y premios-->
-                    <div class="mt-4">
-                        <ul>
-                            <li v-if="obra.festivals.length > 0" class="font-bold text-flamingo text-xl list-none">
+                    <div class="mt-4 w-[90%] mx-auto">
+                        <h5 v-if="obra.festivals.length > 0" class="font-bold text-flamingo text-xl list-none">
                             Galardones
-                            </li>
-                            <li>
-                                <ul>
-                                    <li v-for="fest in obra.festivals" class="ml-5">
-                                        <span class="font-semibold text-lg">
-                                            Mejor película
-                                        </span>:
-                                        {{ fest.nombre }}({{ fest.edicion }})
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                        </h5>
+                        <div class="mx-auto w-[90%]">
+                            <p v-for="fest in obra.festivals" class="text-md md:text-lg">
+                                Mejor película {{ fest.nombre}} ({{fest.edicion }})
+                            </p>
+                        </div>
                     </div>
                     <!--Saga-->
 <!--                    <div class="mt-4">-->
