@@ -178,88 +178,88 @@ dayjs.locale(es);
 <!--        </div>-->
 
         <!--Contenedor criticas-->
-<!--        <div class="m-auto w-[95%] grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 mb-15 justify-center bg-flamingo text-white lg:divide-x md:divide-x divide-y">-->
-<!--            &lt;!&ndash;Criticas&ndash;&gt;-->
-<!--            <div class="py-10 pr-10 pl-12 lg:col-span-3 md:col-span-2">-->
-<!--                &lt;!&ndash;Titulo&ndash;&gt;-->
-<!--                <ul>-->
-<!--                    <li v-if="obra.profesionals.length > 0" class="list-none font-bold text-black text-xl mb-5">-->
-<!--                        Críticas profesionales-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--                <ul v-for="p in obra.profesionals">-->
-<!--                    &lt;!&ndash;Críticas profesionales&ndash;&gt;-->
-<!--                    <li class="ml-3 mb-4">-->
-<!--                        <span class="font-semibold">-->
-<!--                            <a class="hover:text-black" :href="p.medio.web" target="_blank">-->
-<!--                                {{ p.medio.nombre }}-->
-<!--                            </a>:-->
-<!--                        </span>-->
-<!--                        {{ p.contenido }}-->
-<!--                        <span class="italic">{{ p.autor }}-->
-<!--                        </span>-->
-<!--                        <span v-if="p.fecha">-->
-<!--                            ({{ dayjs(p.fecha).fromNow() }})-->
-<!--                        </span>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--                &lt;!&ndash;Titulo&ndash;&gt;-->
-<!--                <div>-->
-<!--                    <h5 class="list-none font-bold text-black text-xl mt-10 mb-5">-->
-<!--                        Críticas de nuestros usuarios-->
-<!--                    </h5>-->
-<!--                </div>-->
-<!--                <div v-for="(critica, indice) in criticas.slice(0, 2)" class="ml-3">-->
-<!--                    &lt;!&ndash;Críticas usuarios&ndash;&gt;-->
-<!--                    <critica :critica="critica" :indice="indice" />-->
-<!--                </div>-->
-<!--                <p class="ml-3">[...]</p>-->
-<!--                <p v-if="!criticas[0]" class="py-3">-->
-<!--                    Sin críticas de usuarios todavía. Participa, pon la-->
-<!--                    tuya.-->
-<!--                </p>-->
+        <div class="m-auto w-[95%] grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 mb-15 justify-center bg-flamingo text-white lg:divide-x md:divide-x divide-y">
+            <!--Criticas-->
+            <div class="py-10 pr-10 pl-12 lg:col-span-3 md:col-span-2">
+                <!--Titulo-->
+                <ul>
+                    <li v-if="obra.profesionals.length > 0" class="list-none font-bold text-black text-xl mb-5">
+                        Críticas profesionales
+                    </li>
+                </ul>
+                <ul v-for="p in obra.profesionals">
+                    <!--Críticas profesionales-->
+                    <li class="ml-3 mb-4">
+                        <span class="font-semibold">
+                            <a class="hover:text-black" :href="p.medio.web" target="_blank">
+                                {{ p.medio.nombre }}
+                            </a>:
+                        </span>
+                        {{ p.contenido }}
+                        <span class="italic">{{ p.autor }}
+                        </span>
+                        <span v-if="p.fecha">
+                            ({{ dayjs(p.fecha).fromNow() }})
+                        </span>
+                    </li>
+                </ul>
+                <!--Titulo-->
+                <div>
+                    <h5 class="list-none font-bold text-black text-xl mt-10 mb-5">
+                        Críticas de nuestros usuarios
+                    </h5>
+                </div>
+                <div v-for="(critica, indice) in criticas.slice(0, 2)" class="ml-3">
+                    <!--Críticas usuarios-->
+                    <critica :critica="critica" :indice="indice" />
+                </div>
+                <p class="ml-3">[...]</p>
+                <p v-if="!criticas[0]" class="py-3">
+                    Sin críticas de usuarios todavía. Participa, pon la
+                    tuya.
+                </p>
 
-<!--                <Link :href="route('obraValoraciones', obra.titulo_slug)"-->
-<!--                      class="my-5 m-auto font-bold focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none text-sm">-->
-<!--                    <div class="mx-auto w-fit text-center mt-8 bg-white text-flamingo hover:bg-black px-5 py-2.5">-->
-<!--                        Ir a criticas de {{ obra.titulo }}&rarr;-->
-<!--                    </div>-->
-<!--                </Link>-->
+                <Link :href="route('obraValoraciones', obra.titulo_slug)"
+                      class="my-5 m-auto font-bold focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none text-sm">
+                    <div class="mx-auto w-fit text-center mt-8 bg-white text-flamingo hover:bg-black px-5 py-2.5">
+                        Ir a criticas de {{ obra.titulo }}&rarr;
+                    </div>
+                </Link>
 
-<!--            </div>-->
+            </div>
 
-<!--            &lt;!&ndash;Seccion valorar&ndash;&gt;-->
-<!--            <div class="py-5 pl-10 pr-10">-->
-<!--                &lt;!&ndash;Titulo&ndash;&gt;-->
-<!--                <h3 class="font-bold text-black text-xl my-5 text-center">-->
-<!--                    ¿Quieres valorar esta-->
-<!--                    película?-->
-<!--                </h3>-->
-<!--                <h4>-->
-<!--                    En FilmXtra nos apasiona el cine y queremos escuchar tu voz. ¡Exprésate como quieras!-->
-<!--                </h4>-->
-<!--                <ul class="ml-[20px]">-->
-<!--                    <li class="list-disc ml-2">-->
-<!--                        Puedes ponerle una puntuación del 1 al 10 a las películas que veas.-->
-<!--                    </li>-->
-<!--                    <li class="list-disc ml-2">-->
-<!--                        Si te gusta entrar en detalles, déjanos tus críticas más elaboradas. ¡Suelta todo lo que piensas!-->
-<!--                    </li>-->
-<!--                    <li class="list-disc ml-2">-->
-<!--                        Y, por supuesto, dale un buen "like" a las críticas de otros usuarios que te parezcan geniales. ¡Comparte el amor cinéfilo!-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--                <p class="pt-7">-->
-<!--                    ¡Tu voz cinéfila importa! Exprésate libremente y comparte el amor por el cine.-->
-<!--                </p>-->
-<!--                <Link :href="route('valoracionesTop')"-->
-<!--                      class="my-15 m-auto focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold block w-4/6">-->
-<!--                    <div class="mt-10 text-center bg-white text-flamingo hover:bg-black px-5 text-sm py-2.5">-->
-<!--                        Top Valoraciones &rarr;-->
-<!--                    </div>-->
-<!--                </Link>-->
-<!--            </div>-->
-<!--        </div>-->
+            <!--Seccion valorar-->
+            <div class="py-5 pl-10 pr-10">
+                <!--Titulo-->
+                <h3 class="font-bold text-black text-xl my-5 text-center">
+                    ¿Quieres valorar esta
+                    película?
+                </h3>
+                <h4>
+                    En FilmXtra nos apasiona el cine y queremos escuchar tu voz. ¡Exprésate como quieras!
+                </h4>
+                <ul class="ml-[20px]">
+                    <li class="list-disc ml-2">
+                        Puedes ponerle una puntuación del 1 al 10 a las películas que veas.
+                    </li>
+                    <li class="list-disc ml-2">
+                        Si te gusta entrar en detalles, déjanos tus críticas más elaboradas. ¡Suelta todo lo que piensas!
+                    </li>
+                    <li class="list-disc ml-2">
+                        Y, por supuesto, dale un buen "like" a las críticas de otros usuarios que te parezcan geniales. ¡Comparte el amor cinéfilo!
+                    </li>
+                </ul>
+                <p class="pt-7">
+                    ¡Tu voz cinéfila importa! Exprésate libremente y comparte el amor por el cine.
+                </p>
+                <Link :href="route('valoracionesTop')"
+                      class="my-15 m-auto focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold block w-4/6">
+                    <div class="mt-10 text-center bg-white text-flamingo hover:bg-black px-5 text-sm py-2.5">
+                        Top Valoraciones &rarr;
+                    </div>
+                </Link>
+            </div>
+        </div>
 
 <!--         Componente para el trailer-->
         <trailers :obra="obra"/>
