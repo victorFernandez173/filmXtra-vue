@@ -157,7 +157,7 @@ onUpdated(() => {
                     </svg>
                 </button>
                 <button type="button" class="absolute right-16 lg:right-3 flex text-sm bg-gray-800 focus:ring-flamingo focus:ring-4 hover:ring-4 hover:ring-flamingo focus:flamingo" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-                    <img v-if="!$page.props.auth.user" class="w-8 h-8" src="/favicon.png" alt="Foto del usuario">
+                    <img v-if="!$page.props.auth.user" class="w-[42.5px] h-[42.5px]" src="/favicon.png" alt="Foto del usuario">
                     <div v-else class="w-[42.5px] h-[42.5px] bg-flamingo border-flamingo flex justify-center items-center">
                         <p>
                             {{$page.props.auth.user.usuario[0].toUpperCase()}}
