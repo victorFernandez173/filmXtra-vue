@@ -53,9 +53,11 @@ onMounted(() => {
         <meta name="description" content="Página de login">
     </Head>
     <auth-layout>
-        <div class="flex flex-col items-center justify-center pb-16 h-screen lg:py-0">
+        <div class="flex flex-col items-center justify-center pb-16 min-h-screen lg:py-0">
             <!--logo filmXtra-->
-            <app-logo-index />
+            <div class="mt-8">
+                <app-logo-index />
+            </div>
             <!--bloque principal-->
             <div class="w-[95%] bg-white shadow md:mt-0 sm:max-w-md xl:p-0">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
