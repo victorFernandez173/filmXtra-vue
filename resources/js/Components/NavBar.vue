@@ -199,7 +199,7 @@ onUpdated(() => {
 <!--                        </li>-->
                         <li>
                             <Link :href="route('profile.edit')">
-                                Ajustes
+                                Cuenta
                             </Link>
                         </li>
                         <li>
