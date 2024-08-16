@@ -141,29 +141,29 @@ dayjs.locale(es);
                         </div>
                     </div>
                     <!--Saga-->
-<!--                    <div class="mt-4">-->
-<!--                        <span v-if="secuelaPrecuela || spinoffs" class="font-bold text-flamingo text-xl mt-2">-->
-<!--                            Saga-->
-<!--                        </span>-->
-<!--                        &lt;!&ndash; Bloque para secuela/precuela &ndash;&gt;-->
-<!--                        <div v-if="secuelaPrecuela" class="text-center flex flex-col items-center">-->
-<!--                            <div v-for="obra in secuelaPrecuela" class="w-[80%] md:w-[70%]">-->
-<!--                                <p class="mt-2 -mb-3">-->
-<!--                                    {{props.obra.secuela.orden === 0 ? 'Relación' : obra.secuela.orden < props.obra.secuela.orden ? 'Precuela' : 'Secuela'}}-->
-<!--                                </p>-->
-<!--                                <poster :obra="obra" />-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        &lt;!&ndash; Bloque para spin-offs &ndash;&gt;-->
-<!--                        <div v-if="spinoffs" class="text-center flex flex-col items-center">-->
-<!--                            <div v-for="obra in spinoffs" class="w-[80%] md:w-[70%]">-->
-<!--                                <p class="mt-2 -mb-3">-->
-<!--                                    {{props.obra.secuela.orden === 0 ? 'Relación' : 'Spinoff'}}-->
-<!--                                </p>-->
-<!--                                <poster :obra="obra" />-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <div class="mt-4">
+                        <span v-if="secuelaPrecuela || spinoffs" class="font-bold text-flamingo text-xl mt-2">
+                            Saga
+                        </span>
+                        <!-- Bloque para secuela/precuela -->
+                        <div v-if="secuelaPrecuela" class="text-center flex flex-col items-center">
+                            <div v-for="obra in secuelaPrecuela" class="w-[80%] md:w-[70%]">
+                                <p class="mt-2 -mb-3">
+                                    {{props.obra.secuela.orden === 0 ? 'Relación' : obra.secuela.orden < props.obra.secuela.orden ? 'Precuela' : 'Secuela'}}
+                                </p>
+                                <poster :obra="obra" />
+                            </div>
+                        </div>
+                        <!-- Bloque para spin-offs -->
+                        <div v-if="spinoffs" class="text-center flex flex-col items-center">
+                            <div v-for="obra in spinoffs" class="w-[80%] md:w-[70%]">
+                                <p class="mt-2 -mb-3">
+                                    {{props.obra.secuela.orden === 0 ? 'Relación' : 'Spinoff'}}
+                                </p>
+                                <poster :obra="obra" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
