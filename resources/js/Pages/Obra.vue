@@ -169,9 +169,9 @@ dayjs.locale(es);
         </div>
 
         <!--Contenedor criticas-->
-        <div class="m-auto w-[95%] grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 mb-15 justify-center bg-flamingo text-white lg:divide-x md:divide-x divide-y">
+        <div class="m-auto w-[95%] grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mt-10 mb-15 justify-center bg-flamingo text-white lg:divide-x md:divide-x divide-y">
             <!--Criticas-->
-            <div class="py-10 lg:col-span-3 md:col-span-2 w-[90%] mx-auto">
+            <div class="py-10 lg:col-span-3 md:col-span-2 w-[85%] sm:w-[80%] mx-auto">
                 <!--Titulo-->
                 <ul>
                     <li v-if="obra.profesionals.length > 0" class="list-none font-bold text-black text-xl mb-5">
@@ -220,35 +220,37 @@ dayjs.locale(es);
             </div>
 
             <!--Seccion valorar-->
-            <div class="py-5 mx-auto w-[90%]">
-                <!--Titulo-->
-                <h3 class="font-bold text-black text-xl my-5 text-center">
-                    ¿Quieres valorar esta
-                    película?
-                </h3>
-                <h4>
-                    En FilmXtra nos apasiona el cine y queremos escuchar tu voz. ¡Exprésate como quieras!
-                </h4>
-                <ul class="ml-[20px]">
-                    <li class="list-disc ml-2">
-                        Puedes ponerle una puntuación del 1 al 10 a las películas que veas.
-                    </li>
-                    <li class="list-disc ml-2">
-                        Si te gusta entrar en detalles, déjanos tus críticas más elaboradas. ¡Suelta todo lo que piensas!
-                    </li>
-                    <li class="list-disc ml-2">
-                        Y, por supuesto, dale un buen "like" a las críticas de otros usuarios que te parezcan geniales. ¡Comparte el amor cinéfilo!
-                    </li>
-                </ul>
-                <p class="pt-7">
-                    ¡Tu voz cinéfila importa! Exprésate libremente y comparte el amor por el cine.
-                </p>
-                <Link :href="route('valoracionesTop')"
-                      class="my-15 m-auto focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold block w-4/6">
-                    <div class="mt-10 text-center bg-white text-flamingo hover:bg-black px-5 text-sm py-2.5">
-                        Top Valoraciones &rarr;
-                    </div>
-                </Link>
+            <div class="w-full">
+                <div class="py-5 mx-auto w-[80%] sm:w-[85%]">
+                    <!--Titulo-->
+                    <h3 class="font-bold text-black text-xl my-5 text-center">
+                        ¿Quieres valorar esta
+                        película?
+                    </h3>
+                    <h4>
+                        En FilmXtra nos apasiona el cine y queremos escuchar tu voz. ¡Exprésate como quieras!
+                    </h4>
+                    <ul class="ml-[20px]">
+                        <li class="list-disc ml-2">
+                            Puedes ponerle una puntuación del 1 al 10 a las películas que veas.
+                        </li>
+                        <li class="list-disc ml-2">
+                            Si te gusta entrar en detalles, déjanos tus críticas más elaboradas. ¡Suelta todo lo que piensas!
+                        </li>
+                        <li class="list-disc ml-2">
+                            Y, por supuesto, dale un buen "like" a las críticas de otros usuarios que te parezcan geniales. ¡Comparte el amor cinéfilo!
+                        </li>
+                    </ul>
+                    <p class="pt-7">
+                        ¡Tu voz cinéfila importa! Exprésate libremente y comparte el amor por el cine.
+                    </p>
+                    <Link :href="route('valoracionesTop')"
+                          class="my-15 m-auto focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold block w-4/6">
+                        <div class="mt-10 text-center bg-white text-flamingo hover:bg-black px-5 text-sm py-2.5">
+                            Top Valoraciones &rarr;
+                        </div>
+                    </Link>
+                </div>
             </div>
         </div>
 
