@@ -156,11 +156,13 @@ onUpdated(() => {
                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <button type="button" class="absolute right-16 lg:right-3 flex text-sm bg-gray-800 focus:ring-flamingo focus:ring-4 hover:ring-4 p-1 hover:ring-flamingo focus:flamingo" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-                    <span class="sr-only">
-                        Abrir menú de usuario
-                    </span>
-                    <img class="w-8 h-8" src="/favicon.png" alt="Foto del usuario">
+                <button type="button" class="absolute right-16 lg:right-3 flex text-sm bg-gray-800 focus:ring-flamingo focus:ring-4 hover:ring-4 hover:ring-flamingo focus:flamingo" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                    <img v-if="!$page.props.auth.user" class="w-8 h-8" src="/favicon.png" alt="Foto del usuario">
+                    <div v-else class="w-[42.5px] h-[42.5px] bg-flamingo border-flamingo flex justify-center items-center">
+                        <p>
+                            {{$page.props.auth.user.usuario[0].toUpperCase()}}
+                        </p>
+                    </div>
                 </button>
                 <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-300 shadow-3xl" id="user-dropdown">
                     <div class="px-4 py-3">
