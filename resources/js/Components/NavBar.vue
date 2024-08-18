@@ -158,11 +158,9 @@ onUpdated(() => {
                 </button>
                 <button type="button" class="absolute right-16 lg:right-3 flex text-sm bg-gray-800" :class="$page.props.auth.user ? 'focus:ring-black focus:ring-4 hover:ring-4 hover:ring-black focus:black' : 'focus:ring-flamingo focus:ring-4 hover:ring-4 hover:ring-flamingo focus:flamingo'" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                     <img v-if="!$page.props.auth.user" class="w-[42.5px] h-[42.5px]" src="/favicon.png" alt="Foto del usuario">
-                    <div v-else class="w-[42.5px] h-[42.5px] bg-flamingo border-flamingo flex justify-center items-center text-lg">
-                        <p>
-                            {{ $page.props.auth.user.usuario[0].toUpperCase() }}
-                        </p>
-                    </div>
+                    <p v-else class="w-[42.5px] h-[42.5px] bg-flamingo border-flamingo flex justify-center items-center text-lg">
+                        {{ $page.props.auth.user.usuario[0].toUpperCase() }}
+                    </p>
                 </button>
                 <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-300 shadow-3xl" id="user-dropdown">
                     <div class="px-4 py-3">
@@ -225,22 +223,22 @@ onUpdated(() => {
             <div class="bg-white lg:order-1 items-center justify-between hidden w-full lg:flex lg:w-auto text-center shadow-bajera lg:shadow-none" id="mobile-menu-2">
                 <ul class="hover:[&>li>a]:text-flamingo flex flex-col font-medium p-4 lg:p-0 lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0 lg:bg-white [&>li>a]:block [&>li>a]:py-2 [&>li>a]:pl-3 [&>li>a]:pr-4 lg:hover:[&>li>a]:bg-transparent lg:[&>li>a]:p-0">
                     <li>
-                        <responsive-nav-link :href="route('/')" :elegido="$page.url === '/' ? 'text-flamingo' : ''">
+                        <responsive-nav-link :href="route('/')" :elegido="$page.url === '/' ? 'text-flamingo pointer-events-none' : ''">
                             Inicio
                         </responsive-nav-link>
                     </li>
                     <li>
-                        <responsive-nav-link :href="route('top')" :elegido="$page.url === '/top' ? 'text-flamingo' : ''">
+                        <responsive-nav-link :href="route('top')" :elegido="$page.url === '/top' ? 'text-flamingo pointer-events-none' : ''">
                             Top FilmXtra
                         </responsive-nav-link>
                     </li>
                     <li>
-                        <responsive-nav-link :href="route('valoracionesTop')" :elegido="$page.url === '/valoraciones-top' ? 'text-flamingo' : ''">
+                        <responsive-nav-link :href="route('valoracionesTop')" :elegido="$page.url === '/valoraciones-top' ? 'text-flamingo pointer-events-none' : ''">
                             Top Valoraciones
                         </responsive-nav-link>
                     </li>
                     <li>
-                        <responsive-nav-link v-if="$page.props.auth.user" :href="route('profile.edit')" :elegido="$page.url === '/profile' ? 'text-flamingo' : ''">
+                        <responsive-nav-link v-if="$page.props.auth.user" :href="route('profile.edit')" :elegido="$page.url === '/profile' ? 'text-flamingo pointer-events-none' : ''">
                             Cuenta
                         </responsive-nav-link>
                         <responsive-nav-link v-else :href="route('login')" >
