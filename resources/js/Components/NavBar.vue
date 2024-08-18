@@ -233,7 +233,7 @@ onUpdated(() => {
                         </responsive-nav-link>
                     </li>
                     <li>
-                        <responsive-nav-link :href="route('valoracionesTop')" :elegido="$page.url === '/valoraciones-top' ? 'text-flamingo pointer-events-none' : ''">
+                        <responsive-nav-link :href="route('valoracionesTop')" :elegido="$page.url.includes('/valoraciones-top') ? 'text-flamingo pointer-events-none' : ''">
                             Top Valoraciones
                         </responsive-nav-link>
                     </li>
