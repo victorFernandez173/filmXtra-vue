@@ -54,13 +54,18 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        $intended = Redirect::getIntendedUrl();
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        // Redirige a la url objetivo
-        return redirect(url()->previous());
+        // Redirige a la url objetivo(generada en profile.edit) o atras según...
+        if($intended){
+            return redirect($intended);
+        }
+        return redirect()->back();
     }
 }

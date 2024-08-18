@@ -22,6 +22,9 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): Response
     {
+        //Establece como la url objetivo, la url previa
+        Redirect::setIntendedUrl(url()->previous());
+
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status'          => session('status'),
