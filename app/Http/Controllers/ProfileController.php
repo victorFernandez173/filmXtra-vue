@@ -71,6 +71,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route(RouteServiceProvider::HOME)->with('borradoCuentaExitoso', true);
+        return redirect(RouteServiceProvider::HOME)->with('borradoCuentaExitoso', true);
     }
 }
