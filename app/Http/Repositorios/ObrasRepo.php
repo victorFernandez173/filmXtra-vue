@@ -124,7 +124,7 @@ class ObrasRepo extends Controller
         return [
             'verificacionExitosa'  => session('verificacionExitosa'),
             'borradoCuentaExitoso' => session('borradoCuentaExitoso'),
-            'nGifs'                => static::obtenerUnNumDeGif(),
+            'nGifs'                => static::obtenerNumDeGif(),
             /*Citas*/
             'citaInspiring'        => Inspiring::quote(),
             'citaQuotable'         => static::citaQuotable(),
