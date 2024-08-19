@@ -6,7 +6,7 @@ import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm, usePage } from '@inertiajs/vue3';
 import AuthLayout from "@/Layouts/AuthLayout.vue";
 import AppLogoIndex from "@/Components/AppLogoIndex.vue";
-import { computed, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 import Swal from "sweetalert2";
 
 const props = defineProps({
@@ -43,6 +43,19 @@ onMounted(() => {
         });
     }
 });
+
+// funcionalidad para ocultar/mostrar el texto de los inputs de contraseñas
+let tipoCampoPassword = ref("password");
+const togglePassword = () => {
+    tipoCampoPassword.value = tipoCampoPassword.value === 'password' ? 'text' : 'password';
+    if(tipoCampoPassword.value === 'password') {
+        $('#ojoMostrar').addClass('inline-block').removeClass('hidden');
+        $('#ojoOcultar').addClass('hidden').removeClass('inline-block');
+    } else {
+        $('#ojoOcultar').addClass('inline-block').removeClass('hidden');
+        $('#ojoMostrar').addClass('hidden').removeClass('inline-block');
+    }
+};
 </script>
 
 <template>
@@ -81,10 +94,17 @@ onMounted(() => {
                         </div>
                         <!--             Contraseña               -->
                         <div>
-                            <input-label for="password" value="Contraseña" class="block mb-2 text-sm font-medium text-gray-900" />
+                            <input-label for="password" value="Contraseña" class="mb-2 text-sm font-medium text-gray-900 inline-block" />&nbsp;
+                            <svg id="ojoMostrar" @click="togglePassword" class="inline-block hover:cursor-pointer w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-width="2" d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"/>
+                                <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                            </svg>
+                            <svg id="ojoOcultar" @click="togglePassword" class="hidden hover:cursor-pointer w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.933 13.909A4.357 4.357 0 0 1 3 12c0-1 4-6 9-6m7.6 3.8A5.068 5.068 0 0 1 21 12c0 1-3 6-9 6-.314 0-.62-.014-.918-.04M5 19 19 5m-4 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                            </svg>
                             <text-input
                                 id="password"
-                                type="password"
+                                :type="tipoCampoPassword"
                                 placeholder="••••••••"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm focus:ring-flamingo focus:border-flamingo block w-full p-2.5"
                                 v-model="form.password"
