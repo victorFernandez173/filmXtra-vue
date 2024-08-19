@@ -27,12 +27,14 @@ const submit = () => {
 let tipoCampoPassword = ref("password");
 const togglePassword = () => {
     tipoCampoPassword.value = tipoCampoPassword.value === 'password' ? 'text' : 'password';
+    let ojoAbierto = $('#ojoMostrar');
+    let ojoCerrado = $('#ojoOcultar')
     if(tipoCampoPassword.value === 'password') {
-        $('#ojoMostrar').addClass('inline-block').removeClass('hidden');
-        $('#ojoOcultar').addClass('hidden').removeClass('inline-block');
+        ojoAbierto.addClass('inline-block').removeClass('hidden');
+        ojoCerrado.addClass('hidden').removeClass('inline-block');
     } else {
-        $('#ojoOcultar').addClass('inline-block').removeClass('hidden');
-        $('#ojoMostrar').addClass('hidden').removeClass('inline-block');
+        ojoCerrado.addClass('inline-block').removeClass('hidden');
+        ojoAbierto.addClass('hidden').removeClass('inline-block');
     }
 };
 </script>
