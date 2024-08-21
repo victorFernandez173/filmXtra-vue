@@ -59,6 +59,6 @@ class Handler extends ExceptionHandler
     // PARA DEBUGUEO CON MENSAJES DE ERROR NO CLAROS
     //    #[NoReturn] public function report(Throwable $e): void
     //    {
-    //        dd($e);
+    //         dd($e);
     //    }
 }
