@@ -92,7 +92,7 @@ const closeModal = () => {
                         :disabled="form.processing"
                         @click="deleteUser"
                     >
-                        Borrar cuenta
+                        BORRAR
                     </danger-button>
                 </div>
             </div>
