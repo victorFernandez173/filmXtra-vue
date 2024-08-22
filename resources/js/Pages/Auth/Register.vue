@@ -69,7 +69,7 @@ const togglePassword = () => {
                                 v-model="form.usuario"
                                 autocomplete="usuario"
                             />
-                            <input-error class="mt-2" :message="form.errors.name"/>
+                            <input-error class="mt-2" :message="form.errors.usuario"/>
                         </div>
 
                         <div class="mt-4">
