@@ -31,7 +31,7 @@ function alertaDarLikeSinLogin(){
     <div class="w-full">
         <p class="font-semibold">
             {{ critica.usuario.usuario }}:
-            <span class="font-normal">
+            <span class="font-normal break-all">
                 {{ critica.critica }}
             </span>
         </p>
