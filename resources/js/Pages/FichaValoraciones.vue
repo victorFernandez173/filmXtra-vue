@@ -91,7 +91,7 @@ const form2 = useForm({
                     <form @submit.prevent="form2.post(route('evaluar'),
                     {
                                 preserveScroll: true,
-                                only: ['mediaEvaluaciones', 'evaluacionUsuario']
+                                only: ['mediaEvaluaciones', 'evaluacionUsuario', 'obra']
                            }
                     )"
                     class="col-span-1 md:col-span-3 lg:col-span-2 flex justify-center flex-wrap p-1 border-b md:border-r md:border-b-0 content-center">
