@@ -70,7 +70,7 @@ const { stop } = useIntersectionObserver(
             <!-- Contenido -->
             <div class="lg:w-[86vw] xl:w-[87vw] 2xl:w-[89vw] min-[1800px]:w-[90vw] min-[2000px]:w-[91vw] mx-auto">
                 <!-- Título -->
-                <h1 class="w-full mt-2 font-oswald text-center text-5xl h-[8vh] text-flamingo">
+                <h1 class="w-full mt-2 mb-12 font-oswald text-center text-5xl h-[8vh] text-flamingo">
                     Top FilmXtra
                 </h1>
                 <!-- Formulario de filtrado -->

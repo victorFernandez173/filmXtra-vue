@@ -29,9 +29,9 @@ const props = defineProps({
         <!-- Contenido -->
         <div class="lg:w-[87vw] xl:w-[89vw] 2xl:w-[92vw] mx-auto">
             <!-- Título -->
-            <div class="m-4">
-                <h1 class="w-full font-oswald text-center text-4xl md:text-5xl h-[8vh] text-flamingo">
-                    Top Valoraciones FilmXtra
+            <div class="mb-8 mt-2">
+                <h1 class="w-full font-oswald text-center text-4xl sm:text-5xl h-[8vh] text-flamingo">
+                    Top Valoraciones
                 </h1>
             </div>
             <!-- Seccion Principal con las fichas -->
