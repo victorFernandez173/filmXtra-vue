@@ -2,7 +2,7 @@
 import { Link, useForm, usePage } from "@inertiajs/vue3";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
-import {onMounted, onUpdated, ref} from "vue";
+import {nextTick, onMounted, onUpdated, ref} from "vue";
 import Poster from "@/Components/Poster.vue";
 import ModalBusqueda from "@/Components/ModalBusqueda.vue";
 import Swal from "sweetalert2";
@@ -47,6 +47,10 @@ const submit = () => {
 // Si hay resultados || si estamos en pantalla movil y hemos pulsado el boton de busqueda, para mostrar modal resultados:
 const mostrarModalResultados = function (res) {
     busquedaExito.value = true;
+    nextTick(()=>{
+        $('#navbar-search-mobile-button').blur();
+        $('#navbar-search-sm').focus();
+    })
     resultados.value = res;
 };
 // busquedaExito = reactiva para renderizar el bloque de resultados
