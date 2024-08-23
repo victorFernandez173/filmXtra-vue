@@ -43,9 +43,10 @@ class GithubAuthController extends Controller
                 'usuario'                => $gitUser->name,
                 'email'                  => $gitUser->email,
                 'login_tipo_id'          => LoginTipo::GIT_TIPO,
-                'email_verificado_fecha' => Date::now()
             ]
         );
+        $user->email_verificado_fecha = now();
+        $user->save();
 
         Mail::to($user->email)->send(new SocialiteLoginMail($user));
         Auth::login($user);
