@@ -35,7 +35,7 @@ class GithubAuthController extends Controller
     public function handleCallback(): RedirectResponse
     {
         $gitUser = Socialite::driver('github')->user();
-        $user = Usuario::firstOrCreate(
+        $user = Usuario::firstOrNew(
             [
                 'social_id' => $gitUser->id,
             ],

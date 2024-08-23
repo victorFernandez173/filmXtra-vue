@@ -34,7 +34,7 @@ class GoogleAuthController extends Controller
     public function handleCallback()
     {
         $googleUser = Socialite::driver('google')->user();
-        $user = Usuario::updateOrCreate(
+        $user = Usuario::firstOrNew(
             [
                 'social_id' => $googleUser->id,
             ],
