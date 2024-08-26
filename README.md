@@ -68,3 +68,6 @@ php artisan migrate
 ```
   source /home/TUDIRECTORIODEUSUARIO/RUTADELPROYECTOP/public/inserts.sql
  ```
+12. Aun te faltarían cosas por hacer para que todas las funcionalidades del proyecto vayan bien:
++ Tendrías que configurar la cuenta de email, por ejemplo con gmail: https://medium.com/@akhmadshaleh/sending-email-with-laravel-10-and-gmail-49be01c2bc8f
++ también tendrías que configurar o'auth/socialite para que el login se pueda hacer con github o google: https://dev.to/ashrakt_amin/social-login-with-laravel-socialite-google-and-facebook-37eg
