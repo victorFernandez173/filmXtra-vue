@@ -44,21 +44,27 @@ cp .env.example .env
    + DB_USERNAME para tu usuario de bbdd
    + DB_PASSWORD su clave
    + DB_DATABASE el nombre que quieras para la bbdd
-7. Genera una clave de app
+6. Genera una clave de app
 ```
 php artisan key:generate
 ``` 
-7. Aplica las migraciones
-```
-php artisan migrate
-``` 
-8. Aplica los inserts (necesarios)
+
+7. Aplica los inserts (necesarios)
 + En el directorio /public encontraras inserts.sql 
-9. Arranca el servidor de desarrollo
+8. Arranca el servidor de desarrollo
 ```
 php artisan serve
 ```
-10. Arranca vite para que los assets se compilen en tiempo real
+9. Arranca vite para que los assets se compilen en tiempo real
 ```
 npm run dev
 ```
+10. Aplica las migraciones
+```
+php artisan migrate
+```
+11. Aplica los inserts (/public/inserts.sql)
++ Este es un fichero con inserts necesarios para toda la web, puedes por ejemplo aplicarlo desde mysql server:
+```
+  source /home/TUDIRECTORIODEUSUARIO/RUTADELPROYECTOP/public/inserts.sql
+ ```
