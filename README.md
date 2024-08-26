@@ -18,6 +18,9 @@ Proyecto propio sin animo de lucro y puramente didáctico de una web de cine res
 
 Testeada y funcionando
 
+Veamos algunas capturas:
+
+
 
 ## instalación 
 ### tienes que tener php, composer, npm y mysql 
