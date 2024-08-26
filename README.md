@@ -40,7 +40,7 @@ npm install
 cp .env.example .env
 ```
 5. Añade las variables necesarias para la configuración 
-(te indico las más importantes para que la app funcione...):
+(te indico las más importantes para que la app funcione, puede que se me pase algo...):
    + DB_USERNAME para tu usuario de bbdd
    + DB_PASSWORD su clave
    + DB_DATABASE el nombre que quieras para la bbdd
@@ -68,6 +68,6 @@ php artisan migrate
 ```
   source /home/TUDIRECTORIODEUSUARIO/RUTADELPROYECTOP/public/inserts.sql
  ```
-12. Aun te faltarían cosas por hacer para que todas las funcionalidades del proyecto vayan bien:
+12. Aun te faltarían cosas por hacer para que todas las funcionalidades del proyecto vayan bien (te dejo tutoriales ejemplo):
 + Tendrías que configurar la cuenta de email, por ejemplo con gmail: https://medium.com/@akhmadshaleh/sending-email-with-laravel-10-and-gmail-49be01c2bc8f
 + también tendrías que configurar o'auth/socialite para que el login se pueda hacer con github o google: https://dev.to/ashrakt_amin/social-login-with-laravel-socialite-google-and-facebook-37eg
