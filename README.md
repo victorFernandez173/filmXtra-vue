@@ -1,4 +1,7 @@
-<a href="URL_REDIRECT" target="blank"><img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/images/logo-blanco.png?raw=true" height="100" /></a>
+<p align="center">
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/images/logo-blanco.png?raw=true" height="100" />
+</p>
+
 
 # filmxtra
 
@@ -40,7 +43,7 @@ cp .env.example .env
 (te indico las más importantes para que la app funcione...):
    + DB_USERNAME para tu usuario de bbdd
    + DB_PASSWORD su clave
-   + 
+   + DB_DATABASE el nombre que quieras para la bbdd
 7. Genera una clave de app
 ```
 php artisan key:generate
