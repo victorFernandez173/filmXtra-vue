@@ -47,6 +47,8 @@ cp .env.example .env
    + DB_USERNAME para tu usuario de bbdd
    + DB_PASSWORD su clave
    + DB_DATABASE el nombre que quieras para la bbdd
+   
+
 6. Genera una clave de app
 ```
 php artisan key:generate
@@ -69,7 +71,7 @@ php artisan migrate
 11. Aplica los inserts (/public/inserts.sql)
 + Este es un fichero con inserts necesarios para toda la web, puedes por ejemplo aplicarlo desde mysql server:
 ```
-  source /home/TUDIRECTORIODEUSUARIO/RUTADELPROYECTOP/public/inserts.sql
+  source /home/TUDIRECTORIODEUSUARIO/RUTADELPROYECTO/public/inserts.sql
  ```
 12. Aun te faltarían cosas por hacer para que todas las funcionalidades del proyecto vayan bien (te dejo tutoriales ejemplo):
 + Tendrías que configurar la cuenta de email, por ejemplo con gmail (en el código ya estaría todo configurado salvo la variables de entorno correspondientes, por lo que solo tendrías que hacer las gestiones pertienentes con google gmail y configurar dichas variables)
