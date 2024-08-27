@@ -73,6 +73,7 @@ Veamos algunas capturas:
 1. Clona el proyecto (también puedes via ssh dada una configuración adecuada)
 ```
 git clone https://github.com/victorFernandez173/filmXtra-vue.git
+cd filmXtra-vue
 ```
 2. Instalar composer dependencias
 ```
