@@ -72,5 +72,13 @@ php artisan migrate
   source /home/TUDIRECTORIODEUSUARIO/RUTADELPROYECTOP/public/inserts.sql
  ```
 12. Aun te faltarían cosas por hacer para que todas las funcionalidades del proyecto vayan bien (te dejo tutoriales ejemplo):
-+ Tendrías que configurar la cuenta de email, por ejemplo con gmail: https://medium.com/@akhmadshaleh/sending-email-with-laravel-10-and-gmail-49be01c2bc8f
-+ también tendrías que configurar o'auth/socialite para que el login se pueda hacer con github o google: https://dev.to/ashrakt_amin/social-login-with-laravel-socialite-google-and-facebook-37eg
++ Tendrías que configurar la cuenta de email, por ejemplo con gmail (en el código ya estaría todo configurado salvo la variables de entorno correspondientes, por lo que solo tendrías que hacer las gestiones pertienentes con google gmail y configurar dichas variables)
+  * Variables a configurar en el .env: MAIL_MAILER, MAIL_HOST, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD, MAIL_ENCRYPTION, MAIL_FROM_ADDRESS, MAIL_FROM_NAME.
+  
+  * Tutorial ejemplo de configuración: https://medium.com/@akhmadshaleh/sending-email-with-laravel-10-and-gmail-49be01c2bc8f
+
+
+
++ También tendrías que configurar o'auth/socialite para que el login se pueda hacer con github o google (+ de lo mismo: las rutas y configuración necesaria ya estarían en el código, solo tendrías que tocar las variables de entorno clave en función de los datos que te den en GitHub):  
+  + Variables a configurar: GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, GITHUB_REDIRECT, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REDIRECT.
+  + Tutorial de ejemplo: https://dev.to/ashrakt_amin/social-login-with-laravel-socialite-google-and-facebook-37eg
