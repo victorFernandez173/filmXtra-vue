@@ -21,46 +21,46 @@ Testeada y funcionando
 Veamos algunas capturas:
 
 <p align="center">
-    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/01.png?raw=true" height="100" />
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/01.png?raw=true" height="233" />
 </p>
 <p align="center">
-    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/02.png?raw=true" height="100" />
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/02.png?raw=true" height="233" />
 </p>
 <p align="center">
-    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/03.png?raw=true" height="100" />
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/03.png?raw=true" height="233" />
 </p>
 <p align="center">
-    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/04.png?raw=true" height="100" />
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/04.png?raw=true" height="233" />
 </p>
 <p align="center">
-    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/04b.png?raw=true" height="100" />
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/04b.png?raw=true" height="233" />
 </p>
 <p align="center">
-    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/05.png?raw=true" height="100" />
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/05.png?raw=true" height="233" />
 </p>
 <p align="center">
-    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/06.png?raw=true" height="100" />
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/06.png?raw=true" height="233" />
 </p>
 <p align="center">
-    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/07.png?raw=true" height="100" />
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/07.png?raw=true" height="233" />
 </p>
 <p align="center">
-    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/08.png?raw=true" height="100" />
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/08.png?raw=true" height="233" />
 </p>
 <p align="center">
-    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/09.png?raw=true" height="100" />
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/09.png?raw=true" height="233" />
 </p>
 <p align="center">
-    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/10.png?raw=true" height="100" />
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/10.png?raw=true" height="233" />
 </p>
 <p align="center">
-    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/11.png?raw=true" height="100" />
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/11.png?raw=true" height="233" />
 </p>
 <p align="center">
-    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/12.png?raw=true" height="100" />
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/12.png?raw=true" height="233" />
 </p>
 <p align="center">
-    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/13.png?raw=true" height="100" />
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/13.png?raw=true" height="233" />
 </p>
 
 
