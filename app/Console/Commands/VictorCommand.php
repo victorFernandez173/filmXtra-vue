@@ -26,6 +26,6 @@ class VictorCommand extends Command
      */
     public function handle(): void
     {
-        Log::info('Hola que tal');
+        $this->info('hhola queu tal');
     }
 }
