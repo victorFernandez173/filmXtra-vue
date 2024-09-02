@@ -15,6 +15,6 @@
     </p>
     <br>
     <p class="azul-oscuro" style="color: #2a4467; font-weight: 300;">
-        Si no ha solicitado el restablecimiento de contraseña, omita este mensaje de correo electrónico.
+        Si no has solicitado el restablecimiento de contraseña, ignora este mensaje de correo electrónico.
     </p>
 @endsection

@@ -15,6 +15,6 @@
     @endif
     <br><br>
     <p class="azul-oscuro" style="color: #2a4467; font-weight: 300;">
-        Si no ha creado una cuenta, no se requiere ninguna acción adicional.
+        Si no has creado una cuenta, no se requiere ninguna acción adicional.
     </p>
 @endsection

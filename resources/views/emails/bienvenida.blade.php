@@ -9,6 +9,6 @@
     </p>
     <br>
     <p class="azul-oscuro" style="color: #2a4467; font-weight: 300;">
-        Ahora ya podrás acceder a todas las funcionalidades de la web como poner críticas, dar likes a críticas y mucho más...
+        Ahora ya podrás acceder a todas las funcionalidades de la web como poner críticas y evaluaciones, dar likes...
     </p>
 @endsection

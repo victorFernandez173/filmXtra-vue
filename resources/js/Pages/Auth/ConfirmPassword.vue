@@ -36,7 +36,7 @@ const submit = () => {
                         Confirmación de la contraseña
                     </h1>
                     <h3 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-lg">
-                        Área segura. Por favor, confirme su contraseña antes de continuar.
+                        Área segura. Por favor, confirma tu contraseña antes de continuar.
                     </h3>
                     <form class="space-y-4 md:space-y-6" @submit.prevent="submit">
                         <div>
