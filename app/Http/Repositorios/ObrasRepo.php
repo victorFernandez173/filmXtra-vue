@@ -96,7 +96,7 @@ class ObrasRepo extends Controller
     }
 
     /**
-     * Genera un array con 24 ids al azar
+     * Genera un array con 12 ids al azar
      * que serán las películas cargadas en Index
      * @throws Exception
      */
@@ -104,7 +104,7 @@ class ObrasRepo extends Controller
     {
         $numPeliculas = Obra::count();
         $peliculasId = [];
-        for ($i = 0; $i < 24; $i++) {
+        for ($i = 0; $i < 12; $i++) {
             $aleatorio = random_int(1, $numPeliculas);
             while (in_array($aleatorio, $peliculasId)) {
                 $aleatorio = random_int(1, $numPeliculas);
