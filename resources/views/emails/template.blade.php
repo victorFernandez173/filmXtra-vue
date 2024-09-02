@@ -90,16 +90,10 @@
             <td>
                 <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
                     <tr style="padding-bottom: 30px;">
-                        <td align="left" valign="middle" style="padding-top: 40px;  padding-bottom: 40px; padding-left: 40px;">
+                        <td align="center" valign="middle" style="padding-top: 40px;  padding-bottom: 40px;">
                             <a href="{{route('/')}}" target="_blank">
-                                <img src="{{$message->embed($logo)}}" width="110px" alt="logo filmxtra"
-                                     style="display: block; float: left;"/>
-                            </a>
-                        </td>
-                        <td align="right" valign="middle" style="padding-top: 40px; padding-bottom: 40px; padding-right: 40px;">
-                            <a href="{{route('/')}}" target="_blank">
-                                <img src="{{$message->embed($logo)}}" width="110px" alt="logo filmxtra"
-                                     style="display: block; float: right;"/>
+                                <img src="{{$message->embed($logo)}}" width="177px" alt="logo filmxtra"
+                                     style="display: block;"/>
                             </a>
                         </td>
                     </tr>
