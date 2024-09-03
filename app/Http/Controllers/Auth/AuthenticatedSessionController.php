@@ -25,13 +25,13 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): Response
     {
-        //Establece como la url objetivo, la url de origen
+        // Establece como la url objetivo, la url de origen
         Redirect::setIntendedUrl(url()->previous());
 
         return Inertia::render('Auth/Login', [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
-            //Numero de gif en caso de que haya mensaje de reset password
+            // Numero de gif en caso de que haya mensaje de reset password
             'nGifs' => $this->obtenerNumDeGif(),
         ]);
     }
@@ -54,6 +54,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        // Si hemos entrado en el perfil, se ha generado $intended como previous()
         $intended = Redirect::getIntendedUrl();
 
         Auth::guard('web')->logout();
@@ -62,7 +63,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        // Redirige a la url objetivo(generada en profile.edit) o atras según...
+        // Redirige a la url objetivo(generada en profile.edit) o atras...
         if($intended){
             return redirect($intended);
         }
