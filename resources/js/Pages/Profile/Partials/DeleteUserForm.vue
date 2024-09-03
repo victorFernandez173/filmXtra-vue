@@ -78,7 +78,7 @@ const closeModal = () => {
                         @keyup.enter="deleteUser"
                     />
 
-                    <input-error v-if="$page.props.auth.user.login_tipo_id === 1" :message="form.errors.password" class="mt-2" />
+                    <input-error v-if="$page.props.auth.user.login_tipo_id === 1" :message="form.errors.password" class="mt-2 text-center" />
                 </div>
 
                 <div class="mt-6 flex justify-end">
