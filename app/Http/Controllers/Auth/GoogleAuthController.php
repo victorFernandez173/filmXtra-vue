@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Mail\SocialiteLoginMail;
 use App\Models\LoginTipo;
 use App\Models\Usuario;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\RedirectResponse;
+use Log;
 use Mail;
 use Redirect;
 
@@ -21,9 +23,6 @@ class GoogleAuthController extends Controller
      */
     public function redirectToProvider()
     {
-        //Establece como la url objetivo, la url de origen
-        Redirect::setIntendedUrl(url()->previous());
-
         return Socialite::driver('google')->with(["prompt" => "select_account"])->redirect();
     }
 
@@ -49,6 +48,6 @@ class GoogleAuthController extends Controller
 
         Mail::to($user->email)->send(new SocialiteLoginMail($user));
         Auth::login($user);
-        return redirect()->intended();
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 }

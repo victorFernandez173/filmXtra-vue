@@ -22,9 +22,6 @@ class GithubAuthController extends Controller
      */
     public function redirectToProvider()
     {
-        //Establece como la url objetivo, la url de origen
-        Redirect::setIntendedUrl(url()->previous());
-
         return Socialite::driver('github')->redirect();
     }
 
