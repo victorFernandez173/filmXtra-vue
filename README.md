@@ -5,14 +5,21 @@
 
 # filmxtra
 
-Proyecto propio sin animo de lucro y puramente didáctico de una web de cine responsiva con diferentes funcionalidades basada en laravel 11, vue 3 e inertia: 
+Proyecto propio sin ánimo de lucro y puramente didáctico de una web de cine responsiva con diferentes funcionalidades basada en laravel 11, vue 3 e inertia: 
 
-- Login y registro de usuarios con emails de verificacion, bienvenida, eliminación de cuenta...
-- Uso de librerías Node variadas para diferentes funcionalidades: jquery, axios, sweetalert2, flowbite, dayjs...
-- Responsividad global para todos los tamaños de pantalla
-- Estilos con tailwind
-- Control vía middleware de las posibilidades de accion de los usuarios
-- Uso de librerias variadas de composer: o'auth para el acceso mediante Google/Git...
+- Responsividad global para todos los tamaños de pantalla y estilos basada en tailwind y su sistema de clases.
+- Login y registro de usuarios basado en breeze de laravel: contraseñas hasheadas, recuperación y modificación de contraseñas, envio de email de validación de cuenta...
+- Sistema de control de eventos de laravel aplicado para envío de emails al: registrarse, validar cuenta o borrar cuenta.
+- Uso de librerías Node variadas para diferentes funcionalidades: 
+  - jquery
+  - axios: usuado en varias peticiones como por ejemplo para el sistema de páginación por scrolling con vue useintersectionobserver... 
+  - sweetalert2: para embellecer los alerts informativos que usa la web con gifs... 
+  - flowbite: componente slider del index 
+  - dayjs: para el uso de fechas relativas en la criticas de las películas
+- Control vía middleware de las posibilidades de accion de los usuarios: acceso a contenidos que requieren login o validación de email, límite de peticiones por minuto...
+- Uso de librerias variadas de composer: 
+  - o'auth para el acceso mediante Google/Github...
+  - eloquent/sluggable para urls más legibles
 - Paginación por scrolling infinita con cursor de laravel en sección top pero también paginación tradicional...
 - Elementos reactivos vue3...
 
@@ -88,6 +95,11 @@ Veamos algunas capturas:
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/13.png?raw=true" height="400" />
     <br>Ficha críticas película (tablet)
+</p>
+<br>
+<p align="center">
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/14.png?raw=true" height="400" />
+    <br>Urls SEO friendly 
 </p>
 <br>
 
