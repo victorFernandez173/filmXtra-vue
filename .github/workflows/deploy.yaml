@@ -19,6 +19,8 @@ jobs:
           php-version: '8.3'
 
       - name: Install dependencies Node
+        with:
+          node-version: '20'
         run: npm run build
 
       - name: Install dependencies Composer
