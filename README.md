@@ -22,6 +22,7 @@ Proyecto propio sin ánimo de lucro y puramente didáctico de una web de cine re
   - eloquent/sluggable para urls más legibles
 - Paginación por scrolling infinita con cursor de laravel en sección top pero también paginación tradicional...
 - Elementos reactivos vue3...
+- Páginas de error personalizadas
 
 Testeada y funcionando
 
@@ -100,6 +101,11 @@ Veamos algunas capturas:
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/13.png?raw=true" height="400" />
     <br>Ficha críticas película (tablet)
+</p>
+<br>
+<p align="center">
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/15.png?raw=true" height="400" />
+    <br>Pagina error 404 personalizada
 </p>
 <br>
 
