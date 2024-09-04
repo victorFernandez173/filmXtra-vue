@@ -105,7 +105,7 @@ Veamos algunas capturas:
 <br>
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/15.png?raw=true" height="400" />
-    <br>Pagina error 404 personalizada
+    <br>Pagina error 404 personalizada (escritorio)
 </p>
 <br>
 
