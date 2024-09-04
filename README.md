@@ -22,46 +22,74 @@ Veamos algunas capturas:
 
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/01.png?raw=true" height="400" />
+    <br>Pantalla de bienvenida (escritorio)
 </p>
+<br>
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/02.png?raw=true" height="400" />
+    <br>Pantalla de bienvenida con menú login desplegado (movil)
 </p>
+<br>
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/03.png?raw=true" height="400" />
+    <br>Pantalla de login (escritorio)
 </p>
+<br>
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/04.png?raw=true" height="400" />
+    <br>Pantalla de registro (escritorio)
 </p>
+<br>
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/04b.png?raw=true" height="400" />
+    <br>Pantalla de login via google (tablet)
 </p>
+<br>
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/05.png?raw=true" height="400" />
+    <br>Mensaje confirmación registro y email validación enviado
 </p>
+<br>
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/06.png?raw=true" height="400" />
+    <br>Email validación en bandeja correo 
 </p>
+<br>
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/07.png?raw=true" height="400" />
+    <br>Email validado, mensaje sweetalert2 de vuelta al index (escritorio)
 </p>
+<br>
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/08.png?raw=true" height="400" />
+    <br>Seccion top filmxtra, ordenadas por evaluación media y con paginación por scrolling (móvil)
 </p>
+<br>
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/09.png?raw=true" height="400" />
+    <br>Sección valoraciones, con orden por numero de valoraciones y paginación tradicional numeros(escritorio)
 </p>
+<br>
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/10.png?raw=true" height="400" />
+    <br>Ficha de película (escritorio)
 </p>
+<br>
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/11.png?raw=true" height="400" />
+    <br>Ficha de críticas/evaluaciones de película (escritorio)
 </p>
+<br>
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/12.png?raw=true" height="400" />
+    <br>Modal de búsqueda desplegado y mostrando resultados (tablet) 
 </p>
+<br>
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/13.png?raw=true" height="400" />
+    <br>Ficha críticas película (tablet)
 </p>
+<br>
 
 
 
