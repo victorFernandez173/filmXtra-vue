@@ -98,7 +98,7 @@ Veamos algunas capturas:
 </p>
 <br>
 <p align="center">
-    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/14.png?raw=true" height="400" />
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/14.png?raw=true" height="50" />
     <br>Urls SEO friendly 
 </p>
 <br>
