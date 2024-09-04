@@ -33,6 +33,11 @@ Veamos algunas capturas:
 </p>
 <br>
 <p align="center">
+    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/14.png?raw=true" height="50" />
+    <br>Urls SEO friendly 
+</p>
+<br>
+<p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/02.png?raw=true" height="400" />
     <br>Pantalla de bienvenida con menú login desplegado (movil)
 </p>
@@ -95,11 +100,6 @@ Veamos algunas capturas:
 <p align="center">
     <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/13.png?raw=true" height="400" />
     <br>Ficha críticas película (tablet)
-</p>
-<br>
-<p align="center">
-    <img align="center" src="https://github.com/victorFernandez173/filmXtra-vue/blob/main/public/screenshots/14.png?raw=true" height="50" />
-    <br>Urls SEO friendly 
 </p>
 <br>
 
