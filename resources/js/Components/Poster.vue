@@ -25,7 +25,7 @@ const props = defineProps({
             </div>
 
             <!-- Sección de imagen -->
-            <img :src="'/posters/' + obra.poster.ruta" :alt="obra.poster.alt" class="w-4/5 border-[10px] border-white group-hover:border-flamingo">
+            <img :src="'/posters/thumbnails/tn_' + obra.poster.ruta" :alt="obra.poster.alt" class="w-4/5 border-[10px] border-white group-hover:border-flamingo">
         </Link>
     </div>
 </template>

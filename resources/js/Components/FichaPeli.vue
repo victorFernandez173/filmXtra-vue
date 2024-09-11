@@ -22,7 +22,7 @@ function procesarNombre(nombre) {
         <!--    Poster     -->
         <div class="w-4/12 md:w-3/12">
             <Link :href="route('obra', obra.titulo_slug)">
-                <img :src="'/posters/' + obra.poster.ruta" :alt="obra.poster.alt" class="w-[97.5%] sm:w-11/12 border-[10px] border-white hover:border-flamingo">
+                <img :src="'/posters/thumbnails/tn_' + obra.poster.ruta" :alt="obra.poster.alt" class="w-[97.5%] sm:w-11/12 border-[10px] border-white hover:border-flamingo">
             </Link>
         </div>
         <!--     Info    -->

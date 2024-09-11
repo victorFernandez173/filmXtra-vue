@@ -48,7 +48,7 @@ const form2 = useForm({
             <!--Poster y boton ficha obra-->
             <div>
                 <div class="w-full flex justify-center flex-wrap items-center">
-                    <img class="w-[95%] lg:w-[98%]" :src="'/posters/' + obra.poster.ruta" :alt="obra.poster.alt">
+                    <img class="w-[95%] lg:w-[98%]" :src="'/posters/thumbnails/tn_' + obra.poster.ruta" :alt="obra.poster.alt">
                     <Estrellitas class="w-full mb-1" :mediaEvaluaciones="mediaEvaluaciones.evaluaciones_avg_evaluacion" :obra="obra"/>
                     <p class="text-black text-center"> &nbsp;&nbsp;
                         {{ parseFloat(mediaEvaluaciones.evaluaciones_avg_evaluacion).toFixed(1) }}/10 ({{ obra.evaluaciones.length }}
