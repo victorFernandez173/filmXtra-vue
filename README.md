@@ -159,7 +159,7 @@ npm run dev
 ```
 php artisan migrate
 ```
-11. Aplica los inserts (/public/inserts.sql)
+11. Aplica los inserts (/storage/app/inserts.sql)
 + Este es un fichero con inserts necesarios para toda la web, puedes por ejemplo aplicarlo desde mysql server:
 ```
   source /home/TUDIRECTORIODEUSUARIO/RUTADELPROYECTO/public/inserts.sql
