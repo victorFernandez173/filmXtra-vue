@@ -24,6 +24,7 @@
         "@heroicons/vue": "^2.0.17",
         "@vueuse/core": "^10.11.0",
         "dayjs": "^1.11.11",
+        "flag-icons": "^7.2.3",
         "sweetalert2": "^11.6.13"
     }
 }

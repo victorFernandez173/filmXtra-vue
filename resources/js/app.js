@@ -1,5 +1,6 @@
 import './bootstrap';
 import '../css/app.css';
+import '/node_modules/flag-icons/css/flag-icons.min.css';
 import jQuery from 'jquery';
 window.$ = jQuery;
 
