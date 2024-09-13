@@ -35,8 +35,9 @@
     "loguearse" : "Loguearse",
     "registrarse" : "Registrarse",
     "cerrar_sesion" : "Cerrar sesión",
-    "" : "",
-    "" : "",
+
+    "pagination.previous" : "&laquo; Anterior",
+    "pagination.next":"Siguiente &raquo;",
     "" : "",
     "" : "",
     "" : "",

@@ -34,5 +34,8 @@
   "logueate" : "Login",
   "loguearse" : "Login",
   "registrarse" : "Register",
-  "cerrar_sesion" : "Log out"
+  "cerrar_sesion" : "Log out",
+
+  "pagination.previous" : "&laquo; Prev",
+  "pagination.next":"Next &raquo;"
 }
