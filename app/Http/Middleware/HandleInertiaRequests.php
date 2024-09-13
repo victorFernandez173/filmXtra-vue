@@ -40,7 +40,7 @@ class HandleInertiaRequests extends Middleware
                 'location' => $request->url(),
             ],
             'lang' => [
-                'customLang' => session('userCustomLocale') ? session('userCustomLocale') : config('app.locale'),
+                'customLang' => app()->getLocale(),
             ],
         ];
     }
