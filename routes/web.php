@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CriticasController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ObtenerObraController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MainController;
@@ -43,6 +44,9 @@ Route::middleware('auth')
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
+
+// Ficha de obra
+Route::get('/lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang');
 
 // Resto rutas auth
 require __DIR__ . '/auth.php';
