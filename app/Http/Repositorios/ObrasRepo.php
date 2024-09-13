@@ -139,7 +139,7 @@ class ObrasRepo extends Controller
      */
     static function obtenerObrasIndex()
     {
-        return Obra::select(['id', 'titulo', 'titulo_slug'])
+        return Obra::select(['id', 'titulo', 'titulo_original', 'titulo_slug'])
             ->with('poster:id,obra_id,ruta,alt')
             ->whereIn('id', static::obtenerObrasAleatorias())
             ->get()
@@ -170,6 +170,7 @@ class ObrasRepo extends Controller
         return Obra::select([
             'id',
             'titulo',
+            'titulo_original',
             'titulo_slug',
             'pais',
             'duracion',

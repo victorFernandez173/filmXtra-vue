@@ -93,7 +93,7 @@ import { Link } from "@inertiajs/vue3";
                         <span class="sr-only">Cuenta de GitHub</span>
                     </a>
                     <!-- Si hubiera más de dos idiomas aquí lógico sería v-for array de idiomas disponibles -->
-                    <Link v-if="$page.props.lang.customLang === 'en'" :href="route('lang', { lang: 'es' })" class="leading-5">
+                    <Link v-if="$page.props.lang.appLocale === 'en'" :href="route('lang', { lang: 'es' })" class="leading-5">
                         <span class="fi fi-es fis"></span>
                         <span class="sr-only">Bandera idioma español</span>
                     </Link>

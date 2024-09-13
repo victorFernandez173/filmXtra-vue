@@ -1,0 +1,14 @@
+{
+  "genero": "Genre",
+  "decada": "Decade",
+  "pais": "Country",
+
+  "en_el_cine" : "In movies",
+  "sobre_el_cine" : "About movies",
+  "inspirate" : "Get inspired",
+
+  "me_gusta" : "Likes",
+
+  "reparto" : "Cast",
+  "productora" : "Film production company"
+}

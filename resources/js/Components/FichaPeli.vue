@@ -29,7 +29,7 @@ function procesarNombre(nombre) {
         <div class="w-8/12 md:w-7/12 pr-2 md:pr-4 lg:[&>p]:text-lg">
             <Link :href="route('obra', obra.titulo_slug)">
                 <h1 class="font-bold text-flamingo text-lg md:text-xl lg:text-2xl mt-2 lg:mt-4 mb-1 lg:mb-2 hover:underline">
-                    {{obra.titulo}}
+                    {{ $page.props.lang.appLocale === 'es' ? obra.titulo : obra.titulo_original }}
                 </h1>
             </Link>
             <!-- Bloque valoraciones para pantallas estrechas -->
@@ -54,7 +54,7 @@ function procesarNombre(nombre) {
             </p>
             <!--Reparto-->
             <p v-if="obra.actors.length > 0" class="truncate hidden lg:block">
-                <span>Reparto: </span>
+                <span>{{ $t('reparto') }}: </span>
                 <span v-for="(actor, i) in obra.actors">
                     {{ procesarNombre(actor.nombre) }}{{ (i + 1 < obra.actors.length ? ',&nbsp;' : '' )}}
                 </span>
@@ -62,14 +62,14 @@ function procesarNombre(nombre) {
             </p>
             <!--Géneros-->
             <p v-if="obra.generos.length > 0" class="truncate">
-                <span>Género: </span>
+                <span>{{ $t('genero') }}: </span>
                 <span v-for="(genero, i) in obra.generos">
                     {{ genero.genero }}{{ (i + 1) < obra.generos.length ? ',&nbsp;' : '' }}
                 </span>
             </p>
             <!--Productora-->
             <p class="hidden lg:block">
-                <span>Productora: </span>
+                <span>{{ $t('productora')}}: </span>
                 {{ obra.productora }}
             </p>
         </div>
