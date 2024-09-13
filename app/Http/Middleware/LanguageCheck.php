@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Log;
 use Symfony\Component\HttpFoundation\Response;
 
 class LanguageCheck
@@ -17,13 +16,13 @@ class LanguageCheck
     public function handle(Request $request, Closure $next): Response
     {
         // Si session tiene appLocale es que se ha elegido idioma manualmente
-        // Si además dicho idioma exite en los idiomas disponibles
-        // Entonces aplicamos dicho idiomas
-        // Sino, recurrimos al fallback_locale
-        if (session()->has('appLocale') and array_key_exists(session('appLocale'), config('languages'))) {
-            app()->setLocale(session('appLocale'));
+        // Si además dicho idioma existe en los idiomas disponibles
+        // Entonces aplicamos dicho idioma
+        // Sino, recurrimos al app.locale
+        if (session()->has('userCustomLocale') and array_key_exists(session('userCustomLocale'), config('languages'))) {
+            app()->setLocale(session('userCustomLocale'));
         } else {
-            app()->setLocale(config('app.fallback_locale'));
+            app()->setLocale(config('app.locale'));
         }
         return $next($request);
     }

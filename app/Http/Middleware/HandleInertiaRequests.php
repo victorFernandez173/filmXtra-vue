@@ -39,6 +39,9 @@ class HandleInertiaRequests extends Middleware
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],
+            'lang' => [
+                'customLang' => session('userCustomLocale') ? session('userCustomLocale') : config('app.locale'),
+            ],
         ];
     }
 }
