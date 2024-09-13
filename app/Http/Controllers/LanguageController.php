@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
+
 class LanguageController extends Controller
 {
     public function switchLang($lang)
@@ -9,6 +11,6 @@ class LanguageController extends Controller
         if (array_key_exists($lang, config('languages'))) {
             session(['userCustomLocale' => $lang]);
         }
-        return redirect()->back();
+        return Inertia::location(url()->previous());
     }
 }
