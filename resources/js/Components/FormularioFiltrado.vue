@@ -43,33 +43,33 @@ const annoActual = (new Date().getFullYear() + 1);
             <!-- Selects-->
             <div>
                 <select-consulta :consulta="generos" :filtro="filtros.genero" @emision="(e) => form.genero = e">
-                    Género
+                    {{ $t('genero') }}
                 </select-consulta>
             </div>
             <div>
                 <select-consulta :consulta="paises" :filtro="filtros.pais" @emision="(e) => form.pais = e">
-                    País
+                    {{ $t('pais') }}
                 </select-consulta>
             </div>
             <div>
                 <select-rango-anno :filtro="filtros.desde" :rango-annos="rangoAnnos" :limite-superior="annoActual" @emision="(e) => form.desde = e">
-                    Desde
+                    {{ $t('desde') }}
                 </select-rango-anno>
             </div>
             <div>
                 <select-rango-anno :filtro="filtros.hasta" :rango-annos="rangoAnnos" :limite-superior="annoActual" @emision="(e) => form.hasta = e">
-                    Hasta
+                    {{ $t('hasta') }}
                 </select-rango-anno>
             </div>
 
             <!-- Botones -->
             <div class="flex pt-2.5 pb-3 md:col-span-2 xl:col-span-1">
                 <primary-button :disabled="form.processing" :class="{ 'opacity-25': form.processing }">
-                    FILTRA
+                    {{ $t('filtra') }}
                 </primary-button>
                 <secondary-button @click="resetearFiltros">
                     <Link :href="route('top')">
-                        RESET
+                        {{ $t('reset') }}
                     </Link>
                 </secondary-button>
             </div>

@@ -10,5 +10,29 @@
   "me_gusta" : "Likes",
 
   "reparto" : "Cast",
-  "productora" : "Film production company"
+  "productora" : "Film production company",
+
+  "enlaces" : "Links",
+  "contacto" : "Contact",
+  "inicio" : "Welcome",
+  "top_filmxtra" : "Top Filmxtra",
+  "top_valoraciones" : "Top Reviews",
+  "cuenta" : "Profile",
+  "footer_texto" : "Explore a world full of wonderful feelings with FilmXtra, where you'll find info about many films so that you can unearth the best about your favorite films and much more.",
+  "derechos" : "All rights reserved",
+
+  "desde" : "From",
+  "hasta" : "To",
+  "filtra" : "FILTER",
+  "reset" : "RESET",
+
+  "busca" : "Search...",
+  "cerrar" : "CLOSE",
+  "resultado" : "Match",
+  "resultados" : "Matches",
+  "sin_resultados" : "No matches",
+  "logueate" : "Login",
+  "loguearse" : "Login",
+  "registrarse" : "Register",
+  "cerrar_sesion" : "Log out"
 }
