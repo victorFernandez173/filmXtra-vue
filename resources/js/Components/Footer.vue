@@ -13,43 +13,43 @@ import { Link } from "@inertiajs/vue3";
                 </div>
                 <div>
                     <h2 class="mb-6 text-sm font-semibold text-white uppercase">
-                        {{ $t('enlaces')}}
+                        {{ $t('footer.enlaces')}}
                     </h2>
                     <ul class="text-gray-500 font-medium hover:[&>li]:text-flamingo hover:[&>li]:no-underline [&>li]:mb-4">
                         <li>
                             <Link :href="route('/')" :class="$page.url === '/' ? 'text-flamingo pointer-events-none' : ''">
-                                {{ $t('inicio') }}
+                                {{ $t('footer.inicio') }}
                             </Link>
                         </li>
                         <li>
                             <Link :href="route('top')" :class="$page.url === '/top' ? 'text-flamingo pointer-events-none' : ''">
-                                {{ $t('top_filmxtra') }}
+                                {{ $t('footer.top_filmxtra') }}
                             </Link>
                         </li>
                         <li>
                             <Link :href="route('valoracionesTop')" :class="$page.url.includes('/valoraciones-top') ? 'text-flamingo pointer-events-none' : ''">
-                                {{ $t('top_valoraciones') }}
+                                {{ $t('footer.top_valoraciones') }}
                             </Link>
                         </li>
                         <li>
                             <Link v-if="$page.props.auth.user" :href="route('profile.edit')" :class="$page.url === '/profile' ? 'text-flamingo pointer-events-none' : ''">
-                                {{ $t('cuenta') }}
+                                {{ $t('footer.cuenta') }}
                             </Link>
                             <Link v-else :href="route('login')">
-                                {{ $t('cuenta') }}
+                                {{ $t('footer.cuenta') }}
                             </Link>
                         </li>
                     </ul>
                 </div>
                 <div>
-                    <h2 class="mb-6 text-sm font-semibold text-white uppercase">{{ $t('contacto') }}</h2>
+                    <h2 class="mb-6 text-sm font-semibold text-white uppercase">{{ $t('footer.contacto') }}</h2>
                     <ul class="text-gray-500 font-medium hover:[&>li]:text-flamingo">
                         <li class="mb-4">
                             <Link class="" :href="route('/')">gestion@filmxtra.org</Link>
                         </li>
                         <li>
                             <p class="px-12 sm:px-0">
-                                {{ $t('footer_texto') }}
+                                {{ $t('footer.texto') }}
                             </p>
                         </li>
                     </ul>
@@ -62,7 +62,7 @@ import { Link } from "@inertiajs/vue3";
                     <Link class="hover:text-flamingo" :href="route('/')">
                         filmXtra<span>™</span>
                     </Link>
-                    . {{ $t('derechos') }}.
+                    . {{ $t('footer.derechos') }}.
                 </span>
                 <div class="hover:[&>a]:text-flamingo flex justify-center mt-4 space-x-6 sm:margin-auto sm:mt-0 [&>a]:text-gray-500 [&>a>svg]:w-5 [&>a>svg]:h-5">
                     <a href="https://www.facebook.com/" target="_blank">

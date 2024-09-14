@@ -54,7 +54,7 @@ function procesarNombre(nombre) {
             </p>
             <!--Reparto-->
             <p v-if="obra.actors.length > 0" class="truncate hidden lg:block">
-                <span>{{ $t('reparto') }}: </span>
+                <span>{{ $t('ficha_peli.reparto') }}: </span>
                 <span v-for="(actor, i) in obra.actors">
                     {{ procesarNombre(actor.nombre) }}{{ (i + 1 < obra.actors.length ? ',&nbsp;' : '' )}}
                 </span>
@@ -62,14 +62,14 @@ function procesarNombre(nombre) {
             </p>
             <!--Géneros-->
             <p v-if="obra.generos.length > 0" class="truncate">
-                <span>{{ $t('genero') }}: </span>
+                <span>{{ $t('ficha_peli.genero') }}: </span>
                 <span v-for="(genero, i) in obra.generos">
                     {{ genero.genero }}{{ (i + 1) < obra.generos.length ? ',&nbsp;' : '' }}
                 </span>
             </p>
             <!--Productora-->
             <p class="hidden lg:block">
-                <span>{{ $t('productora')}}: </span>
+                <span>{{ $t('ficha_peli.productora')}}: </span>
                 {{ obra.productora }}
             </p>
         </div>

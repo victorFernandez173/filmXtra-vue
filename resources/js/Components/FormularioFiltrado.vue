@@ -43,33 +43,33 @@ const annoActual = (new Date().getFullYear() + 1);
             <!-- Selects-->
             <div>
                 <select-consulta :consulta="generos" :filtro="filtros.genero" @emision="(e) => form.genero = e">
-                    {{ $t('genero') }}
+                    {{ $t('form_filtrado.genero') }}
                 </select-consulta>
             </div>
             <div>
                 <select-consulta :consulta="paises" :filtro="filtros.pais" @emision="(e) => form.pais = e">
-                    {{ $t('pais') }}
+                    {{ $t('form_filtrado.pais') }}
                 </select-consulta>
             </div>
             <div>
                 <select-rango-anno :filtro="filtros.desde" :rango-annos="rangoAnnos" :limite-superior="annoActual" @emision="(e) => form.desde = e">
-                    {{ $t('desde') }}
+                    {{ $t('form_filtrado.desde') }}
                 </select-rango-anno>
             </div>
             <div>
                 <select-rango-anno :filtro="filtros.hasta" :rango-annos="rangoAnnos" :limite-superior="annoActual" @emision="(e) => form.hasta = e">
-                    {{ $t('hasta') }}
+                    {{ $t('form_filtrado.hasta') }}
                 </select-rango-anno>
             </div>
 
             <!-- Botones -->
             <div class="flex pt-2.5 pb-3 md:col-span-2 xl:col-span-1">
                 <primary-button :disabled="form.processing" :class="{ 'opacity-25': form.processing }">
-                    {{ $t('filtra') }}
+                    {{ $t('form_filtrado.filtra') }}
                 </primary-button>
                 <secondary-button @click="resetearFiltros">
                     <Link :href="route('top')">
-                        {{ $t('reset') }}
+                        {{ $t('form_filtrado.reset') }}
                     </Link>
                 </secondary-button>
             </div>
