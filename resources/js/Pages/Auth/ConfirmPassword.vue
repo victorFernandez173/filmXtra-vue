@@ -21,7 +21,7 @@ const submit = () => {
 <template>
     <Head>
         <title>
-
+            {{ $t('confirm_password.title') }}
         </title>
         <meta name="description" content="Pagina de confirmacion de password">
     </Head>

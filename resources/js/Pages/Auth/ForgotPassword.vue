@@ -26,7 +26,7 @@ const submit = () => {
 <template>
     <Head>
         <title>
-            Password olvidado
+            {{ $t('forgot_password.title') }}
         </title>
         <meta name="description" content="Página de password olvidado">
     </Head>
@@ -38,18 +38,17 @@ const submit = () => {
             <div class="w-[95%] bg-white shadow md:mt-0 sm:max-w-md xl:p-0">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-xl">
-                        ¿Has olvidado tu contraseña?
+                        {{ $t('forgot_password.olvidado') }}
                     </h1>
                     <h3 class="text-xl leading-tight tracking-tight text-gray-900 md:text-lg">
-                        Introduce tu email y te enviaremos un link para restablecer la contraseña.
+                        {{ $t('forgot_password.introduce') }}
                     </h3>
                     <form class="space-y-4 md:space-y-6" @submit.prevent="submit">
                         <div>
-                            <input-label for="email" value="Correo electrónico" class="block mb-2 text-sm font-medium text-gray-900" />
+                            <input-label for="email" :value="$t('forgot_password.label')" class="block mb-2 text-sm font-medium text-gray-900" />
                             <text-input
                                 id="email"
-                                type="email"
-                                placeholder="nombre@correo.com"
+                                :placeholder="$t('forgot_password.label')"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm focus:ring-flamingo focus:border-flamingo block w-full p-2.5"
                                 v-model="form.email"
                                 autofocus
@@ -61,7 +60,7 @@ const submit = () => {
                         </div>
                         <div class="text-center">
                             <primary-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                                Enviar email
+                                {{ $t('forgot_password.boton') }}
                             </primary-button>
                         </div>
                     </form>
