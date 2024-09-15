@@ -21,7 +21,7 @@ const submit = () => {
 <template>
     <Head>
         <title>
-            Confirmar password
+
         </title>
         <meta name="description" content="Pagina de confirmacion de password">
     </Head>
@@ -33,14 +33,14 @@ const submit = () => {
             <div class="w-[95%] bg-white shadow md:mt-0 sm:max-w-md xl:p-0">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                        Confirmación de la contraseña
+                        {{ $t('confirm_password.confirmacion') }}
                     </h1>
                     <h3 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-lg">
-                        Área segura. Por favor, confirma tu contraseña antes de continuar.
+                        {{ $t('confirm_password.area_segura') }}
                     </h3>
                     <form class="space-y-4 md:space-y-6" @submit.prevent="submit">
                         <div>
-                            <input-label for="password" value="Contraseña" class="block mb-2 text-sm font-medium text-gray-900" />
+                            <input-label for="password" :value="$t('confirm_password.label')" class="block mb-2 text-sm font-medium text-gray-900" />
                             <text-input
                                 id="password"
                                 type="password"
@@ -51,9 +51,11 @@ const submit = () => {
                             />
                             <input-error class="mt-2" :message="form.errors.password"/>
                         </div>
-                        <primary-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                            Confirmar
-                        </primary-button>
+                        <div class="text-center">
+                            <primary-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                {{ $t('confirm_password.confirmar') }}
+                            </primary-button>
+                        </div>
                     </form>
                 </div>
             </div>

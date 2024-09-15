@@ -44,5 +44,12 @@
   "navbar.cuenta" : "Profile",
 
   "pagination.previous" : "&laquo; Prev",
-  "pagination.next" : "Next &raquo;"
+  "pagination.next" : "Next &raquo;",
+
+  "confirm_password.confirmacion" : "Password confirmation",
+  "confirm_password.area_segura" : "Safe area. Please, confirm your password before proceeding.",
+  "confirm_password.title" : "Password confirmation",
+  "confirm_password.confirmar" : "Confirm",
+  "confirm_password.label" : "Password",
+  "confirm_password.password" : "Check the password"
 }
