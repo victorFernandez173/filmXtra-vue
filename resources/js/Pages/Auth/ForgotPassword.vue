@@ -56,7 +56,7 @@ const submit = () => {
                             />
                             <input-error class="mt-2" :message="form.errors.email"/>
                             <!--Para el mensaje de confirmación de envío-->
-                            <input-error v-if="status" class="mt-2" :message="'Email enviado satisfactoriamente'"/>
+                            <input-error v-if="status" class="mt-2" :message="status"/>
                         </div>
                         <div class="text-center">
                             <primary-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
