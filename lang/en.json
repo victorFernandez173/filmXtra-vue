@@ -218,5 +218,10 @@
     "reset_password.confirm_label" : "Confirm password",
     "reset_password.boton" : "Reset",
     "reset_password.tienes_cuenta" : "Already have an account?",
-    "reset_password.incia_sesion" : "Log in"
+    "reset_password.incia_sesion" : "Log in",
+    "verify_email.title" : "Verify email",
+    "verify_email.h1" : "Verify your email",
+    "verify_email.gracias" : "Thanks for refistering! Check your email to verify your account. If you don't find any emails from us, click on resend email and we'll send you another one.",
+    "verify_email.link" : "A new link to verify your account has been sent.",
+    "verify_email.reenviar" : "Resend email"
 }

@@ -218,5 +218,10 @@
     "reset_password.confirm_label" : "Confirmar contraseña",
     "reset_password.boton" : "Resetear contraseña",
     "reset_password.tienes_cuenta" : "Ya tienes cuenta?",
-    "reset_password.incia_sesion" : "¡Inicia sesión aquí!"
+    "reset_password.incia_sesion" : "¡Inicia sesión aquí!",
+    "verify_email.title" : "Verificar email",
+    "verify_email.h1" : "Verifica tu email",
+    "verify_email.gracias" : "¡Gracias por registrarte en FilmXtra! Revisa tu correo para verificar tu cuenta. Si no recibiste ningún correo, haz click en el botón de abajo y te enviaremos otro.",
+    "verify_email.link" : "Un nuevo enlace de verificacion ha sido enviado al email que introdujiste en el registro.",
+    "verify_email.reenviar" : "Reenviar email"
 }

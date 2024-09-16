@@ -23,7 +23,7 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
 <template>
     <Head>
         <title>
-            Verificar email
+            {{ $t('verify_email.title') }}
         </title>
         <meta name="description" content="Página de verificación de email">
     </Head>
@@ -35,18 +35,18 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
             <div class="w-[95%] bg-white shadow md:mt-0 sm:max-w-md xl:p-0">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                        Verifica tu email
+                        {{ $t('verify_email.h1') }}
                     </h1>
                     <h3 class="text-xl font-bold leading-tight tracking-tight text-gray-700 md:text-2xl">
-                        ¡Gracias por registrarte en FilmXtra! Revisa tu correo para verificar tu cuenta. Si no recibiste ningún correo, haz click en el botón de abajo y te enviaremos otro.
+                        {{ $t('verify_email.gracias') }}
                     </h3>
                     <h3 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-xl" v-if="verificationLinkSent">
-                        Un nuevo enlace de verificacion ha sido enviado al email que introdujiste en el registro.
+                        {{ $t('verify_email.link') }}
                     </h3>
                     <form @submit.prevent="submit">
                         <div class="mt-4 flex items-center justify-between">
                             <primary-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                                Reenviar correo
+                                {{ $t('verify_email.reenviar') }}
                             </primary-button>
                         </div>
                     </form>
