@@ -195,7 +195,7 @@
     "login.title" : "Login",
     "login.h1" : "Inicia sesión con tu cuenta",
     "login.email_label" : "Correo electrónico",
-    "login.password_label" : "Contraseña",
+    "login.password_label" : "Nueva contraseña",
     "login.contra_olvidada" : "¿Contraseña olvidada?",
     "login.inicia_sesion" : "Inicia sesión",
     "login.github" : "Inicia con Github",
@@ -210,6 +210,13 @@
     "register.confirm_label" : "Confirmar contraseña",
     "register.crear_cuenta" : "Crear cuenta",
     "register.tienes_cuenta" : "¿Ya tienes cuenta?",
-    "register.inicia_sesion" : "¡Inicia sesión aquí!"
-
+    "register.inicia_sesion" : "¡Inicia sesión aquí!",
+    "reset_password.title" : "Resetear contraseña",
+    "reset_password.h2" : "Cambiar contraseña",
+    "reset_password.email_label" : "Correo electrónico",
+    "reset_password.password_label" : "Contraseña",
+    "reset_password.confirm_label" : "Confirmar contraseña",
+    "reset_password.boton" : "Resetear contraseña",
+    "reset_password.tienes_cuenta" : "Ya tienes cuenta?",
+    "reset_password.incia_sesion" : "¡Inicia sesión aquí!"
 }

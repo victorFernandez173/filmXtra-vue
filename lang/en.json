@@ -206,9 +206,17 @@
     "register.h1" : "Create an account",
     "register.user_label" : "User",
     "register.email_label" : "Email",
-    "register.password_label" : "Password",
+    "register.password_label" : "New password",
     "register.confirm_label" : "Password confirmation",
     "register.crear_cuenta" : "Create account",
     "register.tienes_cuenta" : "Already have an account?",
-    "register.inicia_sesion" : "Log in"
+    "register.inicia_sesion" : "Log in",
+    "reset_password.title" : "Reset password",
+    "reset_password.h2" : "Reset password",
+    "reset_password.email_label" : "Email",
+    "reset_password.password_label" : "Password",
+    "reset_password.confirm_label" : "Confirm password",
+    "reset_password.boton" : "Reset",
+    "reset_password.tienes_cuenta" : "Already have an account?",
+    "reset_password.incia_sesion" : "Log in"
 }
