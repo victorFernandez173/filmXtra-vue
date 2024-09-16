@@ -227,7 +227,6 @@
     "error_404.title" : "Error 404",
     "error_404.msg" : "We can't find what you're looking for",
     "error_404.inicio" : "Go to Welcome",
-
     "error_XXX.title" : "Error :status",
     "error_XXX.h1" : "ERROR :status",
     "error_XXX.msg1" : "Looks like we have some problems",

@@ -227,7 +227,6 @@
     "error_404.title" : "Error 404",
     "error_404.msg" : "La página que buscas no existe",
     "error_404.inicio" : "Ir a inicio",
-
     "error_XXX.title" : "Error :status",
     "error_XXX.h1" : "ERROR :status",
     "error_XXX.msg1" : "Parece que estamos teniendo problemas",
