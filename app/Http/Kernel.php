@@ -21,6 +21,12 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+
+        // Estos middleware iban en el grupo 'web'
+        // Pero para errores 404 no se pasaba por ese grupo
+        // Por eso los he movido a $middleware para que el sistema de localización funcione correctamente
+        \Illuminate\Session\Middleware\StartSession::class,
+        \App\Http\Middleware\LanguageCheck::class,
     ];
 
     /**
@@ -32,8 +38,6 @@ class Kernel extends HttpKernel
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-            \Illuminate\Session\Middleware\StartSession::class,
-            \App\Http\Middleware\LanguageCheck::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
