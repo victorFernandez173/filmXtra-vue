@@ -31,7 +31,11 @@ class ConfirmablePasswordController extends Controller
             'password' => $request['password'],
         ])) {
             throw ValidationException::withMessages([
-                'password' => __('confirm_password.password'),
+                'password' => __('validation.required',
+                    [
+                        'attribute' => trans('validation.attributes.password')
+                    ]
+                ),
             ]);
         }
 

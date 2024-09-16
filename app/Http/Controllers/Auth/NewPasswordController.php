@@ -13,6 +13,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
+use Validator;
 
 class NewPasswordController extends Controller
 {
@@ -34,11 +35,19 @@ class NewPasswordController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email:rfc,dns',
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        Validator::make($request->all(),
+            [
+                'token' => 'required',
+                'email' => 'required|email:rfc,dns',
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            ],
+            [],
+            [
+                'email' => trans('validation.attributes.email'),
+                'token' => trans('validation.attributes.token'),
+                'password' => trans('validation.attributes.password'),
+            ]
+        )->validate();
 
         // Para resetear el password del usario. Si hay éxito, se modificará
         // el password de un usuario de forma persistente también en la bbdd.

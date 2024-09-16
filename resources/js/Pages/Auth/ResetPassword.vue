@@ -10,7 +10,7 @@ import AppLogoIndex from "@/Components/AppLogoIndex.vue";
 const props = defineProps({
     email: {
         type: String,
-        required: true,
+        required: false,
     },
     token: {
         type: String,
@@ -41,6 +41,7 @@ const submit = () => {
     </Head>
 
     <auth-layout>
+        {{console.log($page.props.token)}}
         <div class="flex flex-col items-center justify-center pb-16 h-screen lg:py-0">
             <!--logo filmXtra-->
             <app-logo-index />
@@ -65,10 +66,10 @@ const submit = () => {
                         <input-error class="mt-2" :message="form.errors.password"/>
                     </div>
                     <div>
-                        <input-label for="confirm-password" class="block mb-2 text-sm font-medium text-gray-900">
+                        <input-label for="password_confirmation" class="block mb-2 text-sm font-medium text-gray-900">
                             {{ $t('reset_password.password_label') }}
                         </input-label>
-                        <text-input type="password"  id="confirm-password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm focus:ring-flamingo focus:border-flamingo block w-full p-2.5" v-model="form.password_confirmation" />
+                        <text-input type="password"  id="password_confirmation" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm focus:ring-flamingo focus:border-flamingo block w-full p-2.5" v-model="form.password_confirmation" />
                         <input-error class="mt-2" :message="form.errors.password_confirmation"/>
                     </div>
                     <div>

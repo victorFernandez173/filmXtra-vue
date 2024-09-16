@@ -53,7 +53,7 @@ const submit = () => {
                         </div>
                         <div class="text-center">
                             <primary-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                                {{ $t('confirm_password.confirmar') }}
+                                {{ $t('confirm_password.boton') }}
                             </primary-button>
                         </div>
                     </form>

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
+use Validator;
 
 class PasswordResetLinkController extends Controller
 {
@@ -29,9 +30,15 @@ class PasswordResetLinkController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'email' => 'required|email',
-        ]);
+        Validator::make($request->only('email'),
+            [
+                'email' => 'required|email',
+            ],
+            [],
+            [
+                'email' => trans('validation.attributes.email'),
+            ]
+        )->validate();
 
         // Mandaremos un link de reseteo al usario. Cuando hayamos intentado mandarlo
         // examinaremos la respuesta y veremos el mensaje que hay que enseñar al usario.
@@ -46,9 +53,5 @@ class PasswordResetLinkController extends Controller
         if ($status == Password::RESET_LINK_SENT) {
             return back()->with('status', __('forgot_password.enviado'));
         }
-
-        throw ValidationException::withMessages([
-            'email' => [trans($status)],
-        ]);
     }
 }
