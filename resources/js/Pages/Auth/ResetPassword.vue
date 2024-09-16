@@ -41,7 +41,6 @@ const submit = () => {
     </Head>
 
     <auth-layout>
-        {{console.log($page.props.token)}}
         <div class="flex flex-col items-center justify-center pb-16 h-screen lg:py-0">
             <!--logo filmXtra-->
             <app-logo-index />

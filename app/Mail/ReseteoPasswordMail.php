@@ -44,7 +44,7 @@ class ReseteoPasswordMail extends Mailable
             view: 'emails.restablecimientoPassword',
             with: [
                 'usuario' => $this->notifiable,
-                'url'     => $this->url,
+                'url'     => $this->url.'/'.$this->notifiable->id,
                 'logo'    => public_path('images/logo.png'),
             ]
         );
