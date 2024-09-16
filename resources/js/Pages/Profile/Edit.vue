@@ -43,9 +43,11 @@ defineProps({
                         :status="status"
                     />
                 </div>
+
                 <div v-if="$page.props.auth.user.login_tipo_id === 1 && $page.props.auth.user.email_verificado_fecha" class="w-[95%] mb-12 p-4 sm:p-8 bg-white shadow text-center">
                     <update-password-form />
                 </div>
+
                 <div class="w-[95%] mb-12 p-4 sm:p-8 bg-white shadow text-center">
                     <delete-user-form class="m-4" />
                 </div>
