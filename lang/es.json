@@ -201,5 +201,15 @@
     "login.github" : "Inicia con Github",
     "login.google" : "Inicia con Google",
     "login.tienes_cuenta" : "¿Aún no tienes cuenta?",
-    "login.registrate" : "¡Regístrate aquí!"
+    "login.registrate" : "¡Regístrate aquí!",
+    "register.title" : "Registro",
+    "register.h1" : "Crear una cuenta",
+    "register.user_label" : "Usuario",
+    "register.email_label" : "Correo electrónico",
+    "register.password_label" : "Contraseña",
+    "register.confirm_label" : "Confirmar contraseña",
+    "register.crear_cuenta" : "Crear cuenta",
+    "register.tienes_cuenta" : "¿Ya tienes cuenta?",
+    "register.inicia_sesion" : "¡Inicia sesión aquí!"
+
 }

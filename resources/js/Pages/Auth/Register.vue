@@ -43,7 +43,7 @@ const togglePassword = () => {
 <template>
     <Head>
         <title>
-            Registro
+            {{ $t('register.title') }}
         </title>
         <meta name="description" content="Página de registro">
     </Head>
@@ -57,14 +57,14 @@ const togglePassword = () => {
             <div class="w-[95%] bg-white shadow md:mt-0 sm:max-w-md xl:p-0">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                        Crear una cuenta
+                        {{ $t('register.h1') }}
                     </h1>
                     <form class="space-y-4 md:space-y-6" @submit.prevent="submit">
                         <div class="mt-4">
-                            <input-label for="usuario" value="Usuario" class="block mb-2 text-sm font-medium text-gray-900" />
+                            <input-label for="usuario" :value="$t('register.user_label')" class="block mb-2 text-sm font-medium text-gray-900" />
                             <text-input
                                 id="usuario"
-                                placeholder="usuario"
+                                :placeholder="$t('register.user_label')"
                                 class="w-full"
                                 v-model="form.usuario"
                                 autocomplete="usuario"
@@ -73,10 +73,10 @@ const togglePassword = () => {
                         </div>
 
                         <div class="mt-4">
-                            <input-label for="email" value="Correo electrónico" class="block mb-2 text-sm font-medium text-gray-900" />
+                            <input-label for="email" :value="$t('register.email_label')" class="block mb-2 text-sm font-medium text-gray-900" />
                             <text-input
                                 id="email"
-                                placeholder="nombre@correo.com"
+                                :placeholder="$t('register.email_label')"
                                 class="w-full"
                                 v-model="form.email"
                             />
@@ -84,7 +84,7 @@ const togglePassword = () => {
                         </div>
 
                         <div class="mt-4">
-                            <input-label for="password" value="Contraseña" class="inline-block mb-2 text-sm font-medium text-gray-900" />&nbsp;
+                            <input-label for="password" :value="$t('register.password_label')" class="inline-block mb-2 text-sm font-medium text-gray-900" />&nbsp;
                             <svg id="ojoMostrar" @click="togglePassword" class="inline-block hover:cursor-pointer w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-width="2" d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"/>
                                 <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
@@ -104,7 +104,7 @@ const togglePassword = () => {
                         </div>
 
                         <div class="mt-4">
-                            <input-label for="password_confirmation" value="Confirmar contraseña" class="block mb-2 text-sm font-medium text-gray-900" />
+                            <input-label for="password_confirmation" :value="$t('register.confirm_label')" class="block mb-2 text-sm font-medium text-gray-900" />
                             <text-input
                                 id="password_confirmation"
                                 :type="tipoCampoPassword"
@@ -118,13 +118,13 @@ const togglePassword = () => {
 
                         <div class="text-center">
                             <primary-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                                Crear cuenta
+                                {{ $t('register.crear_cuenta') }}
                             </primary-button>
                         </div>
                         <p class="text-right text-sm font-light text-gray-500">
-                            ¿Ya tienes cuenta?
+                            {{ $t('register.tienes_cuenta') }}
                             <Link :href="route('login')" class="font-medium text-gray-600 hover:text-flamingo focus:outline-none focus:border-[2px] focus:border-flamingo border-[2px] border-white">
-                                ¡Inicia sesión aquí!
+                                {{ $t('register.inicia_sesion') }}
                             </Link>
                         </p>
                     </form>
