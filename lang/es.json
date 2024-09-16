@@ -223,5 +223,15 @@
     "verify_email.h1" : "Verifica tu email",
     "verify_email.gracias" : "¡Gracias por registrarte en FilmXtra! Revisa tu correo para verificar tu cuenta. Si no recibiste ningún correo, haz click en el botón de abajo y te enviaremos otro.",
     "verify_email.link" : "Un nuevo enlace de verificacion ha sido enviado al email que introdujiste en el registro.",
-    "verify_email.reenviar" : "Reenviar email"
+    "verify_email.reenviar" : "Reenviar email",
+    "error_404.title" : "Error 404",
+    "error_404.msg" : "La página que buscas no existe",
+    "error_404.inicio" : "Ir a inicio",
+
+    "error_XXX.title" : "Error :status",
+    "error_XXX.h1" : "ERROR :status",
+    "error_XXX.msg1" : "Parece que estamos teniendo problemas",
+    "error_XXX.msg2" : "Parece que ha habido algún error",
+    "error_XXX.inicio" : "Ir a inicio"
+
 }

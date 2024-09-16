@@ -223,5 +223,14 @@
     "verify_email.h1" : "Verify your email",
     "verify_email.gracias" : "Thanks for refistering! Check your email to verify your account. If you don't find any emails from us, click on resend email and we'll send you another one.",
     "verify_email.link" : "A new link to verify your account has been sent.",
-    "verify_email.reenviar" : "Resend email"
+    "verify_email.reenviar" : "Resend email",
+    "error_404.title" : "Error 404",
+    "error_404.msg" : "We can't find what you're looking for",
+    "error_404.inicio" : "Go to Welcome",
+
+    "error_XXX.title" : "Error :status",
+    "error_XXX.h1" : "ERROR :status",
+    "error_XXX.msg1" : "Looks like we have some problems",
+    "error_XXX.msg2" : "Sorry, fatal error",
+    "error_XXX.inicio" : "Go to Welcome"
 }
