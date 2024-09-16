@@ -26,8 +26,7 @@ trait APIsTrait
             // Creamos y retornamos la cita
             return '"'.$respuesta[0]['content'].'" - '.$respuesta[0]['author'];
         } catch(Throwable $e) {
-            Log::error($e->getMessage().': '.$e->getTraceAsString());
-
+            Log::error($e->getMessage());
             return static::citaSobreCine();
         }
     }
