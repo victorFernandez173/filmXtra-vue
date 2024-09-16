@@ -13,6 +13,8 @@
     "passwords.token": "This password reset token is invalid.",
     "passwords.user": "We can't find a user with that email address.",
     "VALIDATION": "VALIDATION",
+    "validation.attributes.usuario" : "user",
+    "validation.attributes.email" : "email",
     "validation.accepted": "The :attribute field must be accepted.",
     "validation.accepted_if": "The :attribute field must be accepted when :other is :value.",
     "validation.active_url": "The :attribute field must be a valid URL.",
@@ -231,5 +233,14 @@
     "error_XXX.h1" : "ERROR :status",
     "error_XXX.msg1" : "Looks like we have some problems",
     "error_XXX.msg2" : "Sorry, fatal error",
-    "error_XXX.inicio" : "Go to Welcome"
+    "error_XXX.inicio" : "Go to Welcome",
+    "update_profile.h2" : "Info",
+    "update_profile.subtitle" : "Update account info",
+    "update_profile.usuario_label" : "User",
+    "update_profile.email_label" : "Email",
+    "update_profile.boton" : "Save",
+    "update_profile.no_verificado" : "Your email address has not been verified",
+    "update_profile.reenviar_verificacion" : "Click to send a new verification email",
+    "update_profile.verificacion_enviada" : "A new verification email has been sent",
+    "update_profile.guardado" : "Data successfully stored"
 }

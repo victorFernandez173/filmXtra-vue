@@ -13,6 +13,8 @@
     "passwords.token": "Este token de restablecimiento de contraseña es inválido.",
     "passwords.user": "No se ha encontrado un usuario con esa dirección de correo.",
     "VALIDACION": "VALIDACION",
+    "validation.attributes.usuario" : "usuario",
+    "validation.attributes.email" : "correo electrónico",
     "validation.accepted": "El campo :attribute debe ser aceptado.",
     "validation.accepted_if": "El campo :attribute debe ser aceptado cuando :other sea :value.",
     "validation.active_url": "El campo :attribute debe ser una URL válida.",
@@ -231,6 +233,14 @@
     "error_XXX.h1" : "ERROR :status",
     "error_XXX.msg1" : "Parece que estamos teniendo problemas",
     "error_XXX.msg2" : "Parece que ha habido algún error",
-    "error_XXX.inicio" : "Ir a inicio"
-
+    "error_XXX.inicio" : "Ir a inicio",
+    "update_profile.h2" : "Información",
+    "update_profile.subtitle" : "Actualizar datos de cuenta",
+    "update_profile.usuario_label" : "Usuario",
+    "update_profile.email_label" : "Correo electronico",
+    "update_profile.boton" : "Guardar",
+    "update_profile.no_verificado" : "Tu email no ha sido verificado",
+    "update_profile.reenviar_verificacion" : "Clica para reenviar email de verificación",
+    "update_profile.verificacion_enviada" : "Un nuevo email de verificación ha sido enviado",
+    "update_profile.guardado" : "Datos almacenados con éxito"
 }

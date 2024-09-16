@@ -24,41 +24,36 @@ const form = useForm({
     <section>
         <header>
             <h2 class="text-lg font-medium text-gray-900">
-                Información
+                {{ $t('update_profile.h2') }}
             </h2>
 
             <p class="mt-1 text-sm text-gray-600">
-                Actualizar datos de cuenta.
+                {{ $t('update_profile.subtitle') }}
             </p>
         </header>
 
         <form @submit.prevent="form.patch(route('profile.update'))" class="mt-6 space-y-6">
             <div>
-                <input-label for="usuario" value="Usuario" />
+                <input-label for="usuario" :value="$t('update_profile.usuario_label')" />
 
                 <text-input
                     id="usuario"
                     type="text"
                     class="mt-1 block w-full"
                     v-model="form.usuario"
-                    required
                     autofocus
-                    autocomplete="usuario"
                 />
 
                 <input-error class="mt-2" :message="form.errors.usuario" />
             </div>
 
             <div>
-                <input-label for="email" value="Email" />
+                <input-label for="email" :value="$t('update_profile.email_label')" />
 
                 <text-input
                     id="email"
-                    type="email"
                     class="mt-1 block w-full"
                     v-model="form.email"
-                    required
-                    autocomplete="username"
                 />
 
                 <input-error class="mt-2" :message="form.errors.email" />
@@ -66,14 +61,14 @@ const form = useForm({
 
             <div v-if="mustVerifyEmail && $page.props.auth.user.email_verificado_fecha === null">
                 <p class="text-sm mt-2 text-gray-800">
-                    Tu email no ha sido verificado.
+                    {{ $t('update_profile.no_verificado') }}
                     <Link
                         :href="route('verification.send')"
                         method="post"
                         as="button"
                         class="underline text-sm text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                        Clica para reenviar email de verificación.
+                        {{ $t('update_profile.reenviar_verificacion') }}
                     </Link>
                 </p>
 
@@ -81,12 +76,14 @@ const form = useForm({
                     v-show="status === 'verification-link-sent'"
                     class="mt-2 font-medium text-sm text-green-600"
                 >
-                    Un nuevo email de verificación ha sido enviado.
+                    {{ $t('update_profile.verificacion_enviada') }}
                 </div>
             </div>
 
             <div class="flex items-center gap-4">
-                <primary-button :disabled="form.processing">Guardar</primary-button>
+                <primary-button :disabled="form.processing">
+                    {{ $t('update_profile.boton') }}
+                </primary-button>
 
                 <Transition
                     enter-active-class="transition ease-in-out"
@@ -94,7 +91,9 @@ const form = useForm({
                     leave-active-class="transition ease-in-out"
                     leave-to-class="opacity-0"
                 >
-                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Guardado.</p>
+                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">
+                        {{ $t('update_profile.guardado') }}
+                    </p>
                 </Transition>
             </div>
         </form>
