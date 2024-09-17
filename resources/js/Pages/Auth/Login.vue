@@ -8,6 +8,7 @@ import AuthLayout from "@/Layouts/AuthLayout.vue";
 import AppLogoIndex from "@/Components/AppLogoIndex.vue";
 import { computed, onMounted, ref } from "vue";
 import Swal from "sweetalert2";
+import {getActiveLanguage} from "laravel-vue-i18n";
 
 const props = defineProps({
     'canResetPassword' : Boolean,
@@ -32,7 +33,7 @@ onMounted(() => {
     /*Si hay flash de password reset, lanzamos SWAL*/
     if (confirmacionPasswordModificado.value) {
         Swal.fire({
-            title: 'Bravo!!',
+            title: getActiveLanguage() === 'es' ? 'Enhorabuena' : 'Congrats',
             text: confirmacionPasswordModificado.value,
             imageUrl: '../gif/' + (Math.floor(Math.random() * usePage().props.nGifs) + 1) + '.gif',
             imageWidth: '80%',

@@ -6,6 +6,7 @@ import {nextTick, onMounted, onUpdated, ref} from "vue";
 import Poster from "@/Components/Poster.vue";
 import ModalBusqueda from "@/Components/ModalBusqueda.vue";
 import Swal from "sweetalert2";
+import {getActiveLanguage} from "laravel-vue-i18n";
 
 
 // Para el formulario de busqueda
@@ -33,7 +34,7 @@ const submit = () => {
             .catch(() => {
                 Swal.fire({
                     title: 'Upps...',
-                    text: 'Parece que algo fue mal con la búsqueda...',
+                    text: getActiveLanguage() === 'es' ? 'Algo fue mal...' : 'Something went wrong...',
                     imageUrl: '../gif/' + (Math.floor(Math.random() * usePage().props.nGifs) + 1) + '.gif',
                     imageWidth: '80%',
                     imageAlt: 'gif de cine',

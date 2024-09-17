@@ -19,8 +19,8 @@ const props = defineProps({
 // SWAL para likes sin login
 function alertaDarLikeSinLogin(){
     Swal.fire({
-        title: 'UPSSS!',
-        text: `Regístrate y logueate para dar like`,
+        title: 'Upsss!',
+        text: getActiveLanguage() === 'es' ? 'Logueate para dar like' : 'Log in to Like',
         imageUrl: '/gif/' + (Math.floor(Math.random() * usePage().props.nGifs) + 1) + '.gif',
         imageWidth: '80%',
         imageAlt: 'gif de cine para mensaje dar like sin login',
