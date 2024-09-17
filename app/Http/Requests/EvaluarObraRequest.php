@@ -36,7 +36,7 @@ class EvaluarObraRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'evaluacion' => 'No has elegido una puntuación.'
+            'evaluacion' => __('ficha_valoraciones.formularios.puntuacion.requerida')
         ];
     }
 }

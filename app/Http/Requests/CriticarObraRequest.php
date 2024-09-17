@@ -36,9 +36,9 @@ class CriticarObraRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'critica.required' => 'No has escrito nada.',
-            'critica.min'      => 'Requerimos un mínimo de texto para razonar la crítica.',
-            'critica.max'      => 'Has sobrepasado el máximo permitido de texto.',
+            'critica.required' => __('ficha_valoraciones.formularios.critica.requerida'),
+            'critica.min'      => __('ficha_valoraciones.formularios.critica.min'),
+            'critica.max'      => __('ficha_valoraciones.formularios.critica.max'),
         ];
     }
 }

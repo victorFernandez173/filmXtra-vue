@@ -51,7 +51,6 @@ Route::get('/lang/{lang}', [LanguageController::class, 'switchLang'])->name('lan
 // Resto rutas auth
 require __DIR__ . '/auth.php';
 
-// TODO localizacion en AND es
 // TODO avatar de usuario y + otros datos del usuario en el perfil
 // TODO mantener paginacion en topvaloraciones o combinar con topfilmxtra es decir, que solo haya una seccion de tops que permita modificar el orden por nota o numValoraciones...
 // TODO controlar la creacion/modificacion de evaluaciones/criticas en funcion de si la fecha de creacion es diferente o no de la de modificacion para el mensaje de modificado/creado...

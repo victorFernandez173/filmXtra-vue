@@ -260,5 +260,21 @@
     "update_password.label_nueva" : "Nueva contraseña",
     "update_password.label_confirmar" : "Confirmar contraseña",
     "update_password.boton" : "Guardar",
-    "update_password.guardada" : "Guardada"
+    "update_password.guardada" : "Guardada",
+
+    "ficha_valoraciones.subtitulo" : "Críticas de usuarios",
+    "ficha_valoraciones.control1" : "Para poder evaluar o criticar ",
+    "ficha_valoraciones.control2" : " {{ obra.titulo }}tienes que estar logueado",
+    "ficha_valoraciones.boton_login" : "Loguearse",
+    "ficha_valoraciones.ficha" : "Ficha",
+    "ficha_valoraciones.formularios.evaluar" : "Evaluar",
+    "ficha_valoraciones.formularios.criticar" : "Reseña",
+    "ficha_valoraciones.formularios.nota" : "Nota",
+    "ficha_valoraciones.formularios.evaluacion_exitosa" : "Evaluación existosa",
+    "ficha_valoraciones.formularios.critica_exitosa" : "Crítica existosa",
+    "ficha_valoraciones.formularios.caracteres" : "caracteres",
+    "ficha_valoraciones.formularios.ya_criticada" : "Ya has reseñado esta película, puedes modificar tu crítica",
+    "ficha_valoraciones.formularios.ya_evaluada" : "Ya has evaluado esta película, puedes modificar tu evaluación",
+    "ficha_valoraciones.formularios.puntuacion.requerida" : "No has elegido una puntuación","ficha_valoraciones.formularios.critica.requerida" : "No has escrito nada","ficha_valoraciones.formularios.critica.min" : "Requerimos un mínimo de texto para razonar la crítica",
+    "ficha_valoraciones.formularios.critica.max" : "Has sobrepasado el máximo permitido de texto"
 }

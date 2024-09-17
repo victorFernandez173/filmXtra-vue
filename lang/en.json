@@ -157,7 +157,7 @@
     "critica.me_gusta": "Likes",
     "ficha_peli.genero": "Genre",
     "ficha_peli.reparto": "Cast",
-    "ficha_peli.productora": "Film production company",
+    "ficha_peli.productora": "Production company",
     "footer.enlaces": "Links",
     "footer.contacto": "Contact",
     "footer.inicio": "Welcome",
@@ -260,5 +260,23 @@
     "update_password.label_nueva" : "New password",
     "update_password.label_confirmar" : "Update password",
     "update_password.boton" : "Save",
-    "update_password.guardada" : "Saved"
+    "update_password.guardada" : "Saved",
+
+    "ficha_valoraciones.subtitulo" : "User reviews",
+    "ficha_valoraciones.control1" : "To evaluate or review ",
+    "ficha_valoraciones.control2" : " you must be logged in",
+    "ficha_valoraciones.boton_login" : "Log in",
+    "ficha_valoraciones.ficha" : "Info",
+    "ficha_valoraciones.formularios.evaluar" : "Grade",
+    "ficha_valoraciones.formularios.criticar" : "Review",
+    "ficha_valoraciones.formularios.nota" : "Score",
+    "ficha_valoraciones.formularios.evaluacion_exitosa" : "Grading successful",
+    "ficha_valoraciones.formularios.critica_exitosa" : "Review successful",
+    "ficha_valoraciones.formularios.caracteres" : "characters",
+    "ficha_valoraciones.formularios.ya_criticada" : "Already reviewed. You can modify your review",
+    "ficha_valoraciones.formularios.ya_evaluada" : "Already graded. You can modify your score",
+    "ficha_valoraciones.formularios.puntuacion.requerida" : "Select a score",
+    "ficha_valoraciones.formularios.critica.requerida" : "Nothing typed","ficha_valoraciones.formularios.critica.min" : "We require some more text",
+    "ficha_valoraciones.formularios.critica.max" : "That's too long"
+
 }
