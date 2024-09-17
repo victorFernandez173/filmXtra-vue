@@ -21,7 +21,7 @@ const props = defineProps({
 <template>
     <Head>
         <title>
-            Top Valoraciones FilmXtra
+            {{ $t('top_valoraciones.title') }}
         </title>
         <meta name="filter" content="Página top filmXtra">
     </Head>
@@ -31,7 +31,7 @@ const props = defineProps({
             <!-- Título -->
             <div class="mb-8 mt-2">
                 <h1 class="w-full font-oswald text-center text-4xl sm:text-5xl h-[8vh] text-flamingo">
-                    Top Valoraciones
+                    {{ $t('top_valoraciones.title') }}
                 </h1>
             </div>
             <!-- Seccion Principal con las fichas -->
