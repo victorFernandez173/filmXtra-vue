@@ -7,13 +7,15 @@ export default {
 
 <script setup>
 import dayjs from "dayjs";
-import es from "dayjs/locale/es";
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { Head, Link } from "@inertiajs/vue3";
 import Poster from "../Components/Poster.vue";
 import Estrellitas from "../Components/Estrellitas.vue";
 import Trailers from "../Components/Trailers.vue";
 import Critica from "@/Components/Critica.vue";
+import { getActiveLanguage } from "laravel-vue-i18n";
+import es from "dayjs/locale/es";
+import en from "dayjs/locale/en";
 
 const props = defineProps({
     'obra' : Object,
@@ -29,19 +31,19 @@ const props = defineProps({
 
 // Configuración fechas relativas dayjs
 dayjs.extend(relativeTime);
-dayjs.locale(es);
+dayjs.locale(getActiveLanguage());
 </script>
 
 <template>
     <Head>
         <title>
-            {{ obra.titulo }}
+            {{ getActiveLanguage() === 'es' ? obra.titulo : obra.titulo_original }}
         </title>
         <meta name="description" content="Ficha general de obra">
     </Head>
     <div class="container mx-auto mt-10 mb-10">
         <h1 class="text-center font-bold text-flamingo text-3xl px-8">
-            {{ obra.titulo }}
+            {{ getActiveLanguage() === 'es' ? obra.titulo : obra.titulo_original  }}
         </h1>
         <!--3 apartados para poster, datos y valoraciones-->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-10">
@@ -60,22 +62,21 @@ dayjs.locale(es);
                         <!--Títulos-->
                         <div>
                         <span class="font-semibold text-lg">
-                            Título:
+                            {{ $t('obra.titulo') }}:
                         </span>
-                            {{ obra.titulo }}
-                            ({{ obra.titulo_original }})
+                            {{ getActiveLanguage() === 'es' ? obra.titulo : obra.titulo_original  }}
                         </div>
                         <!--Año-->
                         <div>
                         <span class="font-semibold text-lg">
-                            Año:
+                            {{ $t('obra.fecha') }}:
                         </span>
                             {{ obra.fecha }}
                         </div>
                         <!--Duración-->
                         <div>
                         <span class="font-semibold text-lg">
-                            Duración:
+                            {{ $t('obra.duracion') }}:
                         </span>
                             {{ Math.floor((parseInt(obra.duracion) / 60)) }}h
                             {{ parseInt(obra.duracion) % 60 }}min
@@ -83,14 +84,14 @@ dayjs.locale(es);
                         <!--País-->
                         <div>
                         <span class="font-semibold text-lg">
-                            País:
+                            {{ $t('obra.pais') }}:
                         </span>
                             {{ obra.pais }}
                         </div>
                         <!--Dirección-->
                         <div v-if="obra.directors[0]">
                         <span class="font-semibold text-lg">
-                            Dirección:
+                            {{ $t('obra.direccion') }}:
                         </span>
                             <span>
                             {{ props.direccion }}
@@ -99,7 +100,7 @@ dayjs.locale(es);
                         <!--Reparto-->
                         <div v-if="obra.actors[0]">
                         <span class="font-semibold text-lg">
-                            Reparto:
+                            {{ $t('obra.reparto') }}:
                         </span>
                             <span>
                             {{ props.reparto }}
@@ -108,14 +109,14 @@ dayjs.locale(es);
                         <!--Productora-->
                         <div>
                         <span class="font-semibold text-lg">
-                            Productora:
+                            {{ $t('obra.productora') }}:
                         </span>
                             {{ obra.productora }}
                         </div>
                         <!--Géneros-->
                         <div v-if="obra.generos">
                         <span class="font-semibold text-lg">
-                            Género:
+                            {{ $t('obra.genero') }}:
                         </span>
                             <span>
                             {{ props.generos }}
@@ -124,7 +125,7 @@ dayjs.locale(es);
                         <!--Sinopsis-->
                         <div>
                         <span class="font-semibold text-lg">
-                            Sinopsis:
+                            {{ $t('obra.sinopsis') }}:
                         </span>
                             {{ obra.sinopsis }}
                         </div>
@@ -132,24 +133,24 @@ dayjs.locale(es);
                     <!--Festivales y premios-->
                     <div class="mt-4 mx-auto">
                         <h5 v-if="obra.festivals.length > 0" class="font-bold text-flamingo text-xl list-none">
-                            Galardones
+                            {{ $t('obra.galardones') }}
                         </h5>
                         <div class="mx-auto w-[90%]">
                             <p v-for="fest in obra.festivals" class="text-md md:text-lg">
-                                <span class="font-extrabold text-lg">Mejor película</span> {{ fest.nombre}} ({{fest.edicion }})
+                                <span class="font-extrabold text-lg">{{ $t('obra.mejor_pelicula') }}</span> {{ fest.nombre}} ({{fest.edicion }})
                             </p>
                         </div>
                     </div>
                     <!--Saga-->
                     <div class="mt-4">
                         <span v-if="secuelaPrecuela || spinoffs" class="font-bold text-flamingo text-xl mt-2">
-                            Saga
+                            {{ $t('obra.saga') }}
                         </span>
                         <!-- Bloque para secuela/precuela -->
                         <div v-if="secuelaPrecuela" class="text-center flex flex-col items-center">
                             <div v-for="obra in secuelaPrecuela" class="w-[80%] md:w-[70%]">
                                 <p class="mt-2 -mb-3">
-                                    {{props.obra.secuela.orden === 0 ? 'Relación' : obra.secuela.orden < props.obra.secuela.orden ? 'Precuela' : 'Secuela'}}
+                                    {{ props.obra.secuela.orden === 0 ? $t('obra.relacion') : obra.secuela.orden < props.obra.secuela.orden ? $t('obra.precuela') : $t('obra.secuela') }}
                                 </p>
                                 <poster :obra="obra" />
                             </div>
@@ -158,7 +159,7 @@ dayjs.locale(es);
                         <div v-if="spinoffs" class="text-center flex flex-col items-center">
                             <div v-for="obra in spinoffs" class="w-[80%] md:w-[70%]">
                                 <p class="mt-2 -mb-3">
-                                    {{props.obra.secuela.orden === 0 ? 'Relación' : 'Spinoff'}}
+                                    {{ props.obra.secuela.orden === 0 ? $t('obra.relacion') : $t('obra.spinoff') }}
                                 </p>
                                 <poster :obra="obra" />
                             </div>
@@ -175,7 +176,7 @@ dayjs.locale(es);
                 <!--Titulo-->
                 <ul>
                     <li v-if="obra.profesionals.length > 0" class="list-none font-bold text-black text-xl mb-5">
-                        Críticas profesionales
+                        {{ $t('obra.criticas_profesionales') }}
                     </li>
                 </ul>
                 <ul v-for="p in obra.profesionals">
@@ -197,7 +198,7 @@ dayjs.locale(es);
                 <!--Titulo-->
                 <div>
                     <h5 class="list-none font-bold text-black text-xl mt-10 mb-5">
-                        Críticas de nuestros usuarios
+                        {{ $t('obra.criticas_usuarios') }}
                     </h5>
                 </div>
                 <div v-for="(critica, indice) in criticas.slice(0, 2)" class="ml-3">
@@ -206,14 +207,13 @@ dayjs.locale(es);
                 </div>
                 <p class="ml-3">[...]</p>
                 <p v-if="!criticas[0]" class="py-3">
-                    Sin críticas de usuarios todavía. Participa, pon la
-                    tuya.
+                    {{ $t('obra.sin_criticas') }}
                 </p>
 
                 <Link :href="route('obraValoraciones', obra.titulo_slug)"
                       class="my-5 m-auto font-bold focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none text-sm">
                     <div class="mx-auto w-fit text-center mt-8 bg-white text-flamingo hover:bg-black px-5 py-2.5">
-                        Ir a criticas de {{ obra.titulo }}&rarr;
+                        {{ $t('obra.usuarios_todas') }}&rarr;
                     </div>
                 </Link>
 
@@ -224,30 +224,29 @@ dayjs.locale(es);
                 <div class="py-5 mx-auto w-[80%] sm:w-[85%]">
                     <!--Titulo-->
                     <h3 class="font-bold text-black text-xl my-5 text-center">
-                        ¿Quieres valorar esta
-                        película?
+                        {{ $t('obra.quieres_valorar') }}
                     </h3>
                     <h4>
-                        En FilmXtra nos apasiona el cine y queremos escuchar tu voz. ¡Exprésate como quieras!
+                        {{ $t('obra.h4') }}
                     </h4>
                     <ul class="ml-[20px]">
                         <li class="list-disc ml-2">
-                            Puedes ponerle una puntuación del 1 al 10 a las películas que veas.
+                            {{ $t('obra.li1') }}
                         </li>
                         <li class="list-disc ml-2">
-                            Si te gusta entrar en detalles, déjanos tus críticas más elaboradas. ¡Suelta todo lo que piensas!
+                            {{ $t('obra.li2') }}
                         </li>
                         <li class="list-disc ml-2">
-                            Y, por supuesto, dale un buen "like" a las críticas de otros usuarios que te parezcan geniales. ¡Comparte el amor cinéfilo!
+                            {{ $t('obra.li3') }}
                         </li>
                     </ul>
                     <p class="pt-7">
-                        ¡Tu voz cinéfila importa! Exprésate libremente y comparte el amor por el cine.
+                        {{ $t('obra.p') }}
                     </p>
                     <Link :href="route('valoracionesTop')"
                           class="my-15 m-auto focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold block w-4/6">
                         <div class="mt-10 text-center bg-white text-flamingo hover:bg-black px-5 text-sm py-2.5">
-                            Top Valoraciones &rarr;
+                            {{ $t('obra.top_valoraciones') }}&rarr;
                         </div>
                     </Link>
                 </div>
