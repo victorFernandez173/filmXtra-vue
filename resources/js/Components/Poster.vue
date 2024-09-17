@@ -1,5 +1,6 @@
 <script setup>
 import { Link } from "@inertiajs/vue3";
+import { getActiveLanguage } from "laravel-vue-i18n";
 
 const props = defineProps({
     'obra' : Object,
@@ -16,12 +17,12 @@ const props = defineProps({
         <Link :href="route('obra', obra.titulo_slug)" class="w-full flex justify-center flex-wrap text-center py-4 group relative font-oswald cursor-pointer">
             <!-- Título estático: solo truncado en pantallas < sm y si hay existe truncarTitulo -->
             <div class="w-full px-3">
-                <p class="group-hover:invisible text-flamingo font-bold text-lg" :class="truncarTitulo ? 'sm:truncate' : ''">{{ $page.props.lang.appLocale  === 'es' ? obra.titulo : obra.titulo_original }}</p>
+                <p class="group-hover:invisible text-flamingo font-bold text-lg" :class="truncarTitulo ? 'sm:truncate' : ''">{{ getActiveLanguage()  === 'es' ? obra.titulo : obra.titulo_original }}</p>
             </div>
             <!-- Título :hover -->
             <!-- Si el título es >45 y existe truncado: se achica con hover -->
             <div :class="((obra.titulo.length > 45 || obra.titulo_original.length > 45) && truncarTitulo ? 'text-lg sm:text-sm sm:py-2.5 sm:top-0.5 ' : 'text-lg ')+(truncarTitulo ? 'sm:truncate' : '')" class="z-10 inline-block px-3 py-2 duration-0 absolute opacity-0 transition-opacity group-hover:opacity-100 w-full font-bold group-hover:underline top-2 text-flamingo">
-                <p>{{ $page.props.lang.appLocale  === 'es' ? obra.titulo : obra.titulo_original }}</p>
+                <p>{{ getActiveLanguage()  === 'es' ? obra.titulo : obra.titulo_original }}</p>
             </div>
 
             <!-- Sección de imagen -->

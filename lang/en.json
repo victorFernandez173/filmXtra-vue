@@ -277,6 +277,7 @@
     "ficha_valoraciones.formularios.ya_evaluada" : "Already graded. You can modify your score",
     "ficha_valoraciones.formularios.puntuacion.requerida" : "Select a score",
     "ficha_valoraciones.formularios.critica.requerida" : "Nothing typed","ficha_valoraciones.formularios.critica.min" : "We require some more text",
-    "ficha_valoraciones.formularios.critica.max" : "That's too long"
+    "ficha_valoraciones.formularios.critica.max" : "That's too long",
+    "inicio.title" : "Welcome"
 
 }

@@ -5,10 +5,11 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import Swal from "sweetalert2";
 import es from "dayjs/locale/es";
 import en from "dayjs/locale/en";
+import {getActiveLanguage} from "laravel-vue-i18n";
 
 // Para las fechas relativas
 dayjs.extend(relativeTime);
-dayjs.locale(usePage().props.lang.appLocale);
+dayjs.locale(getActiveLanguage());
 
 const props = defineProps({
     'critica' : Object,
