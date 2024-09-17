@@ -166,8 +166,8 @@
     "footer.cuenta": "Profile",
     "footer.texto": "Explore a world full of wonderful feelings with FilmXtra, where you'll find info about many films so that you can unearth the best about your favorite films and much more.",
     "footer.derechos": "All rights reserved",
-    "form_filtrado.genero": "Género",
-    "form_filtrado.pais": "País",
+    "form_filtrado.genero": "Genre",
+    "form_filtrado.pais": "Country",
     "form_filtrado.desde": "From",
     "form_filtrado.hasta": "To",
     "form_filtrado.filtra": "FILTER",
@@ -310,6 +310,7 @@
     "top_valoraciones.title": "Reviews top",
     "top_filmxtra.title": "FilmXtra Top",
     "top_filmxtra.h1": "FilmXtra Top",
+    "top_filmxtra.filtros": "Filters",
     "top_filmxtra.sin_filtros": "No filters"
 
 }

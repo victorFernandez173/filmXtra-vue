@@ -4,16 +4,15 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Validation\Rules\Enum;
 
 /**
  * Class Genero
  *
  * @property int $id
- * @property string $genero
+ * @property string $genero_es
+ * @property string $genero_en
  * @property Carbon $creado
  * @property Carbon $modificado
  *

@@ -38,10 +38,9 @@ class ObrasRepo extends Controller
             'profesionals.medio:id,nombre,web',
             'evaluaciones:obra_id,usuario_id,evaluacion',
             'actors:nombre,nombre_real,edad,defuncion,pais',
-            'generos:genero',
-            'trailer'])
-            ->where('titulo_slug', $tituloSlug)
-            ->first();
+            'generos:genero_'.app()->getLocale().' as genero',
+            'trailer'
+        ])->where('titulo_slug', $tituloSlug)->first();
 
         // Si no hubiera obra, se aborta 404
         if (!$obra) {
@@ -180,7 +179,7 @@ class ObrasRepo extends Controller
             'poster',
             'directors',
             'actors',
-            'generos'
+            'generos:genero_'.app()->getLocale().' as genero'
         ])->where(
             'pais',
             'LIKE',
@@ -195,7 +194,7 @@ class ObrasRepo extends Controller
             'generos',
             function ($query) {
                 $query->where(
-                    'genero',
+                    'genero_'.app()->getLocale(),
                     'like',
                     '%' . (request('genero') ?? '') . '%'
                 );

@@ -77,7 +77,7 @@ const { stop } = useIntersectionObserver(
                 <formulario-filtrado :paises="paises" :generos="generos" :pionera="pionera" :filtros="filtros"  />
                 <!-- Mensaje de filtrado condicionado en funcion de parámetros del formulario -->
                 <p v-if="filtros.genero || filtros.pais || filtros.desde || filtros.hasta" class="w-full text-center mt-1">
-                    Filtros&rarr;
+                    {{ $t('top_filmxtra.filtros') }}&rarr;
                     <!-- Si hay genero (filtros[0])...se añade coma, y así sucesivamente ... -->
                     {{ filtros.genero === '' ? '' : `${$t('form_filtrado.genero')}: ${filtros.genero}`}}{{(filtros.genero !== '' && filtros.pais !== '') ? ', ' : ''}}{{ filtros.pais === '' ? '' : ` ${$t('form_filtrado.pais')}: ${filtros.pais}`}}{{(filtros.pais !== '' && filtros.desde !== '') ? ', ' : ''}}{{ filtros.desde === '' ? '' : ` ${$t('form_filtrado.desde')}: ${filtros.desde}`}}{{(filtros.desde !== '' && filtros.hasta !== '') ? ', ' : ''}}{{ filtros.hasta === '' ? '' : ` ${$t('form_filtrado.hasta')}: ${filtros.hasta}`}}{{ filtros.genero !== null ?  '.' : ''}}
                 </p>

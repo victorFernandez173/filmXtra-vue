@@ -15,11 +15,13 @@ return new class extends Migration {
     {
         Schema::create('generos', function (Blueprint $table) {
             $table->id();
-            $table->string('genero', 255)->nullable(false);
+            $table->string('genero_es', 255)->nullable(false);
+            $table->string('genero_en', 255)->nullable(false);
             $table->timestamp(Genero::CREATED_AT)->useCurrent();
             $table->timestamp(Genero::UPDATED_AT)->useCurrent();
 
-            $table->unique('genero');
+            $table->unique('genero_es');
+            $table->unique('genero_en');
 
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';

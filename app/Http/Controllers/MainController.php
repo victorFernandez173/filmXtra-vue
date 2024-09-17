@@ -85,7 +85,7 @@ class MainController extends Controller
         return Inertia::render('Top', [
             'obras'   => $obras,
             'filtros' => $filtros,
-            'generos' => Genero::select('genero')->pluck('genero'),
+            'generos' => Genero::select(['genero_'.app()->getLocale()])->pluck('genero_'.app()->getLocale()),
             'paises'  => Obra::select('pais')->groupBy('pais')->orderBy('pais')->pluck('pais'),
             'pionera' => static::obtenerDecadaPionera(),
             'decadas' => static::obtenerArrayDecadas()
