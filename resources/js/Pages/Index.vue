@@ -15,6 +15,7 @@ import Poster from "../Components/Poster.vue";
 import { onMounted } from "vue";
 import { initCarousels } from "flowbite";
 import Swal from "sweetalert2";
+import { getActiveLanguage } from "laravel-vue-i18n";
 
 const props = defineProps({
     'obras' : Object,
@@ -33,8 +34,8 @@ onMounted(() => {
     /*Si hay flash de email verificado, lanzamos SWAL*/
     if (props.verificacionExitosa) {
         Swal.fire({
-            title: 'Enhorabuena!!',
-            text: 'Tu email ha sido validado exitosamente',
+            title: getActiveLanguage() === 'es' ? 'Enhorabuena' : 'Congrats',
+            text: getActiveLanguage() === 'es' ? 'Tu email ha sido validado exitosamente' : 'Email successfuly validated',
             imageUrl: '../gif/' + (Math.floor(Math.random() * props.nGifs) + 1) + '.gif',
             imageWidth: '80%',
             imageAlt: 'gif de cine',
@@ -46,8 +47,8 @@ onMounted(() => {
     /*Si hay flash de cuenta borrada, lanzamos SWAL*/
     if (props.borradoCuentaExitoso) {
         Swal.fire({
-            title: 'Adios!!',
-            text: 'Tu cuenta ha sido borrada. Lamentamos que te vayas.',
+            title: getActiveLanguage() === 'es' ? 'Adios' : 'Bye bye',
+            text: getActiveLanguage() === 'es' ? 'Tu cuenta ha sido borrada. Lamentamos que te vayas' : 'Account deleted. We regret see you leaving us',
             imageUrl: '../gif/' + (Math.floor(Math.random() * props.nGifs) + 1) + '.gif',
             imageWidth: '80%',
             imageAlt: 'gif de cine',
@@ -61,7 +62,9 @@ onMounted(() => {
 
 <template>
     <Head>
-        <title>Inicio</title>
+        <title>
+            {{ $t('inicio.title') }}
+        </title>
         <meta name="description" content="Página de bienvenida de filmXtra">
     </Head>
 
