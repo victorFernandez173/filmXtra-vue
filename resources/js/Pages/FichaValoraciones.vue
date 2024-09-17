@@ -96,7 +96,7 @@ const form2 = useForm({
                     )"
                     class="col-span-1 md:col-span-3 lg:col-span-2 flex justify-center flex-wrap p-1 border-b md:border-r md:border-b-0 content-center">
                         <div class="w-full text-center">
-                            <label class="font-bold text-lg md:text-xl text-black">Evaluar {{ obra.titulo}}:</label>
+                            <label class="font-bold text-lg md:text-xl text-black">Evaluar {{ obra.titulo }}:</label>
                         </div>
                         <p v-if="evaluacionUsuario.length > 0" class="text-center text-xs">
                             (Ya has evaluado esta película, puedes modificar tu evaluación)
