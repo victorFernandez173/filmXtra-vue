@@ -60,8 +60,8 @@ class ProfileController extends Controller
                     'password' => ['required', 'current_password'],
                 ],
                 [
-                    'password.required'         => 'Por favor, el password',
-                    'password.current_password' => 'Revise el password introducido'
+                    'password.required'         => __('validation.required', ['attribute' => trans('validation.attributes.password')]),
+                    'password.current_password' => __('validation.current_password', ['attribute' => trans('validation.attributes.password')])
                 ]
             );
         }

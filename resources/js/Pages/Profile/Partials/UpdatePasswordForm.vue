@@ -37,17 +37,17 @@ const updatePassword = () => {
     <section>
         <header>
             <h2 class="text-lg font-medium text-gray-900">
-                Actualizar contraseña
+                {{ $t('update_password.h2') }}
             </h2>
 
             <p class="mt-1 text-sm text-gray-600">
-                Elige una contraseña larga, inverosimil y segura.
+                {{ $t('update_password.subtitle') }}
             </p>
         </header>
 
         <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
             <div>
-                <input-label for="current_password" value="Contraseña actual" />
+                <input-label for="current_password" :value="$t('update_password.label_actual')" />
 
                 <text-input
                     id="current_password"
@@ -62,7 +62,7 @@ const updatePassword = () => {
             </div>
 
             <div>
-                <input-label for="password" value="Nueva contraseña" />
+                <input-label for="password" :value="$t('update_password.label_nueva')" />
 
                 <text-input
                     id="password"
@@ -77,7 +77,7 @@ const updatePassword = () => {
             </div>
 
             <div>
-                <input-label for="password_confirmation" value="Confirmar contraseña" />
+                <input-label for="password_confirmation" :value="$t('update_password.label_confirmar')" />
 
                 <text-input
                     id="password_confirmation"
@@ -92,7 +92,7 @@ const updatePassword = () => {
 
             <div class="flex items-center gap-4">
                 <primary-button :disabled="form.processing">
-                    Guardar
+                    {{ $t('update_password.boton') }}
                 </primary-button>
 
                 <Transition
@@ -102,7 +102,7 @@ const updatePassword = () => {
                     leave-to-class="opacity-0"
                 >
                     <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">
-                        Guardada.
+                        {{ $t('update_password.guardada') }}
                     </p>
                 </Transition>
             </div>

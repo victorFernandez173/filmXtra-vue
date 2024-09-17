@@ -42,26 +42,26 @@ const closeModal = () => {
     <section class="space-y-6">
         <header>
             <h2 class="text-lg font-medium text-gray-900">
-                Borrar cuenta
+                {{ $t('delete_profile.h2') }}
             </h2>
 
             <p class="mt-1 text-sm text-gray-600">
-                Una vez borrada, no podrás recuperar tu cuenta. Guarda los datos antes de confirmar el borrado.
+                {{ $t('delete_profile.subtitle') }}
             </p>
         </header>
 
         <danger-button @click="confirmUserDeletion">
-            Borrar cuenta
+            {{ $t('delete_profile.boton') }}
         </danger-button>
 
         <modal :show="confirmingUserDeletion" @close="closeModal">
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-900">
-                    ¿Seguro que quieres borrar la cuenta?
+                    {{ $t('delete_profile.pregunta') }}
                 </h2>
 
                 <p class="mt-1 text-sm text-gray-600">
-                    Una vez borrada, no podrás recuperar tu cuenta. Guarda los datos antes de confirmar el borrado.
+                    {{ $t('delete_profile.subtitle') }}
                 </p>
 
                 <div class="mt-6">
@@ -83,7 +83,7 @@ const closeModal = () => {
 
                 <div class="mt-6 flex justify-end">
                     <secondary-button @click="closeModal">
-                        Cancelar
+                        {{ $t('delete_profile.cancelar') }}
                     </secondary-button>
 
                     <danger-button
@@ -92,7 +92,7 @@ const closeModal = () => {
                         :disabled="form.processing"
                         @click="deleteUser"
                     >
-                        BORRAR
+                        {{ $t('delete_profile.borrar') }}
                     </danger-button>
                 </div>
             </div>
