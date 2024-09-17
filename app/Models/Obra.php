@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -17,7 +18,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $titulo
  * @property string $titulo_slug
  * @property string $titulo_original
- * @property string $pais
+ * @property string $pais_id
  * @property float $duracion
  * @property string $sinopsis
  * @property Carbon $fecha
@@ -63,7 +64,7 @@ class Obra extends Model
         'titulo',
         'titulo_slug',
         'titulo_original',
-        'pais',
+        'pais_id',
         'duracion',
         'sinopsis',
         'fecha',
@@ -171,5 +172,13 @@ class Obra extends Model
     public function citas(): HasMany
     {
         return $this->hasMany(Cita::class);
+    }
+
+    /**
+     * Obtener el pais.
+     */
+    public function pais(): BelongsTo
+    {
+        return $this->belongsTo(Pais::class);
     }
 }

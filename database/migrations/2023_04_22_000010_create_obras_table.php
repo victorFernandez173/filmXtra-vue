@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('titulo', 200)->nullable(false)->unique();
             $table->string('titulo_slug', 200)->nullable();
             $table->string('titulo_original', 200)->nullable(false);
-            $table->string('pais', 60)->nullable(false);
+            $table->string('pais_id', 2);
+            $table->foreign('pais_id')->references('id')->on('paises');
             $table->decimal('duracion', 3, 0)->nullable(false);
             $table->string('sinopsis', 2500)->nullable(false);
             $table->year('fecha')->nullable(false);
