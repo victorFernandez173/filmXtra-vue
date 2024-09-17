@@ -58,7 +58,7 @@ const { stop } = useIntersectionObserver(
 <template>
     <Head>
         <title>
-            Top FilmXtra
+            {{ $t('top_filmxtra.title') }}
         </title>
         <meta name="filter" content="Página top filmXtra">
     </Head>
@@ -71,7 +71,7 @@ const { stop } = useIntersectionObserver(
             <div class="lg:w-[86vw] xl:w-[87vw] 2xl:w-[89vw] min-[1800px]:w-[90vw] min-[2000px]:w-[91vw] mx-auto">
                 <!-- Título -->
                 <h1 class="w-full mt-2 mb-12 font-oswald text-center text-5xl h-[8vh] text-flamingo">
-                    Top FilmXtra
+                    {{ $t('top_filmxtra.h1') }}
                 </h1>
                 <!-- Formulario de filtrado -->
                 <formulario-filtrado :paises="paises" :generos="generos" :pionera="pionera" :filtros="filtros"  />
@@ -79,10 +79,12 @@ const { stop } = useIntersectionObserver(
                 <p v-if="filtros.genero || filtros.pais || filtros.desde || filtros.hasta" class="w-full text-center mt-1">
                     Filtros&rarr;
                     <!-- Si hay genero (filtros[0])...se añade coma, y así sucesivamente ... -->
-                    {{ filtros.genero === '' ? '' : `género: ${filtros.genero}`}}{{(filtros.genero !== '' && filtros.pais !== '') ? ', ' : ''}}{{ filtros.pais === '' ? '' : ` país: ${filtros.pais}`}}{{(filtros.pais !== '' && filtros.desde !== '') ? ', ' : ''}}{{ filtros.desde === '' ? '' : ` desde: ${filtros.desde}`}}{{(filtros.desde !== '' && filtros.hasta !== '') ? ', ' : ''}}{{ filtros.hasta === '' ? '' : ` hasta: ${filtros.hasta}`}}{{ filtros.genero !== null ?  '.' : ''}}
+                    {{ filtros.genero === '' ? '' : `${$t('form_filtrado.genero')}: ${filtros.genero}`}}{{(filtros.genero !== '' && filtros.pais !== '') ? ', ' : ''}}{{ filtros.pais === '' ? '' : ` ${$t('form_filtrado.pais')}: ${filtros.pais}`}}{{(filtros.pais !== '' && filtros.desde !== '') ? ', ' : ''}}{{ filtros.desde === '' ? '' : ` ${$t('form_filtrado.desde')}: ${filtros.desde}`}}{{(filtros.desde !== '' && filtros.hasta !== '') ? ', ' : ''}}{{ filtros.hasta === '' ? '' : ` ${$t('form_filtrado.hasta')}: ${filtros.hasta}`}}{{ filtros.genero !== null ?  '.' : ''}}
                 </p>
                 <div v-else class="w-full text-center">
-                    <p>Sin filtros</p>
+                    <p>
+                        {{ $t('top_filmxtra.sin_filtros') }}
+                    </p>
                 </div>
                 <!-- Seccion Principal con las fichas -->
                 <div class="container grid grid-cols-1 m-auto my-8">
