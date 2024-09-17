@@ -34,6 +34,19 @@ class LoginRequest extends FormRequest
     }
 
     /**
+     * Para la localizacion de los attributos en los mensajes de validación.
+     *
+     * @return array<string, Rule|array|string>
+     */
+    public function attributes(): array
+    {
+        return [
+            'email'    => trans('validation.attributes.email'),
+            'password' => trans('validation.attributes.password'),
+        ];
+    }
+
+    /**
      * Intento de autenticar las credenciales de la petición.
      *
      * @throws ValidationException

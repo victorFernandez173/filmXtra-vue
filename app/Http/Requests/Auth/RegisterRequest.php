@@ -24,7 +24,7 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'usuario'     => [
+            'usuario'  => [
                 'required',
                 'max:25'
             ],
@@ -37,8 +37,27 @@ class RegisterRequest extends FormRequest
             'password' => [
                 'required',
                 'confirmed',
-                Password::defaults()
+                    Password::min(8)
+                    ->letters()
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised(),
             ],
+        ];
+    }
+
+    /**
+     * Para la localizacion de los attributos en los mensajes de validación.
+     *
+     * @return array<string, Rule|array|string>
+     */
+    public function attributes(): array
+    {
+        return [
+            'usuario'  => trans('validation.attributes.usuario'),
+            'email'    => trans('validation.attributes.email'),
+            'password' => trans('validation.attributes.password'),
         ];
     }
 }
