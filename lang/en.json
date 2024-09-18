@@ -282,8 +282,8 @@
 
     "obra.titulo": "Title",
     "obra.fecha": "Year",
-    "obra.duracion": "Lenght",
-    "obra.pais": "Count",
+    "obra.duracion": "Length",
+    "obra.pais": "Country",
     "obra.direccion": "Director",
     "obra.reparto": "Cast",
     "obra.productora": "Production company",

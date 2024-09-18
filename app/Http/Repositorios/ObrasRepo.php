@@ -36,7 +36,7 @@ class ObrasRepo extends Controller
             'titulo_original',
             'pais_id',
             'duracion',
-            'sinopsis',
+            'sinopsis_'.app()->getLocale().' as sinopsis',
             'fecha',
             'productora',
         ])->with([
