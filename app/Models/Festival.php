@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @property int $id
  * @property int $obra_id
- * @property string $nombre
+ * @property string $festival_es
+ * @property string $festival_en
  * @property Carbon $edicion
  * @property Carbon $creada
  * @property Carbon $modificada
@@ -40,10 +41,7 @@ class Festival extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'nombre',
-        'edicion',
-    ];
+    protected $fillable = [];
 
     /**
      * Obtiene la obra

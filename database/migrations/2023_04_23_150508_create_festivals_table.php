@@ -15,7 +15,8 @@ return new class extends Migration
         Schema::create('festivals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('obra_id')->constrained()->onDelete('CASCADE');
-            $table->string('nombre', 120)->nullable(false);
+            $table->string('festival_es', 120)->nullable(false);
+            $table->string('festival_en', 120)->nullable(false);
             $table->year('edicion')->nullable(false);
 
             $table->timestamp(Festival::CREATED_AT)->useCurrent();

@@ -35,7 +35,7 @@ class ObrasRepo extends Controller
             'secuela:obra_id,orden,saga',
             'criticas',
             'directors:nombre,edad,defuncion,pais',
-            'festivals:obra_id,nombre,edicion',
+            'festivals:obra_id,festival_'.app()->getLocale().' as festival,edicion',
             'profesionals.medio:id,nombre,web',
             'evaluaciones:obra_id,usuario_id,evaluacion',
             'actors:nombre,nombre_real,edad,defuncion,pais',

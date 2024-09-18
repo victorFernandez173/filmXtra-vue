@@ -137,7 +137,7 @@ dayjs.locale(getActiveLanguage());
                         </h5>
                         <div class="mx-auto w-[90%]">
                             <p v-for="fest in obra.festivals" class="text-md md:text-lg">
-                                <span class="font-extrabold text-lg">{{ $t('obra.mejor_pelicula') }}</span> {{ fest.nombre}} ({{fest.edicion }})
+                                <span class="font-extrabold text-lg">{{ $t('obra.mejor_pelicula') }}</span> {{ fest.festival }} ({{ fest.edicion }})
                             </p>
                         </div>
                     </div>
