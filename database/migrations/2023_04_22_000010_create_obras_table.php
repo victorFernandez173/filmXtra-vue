@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('pais_id', 2);
             $table->foreign('pais_id')->references('id')->on('paises');
             $table->decimal('duracion', 3, 0)->nullable(false);
-            $table->string('sinopsis', 2500)->nullable(false);
+            $table->string('sinopsis_es', 2500)->nullable(false);
+            $table->string('sinopsis_en', 2500)->nullable(false);
             $table->year('fecha')->nullable(false);
             $table->string('productora', 255)->nullable(false)->default('-');
 

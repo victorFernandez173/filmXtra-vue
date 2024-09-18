@@ -21,7 +21,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $titulo_original
  * @property string $pais_id
  * @property float $duracion
- * @property string $sinopsis
+ * @property string $sinopsis_es
+ * @property string $sinopsis_en
  * @property Carbon $fecha
  * @property string $productora
  * @property Carbon $creada
@@ -68,7 +69,8 @@ class Obra extends Model
         'titulo_original',
         'pais_id',
         'duracion',
-        'sinopsis',
+        'sinopsis_es',
+        'sinopsis_en',
         'fecha',
         'productora',
     ];
