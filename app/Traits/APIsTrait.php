@@ -20,8 +20,8 @@ trait APIsTrait
     static function citaQuotable(): string
     {
         try {
-            // Consultamos la api
-            $respuesta = json_decode(Http::get('https://api.quotable.io/quotes/random')->body(), true);
+            // Consultamos la api: añadido withouthVerifying por problemas de la API con SSL certificate
+            $respuesta = json_decode(Http::withoutVerifying()->get('https://api.quotable.io/quotes/random')->body(), true);
 
             // Creamos y retornamos la cita
             return '"'.$respuesta[0]['content'].'" - '.$respuesta[0]['author'];
