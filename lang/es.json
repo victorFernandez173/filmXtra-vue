@@ -197,6 +197,7 @@
     "forgot_password.label": "Correo electrónico",
     "forgot_password.boton": "Enviar email",
     "forgot_password.enviado": "Email enviado satisfactoriamente",
+    "forgot_password.no_enviado": "Credenciales desconocidas",
     "login.title": "Login",
     "login.h1": "Inicia sesión con tu cuenta",
     "login.email_label": "Correo electrónico",

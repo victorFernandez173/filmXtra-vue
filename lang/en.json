@@ -197,6 +197,7 @@
     "forgot_password.label": "Email",
     "forgot_password.boton": "Send email",
     "forgot_password.enviado": "Email sent successfully",
+    "forgot_password.no_enviado": "Unknown credentials",
     "login.title" : "Login",
     "login.h1" : "Login with your account",
     "login.email_label" : "Email",
