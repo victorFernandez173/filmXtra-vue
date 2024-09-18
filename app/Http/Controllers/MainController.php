@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Repositorios\ObrasRepo;
 use App\Models\Genero;
-use App\Models\Obra;
+use App\Models\Pais;
 use App\Traits\ProcesadosNumericosTrait;
 use Inertia\Inertia;
 use Exception;
@@ -86,7 +86,7 @@ class MainController extends Controller
             'obras'   => $obras,
             'filtros' => $filtros,
             'generos' => Genero::select(['genero_'.app()->getLocale()])->pluck('genero_'.app()->getLocale()),
-            'paises'  => Obra::select('pais')->groupBy('pais')->orderBy('pais')->pluck('pais'),
+            'paises'  => Pais::select(['pais_'.app()->getLocale()])->orderBy('pais_'.app()->getLocale())->pluck('pais_'.app()->getLocale()),
             'pionera' => static::obtenerDecadaPionera(),
             'decadas' => static::obtenerArrayDecadas()
         ]);

@@ -31,6 +31,7 @@ class ObrasRepo extends Controller
     {
         $obra = Obra::with([
             'poster',
+            'pais:id,pais_'.app()->getLocale().' as pais',
             'secuela:obra_id,orden,saga',
             'criticas',
             'directors:nombre,edad,defuncion,pais',
@@ -168,23 +169,20 @@ class ObrasRepo extends Controller
     {
         return Obra::select([
             'id',
+            'pais_id',
             'titulo',
             'titulo_original',
             'titulo_slug',
-            'pais',
             'duracion',
             'fecha',
             'productora'
         ])->with([
             'poster',
+            'pais:id,pais_'.app()->getLocale().' as pais',
             'directors',
             'actors',
             'generos:genero_'.app()->getLocale().' as genero'
-        ])->where(
-            'pais',
-            'LIKE',
-            '%' . (request('pais') ?? '') . '%'
-        )->whereBetween(
+        ])->whereBetween(
             'fecha',
             [
                 request('desde') ?: '1870',
@@ -197,6 +195,15 @@ class ObrasRepo extends Controller
                     'genero_'.app()->getLocale(),
                     'like',
                     '%' . (request('genero') ?? '') . '%'
+                );
+            }
+        )->whereHas(
+            'pais',
+            function ($query) {
+                $query->where(
+                    'pais_'.app()->getLocale(),
+                    'like',
+                    '%' . (request('pais') ?? '') . '%'
                 );
             }
         );

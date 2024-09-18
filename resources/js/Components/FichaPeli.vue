@@ -40,7 +40,7 @@ function procesarNombre(nombre) {
             </div>
             <!--Pais/Año-->
             <p>
-                {{ obra.pais }} ({{ obra.fecha }})
+                {{ obra.pais.pais }} ({{ obra.fecha }})
             </p>
             <!--Duración-->
             <p>

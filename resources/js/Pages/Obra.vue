@@ -86,7 +86,7 @@ dayjs.locale(getActiveLanguage());
                         <span class="font-semibold text-lg">
                             {{ $t('obra.pais') }}:
                         </span>
-                            {{ obra.pais }}
+                            {{ obra.pais.pais }}
                         </div>
                         <!--Dirección-->
                         <div v-if="obra.directors[0]">
