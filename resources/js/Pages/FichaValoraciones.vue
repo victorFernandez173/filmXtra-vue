@@ -38,13 +38,13 @@ const form2 = useForm({
 <template>
     <Head>
         <title>
-            Valoraciones: {{ getActiveLanguage() === 'es' ? obra.titulo : obra.titulo_original }}
+            Valoraciones: {{ obra.titulo }}
         </title>
         <meta name="description" content="Ficha valoraciones obra">
     </Head>
     <div class="container mx-auto mt-10 mb-10">
         <h1 class="text-center font-bold text-flamingo text-3xl w-11/12 mx-auto">
-            {{ getActiveLanguage() === 'es' ? obra.titulo : obra.titulo_original }}
+            {{ obra.titulo }}
         </h1>
 
         <div class="grid grid-cols-1 lg:grid-cols-4 mt-10">
@@ -63,7 +63,7 @@ const form2 = useForm({
                 </div>
                 <div class="flex justify-center mx-auto w-11/12 lg:w-full mb-7 lg:mb-0">
                     <Link :href="route('obra', obra.titulo_slug)" class="text-black hover:bg-black hover:text-flamingo bg-flamingo focus:bg-flamingo focus:text-black focus:ring-flamingo focus:border-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 mt-5 text-center">
-                        &larr; {{ $t('ficha_valoraciones.ficha') }} {{ getActiveLanguage() === 'es' ? obra.titulo : obra.titulo_original }}
+                        &larr; {{ $t('ficha_valoraciones.ficha') }} {{ obra.titulo }}
                     </Link>
                 </div>
             </div>
@@ -99,7 +99,7 @@ const form2 = useForm({
                     )"
                     class="col-span-1 md:col-span-3 lg:col-span-2 flex justify-center flex-wrap p-1 border-b md:border-r md:border-b-0 content-center">
                         <div class="w-full text-center">
-                            <label class="font-bold text-lg md:text-xl text-black">{{ $t('ficha_valoraciones.formularios.evaluar') }} {{ getActiveLanguage() === 'es' ? obra.titulo : obra.titulo_original }}:</label>
+                            <label class="font-bold text-lg md:text-xl text-black">{{ $t('ficha_valoraciones.formularios.evaluar') }} {{ obra.titulo }}:</label>
                         </div>
                         <p v-if="evaluacionUsuario.length > 0" class="text-center text-xs">
                             ({{ $t('ficha_valoraciones.formularios.ya_evaluada') }})
@@ -124,7 +124,7 @@ const form2 = useForm({
                     <!-- Form Críticas -->
                     <div class="col-span-1 md:col-span-9 lg:col-span-10 p-1 lg:ml-1 flex justify-center flex-wrap">
                         <label class="w-full text-center font-bold text-lg md:text-xl mt-3 text-black">
-                            {{ $t('ficha_valoraciones.formularios.criticar') }} {{ getActiveLanguage() === 'es' ? obra.titulo : obra.titulo_original }}
+                            {{ $t('ficha_valoraciones.formularios.criticar') }} {{ obra.titulo }}
                             <span :class="[form.critica.length > 5000 ? 'text-yellow-300 font-bold' : 'text-black']">
                                 ({{ form.critica.length }}/5000 {{ $t('ficha_valoraciones.formularios.caracteres') }}){{ form.critica.length > 5000 ? ' Máximo de caracteres sobrepasado' : '' }}
                             </span>
@@ -154,7 +154,7 @@ const form2 = useForm({
                     </div>
                 </div>
                 <div v-else class="grid grid-cols-1 p-10 font-bold text-white text-lg md:text-2xl lg:text-3xl text-center">
-                    {{ $t('ficha_valoraciones.control1') }} "{{ getActiveLanguage() === 'es' ? obra.titulo : obra.titulo_original }}", {{ $t('ficha_valoraciones.control2') }}
+                    {{ $t('ficha_valoraciones.control1') }} "{{ obra.titulo }}", {{ $t('ficha_valoraciones.control2') }}
                     <Link as="button" :href="route('login')" class="m-auto mt-5 text-flamingo bg-white hover:bg-black focus:bg-white focus:ring-flamingo focus:text-flamingo focus:outline-none font-bold text-sm px-5 py-2.5 my-2 text-center">
                         {{ $t('ficha_valoraciones.boton_login') }}
                     </Link>

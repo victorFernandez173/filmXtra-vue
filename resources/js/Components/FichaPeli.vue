@@ -2,7 +2,6 @@
 import { Link } from "@inertiajs/vue3";
 import NotaMedia from "@/Components/NotaMedia.vue";
 import NumValoraciones from "@/Components/NumValoraciones.vue";
-import { getActiveLanguage } from "laravel-vue-i18n";
 
 const props = defineProps({
     'obra' : Object
@@ -30,7 +29,7 @@ function procesarNombre(nombre) {
         <div class="w-8/12 md:w-7/12 pr-2 md:pr-4 lg:[&>p]:text-lg">
             <Link :href="route('obra', obra.titulo_slug)">
                 <h1 class="font-bold text-flamingo text-lg md:text-xl lg:text-2xl mt-2 lg:mt-4 mb-1 lg:mb-2 hover:underline">
-                    {{ getActiveLanguage() === 'es' ? obra.titulo : obra.titulo_original }}
+                    {{ obra.titulo }}
                 </h1>
             </Link>
             <!-- Bloque valoraciones para pantallas estrechas -->

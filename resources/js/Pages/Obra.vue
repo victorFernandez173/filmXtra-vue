@@ -37,13 +37,13 @@ dayjs.locale(getActiveLanguage());
 <template>
     <Head>
         <title>
-            {{ getActiveLanguage() === 'es' ? obra.titulo : obra.titulo_original }}
+            {{ obra.titulo }}
         </title>
         <meta name="description" content="Ficha general de obra">
     </Head>
     <div class="container mx-auto mt-10 mb-10">
         <h1 class="text-center font-bold text-flamingo text-3xl px-8">
-            {{ getActiveLanguage() === 'es' ? obra.titulo : obra.titulo_original  }}
+            {{ obra.titulo  }}
         </h1>
         <!--3 apartados para poster, datos y valoraciones-->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-10">
@@ -64,7 +64,7 @@ dayjs.locale(getActiveLanguage());
                         <span class="font-semibold text-lg">
                             {{ $t('obra.titulo') }}:
                         </span>
-                            {{ getActiveLanguage() === 'es' ? obra.titulo : obra.titulo_original  }}
+                            {{ obra.titulo }}
                         </div>
                         <!--Año-->
                         <div>

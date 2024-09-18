@@ -15,7 +15,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * Class Obra
  *
  * @property int $id
- * @property string $titulo
+ * @property string $titulo_es
+ * @property string $titulo_en
  * @property string $titulo_slug
  * @property string $titulo_original
  * @property string $pais_id
@@ -61,7 +62,8 @@ class Obra extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'titulo',
+        'titulo_es',
+        'titulo_en',
         'titulo_slug',
         'titulo_original',
         'pais_id',
@@ -80,7 +82,7 @@ class Obra extends Model
     {
         return [
             'titulo_slug' => [
-                'source' => 'titulo'
+                'source' => 'titulo_es'
             ]
         ];
     }

@@ -29,7 +29,17 @@ class ObrasRepo extends Controller
      */
     static function obtenerDatosFichaObra(string $tituloSlug): Obra|Builder|Model|_IH_Obra_QB
     {
-        $obra = Obra::with([
+        $obra = Obra::select([
+            'id',
+            'titulo_'.app()->getLocale().' as titulo',
+            'titulo_slug',
+            'titulo_original',
+            'pais_id',
+            'duracion',
+            'sinopsis',
+            'fecha',
+            'productora',
+        ])->with([
             'poster',
             'pais:id,pais_'.app()->getLocale().' as pais',
             'secuela:obra_id,orden,saga',
@@ -139,7 +149,7 @@ class ObrasRepo extends Controller
      */
     static function obtenerObrasIndex()
     {
-        return Obra::select(['id', 'titulo', 'titulo_original', 'titulo_slug'])
+        return Obra::select(['id', 'titulo_'.app()->getLocale().' as titulo', 'titulo_original', 'titulo_slug'])
             ->with('poster:id,obra_id,ruta,alt')
             ->whereIn('id', static::obtenerObrasAleatorias())
             ->get()
@@ -170,7 +180,7 @@ class ObrasRepo extends Controller
         return Obra::select([
             'id',
             'pais_id',
-            'titulo',
+            'titulo_'.app()->getLocale().' as titulo',
             'titulo_original',
             'titulo_slug',
             'duracion',
