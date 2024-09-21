@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('titulo_es', 200)->nullable(false)->unique();
             $table->string('titulo_en', 200)->nullable(false)->unique();
-            $table->string('titulo_slug', 200)->nullable();
+            $table->string('titulo_slug', 200)->nullable(false)->unique();
             $table->string('titulo_original', 200)->nullable(false);
             $table->string('pais_id', 2);
             $table->foreign('pais_id')->references('id')->on('paises');
