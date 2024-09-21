@@ -45,7 +45,7 @@ Route::middleware('auth')
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
-// Ficha de obra
+// Cambio de idioma
 Route::get('/lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang');
 
 // Resto rutas auth
