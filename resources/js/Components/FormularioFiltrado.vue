@@ -46,7 +46,9 @@ const toggleFiltrado = () => {
 
 <template>
     <div class="flex justify-center sm:hidden mb-3">
-        <secondary-button @click="toggleFiltrado">Filtrar</secondary-button>
+        <secondary-button @click="toggleFiltrado">
+            {{ form.classFiltrado === 'hidden' ? 'Filtrar' : 'Ocultar' }}
+        </secondary-button>
     </div>
     <form @submit.prevent="submit" class="m-auto sm:flex sm:flex-col" :class="`${form.classFiltrado}`">
         <div class="m-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 hover:[&>div>select]:cursor-pointer">
