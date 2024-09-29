@@ -20,7 +20,7 @@ const props = defineProps({
             </div>
             <!-- Título :hover -->
             <!-- Si el título es >45 y existe truncado: se achica con hover -->
-            <div :class="(obra.titulo.length > 45 && truncarTitulo ? 'text-lg sm:text-sm sm:py-2.5 sm:top-0.5 ' : 'text-lg ')+(truncarTitulo ? 'sm:truncate' : '')" class="z-10 inline-block px-3 py-2 duration-0 absolute opacity-0 transition-opacity group-hover:opacity-100 w-full font-bold group-hover:underline top-2 text-flamingo">
+            <div :class="`${obra.titulo.length > 45 && truncarTitulo ? 'text-lg sm:text-sm sm:py-2.5 sm:top-0.5 bg-yellow-300' : 'text-lg'} ${truncarTitulo? 'sm:truncate' : ''}`" class="z-10 inline-block px-3 py-2 duration-0 absolute opacity-0 transition-opacity group-hover:opacity-100 w-full font-bold group-hover:underline top-2 text-flamingo">
                 <p>{{ obra.titulo }}</p>
             </div>
 
