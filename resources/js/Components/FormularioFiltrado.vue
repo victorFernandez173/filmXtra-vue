@@ -38,7 +38,7 @@ const annoActual = (new Date().getFullYear() + 1);
 </script>
 
 <template>
-    <form @submit.prevent="submit" class="m-auto flex">
+    <form @submit.prevent="submit" class="m-auto flex flex-col">
         <div class="m-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 hover:[&>div>select]:cursor-pointer">
             <!-- Selects-->
             <div>
@@ -73,6 +73,18 @@ const annoActual = (new Date().getFullYear() + 1);
                     </Link>
                 </secondary-button>
             </div>
+        </div>
+
+        <!-- Mensaje de filtrado condicionado en funcion de parámetros del formulario -->
+        <p v-if="filtros.genero || filtros.pais || filtros.desde || filtros.hasta" class="w-full text-center mt-1">
+            {{ $t('top_filmxtra.filtros') }}&rarr;
+            <!-- Si hay genero (filtros[0])...se añade coma, y así sucesivamente ... -->
+            {{ filtros.genero === '' ? '' : `${$t('form_filtrado.genero')}: ${filtros.genero}`}}{{(filtros.genero !== '' && filtros.pais !== '') ? ', ' : ''}}{{ filtros.pais === '' ? '' : ` ${$t('form_filtrado.pais')}: ${filtros.pais}`}}{{(filtros.pais !== '' && filtros.desde !== '') ? ', ' : ''}}{{ filtros.desde === '' ? '' : ` ${$t('form_filtrado.desde')}: ${filtros.desde}`}}{{(filtros.desde !== '' && filtros.hasta !== '') ? ', ' : ''}}{{ filtros.hasta === '' ? '' : ` ${$t('form_filtrado.hasta')}: ${filtros.hasta}`}}{{ filtros.genero !== null ?  '.' : ''}}
+        </p>
+        <div v-else class="w-full text-center">
+            <p>
+                {{ $t('top_filmxtra.sin_filtros') }}
+            </p>
         </div>
     </form>
 </template>
