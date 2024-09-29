@@ -30,6 +30,7 @@ const submit = () => {
     );
 };
 
+// Reseteo de los filtros: solo los campos de filtrado, no el de classFiltrado y luego submit() para aplicar
 const resetearFiltros = () => {
     form.reset('genero', 'pais', 'desde', 'hasta');
     submit()
@@ -39,6 +40,7 @@ const resetearFiltros = () => {
 const rangoAnnos = parseInt((new Date().getFullYear()).toString()) - parseInt(props.pionera) + 1;
 const annoActual = (new Date().getFullYear() + 1);
 
+// Al clicar el boton ocultamos/escondemos el formulario en pantallas móviles mediante cambio de clases
 const toggleFiltrado = () => {
     form.classFiltrado === 'hidden' ? form.classFiltrado = 'flex flex-col' : form.classFiltrado = 'hidden';
 };
