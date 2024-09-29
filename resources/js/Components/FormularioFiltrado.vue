@@ -1,7 +1,7 @@
 <script setup>
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SelectConsulta from "./SelectConsulta.vue";
-import {useForm, Link, router} from '@inertiajs/vue3';
+import {useForm} from '@inertiajs/vue3';
 import SelectRangoAnno from "./SelectRangoAnno.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 
@@ -18,27 +18,37 @@ const form = useForm({
     pais: '',
     desde: '',
     hasta: '',
+    classFiltrado : route().params.classFiltrado ? route().params.classFiltrado : 'hidden'
 });
 // Entrega del formulario
 const submit = () => {
     form.get(route('top'),
         {
-            preserveState: false
+            preserveState: false,
+            preserveScroll: true
         }
     );
 };
 
 const resetearFiltros = () => {
-    router.get(route('top'));
+    form.reset('genero', 'pais', 'desde', 'hasta');
+    submit()
 }
 
 // Calculamos el rango de años a partir de la pelicula más vieja
 const rangoAnnos = parseInt((new Date().getFullYear()).toString()) - parseInt(props.pionera) + 1;
 const annoActual = (new Date().getFullYear() + 1);
+
+const toggleFiltrado = () => {
+    form.classFiltrado === 'hidden' ? form.classFiltrado = 'flex flex-col' : form.classFiltrado = 'hidden';
+};
 </script>
 
 <template>
-    <form @submit.prevent="submit" class="m-auto flex flex-col">
+    <div class="flex justify-center sm:hidden mb-3">
+        <secondary-button @click="toggleFiltrado">Filtrar</secondary-button>
+    </div>
+    <form @submit.prevent="submit" class="m-auto sm:flex sm:flex-col" :class="`${form.classFiltrado}`">
         <div class="m-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 hover:[&>div>select]:cursor-pointer">
             <!-- Selects-->
             <div>
@@ -68,9 +78,7 @@ const annoActual = (new Date().getFullYear() + 1);
                     {{ $t('form_filtrado.filtra') }}
                 </primary-button>
                 <secondary-button @click="resetearFiltros">
-                    <Link :href="route('top')">
-                        {{ $t('form_filtrado.reset') }}
-                    </Link>
+                    {{ $t('form_filtrado.reset') }}
                 </secondary-button>
             </div>
         </div>
