@@ -142,7 +142,7 @@ onUpdated(() => {
                 <img src="/images/logo.png" class="h-10 sm:h-14" alt="Logo FilmXtra" />
             </Link>
             <!-- Bloque de búsqueda  -->
-            <div class="flex md:order-2">
+            <div class="flex md:order-2 mr-3">
                 <div id="navbar-search" class="relative hidden lg:block">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
@@ -161,7 +161,7 @@ onUpdated(() => {
                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <button type="button" class="absolute right-16 lg:right-3 flex text-sm bg-gray-800" :class="$page.props.auth.user ? 'focus:ring-black focus:ring-4 hover:ring-4 hover:ring-black focus:black' : 'focus:ring-flamingo focus:ring-4 hover:ring-4 hover:ring-flamingo focus:flamingo'" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                <button type="button" class="absolute right-16 lg:right-1 flex text-sm bg-gray-800" :class="$page.props.auth.user ? 'focus:ring-black focus:ring-4 hover:ring-4 hover:ring-black focus:black' : 'focus:ring-flamingo focus:ring-4 hover:ring-4 hover:ring-flamingo focus:flamingo'" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                     <img v-if="!$page.props.auth.user" class="w-[42.5px] h-[42.5px]" src="/favicon.png" alt="Foto del usuario">
                     <p v-else class="w-[42.5px] h-[42.5px] bg-flamingo border-flamingo flex justify-center items-center text-lg">
                         {{ $page.props.auth.user.usuario[0].toUpperCase() }}
