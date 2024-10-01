@@ -23,7 +23,7 @@ import { getActiveLanguage } from "laravel-vue-i18n";
                             </Link>
                         </li>
                         <li>
-                            <Link :href="route('top')" :class="$page.url === '/top' ? 'text-flamingo pointer-events-none' : ''">
+                            <Link :href="route('top')" :class="$page.url.includes('/top') ? 'text-flamingo pointer-events-none' : ''">
                                 {{ $t('footer.top_filmxtra') }}
                             </Link>
                         </li>

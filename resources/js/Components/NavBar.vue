@@ -233,7 +233,7 @@ onUpdated(() => {
                         </responsive-nav-link>
                     </li>
                     <li>
-                        <responsive-nav-link :href="route('top')" :elegido="$page.url === '/top' ? 'text-flamingo pointer-events-none' : ''">
+                        <responsive-nav-link :href="route('top')" :elegido="$page.url.includes('/top') ? 'text-flamingo pointer-events-none' : ''">
                             {{ $t('navbar.top_filmxtra') }}
                         </responsive-nav-link>
                     </li>
