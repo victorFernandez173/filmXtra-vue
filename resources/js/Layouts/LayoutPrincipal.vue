@@ -23,9 +23,12 @@ onMounted(() => {
     </div>
 </template>
 
-<!--Estilo esquinas 90º para los botones swal-->
+<!--Estilo esquinas 90º para swal-->
 <style>
     .swal2-popup .swal2-styled.swal2-confirm {
+        border-radius: 0 !important;
+    }
+    .swal2-popup {
         border-radius: 0 !important;
     }
 </style>
