@@ -145,7 +145,7 @@ dayjs.locale(getActiveLanguage());
                                 <p class="mt-2 -mb-3">
                                     {{ props.obra.secuela.orden === 0 ? $t('obra.relacion') : obra.secuela.orden < props.obra.secuela.orden ? $t('obra.precuela') : $t('obra.secuela') }}
                                 </p>
-                                <poster :obra="props.obra" />
+                                <poster :obra="obra" />
                             </div>
                         </div>
                         <!-- Bloque para spin-offs -->
@@ -154,7 +154,7 @@ dayjs.locale(getActiveLanguage());
                                 <p class="mt-2 -mb-3">
                                     {{ props.obra.secuela.orden === 0 ? $t('obra.relacion') : $t('obra.spinoff') }}
                                 </p>
-                                <poster :obra="props.obra" />
+                                <poster :obra="obra" />
                             </div>
                         </div>
                     </div>
