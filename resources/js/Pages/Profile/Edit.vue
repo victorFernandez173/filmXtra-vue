@@ -1,10 +1,3 @@
-<script>
-import LayoutPrincipal from "../../Layouts/LayoutPrincipal.vue";
-
-export default {
-    layout: LayoutPrincipal,
-}
-</script>
 <script setup>
 import AuthLayout from "@/Layouts/AuthLayout.vue";
 import DeleteUserForm from './Partials/DeleteUserForm.vue';

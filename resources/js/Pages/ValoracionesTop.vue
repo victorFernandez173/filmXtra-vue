@@ -1,13 +1,3 @@
-<!--script independiente sin "setup" para la carga del LayoutPrincipal como layout persistente-->
-<script>
-import LayoutPrincipal from "../Layouts/LayoutPrincipal.vue";
-
-export default {
-    layout: LayoutPrincipal,
-}
-</script>
-
-<!--script estandar para lo habitual-->
 <script setup>
 import { Head } from "@inertiajs/vue3";
 import Paginacion3 from "../Components/Paginacion3.vue";

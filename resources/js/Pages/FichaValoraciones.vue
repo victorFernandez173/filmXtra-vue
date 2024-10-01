@@ -1,18 +1,10 @@
-<script>
-import LayoutPrincipal from "../Layouts/LayoutPrincipal.vue";
-import { getActiveLanguage } from "laravel-vue-i18n";
-
-export default {
-    layout: LayoutPrincipal,
-}
-</script>
-
 <script setup>
 import { Head, Link, useForm} from "@inertiajs/vue3";
 import Estrellitas from "../Components/Estrellitas.vue";
 import SelectRango from "../Components/SelectRango.vue";
 import PaginacionSimple from "../Components/PaginacionSimple.vue";
 import Critica from "@/Components/Critica.vue";
+import { getActiveLanguage } from "laravel-vue-i18n";
 
 const props = defineProps({
     'obra' : Object,

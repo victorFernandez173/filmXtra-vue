@@ -1,10 +1,3 @@
-<script>
-import LayoutPrincipal from "../Layouts/LayoutPrincipal.vue";
-export default {
-    layout: LayoutPrincipal,
-}
-</script>
-
 <script setup>
 import dayjs from "dayjs";
 import relativeTime from 'dayjs/plugin/relativeTime';
