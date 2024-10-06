@@ -15,7 +15,7 @@ class LanguageCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Si session tiene appLocale es que se ha elegido idioma manualmente
+        // Si session tiene userCustomLocale es que se ha elegido idioma manualmente
         // Si además dicho idioma existe en los idiomas disponibles
         // Entonces aplicamos dicho idioma
         // Sino, recurrimos al app.locale
