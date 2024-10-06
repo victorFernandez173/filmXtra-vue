@@ -201,7 +201,7 @@
     "login.title": "Login",
     "login.h1": "Inicia sesión con tu cuenta",
     "login.email_label": "Correo electrónico",
-    "login.password_label": "Nueva contraseña",
+    "login.password_label": "Contraseña",
     "login.contra_olvidada": "¿Contraseña olvidada?",
     "login.inicia_sesion": "Inicia sesión",
     "login.github": "Inicia con Github",
