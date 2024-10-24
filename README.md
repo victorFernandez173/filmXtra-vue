@@ -3,7 +3,7 @@
 </p>
 
 
-# filmxtra
+# filmXtra
 
 Proyecto propio sin ánimo de lucro y puramente didáctico de una web de cine responsiva con diferentes funcionalidades basada en laravel 11, vue 3 e inertia: 
 
