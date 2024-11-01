@@ -51,6 +51,7 @@ Route::get('/lang/{lang}', [LanguageController::class, 'switchLang'])->name('lan
 // Resto rutas auth
 require __DIR__ . '/auth.php';
 
+// TODO pint, phpinsights and larastan
 // TODO revision funcionamiento MAIN
 // TODO avatar de usuario y + otros datos del usuario en el perfil
 // TODO modo oscuro: (ej ResponsiveNavLink)...
