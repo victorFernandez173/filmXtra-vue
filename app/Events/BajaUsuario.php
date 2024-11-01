@@ -9,12 +9,5 @@ class BajaUsuario
 {
     use Dispatchable;
 
-    /**
-     * Crea la instancia del evento
-     *
-     * @param Usuario $usuario
-     */
-    public function __construct(
-        public Usuario $usuario
-    ){}
+    public function __construct(public Usuario $usuario) {}
 }
