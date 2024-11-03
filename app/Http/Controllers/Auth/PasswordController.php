@@ -19,21 +19,16 @@ class PasswordController extends Controller
         $validated = Validator::make($request->all(),
             [
                 'current_password' => ['required', 'current_password'],
-                'password'         => [
+                'password' => [
                     'required',
-                    Password::min(8)
-                        ->letters()
-                        ->mixedCase()
-                        ->numbers()
-                        ->symbols()
-                        ->uncompromised(),
-                    'confirmed'
+                    Password::min(8)->letters()->mixedCase()->numbers()->symbols()->uncompromised(),
+                    'confirmed',
                 ],
             ],
             [],
             [
                 'current_password' => trans('validation.attributes.current_password'),
-                'password'         => trans('validation.attributes.password'),
+                'password' => trans('validation.attributes.password'),
             ]
         )->validate();
 
