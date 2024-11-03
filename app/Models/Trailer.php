@@ -17,7 +17,7 @@ class Trailer extends Model
     /**
      * Clave primaria.
      *
-     * @var integer
+     * @var int
      */
     protected $primaryKey = 'obra_id';
 
@@ -47,15 +47,15 @@ class Trailer extends Model
      *
      * @var string[]
      */
-	protected $casts = [
-		'obra_id' => 'int',
-	];
+    protected $casts = [
+        'obra_id' => 'int',
+    ];
 
     /**
      * Obtiene la obra
      */
-	public function obra(): BelongsTo
-	{
-		return $this->belongsTo(Obra::class);
-	}
+    public function obra(): BelongsTo
+    {
+        return $this->belongsTo(Obra::class);
+    }
 }
