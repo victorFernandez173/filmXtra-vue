@@ -10,11 +10,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @property int $usuario_id
  * @property int $critica_id
- *
  * @property Critica $critica
  * @property Usuario $user
- *
- * @package App\Models
  */
 class Like extends Model
 {
@@ -29,7 +26,6 @@ class Like extends Model
      * primaryKey
      *
      * @var null
-     * @access protected
      */
     protected $primaryKey = null;
 
@@ -42,9 +38,10 @@ class Like extends Model
 
     /**
      * No timestamps
+     *
      * @var bool
      */
-	public $timestamps = false;
+    public $timestamps = false;
 
     /**
      * Attributos asignables.
@@ -61,28 +58,24 @@ class Like extends Model
      *
      * @var string[]
      */
-	protected $casts = [
-		'usuario_id' => 'int',
-		'critica_id' => 'int'
-	];
+    protected $casts = [
+        'usuario_id' => 'int',
+        'critica_id' => 'int',
+    ];
 
     /**
      * Obtiene la critica
-     *
-     * @return BelongsTo
      */
-	public function critica(): BelongsTo
-	{
-		return $this->belongsTo(Critica::class);
-	}
+    public function critica(): BelongsTo
+    {
+        return $this->belongsTo(Critica::class);
+    }
 
     /**
      * Obtiene el usuario
-     *
-     * @return BelongsTo
      */
-	public function user(): BelongsTo
-	{
-		return $this->belongsTo(Usuario::class);
-	}
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(Usuario::class);
+    }
 }
