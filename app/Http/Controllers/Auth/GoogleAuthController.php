@@ -7,27 +7,24 @@ use App\Mail\SocialiteLoginMail;
 use App\Models\LoginTipo;
 use App\Models\Usuario;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Date;
-use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\RedirectResponse;
-use Log;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 use Mail;
-use Redirect;
 
 class GoogleAuthController extends Controller
 {
     /**
      * Redirect the user to the Google authentication page
-     *
      */
     public function redirectToProvider()
     {
-        return Socialite::driver('google')->with(["prompt" => "select_account"])->redirect();
+        return Socialite::driver('google')->with(['prompt' => 'select_account'])->redirect();
     }
 
     /**
      * Logs in the user
+     *
      * @return RedirectResponse
      */
     public function handleCallback()
@@ -38,9 +35,9 @@ class GoogleAuthController extends Controller
                 'social_id' => $googleUser->id,
             ],
             [
-                'usuario'                => $googleUser->name,
-                'email'                  => $googleUser->email,
-                'login_tipo_id'          => LoginTipo::GOOGLE_TIPO,
+                'usuario' => $googleUser->name,
+                'email' => $googleUser->email,
+                'login_tipo_id' => LoginTipo::GOOGLE_TIPO,
             ]
         );
         $user->email_verificado_fecha = now();
@@ -48,6 +45,7 @@ class GoogleAuthController extends Controller
 
         Mail::to($user->email)->send(new SocialiteLoginMail($user));
         Auth::login($user);
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 }
