@@ -16,15 +16,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Carbon $edicion
  * @property Carbon $creada
  * @property Carbon $modificada
- *
  * @property Obra $obra
- *
- * @package App\Models
  */
 class Festival extends Model
 {
-    const string CREATED_AT = 'creada';
-    const string UPDATED_AT = 'modificada';
+    const CREATED_AT = 'creada';
+
+    const UPDATED_AT = 'modificada';
 
     /**
      * Castings
@@ -45,7 +43,6 @@ class Festival extends Model
 
     /**
      * Obtiene la obra
-     * @return BelongsTo
      */
     public function obra(): BelongsTo
     {
