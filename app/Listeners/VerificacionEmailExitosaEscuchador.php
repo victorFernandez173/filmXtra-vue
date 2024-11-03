@@ -8,7 +8,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class VerificacionEmailExitosaEscuchador implements ShouldQueue
 {
-
     /**
      * Handle the event.
      */

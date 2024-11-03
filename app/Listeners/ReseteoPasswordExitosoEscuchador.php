@@ -8,7 +8,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ReseteoPasswordExitosoEscuchador implements ShouldQueue
 {
-
     /**
      * Handle the event.
      */
