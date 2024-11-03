@@ -11,6 +11,7 @@ class LanguageController extends Controller
         if (array_key_exists($lang, config('languages'))) {
             session(['userCustomLocale' => $lang]);
         }
+
         return Inertia::location(url()->previousPath());
     }
 }
