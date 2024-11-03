@@ -25,6 +25,6 @@ class ReseteoPasswordExitosoNotificacion extends Notification
      */
     public function toMail(object $notifiable): ReseteoPasswordExitosoMail
     {
-        return (new ReseteoPasswordExitosoMail($notifiable));
+        return new ReseteoPasswordExitosoMail($notifiable);
     }
 }
