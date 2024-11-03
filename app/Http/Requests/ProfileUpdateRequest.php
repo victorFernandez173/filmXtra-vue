@@ -10,8 +10,6 @@ class ProfileUpdateRequest extends FormRequest
 {
     /**
      * Obtiene las reglas de validación que se aplican a la petición de actualización de perfil.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
     public function rules(): array
     {
@@ -19,13 +17,13 @@ class ProfileUpdateRequest extends FormRequest
             'usuario' => [
                 'required',
                 'string',
-                'max:25'
+                'max:25',
             ],
-            'email'   => [
+            'email' => [
                 'required',
                 'email',
                 'max:60',
-                Rule::unique(Usuario::class)->ignore($this->user()->id)
+                Rule::unique(Usuario::class)->ignore($this->user()->id),
             ],
         ];
     }

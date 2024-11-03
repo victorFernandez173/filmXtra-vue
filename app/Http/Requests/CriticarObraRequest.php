@@ -27,7 +27,6 @@ class CriticarObraRequest extends FormRequest
         ];
     }
 
-
     /**
      * Mensajes de validación.
      *
@@ -37,8 +36,8 @@ class CriticarObraRequest extends FormRequest
     {
         return [
             'critica.required' => __('ficha_valoraciones.formularios.critica.requerida'),
-            'critica.min'      => __('ficha_valoraciones.formularios.critica.min'),
-            'critica.max'      => __('ficha_valoraciones.formularios.critica.max'),
+            'critica.min' => __('ficha_valoraciones.formularios.critica.min'),
+            'critica.max' => __('ficha_valoraciones.formularios.critica.max'),
         ];
     }
 }

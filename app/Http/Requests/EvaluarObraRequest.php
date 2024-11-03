@@ -27,7 +27,6 @@ class EvaluarObraRequest extends FormRequest
         ];
     }
 
-
     /**
      * Mensajes de validación.
      *
@@ -36,7 +35,7 @@ class EvaluarObraRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'evaluacion' => __('ficha_valoraciones.formularios.puntuacion.requerida')
+            'evaluacion' => __('ficha_valoraciones.formularios.puntuacion.requerida'),
         ];
     }
 }
