@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-
 /**
  * Class Actor
  *
@@ -19,15 +18,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property string $pais
  * @property Carbon $creado
  * @property Carbon $modificado
- *
  * @property Collection|Obra[] $obras
- *
- * @package App\Models
  */
 class Actor extends Model
 {
-    const string CREATED_AT = 'creado';
-    const string UPDATED_AT = 'modificado';
+    const CREATED_AT = 'creado';
+
+    const UPDATED_AT = 'modificado';
 
     /**
      * Castings
@@ -49,7 +46,7 @@ class Actor extends Model
         'nombre_real',
         'edad',
         'pais',
-        'defuncion'
+        'defuncion',
     ];
 
     /**

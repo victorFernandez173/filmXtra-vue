@@ -12,18 +12,19 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $obra_id
  * @property string $cita
  * @property int $tipo
- *
- * @package App\Models
  */
 class Cita extends Model
 {
     public $table = 'citas';
+
     public $timestamps = false;
 
-//    Constantes para el tipo de cita
-    const int PELICULA = 1;
-    const int SOBRECINE = 2;
-    const int MOTIVACIONAL = 3;
+    //    Constantes para el tipo de cita
+    const PELICULA = 1;
+
+    const SOBRECINE = 2;
+
+    const MOTIVACIONAL = 3;
 
     /**
      * Atributos asignables
@@ -33,12 +34,11 @@ class Cita extends Model
     protected $fillable = [
         'obra_id',
         'cita',
-        'tipo'
+        'tipo',
     ];
 
     /**
      * Obtener la obra
-     * @return BelongsTo
      */
     public function obra(): BelongsTo
     {

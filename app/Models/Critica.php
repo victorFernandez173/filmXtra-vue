@@ -17,17 +17,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property string $critica
  * @property Carbon $creada
  * @property Carbon $modificada
- *
  * @property Obra $obra
  * @property Usuario $usuario
  * @property Collection|Like[] $likes
- *
- * @package App\Models
  */
 class Critica extends Model
 {
-    const string CREATED_AT = 'creada';
-    const string UPDATED_AT = 'modificada';
+    const CREATED_AT = 'creada';
+
+    const UPDATED_AT = 'modificada';
 
     /**
      * Castings

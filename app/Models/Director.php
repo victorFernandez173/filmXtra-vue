@@ -17,15 +17,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property string $pais
  * @property Carbon $creado
  * @property Carbon $modificado
- *
  * @property Collection|Obra[] $obras
- *
- * @package App\Models
  */
 class Director extends Model
 {
-    const string CREATED_AT = 'creado';
-    const string UPDATED_AT = 'modificado';
+    const CREATED_AT = 'creado';
+
+    const UPDATED_AT = 'modificado';
 
     /**
      * Castings
@@ -46,12 +44,11 @@ class Director extends Model
         'nombre',
         'edad',
         'pais',
-        'defuncion'
+        'defuncion',
     ];
 
     /**
      * Obras del director
-     * @return BelongsToMany
      */
     public function obras(): BelongsToMany
     {
