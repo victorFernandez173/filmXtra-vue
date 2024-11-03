@@ -65,9 +65,10 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         // Redirige a la url objetivo(generada en profile.edit) o atras...
-        if($intended) {
+        if ($intended) {
             return redirect($intended);
         }
+
         return redirect()->back();
     }
 }
