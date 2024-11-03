@@ -40,12 +40,9 @@ class NewPasswordController extends Controller
                 'token' => 'required',
                 'email' => 'required|email:rfc,dns',
                 'password' => [
-                    'required', 'confirmed', Rules\Password::min(8)
-                    ->letters()
-                    ->mixedCase()
-                    ->numbers()
-                    ->symbols()
-                    ->uncompromised()
+                    'required',
+                    'confirmed',
+                    Rules\Password::min(8)->letters()->mixedCase()->numbers()->symbols()->uncompromised(),
                 ],
             ],
             [],
