@@ -25,6 +25,6 @@ class VerificacionEmailExitosaNotification extends Notification
      */
     public function toMail(object $notifiable): BienvenidaMail
     {
-        return (new BienvenidaMail($notifiable));
+        return new BienvenidaMail($notifiable);
     }
 }
