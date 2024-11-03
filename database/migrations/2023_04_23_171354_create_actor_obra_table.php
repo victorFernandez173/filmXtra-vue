@@ -1,18 +1,17 @@
 <?php
 
-use App\Models\Actor;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Migrar.
      */
     public function up(): void
     {
-        Schema::create('actor_obra', function (Blueprint $table) {
+        Schema::create('actor_obra', function (Blueprint $table)
+        {
             $table->foreignId('obra_id')->constrained()->onDelete('CASCADE');
             $table->foreignId('actor_id')->constrained()->onDelete('CASCADE');
 
