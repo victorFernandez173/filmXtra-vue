@@ -9,23 +9,25 @@ trait CitasTrait
 {
     /**
      * Para devolver una cita de pelicula al azar
-     * @return string
+     *
      * @throws RandomException
      */
-    static function citaPelicula(): string
+    public static function citaPelicula(): string
     {
         $citasPeliculas = Cita::where('tipo', Cita::PELICULA)->get();
-        return $citasPeliculas[random_int(0, count($citasPeliculas)-1)]['cita'];
+
+        return $citasPeliculas[random_int(0, count($citasPeliculas) - 1)]['cita'];
     }
 
     /**
      * Para devolver una cita sobre cine al azar
-     * @return string
+     *
      * @throws RandomException
      */
-    static function citaSobreCine(): string
+    public static function citaSobreCine(): string
     {
         $citasPeliculas = Cita::where('tipo', Cita::SOBRECINE)->get();
-        return $citasPeliculas[random_int(0, count($citasPeliculas)-1)]['cita'];
+
+        return $citasPeliculas[random_int(0, count($citasPeliculas) - 1)]['cita'];
     }
 }
