@@ -13,9 +13,7 @@ class ReseteoPasswordNotificacion extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct(public string $url)
-    {
-    }
+    public function __construct(public string $url) {}
 
     /**
      * Get the notification's delivery channels.
@@ -32,6 +30,6 @@ class ReseteoPasswordNotificacion extends Notification
      */
     public function toMail(object $notifiable): ReseteoPasswordMail
     {
-        return (new ReseteoPasswordMail($notifiable, $this->url));
+        return new ReseteoPasswordMail($notifiable, $this->url);
     }
 }
