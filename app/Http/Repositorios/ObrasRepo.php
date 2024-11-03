@@ -194,7 +194,7 @@ class ObrasRepo extends Controller
             'fecha',
             [
                 request('desde') ?: '1870',
-                request('hasta') ?: Carbon::now()->format('Y')
+                request('hasta') ?: Carbon::now()->format('Y'),
             ]
         )->whereHas(
             'generos',
