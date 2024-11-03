@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class PersonalAccessToken extends Model
 {
-	protected $table = 'personal_access_tokens';
+    protected $table = 'personal_access_tokens';
 
     /**
      * Castings
