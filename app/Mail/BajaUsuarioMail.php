@@ -14,12 +14,7 @@ class BajaUsuarioMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
-    public function __construct(
-        protected $notifiable
-    ){}
+    public function __construct(protected $notifiable) {}
 
     /**
      * Datos básicos para el envío
@@ -42,8 +37,8 @@ class BajaUsuarioMail extends Mailable
             view: 'emails.bajaUsuario',
             with: [
                 'usuario' => $this->notifiable,
-                'logo'    => public_path('images/logo.png'),
-                'loginTipo' => LoginTipo::find($this->notifiable->login_tipo_id)
+                'logo' => public_path('images/logo.png'),
+                'loginTipo' => LoginTipo::find($this->notifiable->login_tipo_id),
             ]
         );
     }

@@ -14,14 +14,7 @@ class BienvenidaMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Constructor
-     *
-     * @param $notifiable
-     */
-    public function __construct(protected $notifiable)
-    {
-    }
+    public function __construct(protected $notifiable) {}
 
     /**
      * Datos básicos para el envío
@@ -44,7 +37,7 @@ class BienvenidaMail extends Mailable
             view: 'emails.bienvenida',
             with: [
                 'usuario' => $this->notifiable,
-                'logo'    => public_path('images/logo.png'),
+                'logo' => public_path('images/logo.png'),
             ]
         );
     }
