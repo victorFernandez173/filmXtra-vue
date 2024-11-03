@@ -27,7 +27,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $productora
  * @property Carbon $creada
  * @property Carbon $modificada
- *
  * @property Collection|Actor[] $actors
  * @property Collection|Critica[] $criticas
  * @property Collection|Director[] $directors
@@ -37,15 +36,14 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property Poster $poster
  * @property Collection|Profesional[] $profesionals
  * @property Collection|Secuela[] $secuelas
- *
- * @package App\Models
  */
 class Obra extends Model
 {
     use Sluggable;
 
-    const string CREATED_AT = 'creada';
-    const string UPDATED_AT = 'modificada';
+    const CREATED_AT = 'creada';
+
+    const UPDATED_AT = 'modificada';
 
     /**
      * Castings
@@ -54,7 +52,7 @@ class Obra extends Model
      */
     protected $casts = [
         'duracion' => 'float',
-        'fecha'    => 'timestamp:Y',
+        'fecha' => 'timestamp:Y',
     ];
 
     /**
@@ -77,15 +75,13 @@ class Obra extends Model
 
     /**
      * Return the sluggable configuration array for this model.
-     *
-     * @return array
      */
     public function sluggable(): array
     {
         return [
             'titulo_slug' => [
-                'source' => 'titulo_es'
-            ]
+                'source' => 'titulo_es',
+            ],
         ];
     }
 
@@ -131,7 +127,6 @@ class Obra extends Model
 
     /**
      * Obtener los generos
-     * @return BelongsToMany
      */
     public function generos(): BelongsToMany
     {
