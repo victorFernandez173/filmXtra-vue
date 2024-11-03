@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use App\Notifications\ReseteoPasswordNotificacion;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Carbon\Carbon;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -41,8 +41,9 @@ class Usuario extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
-    const string CREATED_AT = 'creado';
-    const string UPDATED_AT = 'modificado';
+    const CREATED_AT = 'creado';
+
+    const UPDATED_AT = 'modificado';
 
     /**
      * Atributos asignables.
@@ -58,7 +59,7 @@ class Usuario extends Authenticatable implements MustVerifyEmail
         'email',
         'social_id',
         'login_tipo_id',
-        'password'
+        'password',
     ];
 
     /**
@@ -76,9 +77,9 @@ class Usuario extends Authenticatable implements MustVerifyEmail
      * @var array<string, string>
      */
     protected $casts = [
-        'nacimiento'             => 'datetime',
+        'nacimiento' => 'datetime',
         'email_verificado_fecha' => 'datetime',
-        'login_tipo_id'          => 'integer',
+        'login_tipo_id' => 'integer',
     ];
 
     /**
@@ -115,13 +116,11 @@ class Usuario extends Authenticatable implements MustVerifyEmail
 
     public function hasVerifiedEmail(): bool
     {
-        return !is_null($this->email_verificado_fecha);
+        return ! is_null($this->email_verificado_fecha);
     }
 
     /**
      * Marca email usuario como verificado.
-     *
-     * @return bool
      */
     public function markEmailAsVerified(): bool
     {
@@ -132,8 +131,6 @@ class Usuario extends Authenticatable implements MustVerifyEmail
 
     /**
      * Obtiene el email que debe ser verificado.
-     *
-     * @return string
      */
     public function getEmailForVerification(): string
     {
@@ -142,7 +139,6 @@ class Usuario extends Authenticatable implements MustVerifyEmail
 
     /**
      * Overriding de la notificación de reseteo de password.
-     * @param string $token
      */
     public function sendPasswordResetNotification($token): void
     {
