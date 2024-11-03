@@ -53,6 +53,7 @@ class PasswordResetLinkController extends Controller
         if ($status == Password::RESET_LINK_SENT) {
             return back()->with('status', __('forgot_password.enviado'));
         }
+
         return back()->with('status', __('forgot_password.no_enviado'));
     }
 }
