@@ -15,17 +15,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $alt
  * @property Carbon $creado
  * @property Carbon $modificado
- *
  * @property Obra $obra
- *
- * @package App\Models
  */
 class Poster extends Model
 {
     /**
      * Clave primaria
      *
-     * @var integer
+     * @var int
      */
     protected $primaryKey = 'id';
 
@@ -36,8 +33,9 @@ class Poster extends Model
      */
     public $incrementing = false;
 
-    const string CREATED_AT = 'creado';
-    const string UPDATED_AT = 'modificado';
+    const CREATED_AT = 'creado';
+
+    const UPDATED_AT = 'modificado';
 
     /**
      * Castings
@@ -56,7 +54,7 @@ class Poster extends Model
     protected $fillable = [
         'obra_id',
         'ruta',
-        'alt'
+        'alt',
     ];
 
     /**
