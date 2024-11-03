@@ -25,6 +25,6 @@ class BajaUsuarioNotificacion extends Notification
      */
     public function toMail(object $notifiable): BajaUsuarioMail
     {
-        return (new BajaUsuarioMail($notifiable));
+        return new BajaUsuarioMail($notifiable);
     }
 }
