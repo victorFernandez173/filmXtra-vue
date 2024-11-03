@@ -10,10 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @property int $obra_id
  * @property string $trailers
- *
  * @property Obra $obra
- *
- * @package App\Models
  */
 class Trailer extends Model
 {
@@ -31,8 +28,9 @@ class Trailer extends Model
      */
     public $incrementing = false;
 
-    const string CREATED_AT = 'creado';
-    const string UPDATED_AT = 'modificado';
+    const CREATED_AT = 'creado';
+
+    const UPDATED_AT = 'modificado';
 
     /**
      * Atributos asignables.
@@ -55,8 +53,6 @@ class Trailer extends Model
 
     /**
      * Obtiene la obra
-     *
-     * @return BelongsTo
      */
 	public function obra(): BelongsTo
 	{
