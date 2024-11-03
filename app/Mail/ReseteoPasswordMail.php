@@ -13,15 +13,7 @@ class ReseteoPasswordMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Constructor
-     *
-     * @param $notifiable
-     * @param string $url
-     */
-    public function __construct(protected $notifiable, public string $url)
-    {
-    }
+    public function __construct(protected $notifiable, public string $url) {}
 
     /**
      * Datos básicos para el envío
@@ -44,8 +36,8 @@ class ReseteoPasswordMail extends Mailable
             view: 'emails.restablecimientoPassword',
             with: [
                 'usuario' => $this->notifiable,
-                'url'     => $this->url.'/'.$this->notifiable->id,
-                'logo'    => public_path('images/logo.png'),
+                'url' => $this->url.'/'.$this->notifiable->id,
+                'logo' => public_path('images/logo.png'),
             ]
         );
     }
