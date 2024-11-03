@@ -29,13 +29,10 @@ use Illuminate\Notifications\Notifiable;
  * @property int $login_tipo_id
  * @property Carbon $creado
  * @property Carbon $modificado
- *
  * @property Collection|Critica[] $criticas
  * @property Collection|Evaluacion[] $evaluaciones
  * @property Collection|Like[] $likes
  * @property LoginTipo $loginTipo
- *
- * @package App\Models
  */
 class Usuario extends Authenticatable implements MustVerifyEmail
 {
