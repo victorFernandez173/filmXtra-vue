@@ -5,7 +5,6 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
-use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -16,13 +15,8 @@ class VerificacionMail extends Mailable
 
     /**
      * Constructor
-     *
-     * @param $notifiable
-     * @param $url
      */
-    public function __construct(protected $notifiable, protected $url)
-    {
-    }
+    public function __construct(protected $notifiable, protected $url) {}
 
     /**
      * Datos básicos para el envío
@@ -44,17 +38,15 @@ class VerificacionMail extends Mailable
         return new Content(
             view: 'emails.verificacion',
             with: [
-                'url'     => $this->url,
+                'url' => $this->url,
                 'usuario' => $this->notifiable,
-                'logo'    => public_path('images/logo.png'),
+                'logo' => public_path('images/logo.png'),
             ]
         );
     }
 
     /**
      * Adjuntos
-     *
-     * @return array<int, Attachment>
      */
     public function attachments(): array
     {
