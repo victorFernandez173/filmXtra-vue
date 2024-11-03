@@ -14,10 +14,10 @@ trait APIsTrait
     /**
      * Por medio de una consulta a la API Quotable
      * Obtenemos una cita y la devovemos para usarla
-     * @return string
+     *
      * @throws RandomException
      */
-    static function citaQuotable(): string
+    public static function citaQuotable(): string
     {
         try {
             // Consultamos la api: añadido withouthVerifying por problemas de la API con SSL certificate
@@ -27,6 +27,7 @@ trait APIsTrait
             return '"'.$respuesta[0]['content'].'" - '.$respuesta[0]['author'];
         } catch(Throwable $e) {
             Log::error($e->getMessage());
+
             return static::citaSobreCine();
         }
     }
