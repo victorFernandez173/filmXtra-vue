@@ -27,8 +27,8 @@ class GithubAuthController extends Controller
                 'social_id' => $gitUser->id,
             ],
             [
-                'usuario'       => $gitUser->name,
-                'email'         => $gitUser->email,
+                'usuario' => $gitUser->name,
+                'email' => $gitUser->email,
                 'login_tipo_id' => LoginTipo::GIT_TIPO,
             ]
         );
