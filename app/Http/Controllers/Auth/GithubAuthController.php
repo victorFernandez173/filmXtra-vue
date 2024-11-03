@@ -14,7 +14,6 @@ use Mail;
 
 class GithubAuthController extends Controller
 {
-
     public function redirectToProvider()
     {
         return Socialite::driver('github')->redirect();
