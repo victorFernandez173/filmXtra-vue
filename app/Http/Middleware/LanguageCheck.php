@@ -9,9 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class LanguageCheck
 {
     /**
-     * Handle an incoming request.
-     *
-     * @param Closure(Request): (Response) $next
+     * Handle an incoming request
      */
     public function handle(Request $request, Closure $next): Response
     {
@@ -24,6 +22,7 @@ class LanguageCheck
         } else {
             app()->setLocale(config('app.locale'));
         }
+
         return $next($request);
     }
 }
