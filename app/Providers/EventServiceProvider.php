@@ -20,17 +20,17 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        Registered::class    => [
+        Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        Verified::class      => [
-            VerificacionEmailExitosaEscuchador::class
+        Verified::class => [
+            VerificacionEmailExitosaEscuchador::class,
         ],
         PasswordReset::class => [
-            ReseteoPasswordExitosoEscuchador::class
+            ReseteoPasswordExitosoEscuchador::class,
         ],
-        BajaUsuario::class   => [
-            BajaUsuarioEscuchador::class
+        BajaUsuario::class => [
+            BajaUsuarioEscuchador::class,
         ]
     ];
 
@@ -38,9 +38,7 @@ class EventServiceProvider extends ServiceProvider
      * Register any events for your application.
      */
     public function boot(): void
-    {
-        //
-    }
+    { }
 
     /**
      * Determine if events and listeners should be automatically discovered.
