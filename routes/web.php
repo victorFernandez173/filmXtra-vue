@@ -2,10 +2,9 @@
 
 use App\Http\Controllers\CriticasController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\ObtenerObraController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\MainController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +48,7 @@ Route::middleware('auth')
 Route::get('/lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang');
 
 // Resto rutas auth
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
 
 // TODO pint, phpinsights and larastan
 // TODO revision funcionamiento MAIN
@@ -67,5 +66,3 @@ require __DIR__ . '/auth.php';
 // TODO spatie/laravel-honeypot...
 // TODO podcast en el permanent layout...
 // TODO roles para gestores en futura sección de gestion de datos...
-
-
