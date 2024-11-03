@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Created by Reliese Model.
- */
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -14,11 +10,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @property int $obra_id
  * @property int $actor_id
- *
  * @property Actor $actor
  * @property Obra $obra
- *
- * @package App\Models
  */
 class ActorObra extends Model
 {
@@ -33,7 +26,6 @@ class ActorObra extends Model
      * primaryKey
      *
      * @var null
-     * @access protected
      */
     protected $primaryKey = null;
 
@@ -46,6 +38,7 @@ class ActorObra extends Model
 
     /**
      * No timestamps
+     *
      * @var bool
      */
     public $timestamps = false;
@@ -65,28 +58,24 @@ class ActorObra extends Model
      *
      * @var string[]
      */
-	protected $casts = [
-		'obra_id' => 'int',
-		'actor_id' => 'int'
-	];
+    protected $casts = [
+        'obra_id' => 'int',
+        'actor_id' => 'int',
+    ];
 
     /**
      * Obtiene el actor
-     *
-     * @return BelongsTo
      */
-	public function actor(): BelongsTo
-	{
-		return $this->belongsTo(Actor::class);
-	}
+    public function actor(): BelongsTo
+    {
+        return $this->belongsTo(Actor::class);
+    }
 
     /**
      * Obtiene la obra
-     *
-     * @return BelongsTo
      */
-	public function obra(): BelongsTo
-	{
-		return $this->belongsTo(Obra::class);
-	}
+    public function obra(): BelongsTo
+    {
+        return $this->belongsTo(Obra::class);
+    }
 }
