@@ -33,8 +33,8 @@ class RegisteredUserController extends Controller
         $validated = $request->validated();
 
         $user = Usuario::create([
-            'usuario'  => $validated['usuario'],
-            'email'    => $validated['email'],
+            'usuario' => $validated['usuario'],
+            'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
         ]);
 
