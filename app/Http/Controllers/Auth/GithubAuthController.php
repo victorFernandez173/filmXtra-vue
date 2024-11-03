@@ -7,28 +7,19 @@ use App\Mail\SocialiteLoginMail;
 use App\Models\LoginTipo;
 use App\Models\Usuario;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Date;
-use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 use Mail;
-use Redirect;
 
 class GithubAuthController extends Controller
 {
-    /**
-     * Redirect the user to the Github authentication page
-     *
-     */
+
     public function redirectToProvider()
     {
         return Socialite::driver('github')->redirect();
     }
 
-    /**
-     * Log ins the user
-     * @return RedirectResponse
-     */
     public function handleCallback(): RedirectResponse
     {
         $gitUser = Socialite::driver('github')->user();
@@ -37,9 +28,9 @@ class GithubAuthController extends Controller
                 'social_id' => $gitUser->id,
             ],
             [
-                'usuario'                => $gitUser->name,
-                'email'                  => $gitUser->email,
-                'login_tipo_id'          => LoginTipo::GIT_TIPO,
+                'usuario'       => $gitUser->name,
+                'email'         => $gitUser->email,
+                'login_tipo_id' => LoginTipo::GIT_TIPO,
             ]
         );
         $user->email_verificado_fecha = now();
@@ -47,6 +38,7 @@ class GithubAuthController extends Controller
 
         Mail::to($user->email)->send(new SocialiteLoginMail($user));
         Auth::login($user);
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 }
