@@ -15,15 +15,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property float $evaluacion
  * @property Carbon $creada
  * @property Carbon $modificada
- *
  * @property Obra $obra
  * @property Usuario $user
- *
- * @package App\Models
  */
 class Evaluacion extends Model
 {
-
     /**
      * Tabla
      *
@@ -31,11 +27,13 @@ class Evaluacion extends Model
      */
     protected $table = 'evaluaciones';
 
-    const string CREATED_AT = 'creada';
-    const string UPDATED_AT = 'modificada';
+    const CREATED_AT = 'creada';
+
+    const UPDATED_AT = 'modificada';
 
     /**
      * Castings
+     *
      * @var string[]
      */
     protected $casts = [
