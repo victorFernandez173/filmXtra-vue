@@ -14,11 +14,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @property int $obra_id
  * @property int $genero_id
- *
  * @property Genero $genero
  * @property Obra $obra
- *
- * @package App\Models
  */
 class GeneroObra extends Model
 {
@@ -33,7 +30,6 @@ class GeneroObra extends Model
      * primaryKey
      *
      * @var null
-     * @access protected
      */
     protected $primaryKey = null;
 
@@ -45,7 +41,8 @@ class GeneroObra extends Model
     public $incrementing = false;
 
     /**
-     * SIn timestamps
+     * Sin timestamps
+     *
      * @var bool
      */
     public $timestamps = false;
@@ -65,28 +62,24 @@ class GeneroObra extends Model
      *
      * @var string[]
      */
-	protected $casts = [
-		'obra_id' => 'int',
-		'genero_id' => 'int'
-	];
+    protected $casts = [
+        'obra_id' => 'int',
+        'genero_id' => 'int',
+    ];
 
     /**
      * Obtiene el genero
-     *
-     * @return BelongsTo
      */
-	public function genero(): BelongsTo
-	{
-		return $this->belongsTo(Genero::class);
-	}
+    public function genero(): BelongsTo
+    {
+        return $this->belongsTo(Genero::class);
+    }
 
     /**
      * Obtiene la obra
-     *
-     * @return BelongsTo
      */
-	public function obra(): BelongsTo
-	{
-		return $this->belongsTo(Obra::class);
-	}
+    public function obra(): BelongsTo
+    {
+        return $this->belongsTo(Obra::class);
+    }
 }
