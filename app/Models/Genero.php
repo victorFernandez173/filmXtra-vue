@@ -15,15 +15,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property string $genero_en
  * @property Carbon $creado
  * @property Carbon $modificado
- *
  * @property Collection|Obra[] $obras
- *
- * @package App\Models
  */
 class Genero extends Model
 {
-    const string CREATED_AT = 'creado';
-    const string UPDATED_AT = 'modificado';
+    const CREATED_AT = 'creado';
+
+    const UPDATED_AT = 'modificado';
 
     /**
      * Atributos asignables
@@ -33,6 +31,7 @@ class Genero extends Model
     protected $fillable = [
         'genero',
     ];
+
     /**
      * Obtiene las obras
      */
