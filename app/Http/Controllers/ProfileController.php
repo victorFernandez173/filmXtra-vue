@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
-use Log;
 
 class ProfileController extends Controller
 {
@@ -27,7 +26,7 @@ class ProfileController extends Controller
 
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'status'          => session('status'),
+            'status' => session('status'),
         ]);
     }
 
@@ -54,14 +53,14 @@ class ProfileController extends Controller
     {
         $user = $request->user();
 
-        if($user->login_tipo_id == LoginTipo::FILMXTRA_TIPO){
+        if ($user->login_tipo_id == LoginTipo::FILMXTRA_TIPO) {
             $request->validate(
                 [
                     'password' => ['required', 'current_password'],
                 ],
                 [
-                    'password.required'         => __('validation.required', ['attribute' => trans('validation.attributes.password')]),
-                    'password.current_password' => __('validation.current_password', ['attribute' => trans('validation.attributes.password')])
+                    'password.required' => __('validation.required', ['attribute' => trans('validation.attributes.password')]),
+                    'password.current_password' => __('validation.current_password', ['attribute' => trans('validation.attributes.password')]),
                 ]
             );
         }
