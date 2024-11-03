@@ -15,15 +15,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $web
  * @property Carbon $creado
  * @property Carbon $modificado
- *
  * @property Collection|Profesional[] $profesionals
- *
- * @package App\Models
  */
 class Medio extends Model
 {
-    const string CREATED_AT = 'creado';
-    const string UPDATED_AT = 'modificado';
+    const CREATED_AT = 'creado';
+
+    const UPDATED_AT = 'modificado';
 
     /**
      * Atributos asignables.
