@@ -17,16 +17,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Carbon $fecha
  * @property Carbon $creada
  * @property Carbon $modificada
- *
  * @property Medio $medio
  * @property Obra $obra
- *
- * @package App\Models
  */
 class Profesional extends Model
 {
-    const string CREATED_AT = 'creada';
-    const string UPDATED_AT = 'modificada';
+    const CREATED_AT = 'creada';
+
+    const UPDATED_AT = 'modificada';
 
     /**
      * Castings
@@ -49,7 +47,7 @@ class Profesional extends Model
         'medio_id',
         'autor',
         'contenido',
-        'fecha'
+        'fecha',
     ];
 
     /**
