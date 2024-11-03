@@ -38,7 +38,6 @@ Route::middleware('guest')->group(function () {
         ->name('password.store');
 });
 
-
 // Rutas para usuarios
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
@@ -63,7 +62,6 @@ Route::middleware('auth')->group(function () {
         ->name('logout');
 });
 
-
 //Rutas o'auth
 Route::name('auth.')->prefix('auth')->group(function () {
     // Rutas google
@@ -80,5 +78,3 @@ Route::name('auth.')->prefix('auth')->group(function () {
     Route::get('/github/callback', [GithubAuthController::class, 'handleCallback'])
         ->name('github.callback');
 });
-
-
