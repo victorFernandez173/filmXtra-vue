@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Inspiring;
 use LaravelIdea\Helper\App\Models\_IH_Obra_C;
 use LaravelIdea\Helper\App\Models\_IH_Obra_QB;
+use Random\RandomException;
 
 class ObrasRepo extends Controller
 {
@@ -46,7 +47,7 @@ class ObrasRepo extends Controller
             'evaluaciones:obra_id,usuario_id,evaluacion',
             'actors:nombre,nombre_real,edad,defuncion,pais',
             'generos:genero_'.app()->getLocale().' as genero',
-            'trailer'
+            'trailer',
         ])->where('titulo_slug', $tituloSlug)->first();
 
         // Si no hubiera obra, se aborta 404
@@ -129,6 +130,8 @@ class ObrasRepo extends Controller
 
     /**
      * Datos adicionales necesario para el Index
+     *
+     * @throws RandomException
      */
     public static function obtenerDatosGeneralesIndex(): array
     {
@@ -180,13 +183,13 @@ class ObrasRepo extends Controller
             'titulo_slug',
             'duracion',
             'fecha',
-            'productora'
+            'productora',
         ])->with([
             'poster',
             'pais:id,pais_'.app()->getLocale().' as pais',
             'directors',
             'actors',
-            'generos:genero_'.app()->getLocale().' as genero'
+            'generos:genero_'.app()->getLocale().' as genero',
         ])->whereBetween(
             'fecha',
             [
