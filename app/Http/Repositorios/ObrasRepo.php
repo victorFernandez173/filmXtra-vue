@@ -9,25 +9,21 @@ use App\Traits\APIsTrait;
 use App\Traits\CitasTrait;
 use App\Traits\GifsTrait;
 use Carbon\Carbon;
-use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Inspiring;
 use LaravelIdea\Helper\App\Models\_IH_Obra_C;
 use LaravelIdea\Helper\App\Models\_IH_Obra_QB;
-use Random\RandomException;
 
 class ObrasRepo extends Controller
 {
-    use CitasTrait, APIsTrait, GifsTrait;
+    use APIsTrait, CitasTrait, GifsTrait;
 
     /**
      * Para obtener los datos iniciales/base de la obra con relaciones
-     * @param string $tituloSlug
-     * @return Obra|Builder|Model|_IH_Obra_QB
      */
-    static function obtenerDatosFichaObra(string $tituloSlug): Obra|Builder|Model|_IH_Obra_QB
+    public static function obtenerDatosFichaObra(string $tituloSlug): Obra|Builder|Model|_IH_Obra_QB
     {
         $obra = Obra::select([
             'id',
@@ -54,7 +50,7 @@ class ObrasRepo extends Controller
         ])->where('titulo_slug', $tituloSlug)->first();
 
         // Si no hubiera obra, se aborta 404
-        if (!$obra) {
+        if (! $obra) {
             abort(404);
         }
 
@@ -64,11 +60,8 @@ class ObrasRepo extends Controller
     /**
      * Para obtener: secuelas, precuelas o spinoffs si las hubiera.
      * $tipo defecto true equivale a precuelas/secuelas; false spinoffs
-     * @param Obra $obra
-     * @param bool $tipo
-     * @return mixed
      */
-    static function obtenerObrasRelacionadas(Obra $obra, bool $tipo = true): mixed
+    public static function obtenerObrasRelacionadas(Obra $obra, bool $tipo = true): mixed
     {
         // Si es parte de una saga esta obra
         if ($obra->secuela) {
@@ -80,7 +73,7 @@ class ObrasRepo extends Controller
                 ->where('obra_id', '!=', $obra->id)
                 // $tipo = true: obtenemos secuelas/precuelas
                 // Si es un spinoff obtenemos la primera de la saga como relacion
-                ->when($tipo && $orden == 0, function ($query) use ($orden) {
+                ->when($tipo && $orden == 0, function ($query) {
                     return $query->where('orden', 1);
                 })
                 // Si es la primera de la saga solo obtenemos la secuela
@@ -92,7 +85,7 @@ class ObrasRepo extends Controller
                     return $query->whereIn('orden', [$orden + 1, $orden - 1]);
                 })
                 // $tipo = false: obtenemos spinoffs
-                ->when(!$tipo, function ($query) {
+                ->when(! $tipo, function ($query) {
                     return $query->where('orden', 0);
                 })
                 ->get();
@@ -112,15 +105,14 @@ class ObrasRepo extends Controller
                 $query->orderBy('orden');
             }])->find($relacionadas);
         }
+
         return null;
     }
 
     /**
-     * Genera un array con 12 ids al azar
-     * que serán las películas cargadas en Index
-     * @throws Exception
+     * Genera un array con 12 ids al azar que serán las películas cargadas en Index
      */
-    static function obtenerObrasAleatorias(): array
+    public static function obtenerObrasAleatorias(): array
     {
         $numPeliculas = Obra::count();
         $peliculasId = [];
@@ -131,33 +123,31 @@ class ObrasRepo extends Controller
             }
             $peliculasId[] = $aleatorio;
         }
+
         return $peliculasId;
     }
 
     /**
      * Datos adicionales necesario para el Index
-     * @return array
-     * @throws RandomException
      */
-    static function obtenerDatosGeneralesIndex(): array
+    public static function obtenerDatosGeneralesIndex(): array
     {
         return [
-            'verificacionExitosa'  => session('verificacionExitosa'),
+            'verificacionExitosa' => session('verificacionExitosa'),
             'borradoCuentaExitoso' => session('borradoCuentaExitoso'),
-            'nGifs'                => static::obtenerNumDeGif(),
+            'nGifs' => static::obtenerNumDeGif(),
             /*Citas*/
-            'citaInspiring'        => Inspiring::quote(),
-            'citaQuotable'         => static::citaQuotable(),
-            'citaPelicula'         => static::citaPelicula(),
-            'citaCine'             => static::citaSobreCine(),
+            'citaInspiring' => Inspiring::quote(),
+            'citaQuotable' => static::citaQuotable(),
+            'citaPelicula' => static::citaPelicula(),
+            'citaCine' => static::citaSobreCine(),
         ];
     }
 
     /**
      * Datos de obras aleatorias mostrados en el index
-     * @throws Exception
      */
-    static function obtenerObrasIndex()
+    public static function obtenerObrasIndex()
     {
         return Obra::select(['id', 'titulo_'.app()->getLocale().' as titulo', 'titulo_original', 'titulo_slug'])
             ->with('poster:id,obra_id,ruta,alt')
@@ -166,27 +156,21 @@ class ObrasRepo extends Controller
             ->shuffle();
     }
 
-
-    /**
-     * @throws Exception
-     */
-    static function obtenerObrasBusqueda(string $tituloBuscado): array|Collection|_IH_Obra_C
+    public static function obtenerObrasBusqueda(string $tituloBuscado): array|Collection|_IH_Obra_C
     {
         return Obra::select(['id', 'titulo_'.app()->getLocale().' as titulo', 'titulo_original', 'titulo_slug', 'fecha'])
             ->with('poster:id,obra_id,ruta,alt')
-            ->where('obras.titulo_es', 'like', '%' . $tituloBuscado . '%')
-            ->orWhere('obras.titulo_en', 'like', '%' . $tituloBuscado . '%')
-            ->orWhere('obras.titulo_original', 'like', '%' . $tituloBuscado . '%')
+            ->where('obras.titulo_es', 'like', '%'.$tituloBuscado.'%')
+            ->orWhere('obras.titulo_en', 'like', '%'.$tituloBuscado.'%')
+            ->orWhere('obras.titulo_original', 'like', '%'.$tituloBuscado.'%')
             ->orderBy('fecha', 'DESC')
             ->get();
     }
 
-
     /**
      * Datos consulta comunes a los dos tops
-     * @return Builder|_IH_Obra_QB
      */
-    static function obtenerDatosObrasTop(): Builder|_IH_Obra_QB
+    public static function obtenerDatosObrasTop(): Builder|_IH_Obra_QB
     {
         return Obra::select([
             'id',
@@ -215,7 +199,7 @@ class ObrasRepo extends Controller
                 $query->where(
                     'genero_'.app()->getLocale(),
                     'like',
-                    '%' . (request('genero') ?? '') . '%'
+                    '%'.(request('genero') ?? '').'%'
                 );
             }
         )->whereHas(
@@ -224,7 +208,7 @@ class ObrasRepo extends Controller
                 $query->where(
                     'pais_'.app()->getLocale(),
                     'like',
-                    '%' . (request('pais') ?? '') . '%'
+                    '%'.(request('pais') ?? '').'%'
                 );
             }
         );
@@ -232,12 +216,9 @@ class ObrasRepo extends Controller
 
     /**
      * Obtiene la nota media de una obra
-     * @param string $tituloSlug
-     * @return Obra
      */
-    static function obtenerObraNotaMedia(string $tituloSlug): Obra
+    public static function obtenerObraNotaMedia(string $tituloSlug): Obra
     {
         return Obra::where('titulo_slug', $tituloSlug)->withAvg('evaluaciones', 'evaluacion')->first();
     }
-
 }
