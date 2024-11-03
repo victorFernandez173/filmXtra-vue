@@ -14,8 +14,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $pais_en
  * @property Carbon $creado
  * @property Carbon $modificado
- *
- * @package App\Models
  */
 class Pais extends Model
 {
@@ -30,8 +28,9 @@ class Pais extends Model
 
     protected $keyType = 'string';
 
-    const string CREATED_AT = 'creado';
-    const string UPDATED_AT = 'modificado';
+    const CREATED_AT = 'creado';
+
+    const UPDATED_AT = 'modificado';
 
     /**
      * Atributos asignables
