@@ -16,17 +16,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $saga
  * @property Carbon $creada
  * @property Carbon $modificada
- *
  * @property Obra $obra
- *
- * @package App\Models
  */
 class Secuela extends Model
 {
     /**
      * Primary key.
      *
-     * @var integer
+     * @var int
      */
     protected $primaryKey = 'id';
 
@@ -37,8 +34,9 @@ class Secuela extends Model
      */
     public $incrementing = false;
 
-    const string CREATED_AT = 'creada';
-    const string UPDATED_AT = 'modificada';
+    const CREATED_AT = 'creada';
+
+    const UPDATED_AT = 'modificada';
 
     /**
      * Castings
@@ -60,7 +58,7 @@ class Secuela extends Model
         'saga_id',
         'obra_id',
         'orden',
-        'saga'
+        'saga',
     ];
 
     /**
