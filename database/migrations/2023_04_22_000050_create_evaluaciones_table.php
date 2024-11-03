@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('obra_id')->constrained()->onDelete('CASCADE');
             $table->foreignId('usuario_id')->constrained()->onDelete('CASCADE');
-            $table->decimal('evaluacion',3, 1)->nullable(false);
+            $table->decimal('evaluacion', 3, 1)->nullable(false);
 
             $table->timestamp(Evaluacion::CREATED_AT)->useCurrent();
             $table->timestamp(Evaluacion::UPDATED_AT)->useCurrent();
