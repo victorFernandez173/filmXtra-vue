@@ -14,19 +14,19 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $nombre
  * @property Carbon $creado
  * @property Carbon $modificado
- *
  * @property Collection|Usuario[] $usuarios
- *
- * @package App\Models
  */
 class LoginTipo extends Model
 {
-    const string CREATED_AT = 'creado';
-    const string UPDATED_AT = 'modificado';
+    const CREATED_AT = 'creado';
 
-    const int FILMXTRA_TIPO = 1;
-    const int GOOGLE_TIPO = 2;
-    const int GIT_TIPO = 3;
+    const UPDATED_AT = 'modificado';
+
+    const FILMXTRA_TIPO = 1;
+
+    const GOOGLE_TIPO = 2;
+
+    const GIT_TIPO = 3;
 
     /**
      * Atributos asignables.
