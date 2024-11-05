@@ -33,7 +33,7 @@ import { getActiveLanguage } from "laravel-vue-i18n";
                             </Link>
                         </li>
                         <li>
-                            <Link v-if="$page.props.auth.user" :href="route('profile.edit')" :class="$page.url === '/profile' ? 'text-flamingo pointer-events-none' : ''">
+                            <Link v-if="$page.props.auth?.user" :href="route('profile.edit')" :class="$page.url === '/profile' ? 'text-flamingo pointer-events-none' : ''">
                                 {{ $t('footer.cuenta') }}
                             </Link>
                             <Link v-else :href="route('login')">

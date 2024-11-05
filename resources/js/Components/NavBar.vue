@@ -149,7 +149,7 @@ onUpdated(() => {
                         <span class="sr-only">Icono buscar</span>
                     </div>
                     <form @submit.prevent="submit">
-                        <input @input="reactivarRetardoBusqueda" v-model="form.tituloBuscado" type="text" id="navbar-search-lg" class="block w-full p-2 pl-10 text-sm text-gray-900 border-gray-300 bg-gray-50 border-[4px] focus:border-flamingo focus:ring-0" :placeholder="$page.props.errors.tituloBuscado ? $page.props.errors.tituloBuscado[0] : $t('navbar.busca')">
+                        <input @input="reactivarRetardoBusqueda" v-model="form.tituloBuscado" type="text" id="navbar-search-lg" class="block w-full p-2 pl-10 text-sm text-gray-900 border-gray-300 bg-gray-50 border-[4px] focus:border-flamingo focus:ring-0" :placeholder="$page.props.errors?.tituloBuscado ? $page.props.errors.tituloBuscado[0] : $t('navbar.busca')">
                     </form>
                 </div>
             </div>
@@ -161,8 +161,8 @@ onUpdated(() => {
                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <button type="button" class="absolute right-16 lg:right-1 flex text-sm bg-gray-800" :class="$page.props.auth.user ? 'focus:ring-black focus:ring-4 hover:ring-4 hover:ring-black focus:black' : 'focus:ring-flamingo focus:ring-4 hover:ring-4 hover:ring-flamingo focus:flamingo'" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-                    <img v-if="!$page.props.auth.user" class="w-[42.5px] h-[42.5px]" src="/favicon.png" alt="Foto del usuario">
+                <button type="button" class="absolute right-16 lg:right-1 flex text-sm bg-gray-800" :class="$page.props.auth?.user ? 'focus:ring-black focus:ring-4 hover:ring-4 hover:ring-black focus:black' : 'focus:ring-flamingo focus:ring-4 hover:ring-4 hover:ring-flamingo focus:flamingo'" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                    <img v-if="!$page.props.auth?.user" class="w-[42.5px] h-[42.5px]" src="/favicon.png" alt="Foto del usuario">
                     <p v-else class="w-[42.5px] h-[42.5px] bg-flamingo border-flamingo flex justify-center items-center text-lg">
                         {{ $page.props.auth.user.usuario[0].toUpperCase() }}
                     </p>
@@ -172,14 +172,14 @@ onUpdated(() => {
                         <span class="block text-sm text-gray-900">
                             FilmXtra
                         </span>
-                        <span v-if="$page.props.auth.user" class="block text-sm  text-gray-500 truncate">
+                        <span v-if="$page.props.auth?.user" class="block text-sm  text-gray-500 truncate">
                             {{ $page.props.auth.user.email }}
                         </span>
                         <span v-else class="block text-sm  text-gray-500 truncate">
                             {{ $t('navbar.logueate') }}
                         </span>
                     </div>
-                    <ul v-if="!$page.props.auth.user" class="py-2 [&>li>a]:block [&>li>a]:px-4 [&>li>a]:py-2 [&>li>a]:text-sm [&>li>a]:text-gray-700 hover:[&>li>a]:bg-flamingo hover:[&>li>a]:text-white" aria-labelledby="user-menu-button">
+                    <ul v-if="!$page.props.auth?.user" class="py-2 [&>li>a]:block [&>li>a]:px-4 [&>li>a]:py-2 [&>li>a]:text-sm [&>li>a]:text-gray-700 hover:[&>li>a]:bg-flamingo hover:[&>li>a]:text-white" aria-labelledby="user-menu-button">
                         <li>
                             <Link :href="route('login')">
                                 {{ $t('navbar.loguearse') }}
@@ -243,7 +243,7 @@ onUpdated(() => {
                         </responsive-nav-link>
                     </li>
                     <li>
-                        <responsive-nav-link v-if="$page.props.auth.user" :href="route('profile.edit')" :elegido="$page.url === '/profile' ? 'text-flamingo pointer-events-none' : ''">
+                        <responsive-nav-link v-if="$page.props.auth?.user" :href="route('profile.edit')" :elegido="$page.url === '/profile' ? 'text-flamingo pointer-events-none' : ''">
                             {{ $t('navbar.cuenta') }}
                         </responsive-nav-link>
                         <responsive-nav-link v-else :href="route('login')" >
