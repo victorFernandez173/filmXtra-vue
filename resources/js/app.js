@@ -2,14 +2,13 @@ import './bootstrap';
 import '../css/app.css';
 import '/node_modules/flag-icons/css/flag-icons.min.css';
 import jQuery from 'jquery';
-window.$ = jQuery;
-
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { i18nVue } from 'laravel-vue-i18n';
 import LayoutPrincipal from "@/Layouts/LayoutPrincipal.vue";
 
+window.$ = jQuery;
 const appName = import.meta.env.VITE_APP_NAME || 'filmXtra';
 
 createInertiaApp({
