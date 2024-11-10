@@ -51,6 +51,7 @@ Route::get('/lang/{lang}', [LanguageController::class, 'switchLang'])->name('lan
 require __DIR__.'/auth.php';
 
 // TODO phpinsights and larastan???
+// TODO estilos globales y especificos de vistas para p, span...etc en ficheros css o algo así?? Quitando así clases de vistas...?
 // TODO avatar de usuario y + otros datos del usuario en el perfil
 // TODO modo oscuro: (ej ResponsiveNavLink)...
 // TODO secciones evaluaciones/criticas en el perfil de usuario...
